@@ -1,3 +1,4 @@
+import 'package:bastogah_app/features/global_feature/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: Scaffold(),
+      home: const SplashView(),
     );
   }
 }
