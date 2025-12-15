@@ -12,18 +12,20 @@ class CustomButton extends StatelessWidget {
     this.onTap,
     this.width,
     this.borderRadius,
-    this.color,
+    this.color = AppColors.primary,
     this.borderColor,
     this.icon,
+    this.maxWidth = 400,
   });
   final String? title;
   final TextStyle? textStyle;
   final VoidCallback? onTap;
   final double? width;
   final double? borderRadius;
-  final Color? color;
+  final Color color;
   final Color? borderColor;
   final String? icon;
+  final double maxWidth;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -36,8 +38,9 @@ class CustomButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         width: width,
+        constraints: BoxConstraints(maxWidth: maxWidth),
         decoration: BoxDecoration(
-          color: color ?? AppColors.primary,
+          color: color,
           borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
           border: borderColor != null
               ? Border.all(color: borderColor!, width: 1)
@@ -51,7 +54,7 @@ class CustomButton extends StatelessWidget {
               if (icon != null) ...[SvgPicture.asset(icon!), const Gap(4)],
               Text(
                 title!,
-                style: textStyle ?? AppFontStyle.bold16White,
+                style: textStyle ?? AppFontStyle.bold16White(context),
                 overflow: TextOverflow.ellipsis,
               ),
             ],

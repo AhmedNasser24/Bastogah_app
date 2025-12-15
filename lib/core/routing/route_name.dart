@@ -3,4 +3,5 @@ class RouteName {
   static const String splash = '/';
 
   // merchant routes
+  static const String merchantLogin = '/merchant/login';
 }

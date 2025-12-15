@@ -3,6 +3,8 @@ import 'package:bastogah_app/features/global_feature/splash/presentation/view/sp
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/merchant_feature/auth/presentation/views/merchant_login_view.dart';
+
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'root',
 );
@@ -22,6 +24,14 @@ class AppRoute {
           context: context,
           state: state,
           child: const SplashView(),
+        ),
+      ),
+      GoRoute(
+        path: RouteName.merchantLogin,
+        pageBuilder: (context, state) => _buildPageWithSlideTransition(
+          context: context,
+          state: state,
+          child: const MerchantLoginView(),
         ),
       ),
     ],
