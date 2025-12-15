@@ -16,10 +16,10 @@ double getScaleFactor(BuildContext context) {
   double screenWidth = context.screenWidth;
 
   if (screenWidth < SizeConfig.mobileBreakpoint) {
-    return screenWidth / 430; // Mobile
+    return screenWidth / 360; // Mobile
   } else if (screenWidth < SizeConfig.tabletBreakpoint) {
-    return screenWidth / 1100; // Tablet
+    return screenWidth / 1000; // Tablet
   } else {
-    return screenWidth / 1400; // Desktop
+    return screenWidth / 1500; // Desktop
   }
 }

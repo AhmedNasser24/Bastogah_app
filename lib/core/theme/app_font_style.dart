@@ -14,4 +14,14 @@ class AppFontStyle {
     fontSize: responsiveSize(context, 30),
     fontWeight: FontWeight.bold,
   );
+  static TextStyle regular16grey(BuildContext context) => TextStyle(
+    color: AppColors.grey,
+    fontSize: responsiveSize(context, 16),
+    fontWeight: FontWeight.normal,
+  );
+  static TextStyle regular16black1A(BuildContext context) => TextStyle(
+    color: AppColors.black1A,
+    fontSize: responsiveSize(context, 16),
+    fontWeight: FontWeight.normal,
+  );
 }
