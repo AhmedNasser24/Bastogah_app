@@ -1,0 +1,12 @@
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+  color: "#FFFFFFFF" ##====================================[REQUIRED]==========
+  
+  # fullscreen: true # default false
+
+  #! ANDROID 12+ configuration:
+  android_12:
+    # background color
+    color: "#FFFFFFFF"
