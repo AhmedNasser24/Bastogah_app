@@ -6,5 +6,6 @@ class AppTheme {
   static ThemeData get getThemeLight => ThemeData(
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.primary,
+    fontFamily: 'Cairo',
   );
 }

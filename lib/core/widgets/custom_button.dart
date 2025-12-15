@@ -1,7 +1,8 @@
 import 'package:bastogah_app/core/theme/app_colors.dart';
-import 'package:chef_app/core/utils/themes/app_colors.dart';
-import 'package:chef_app/core/utils/themes/app_font_style.dart';
+import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -13,6 +14,7 @@ class CustomButton extends StatelessWidget {
     this.borderRadius,
     this.color,
     this.borderColor,
+    this.icon,
   });
   final String? title;
   final TextStyle? textStyle;
@@ -21,6 +23,7 @@ class CustomButton extends StatelessWidget {
   final double? borderRadius;
   final Color? color;
   final Color? borderColor;
+  final String? icon;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -31,7 +34,7 @@ class CustomButton extends StatelessWidget {
         borderRadius != null ? borderRadius! : 16.0,
       ),
       child: Container(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         width: width,
         decoration: BoxDecoration(
           color: color ?? AppColors.primary,
@@ -45,6 +48,7 @@ class CustomButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
+              if (icon != null) ...[SvgPicture.asset(icon!), const Gap(4)],
               Text(
                 title!,
                 style: textStyle ?? AppFontStyle.bold16White,
