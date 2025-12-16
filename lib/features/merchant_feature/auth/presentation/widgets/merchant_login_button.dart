@@ -1,5 +1,7 @@
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 
@@ -12,7 +14,7 @@ class MerchantLoginButton extends StatelessWidget {
       title: 'merchant.login'.tr(),
       onTap: () {
         if (formKey.currentState!.validate()) {
-          // Process data.
+          context.go(RouteName.merchantLayout);
         }
       },
     );

@@ -4,4 +4,5 @@ class RouteName {
 
   // merchant routes
   static const String merchantLogin = '/merchant/login';
+  static const String merchantLayout = '/merchant/layout';
 }

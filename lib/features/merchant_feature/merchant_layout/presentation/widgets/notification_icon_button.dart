@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../../core/theme/app_colors.dart';
+import '../../../../../core/theme/app_icons.dart';
+
+class NotificationIconButton extends StatelessWidget {
+  const NotificationIconButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        SvgPicture.asset(AppIcons.iconsNotificationIcon),
+        const Positioned(
+          right: -2,
+          top: -4,
+          child: CircleAvatar(
+            radius: 6,
+            backgroundColor: AppColors.white,
+            child: CircleAvatar(radius: 4, backgroundColor: AppColors.primary),
+          ),
+        ),
+      ],
+    );
+  }
+}

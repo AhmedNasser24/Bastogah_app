@@ -5,6 +5,7 @@
 
   "merchant": {
     "welcome": "مرحبًا بك",
+    "hello" : "أهلاً بك",
     "login": "دخول للحساب",
     "username_hint": "اسم المستخدم",
     "password_hint": "كلمة المرور",
