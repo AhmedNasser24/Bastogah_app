@@ -32,6 +32,38 @@ List<RouteBase> merchantRoutes = [
           child: const SizedBox(),
         ),
       ),
+      GoRoute(
+        path: RouteName.merchantHome,
+        pageBuilder: (context, state) => buildPageWithSlideTransition(
+          context: context,
+          state: state,
+          child: const Center(child: Text('home')),
+        ),
+      ),
+      GoRoute(
+        path: RouteName.merchantProducts,
+        pageBuilder: (context, state) => buildPageWithSlideTransition(
+          context: context,
+          state: state,
+          child: const Center(child: Text('products')),
+        ),
+      ),
+      GoRoute(
+        path: RouteName.merchantReports,
+        pageBuilder: (context, state) => buildPageWithSlideTransition(
+          context: context,
+          state: state,
+          child: const Center(child: Text('reports')),
+        ),
+      ),
+      GoRoute(
+        path: RouteName.merchantProfile,
+        pageBuilder: (context, state) => buildPageWithSlideTransition(
+          context: context,
+          state: state,
+          child: const Center(child: Text('profile')),
+        ),
+      ),
     ],
   ),
 ];

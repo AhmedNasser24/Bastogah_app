@@ -88,13 +88,13 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
 #!=======================LAUNCHER ICON========================
-# flutter_assets:
-#   assets_path: assets/icons
-#   output_path: lib/core/theme
-#   filename: app_icons.dart
-#   ignore_comments: true
-#   field_prefix: null
-#   classname: AppIcons
+flutter_assets:
+  assets_path: assets/icons
+  output_path: lib/core/theme
+  filename: app_icons.dart
+  ignore_comments: true
+  field_prefix: null
+  classname: AppIcons
 #!=======================IMAGES========================
 # flutter_assets:
 #   assets_path: assets/images

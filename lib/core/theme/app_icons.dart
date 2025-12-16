@@ -28,6 +28,8 @@ class AppIcons {
 
   static const String iconsHome24Icon = "assets/icons/home24_icon.svg";
 
+  static const String iconsInactiveHomeIcon = "assets/icons/inactive_home_icon.svg";
+
   static const String iconsInactiveProductIcon = "assets/icons/inactive_product_icon.svg";
 
   static const String iconsInactiveProfileIcon = "assets/icons/inactive_profile_icon.svg";

@@ -40,4 +40,9 @@ class AppFontStyle {
     fontSize: responsiveSize(context, 12),
     fontWeight: FontWeight.normal,
   );
+  static TextStyle medium10primary(BuildContext context) => TextStyle(
+    color: AppColors.primary,
+    fontSize: responsiveSize(context, 10),
+    fontWeight: FontWeight.w500,
+  );
 }
