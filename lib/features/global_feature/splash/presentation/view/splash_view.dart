@@ -3,6 +3,8 @@ import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/theme/app_colors.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -23,7 +25,7 @@ class _SplashViewState extends State<SplashView> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFFF6C00), Color(0xffFE9801)],
+            colors: AppColors.orangeGradient,
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
