@@ -7,7 +7,6 @@ import '../../../../../core/theme/app_icons.dart';
 
 class MerchantUserNameField extends StatelessWidget {
   const MerchantUserNameField({super.key});
-
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(

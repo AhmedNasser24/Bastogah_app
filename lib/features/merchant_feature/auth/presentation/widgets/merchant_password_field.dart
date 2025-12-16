@@ -31,8 +31,8 @@ class _MerchantPasswordFieldState extends State<MerchantPasswordField> {
           });
         },
         icon: obscureText
-            ? Icon(Icons.visibility_off, size: 24, color: AppColors.grey)
-            : Icon(Icons.visibility, size: 24, color: AppColors.grey),
+            ? const Icon(Icons.visibility_off, size: 24, color: AppColors.grey)
+            : const Icon(Icons.visibility, size: 24, color: AppColors.grey),
       ),
     );
   }

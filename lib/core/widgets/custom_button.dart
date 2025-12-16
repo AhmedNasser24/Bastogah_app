@@ -2,7 +2,6 @@ import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gap/gap.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -14,7 +13,8 @@ class CustomButton extends StatelessWidget {
     this.borderRadius,
     this.color = AppColors.primary,
     this.borderColor,
-    this.icon,
+    this.prefixIcon,
+    this.suffixIcon,
     this.maxWidth = 400,
   });
   final String? title;
@@ -24,7 +24,8 @@ class CustomButton extends StatelessWidget {
   final double? borderRadius;
   final Color color;
   final Color? borderColor;
-  final String? icon;
+  final String? prefixIcon;
+  final String? suffixIcon;
   final double maxWidth;
   @override
   Widget build(BuildContext context) {
@@ -50,13 +51,15 @@ class CustomButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
+            spacing: 6,
             children: [
-              if (icon != null) ...[SvgPicture.asset(icon!), const Gap(4)],
+              if (prefixIcon != null) ...[SvgPicture.asset(prefixIcon!)],
               Text(
                 title!,
                 style: textStyle ?? AppFontStyle.bold16White(context),
                 overflow: TextOverflow.ellipsis,
               ),
+              if (suffixIcon != null) ...[SvgPicture.asset(suffixIcon!)],
             ],
           ),
         ),

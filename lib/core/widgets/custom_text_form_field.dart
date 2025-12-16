@@ -28,7 +28,8 @@ class CustomTextFormField extends StatelessWidget {
     this.inputFormatters,
     this.title,
     this.borderWidth,
-    this.borderColor = AppColors.lightGrey,
+    this.enableBorderColor = AppColors.lightGrey,
+    this.focusBorderColor = AppColors.primary,
   });
   final String? hintText;
   final TextInputType? keyboardType;
@@ -49,7 +50,8 @@ class CustomTextFormField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final String? title;
   final double? borderWidth;
-  final Color borderColor;
+  final Color enableBorderColor;
+  final Color focusBorderColor;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -73,8 +75,8 @@ class CustomTextFormField extends StatelessWidget {
           onTap: onTap,
           readOnly: readOnly,
           maxLines: maxLines,
-          style: AppFontStyle.regular16grey(context),
-
+          style: AppFontStyle.regular16black1A(context),
+          onTapOutside: (event) => FocusScope.of(context).unfocus(),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(16),
 
@@ -101,21 +103,21 @@ class CustomTextFormField extends StatelessWidget {
   OutlineInputBorder enableOutlineInputBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(width: borderWidth ?? 1, color: borderColor),
+      borderSide: BorderSide(width: borderWidth ?? 1, color: enableBorderColor),
     );
   }
 
   OutlineInputBorder focusOutlineInputBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(width: borderWidth ?? 1, color: borderColor),
+      borderSide: BorderSide(width: borderWidth ?? 1, color: focusBorderColor),
     );
   }
 
   OutlineInputBorder errorOutlineInputBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(width: 1, color: AppColors.red),
+      borderSide: const BorderSide(width: 1, color: AppColors.red),
     );
   }
 }

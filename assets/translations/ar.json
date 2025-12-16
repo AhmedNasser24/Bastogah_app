@@ -4,6 +4,8 @@
     "login": "دخول للحساب",
     "username_hint": "اسم المستخدم",
     "password_hint": "كلمة المرور",
-    "forget_password": "نسيت كلمة المرور؟"
+    "forget_password": "نسيت كلمة المرور؟",
+    "need_help" : "الحصول على مساعدة" ,
+    "or" : "أو"
   }
 }

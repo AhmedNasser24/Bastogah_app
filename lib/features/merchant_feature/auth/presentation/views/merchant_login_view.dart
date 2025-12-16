@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../widgets/merchant_login_button.dart';
+import '../widgets/need_help_button.dart';
+import '../widgets/or_text.dart';
 
 class MerchantLoginView extends StatefulWidget {
   const MerchantLoginView({super.key});
@@ -22,27 +24,32 @@ class _MerchantLoginViewState extends State<MerchantLoginView> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Center(
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              constraints: const BoxConstraints(maxWidth: 1000),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Gap(20),
+                  const Gap(20),
                   Image.asset(AppImages.imagesLogoOrange),
-                  Gap(8),
+                  const Gap(8),
                   Text(
                     'merchant.welcome'.tr(),
                     style: AppFontStyle.bold30black1A(context),
                   ),
-                  Gap(30),
-                  MerchantUserNameField(),
-                  Gap(8),
-                  MerchantPasswordField(),
-                  ForgetPasswordTextButton(),
-                  Gap(30),
-                  MerchantLoginButton(),
-                  Gap(30),
+                  const Gap(30),
+                  const MerchantUserNameField(),
+                  const Gap(8),
+                  const MerchantPasswordField(),
+                  const ForgetPasswordTextButton(),
+                  const Gap(30),
+                  const MerchantLoginButton(),
+                  const Gap(40),
+                  const OrText(),
+                  const Gap(40),
+                  const NeedHelpButton(),
+                  const Gap(30),
                 ],
               ),
             ),
