@@ -12,7 +12,12 @@ class MerchantLayout extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(children: [const MerchantAppBar(), child]),
+          child: Column(
+            children: [
+              const MerchantAppBar(),
+              Expanded(child: child),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: const CustomMerchantBottomNavBar(),

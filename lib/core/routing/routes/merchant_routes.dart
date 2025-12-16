@@ -1,3 +1,4 @@
+import 'package:bastogah_app/features/merchant_feature/home/presentation/views/merchant_home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,19 +26,11 @@ List<RouteBase> merchantRoutes = [
     },
     routes: [
       GoRoute(
-        path: RouteName.merchantLayout,
-        pageBuilder: (context, state) => buildPageWithSlideTransition(
-          context: context,
-          state: state,
-          child: const SizedBox(),
-        ),
-      ),
-      GoRoute(
         path: RouteName.merchantHome,
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
           state: state,
-          child: const Center(child: Text('home')),
+          child: const MerchantHomeView(),
         ),
       ),
       GoRoute(

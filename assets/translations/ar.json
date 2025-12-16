@@ -15,6 +15,14 @@
     "home": "الرئيسية",
     "products": "المنتجات",
     "reports": "التقارير",
-    "my_account": "حسابي"
+    "my_account": "حسابي",
+    "customer_phone": "هاتف العميل",
+    "customer_address": "الموقع",
+    "driver" : "السائق",
+    "delivery_amount": "مبلغ التوصيل",
+    "net_amount"  : "صافي المبلغ",
+    "cancel_reason": "سبب الإلغاء",
+    "accept_order": "قبول الطلب"
+
   }
 }

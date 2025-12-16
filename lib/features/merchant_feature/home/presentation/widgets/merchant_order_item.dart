@@ -1,0 +1,212 @@
+import 'package:bastogah_app/core/theme/app_colors.dart';
+import 'package:bastogah_app/core/theme/app_icons.dart';
+import 'package:bastogah_app/features/merchant_feature/home/presentation/widgets/accept_order_button.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
+
+import '../../../../../core/theme/app_font_style.dart';
+
+class MerchantOrderItem extends StatelessWidget {
+  const MerchantOrderItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text("#65485321485", style: AppFontStyle.bold16Black1A(context)),
+              const Spacer(),
+              const AcceptOrderButton(),
+            ],
+          ),
+          const Gap(12),
+          Container(
+            padding: const EdgeInsets.all(12.0),
+            decoration: BoxDecoration(
+              color: AppColors.yellow,
+              borderRadius: BorderRadius.circular(14.0),
+            ),
+            child: const Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 30,
+                  children: [
+                    CustomerPhone(phoneNumber: "0715465456846"),
+                    // Spacer(),
+                    Driver(driverName: "احمد علي"),
+                    CancelReason(reason: "العميل طلب إلغاء الطلب"),
+                  ],
+                ),
+                Spacer(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 30,
+                  children: [
+                    CustomerAddress(
+                      address: "كركوك - شارع 60 متر - مجمع البستنة",
+                    ),
+                    Row(
+                      children: [
+                        NetAmount(amount: "15000"),
+                        Gap(16),
+                        DeliveryAmount(amount: "5000"),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomerPhone extends StatelessWidget {
+  const CustomerPhone({super.key, required this.phoneNumber});
+  final String phoneNumber;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "merchant.customer_phone".tr(),
+          style: AppFontStyle.regular12black4B(context),
+        ),
+        const Gap(4),
+        Row(
+          children: [
+            SvgPicture.asset(AppIcons.iconsPhone16Icon),
+            const Gap(4),
+            Text(phoneNumber, style: AppFontStyle.medium14black1A(context)),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class Driver extends StatelessWidget {
+  const Driver({super.key, required this.driverName});
+  final String driverName;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "merchant.driver".tr(),
+          style: AppFontStyle.regular12black4B(context),
+        ),
+        const Gap(4),
+        Row(
+          children: [
+            SvgPicture.asset(AppIcons.iconsPersonIcon),
+            const Gap(4),
+            Text(driverName, style: AppFontStyle.medium14black1A(context)),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class CustomerAddress extends StatelessWidget {
+  const CustomerAddress({super.key, required this.address});
+  final String address;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "merchant.customer_address".tr(),
+          style: AppFontStyle.regular12black4B(context),
+        ),
+        const Gap(4),
+        Row(
+          children: [
+            SvgPicture.asset(AppIcons.iconsPin16Icon),
+            const Gap(4),
+            Text(address, style: AppFontStyle.medium14black1A(context)),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class NetAmount extends StatelessWidget {
+  const NetAmount({super.key, required this.amount});
+  final String amount;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "merchant.net_amount".tr(),
+          style: AppFontStyle.regular12black4B(context),
+        ),
+        const Gap(4),
+        Text("$amount د.ع", style: AppFontStyle.medium14black1A(context)),
+      ],
+    );
+  }
+}
+
+class DeliveryAmount extends StatelessWidget {
+  const DeliveryAmount({super.key, required this.amount});
+  final String amount;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "merchant.delivery_amount".tr(),
+          style: AppFontStyle.regular12black4B(context),
+        ),
+        const Gap(4),
+        Text("$amount د.ع", style: AppFontStyle.medium14black1A(context)),
+      ],
+    );
+  }
+}
+
+class CancelReason extends StatelessWidget {
+  const CancelReason({super.key, required this.reason});
+  final String reason;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SvgPicture.asset(AppIcons.iconsCancelIcon),
+        const Gap(4),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "merchant.cancel_reason".tr(),
+              style: AppFontStyle.regular12red(context),
+            ),
+            const Gap(4),
+            Text(reason, style: AppFontStyle.medium14black1A(context)),
+          ],
+        ),
+      ],
+    );
+  }
+}
