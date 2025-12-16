@@ -1,11 +1,15 @@
 {
+  "validation": {
+    "required_field": "هذا الحقل مطلوب"
+  },
+
   "merchant": {
     "welcome": "مرحبًا بك",
     "login": "دخول للحساب",
     "username_hint": "اسم المستخدم",
     "password_hint": "كلمة المرور",
     "forget_password": "نسيت كلمة المرور؟",
-    "need_help" : "الحصول على مساعدة" ,
-    "or" : "أو"
+    "need_help": "الحصول على مساعدة",
+    "or": "أو"
   }
 }

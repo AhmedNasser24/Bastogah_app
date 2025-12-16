@@ -19,38 +19,42 @@ class MerchantLoginView extends StatefulWidget {
 }
 
 class _MerchantLoginViewState extends State<MerchantLoginView> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              constraints: const BoxConstraints(maxWidth: 1000),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Gap(20),
-                  Image.asset(AppImages.imagesLogoOrange),
-                  const Gap(8),
-                  Text(
-                    'merchant.welcome'.tr(),
-                    style: AppFontStyle.bold30black1A(context),
-                  ),
-                  const Gap(30),
-                  const MerchantUserNameField(),
-                  const Gap(8),
-                  const MerchantPasswordField(),
-                  const ForgetPasswordTextButton(),
-                  const Gap(30),
-                  const MerchantLoginButton(),
-                  const Gap(40),
-                  const OrText(),
-                  const Gap(40),
-                  const NeedHelpButton(),
-                  const Gap(30),
-                ],
+        child: Form(
+          key: formKey,
+          child: SingleChildScrollView(
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                constraints: const BoxConstraints(maxWidth: 1000),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Gap(20),
+                    Image.asset(AppImages.imagesLogoOrange),
+                    const Gap(8),
+                    Text(
+                      'merchant.welcome'.tr(),
+                      style: AppFontStyle.bold30black1A(context),
+                    ),
+                    const Gap(30),
+                    const MerchantUserNameField(),
+                    const Gap(8),
+                    const MerchantPasswordField(),
+                    const ForgetPasswordTextButton(),
+                    const Gap(30),
+                    MerchantLoginButton(formKey: formKey),
+                    const Gap(40),
+                    const OrText(),
+                    const Gap(40),
+                    const NeedHelpButton(),
+                    const Gap(30),
+                  ],
+                ),
               ),
             ),
           ),

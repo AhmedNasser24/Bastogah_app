@@ -16,6 +16,7 @@ class CustomButton extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.maxWidth = 400,
+    this.isLoading = false,
   });
   final String? title;
   final TextStyle? textStyle;
@@ -27,6 +28,7 @@ class CustomButton extends StatelessWidget {
   final String? prefixIcon;
   final String? suffixIcon;
   final double maxWidth;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -48,20 +50,29 @@ class CustomButton extends StatelessWidget {
               : null,
         ),
         child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            spacing: 6,
-            children: [
-              if (prefixIcon != null) ...[SvgPicture.asset(prefixIcon!)],
-              Text(
-                title!,
-                style: textStyle ?? AppFontStyle.bold16White(context),
-                overflow: TextOverflow.ellipsis,
-              ),
-              if (suffixIcon != null) ...[SvgPicture.asset(suffixIcon!)],
-            ],
-          ),
+          child: isLoading
+              ? const SizedBox(
+                  height: 22,
+                  width: 22,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 2,
+                  ),
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 6,
+                  children: [
+                    if (prefixIcon != null) ...[SvgPicture.asset(prefixIcon!)],
+                    Text(
+                      title!,
+                      style: textStyle ?? AppFontStyle.bold16White(context),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    if (suffixIcon != null) ...[SvgPicture.asset(suffixIcon!)],
+                  ],
+                ),
         ),
       ),
     );

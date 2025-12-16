@@ -34,6 +34,12 @@ class _MerchantPasswordFieldState extends State<MerchantPasswordField> {
             ? const Icon(Icons.visibility_off, size: 24, color: AppColors.grey)
             : const Icon(Icons.visibility, size: 24, color: AppColors.grey),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'validation.required_field'.tr();
+        }
+        return null;
+      },
     );
   }
 }

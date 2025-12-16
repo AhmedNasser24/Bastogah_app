@@ -15,6 +15,12 @@ class MerchantUserNameField extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: SvgPicture.asset(AppIcons.iconsUsernameIcon),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'validation.required_field'.tr();
+        }
+        return null;
+      },
     );
   }
 }
