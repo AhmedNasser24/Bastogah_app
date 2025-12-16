@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
+import '../widgets/filters.dart';
 import '../widgets/merchant_order_item.dart';
 
 class MerchantHomeView extends StatelessWidget {
@@ -8,7 +10,11 @@ class MerchantHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomScrollView(
-      slivers: [SliverToBoxAdapter(child: MerchantOrderItem())],
+      slivers: [
+        SliverToBoxAdapter(child: Filters()),
+        SliverGap(20),
+        SliverToBoxAdapter(child: MerchantOrderItem()),
+      ],
     );
   }
 }

@@ -5,7 +5,7 @@
 
   "merchant": {
     "welcome": "مرحبًا بك",
-    "hello" : "أهلاً بك",
+    "hello": "أهلاً بك",
     "login": "دخول للحساب",
     "username_hint": "اسم المستخدم",
     "password_hint": "كلمة المرور",
@@ -18,11 +18,16 @@
     "my_account": "حسابي",
     "customer_phone": "هاتف العميل",
     "customer_address": "الموقع",
-    "driver" : "السائق",
+    "driver": "السائق",
     "delivery_amount": "مبلغ التوصيل",
-    "net_amount"  : "صافي المبلغ",
+    "net_amount": "صافي المبلغ",
     "cancel_reason": "سبب الإلغاء",
-    "accept_order": "قبول الطلب"
-
+    "accept_order": "قبول الطلب",
+    "filter": {
+      "pending": "قيد الانتظار",
+      "in_progress": "قيد التنفيذ",
+      "completed": "مكتمل",
+      "cancelled": "ملغي"
+    }
   }
 }
