@@ -45,6 +45,13 @@
     },
     "customer": "الزبون",
     "show_location": "عرض الموقع",
-    "not_assigned_yet": "لم يتم التعيين بعد"
+    "not_assigned_yet": "لم يتم التعيين بعد",
+    "price" : "السعر",
+    "delivery" : "التوصيل:",
+    "service" : "الخدمة:",
+    "discount" : "الخصم:",
+    "orders_price" : "مبلغ الطلب:",
+    "total_price" : "قيمة الطلب:",
+    "currency" : "{} د.ع"
   }
 }
