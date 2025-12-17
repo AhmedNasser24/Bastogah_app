@@ -34,7 +34,15 @@
       "in_progress_orders": "الطلبات قيد التنفيذ"
     },
     "search": "بحث عن طلب",
-    "current_dues" : "مستحقات الحالية",
-    "order_detail" : "تفاصيل طلب {orderId}"
+    "current_dues": "مستحقات الحالية",
+    "order_detail": "تفاصيل طلب {orderId}",
+    "order_details": {
+      "customer_name": "اسم الزبون",
+      "address": "العنوان",
+      "phone": "رقم الهاتف",
+      "location": "الموقع الجغرافي"
+    },
+    "customer": "الزبون",
+    "show_location": "عرض الموقع"
   }
 }

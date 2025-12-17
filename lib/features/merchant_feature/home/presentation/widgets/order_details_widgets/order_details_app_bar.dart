@@ -18,12 +18,14 @@ class OrderDetailsAppBar extends StatelessWidget {
       child: Row(
         children: [
           const BackArrowButton(),
-          const Gap(6),
-          Text(
-            "merchant.order_detail".tr(namedArgs: {"orderId": "#4654654358"}),
-            style: AppFontStyle.bold14black1A(context),
+          const Gap(10),
+          Expanded(
+            child: Text(
+              "merchant.order_detail".tr(namedArgs: {"orderId": "#4654654358"}),
+              style: AppFontStyle.bold14black1A(context),
+            ),
           ),
-          const Spacer(),
+          // const Spacer(),
           orderStatuesWidget(context),
         ],
       ),

@@ -8,6 +8,8 @@ class AppImages {
 
   static const String imagesLogoWhite = "assets/images/logo_white.png";
 
+  static const String imagesMap = "assets/images/map.png";
+
   static const String imagesPizzaImage = "assets/images/pizza_image.png";
 }
 
