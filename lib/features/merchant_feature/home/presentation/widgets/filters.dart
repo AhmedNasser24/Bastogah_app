@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/enums/merchant_filter_enums.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,9 @@ class _FiltersState extends State<Filters> {
                   merchantFilters[index].title,
                   style: isSelcted(index)
                       ? AppFontStyle.bold14Primary(context)
+                      : merchantFilters[index].filter ==
+                            MerchantFilterEnums.cancelled
+                      ? AppFontStyle.semibold14red(context)
                       : AppFontStyle.semibold14grey(context),
                   textAlign: TextAlign.center,
                 ),

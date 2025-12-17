@@ -29,6 +29,7 @@
       "completed": "مكتمل",
       "cancelled": "ملغي"
     },
-    "search": "بحث عن طلب"
+    "search": "بحث عن طلب",
+    "current_dues" : "مستحقات الحالية"
   }
 }

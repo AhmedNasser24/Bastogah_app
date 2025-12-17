@@ -14,7 +14,7 @@ class MerchantLoginButton extends StatelessWidget {
       title: 'merchant.login'.tr(),
       onTap: () {
         if (formKey.currentState!.validate()) {
-          context.go(RouteName.merchantLayout);
+          context.go(RouteName.merchantHome);
         }
       },
     );

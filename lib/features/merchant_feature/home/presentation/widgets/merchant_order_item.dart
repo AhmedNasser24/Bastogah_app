@@ -31,54 +31,57 @@ class MerchantOrderItem extends StatelessWidget {
               const AcceptOrderButton(),
             ],
           ),
-          const Gap(12),
+          const SizedBox(height: 12),
           Container(
             padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               color: AppColors.yellow,
               borderRadius: BorderRadius.circular(14.0),
             ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              spacing: 30,
               children: [
-                Flexible(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 30,
-                    children: [
-                      const CustomerPhone(phoneNumber: "0715465456846"),
-                      // Spacer(),
-                      const Driver(driverName: "احمد علي"),
-                      if (selectedFilter == MerchantFilterEnums.cancelled)
-                        const CancelReason(
-                          reason:
-                              "afdddddddddddddddddddddddddالعميل طلب إلغاء الطلب",
-                        ),
-                    ],
-                  ),
-                ),
-                // Spacer(),
-                const Flexible(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 30,
-                    children: [
-                      CustomerAddress(
-                        address: "كركوك - شارع 60 متر - مجمع البستنة",
-                      ),
-                      Row(
+                const Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 30,
                         children: [
-                          Flexible(child: NetAmount(amount: "15000")),
-                          Gap(16),
-                          Flexible(child: DeliveryAmount(amount: "5000")),
+                          CustomerPhone(phoneNumber: "0715465456846"),
+                          // Spacer(),
+                          Driver(driverName: "احمد علي"),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    // Spacer(),
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 30,
+                        children: [
+                          CustomerAddress(
+                            address: "كركوك - شارع 60 متر - مجمع البستنة",
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Flexible(child: NetAmount(amount: "15000")),
+                              SizedBox(width: 16),
+                              Flexible(child: DeliveryAmount(amount: "5000")),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
+                if (selectedFilter == MerchantFilterEnums.cancelled)
+                  const CancelReason(
+                    reason:
+                        "afddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddالعميل طلب إلغاء الطلب",
+                  ),
               ],
             ),
           ),

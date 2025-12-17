@@ -6,15 +6,15 @@ import 'merchant_order_item.dart';
 class MerchantOrderItemsGridView extends StatelessWidget {
   const MerchantOrderItemsGridView({super.key});
 
-  final MerchantFilterEnums selectedFilter = MerchantFilterEnums.inprogress;
+  final MerchantFilterEnums selectedFilter = MerchantFilterEnums.cancelled;
 
   @override
   Widget build(BuildContext context) {
     return SliverGrid.builder(
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 800,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 12,
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 0,
         mainAxisExtent: selectedFilter == MerchantFilterEnums.cancelled
             ? 310
             : 235,

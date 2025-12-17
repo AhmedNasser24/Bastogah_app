@@ -2,6 +2,7 @@ import 'package:bastogah_app/features/merchant_feature/home/presentation/widgets
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../widgets/current_dues.dart';
 import '../widgets/filters.dart';
 import '../widgets/merchant_order_items_grid_view.dart';
 
@@ -11,6 +12,8 @@ class MerchantHomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomScrollView(
       slivers: [
+        SliverToBoxAdapter(child: CurrentDues()),
+        SliverGap(20),
         SliverToBoxAdapter(child: SearchField()),
         SliverGap(20),
         SliverToBoxAdapter(child: Filters()),
@@ -20,5 +23,3 @@ class MerchantHomeView extends StatelessWidget {
     );
   }
 }
-
-

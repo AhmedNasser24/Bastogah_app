@@ -22,6 +22,8 @@ class AppIcons {
 
   static const String iconsCheckIcon = "assets/icons/check_icon.svg";
 
+  static const String iconsDollarIcon = "assets/icons/dollar_icon.svg";
+
   static const String iconsEditIcon = "assets/icons/edit_icon.svg";
 
   static const String iconsForwardIcon = "assets/icons/forward_icon.svg";
