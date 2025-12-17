@@ -1,6 +1,7 @@
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
+import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -51,10 +52,51 @@ class MerchantOrderDetailsView extends StatelessWidget {
               ),
               const Gap(8),
               const ShowLocationMapImage(),
+              const Gap(20),
+              Text(
+                "merchant.driver".tr(),
+                style: AppFontStyle.bold18Black4B(context),
+              ),
+              const Gap(20),
+              const CustomDriverDetails(
+                driverImage: AppImages.imagesCircleAvatarImage,
+                driverName: "خالد علي",
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomDriverDetails extends StatelessWidget {
+  const CustomDriverDetails({super.key, this.driverName, this.driverImage});
+  final String? driverName, driverImage;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        driverName != null
+            ? const CircleAvatar(
+                radius: 24,
+                backgroundImage: AssetImage(AppImages.imagesCircleAvatarImage),
+              )
+            : CircleAvatar(
+                backgroundColor: AppColors.secondary,
+                radius: 24,
+                child: Center(
+                  child: SvgPicture.asset(AppIcons.iconsPerson24Icon),
+                ),
+              ),
+        const Gap(8),
+        Expanded(
+          child: Text(
+            driverName ?? "merchant.not_assigned_yet".tr(),
+            style: AppFontStyle.regular16black4B(context),
+          ),
+        ),
+      ],
     );
   }
 }

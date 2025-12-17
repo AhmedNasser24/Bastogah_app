@@ -41,8 +41,10 @@
       "address": "العنوان",
       "phone": "رقم الهاتف",
       "location": "الموقع الجغرافي"
+
     },
     "customer": "الزبون",
-    "show_location": "عرض الموقع"
+    "show_location": "عرض الموقع",
+    "not_assigned_yet": "لم يتم التعيين بعد"
   }
 }
