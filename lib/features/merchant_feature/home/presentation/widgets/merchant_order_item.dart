@@ -5,8 +5,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/enums/merchant_filter_enums.dart';
+import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/theme/app_font_style.dart';
 
 class MerchantOrderItem extends StatelessWidget {
@@ -14,78 +16,83 @@ class MerchantOrderItem extends StatelessWidget {
   final MerchantFilterEnums selectedFilter;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  "#65485321485",
-                  style: AppFontStyle.bold16Black1A(context),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              // const Spacer(),
-              const AcceptOrderButton(),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Container(
-            padding: const EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
-              color: AppColors.yellow,
-              borderRadius: BorderRadius.circular(14.0),
-            ),
-            child: Column(
-              spacing: 30,
+    return InkWell(
+      onTap: () {
+        context.push(RouteName.merchantOrderDetails);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Row(
               children: [
-                const Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 30,
-                        children: [
-                          CustomerPhone(phoneNumber: "0715465456846"),
-                          // Spacer(),
-                          Driver(driverName: "احمد علي"),
-                        ],
-                      ),
-                    ),
-                    // Spacer(),
-                    Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 30,
-                        children: [
-                          CustomerAddress(
-                            address: "كركوك - شارع 60 متر - مجمع البستنة",
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Flexible(child: NetAmount(amount: "15000")),
-                              SizedBox(width: 16),
-                              Flexible(child: DeliveryAmount(amount: "5000")),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                if (selectedFilter == MerchantFilterEnums.cancelled)
-                  const CancelReason(
-                    reason:
-                        "afddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddالعميل طلب إلغاء الطلب",
+                Expanded(
+                  child: Text(
+                    "#65485321485",
+                    style: AppFontStyle.bold16Black1A(context),
+                    overflow: TextOverflow.ellipsis,
                   ),
+                ),
+                // const Spacer(),
+                const AcceptOrderButton(),
               ],
             ),
-          ),
-        ],
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: AppColors.yellow,
+                borderRadius: BorderRadius.circular(14.0),
+              ),
+              child: Column(
+                spacing: 30,
+                children: [
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 30,
+                          children: [
+                            CustomerPhone(phoneNumber: "0715465456846"),
+                            // Spacer(),
+                            Driver(driverName: "احمد علي"),
+                          ],
+                        ),
+                      ),
+                      // Spacer(),
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 30,
+                          children: [
+                            CustomerAddress(
+                              address: "كركوك - شارع 60 متر - مجمع البستنة",
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Flexible(child: NetAmount(amount: "15000")),
+                                SizedBox(width: 16),
+                                Flexible(child: DeliveryAmount(amount: "5000")),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (selectedFilter == MerchantFilterEnums.cancelled)
+                    const CancelReason(
+                      reason:
+                          "afddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddالعميل طلب إلغاء الطلب",
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

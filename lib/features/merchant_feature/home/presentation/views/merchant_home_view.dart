@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../widgets/current_dues.dart';
-import '../widgets/filters.dart';
+import '../widgets/merchant_filters.dart';
 import '../widgets/merchant_order_items_grid_view.dart';
 
 class MerchantHomeView extends StatelessWidget {
@@ -16,7 +16,7 @@ class MerchantHomeView extends StatelessWidget {
         SliverGap(20),
         SliverToBoxAdapter(child: SearchField()),
         SliverGap(20),
-        SliverToBoxAdapter(child: Filters()),
+        SliverToBoxAdapter(child: MerchantFilters()),
         SliverGap(20),
         MerchantOrderItemsGridView(),
       ],

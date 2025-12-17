@@ -27,7 +27,11 @@
       "pending": "قيد الانتظار",
       "in_progress": "قيد التنفيذ",
       "completed": "مكتمل",
-      "cancelled": "ملغي"
+      "cancelled": "ملغي",
+      "completed_orders": "الطلبات المكتملة",
+      "cancelled_orders": "الطلبات الملغاة",
+      "new_orders": "الطلبات الجديدة",
+      "in_progress_orders": "الطلبات قيد التنفيذ"
     },
     "search": "بحث عن طلب",
     "current_dues" : "مستحقات الحالية"
