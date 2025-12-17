@@ -41,7 +41,7 @@ class _CustomMerchantBottomNavBarState
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   decoration: BoxDecoration(
                     color: i == _currentIndex
-                        ? AppColors.yellow
+                        ? AppColors.secondary
                         : AppColors.white,
                     borderRadius: BorderRadius.circular(14),
                   ),

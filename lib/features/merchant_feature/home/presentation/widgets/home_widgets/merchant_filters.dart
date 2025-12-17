@@ -4,7 +4,7 @@ import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/models/merchant_filter_model.dart';
+import '../../../../../../core/models/merchant_filter_model.dart';
 
 class MerchantFilters extends StatefulWidget {
   const MerchantFilters({super.key});

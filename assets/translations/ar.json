@@ -34,6 +34,7 @@
       "in_progress_orders": "الطلبات قيد التنفيذ"
     },
     "search": "بحث عن طلب",
-    "current_dues" : "مستحقات الحالية"
+    "current_dues" : "مستحقات الحالية",
+    "order_detail" : "تفاصيل طلب {orderId}"
   }
 }

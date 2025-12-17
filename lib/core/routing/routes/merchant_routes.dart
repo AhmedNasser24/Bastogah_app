@@ -33,16 +33,6 @@ List<RouteBase> merchantRoutes = [
           state: state,
           child: const MerchantHomeView(),
         ),
-        routes: [
-          GoRoute(
-            path: RouteName.merchantOrderDetails,
-            pageBuilder: (context, state) => buildPageWithSlideTransition(
-              context: context,
-              state: state,
-              child: const MerchantOrderDetailsView(),
-            ),
-          ),
-        ],
       ),
       GoRoute(
         path: RouteName.merchantProducts,
@@ -69,5 +59,13 @@ List<RouteBase> merchantRoutes = [
         ),
       ),
     ],
+  ),
+  GoRoute(
+    path: RouteName.merchantOrderDetails,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const MerchantOrderDetailsView(),
+    ),
   ),
 ];

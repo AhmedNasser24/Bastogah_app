@@ -1,15 +1,15 @@
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
-import 'package:bastogah_app/features/merchant_feature/home/presentation/widgets/accept_order_button.dart';
+import 'package:bastogah_app/features/merchant_feature/home/presentation/widgets/home_widgets/accept_order_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/enums/merchant_filter_enums.dart';
-import '../../../../../core/routing/route_name.dart';
-import '../../../../../core/theme/app_font_style.dart';
+import '../../../../../../core/enums/merchant_filter_enums.dart';
+import '../../../../../../core/routing/route_name.dart';
+import '../../../../../../core/theme/app_font_style.dart';
 
 class MerchantOrderItem extends StatelessWidget {
   const MerchantOrderItem({super.key, required this.selectedFilter});
@@ -18,6 +18,7 @@ class MerchantOrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        // Nested route
         context.push(RouteName.merchantOrderDetails);
       },
       child: Padding(
@@ -41,7 +42,7 @@ class MerchantOrderItem extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(12.0),
               decoration: BoxDecoration(
-                color: AppColors.yellow,
+                color: AppColors.secondary,
                 borderRadius: BorderRadius.circular(14.0),
               ),
               child: Column(
