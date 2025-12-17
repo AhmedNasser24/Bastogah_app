@@ -16,8 +16,8 @@ class MerchantOrderItemsGridView extends StatelessWidget {
         mainAxisSpacing: 12,
         crossAxisSpacing: 12,
         mainAxisExtent: selectedFilter == MerchantFilterEnums.cancelled
-            ? 320
-            : 260,
+            ? 310
+            : 235,
       ),
       itemCount: 20,
       itemBuilder: (context, index) =>

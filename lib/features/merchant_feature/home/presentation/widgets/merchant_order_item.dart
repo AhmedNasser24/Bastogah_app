@@ -43,7 +43,7 @@ class MerchantOrderItem extends StatelessWidget {
               children: [
                 Flexible(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: 30,
                     children: [
@@ -61,7 +61,7 @@ class MerchantOrderItem extends StatelessWidget {
                 // Spacer(),
                 const Flexible(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: 30,
                     children: [
@@ -69,6 +69,7 @@ class MerchantOrderItem extends StatelessWidget {
                         address: "كركوك - شارع 60 متر - مجمع البستنة",
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Flexible(child: NetAmount(amount: "15000")),
                           Gap(16),
@@ -162,6 +163,7 @@ class CustomerAddress extends StatelessWidget {
         Text(
           "merchant.customer_address".tr(),
           style: AppFontStyle.regular12black4B(context),
+          overflow: TextOverflow.ellipsis,
         ),
         const Gap(4),
         Row(
@@ -194,9 +196,14 @@ class NetAmount extends StatelessWidget {
         Text(
           "merchant.net_amount".tr(),
           style: AppFontStyle.regular12black4B(context),
+          overflow: TextOverflow.ellipsis,
         ),
         const Gap(4),
-        Text("$amount د.ع", style: AppFontStyle.medium14black1A(context)),
+        Text(
+          "$amount د.ع",
+          style: AppFontStyle.medium14black1A(context),
+          overflow: TextOverflow.ellipsis,
+        ),
       ],
     );
   }
@@ -213,9 +220,14 @@ class DeliveryAmount extends StatelessWidget {
         Text(
           "merchant.delivery_amount".tr(),
           style: AppFontStyle.regular12black4B(context),
+          overflow: TextOverflow.ellipsis,
         ),
         const Gap(4),
-        Text("$amount د.ع", style: AppFontStyle.medium14black1A(context)),
+        Text(
+          "$amount د.ع",
+          style: AppFontStyle.medium14black1A(context),
+          overflow: TextOverflow.ellipsis,
+        ),
       ],
     );
   }

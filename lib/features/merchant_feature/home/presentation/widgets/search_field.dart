@@ -22,7 +22,7 @@ class _SearchFieldState extends State<SearchField> {
         Expanded(
           child: CustomTextFormField(
             controller: controller,
-            title: "merchant.search".tr(),
+            hintText: "merchant.search".tr(),
             prefixIcon: Padding(
               padding: const EdgeInsets.all(8.0),
               child: SvgPicture.asset(AppIcons.iconsSearchIcon),

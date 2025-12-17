@@ -48,6 +48,7 @@ class _FiltersState extends State<Filters> {
                   style: isSelcted(index)
                       ? AppFontStyle.bold14Primary(context)
                       : AppFontStyle.semibold14grey(context),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),

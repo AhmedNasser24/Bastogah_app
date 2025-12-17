@@ -5,8 +5,8 @@ import 'size_config.dart';
 
 double responsiveSize(BuildContext context, double size) {
   double scaleFactor = getScaleFactor(context);
-  double lowerLimit = context.isMobile ? size * 1 : size * 1.2;
-  double upperLimit = context.isMobile ? size * 1 : size * 1.2;
+  double lowerLimit = context.isMobile ? size * 1 : size * 1;
+  double upperLimit = context.isMobile ? size * 1 : size * 1;
   size = size * scaleFactor;
 
   return size.clamp(lowerLimit, upperLimit);
