@@ -10,7 +10,7 @@ class AcceptOrderButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButton(
       title: "merchant.accept_order".tr(),
-      width: 180,
+      width: 160,
       textStyle: AppFontStyle.bold14White(context),
       onTap: () {},
     );

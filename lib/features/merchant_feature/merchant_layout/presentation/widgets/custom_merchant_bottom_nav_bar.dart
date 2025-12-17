@@ -23,7 +23,7 @@ class _CustomMerchantBottomNavBarState
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: 65,
       child: Row(
         children: [
           for (int i = 0; i < merchantBottomBarItems.length; i++)

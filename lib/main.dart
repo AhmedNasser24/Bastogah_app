@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
 import 'package:bastogah_app/core/languages/lang.dart';
 import 'package:bastogah_app/core/routing/app_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -13,7 +16,7 @@ void main() async {
       supportedLocales: supportedLocales,
       path: localePath, // <-- change the path of the translation files
       fallbackLocale: arabicLocale,
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -24,6 +27,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    log("width : ${context.screenWidth}");
+    log("height : ${context.screenHeight}");
     return MaterialApp.router(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

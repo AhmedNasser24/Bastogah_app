@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/enums/merchant_filter_enums.dart';
 import '../../../../../core/theme/app_font_style.dart';
 
 class MerchantOrderItem extends StatelessWidget {
-  const MerchantOrderItem({super.key});
-
+  const MerchantOrderItem({super.key, required this.selectedFilter});
+  final MerchantFilterEnums selectedFilter;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,8 +20,14 @@ class MerchantOrderItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text("#65485321485", style: AppFontStyle.bold16Black1A(context)),
-              const Spacer(),
+              Expanded(
+                child: Text(
+                  "#65485321485",
+                  style: AppFontStyle.bold16Black1A(context),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              // const Spacer(),
               const AcceptOrderButton(),
             ],
           ),
@@ -31,37 +38,45 @@ class MerchantOrderItem extends StatelessWidget {
               color: AppColors.yellow,
               borderRadius: BorderRadius.circular(14.0),
             ),
-            child: const Row(
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 30,
-                  children: [
-                    CustomerPhone(phoneNumber: "0715465456846"),
-                    // Spacer(),
-                    Driver(driverName: "احمد علي"),
-                    CancelReason(reason: "العميل طلب إلغاء الطلب"),
-                  ],
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 30,
+                    children: [
+                      const CustomerPhone(phoneNumber: "0715465456846"),
+                      // Spacer(),
+                      const Driver(driverName: "احمد علي"),
+                      if (selectedFilter == MerchantFilterEnums.cancelled)
+                        const CancelReason(
+                          reason:
+                              "afdddddddddddddddddddddddddالعميل طلب إلغاء الطلب",
+                        ),
+                    ],
+                  ),
                 ),
-                Spacer(),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 30,
-                  children: [
-                    CustomerAddress(
-                      address: "كركوك - شارع 60 متر - مجمع البستنة",
-                    ),
-                    Row(
-                      children: [
-                        NetAmount(amount: "15000"),
-                        Gap(16),
-                        DeliveryAmount(amount: "5000"),
-                      ],
-                    ),
-                  ],
+                // Spacer(),
+                const Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 30,
+                    children: [
+                      CustomerAddress(
+                        address: "كركوك - شارع 60 متر - مجمع البستنة",
+                      ),
+                      Row(
+                        children: [
+                          Flexible(child: NetAmount(amount: "15000")),
+                          Gap(16),
+                          Flexible(child: DeliveryAmount(amount: "5000")),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -89,7 +104,14 @@ class CustomerPhone extends StatelessWidget {
           children: [
             SvgPicture.asset(AppIcons.iconsPhone16Icon),
             const Gap(4),
-            Text(phoneNumber, style: AppFontStyle.medium14black1A(context)),
+            Flexible(
+              child: Text(
+                phoneNumber,
+                style: AppFontStyle.medium14black1A(context),
+
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
       ],
@@ -108,13 +130,20 @@ class Driver extends StatelessWidget {
         Text(
           "merchant.driver".tr(),
           style: AppFontStyle.regular12black4B(context),
+          overflow: TextOverflow.ellipsis,
         ),
         const Gap(4),
         Row(
           children: [
             SvgPicture.asset(AppIcons.iconsPersonIcon),
             const Gap(4),
-            Text(driverName, style: AppFontStyle.medium14black1A(context)),
+            Flexible(
+              child: Text(
+                driverName,
+                style: AppFontStyle.medium14black1A(context),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
       ],
@@ -139,7 +168,14 @@ class CustomerAddress extends StatelessWidget {
           children: [
             SvgPicture.asset(AppIcons.iconsPin16Icon),
             const Gap(4),
-            Text(address, style: AppFontStyle.medium14black1A(context)),
+            Flexible(
+              child: Text(
+                address,
+                style: AppFontStyle.medium14black1A(context),
+
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ],
         ),
       ],
@@ -195,16 +231,22 @@ class CancelReason extends StatelessWidget {
       children: [
         SvgPicture.asset(AppIcons.iconsCancelIcon),
         const Gap(4),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "merchant.cancel_reason".tr(),
-              style: AppFontStyle.regular12red(context),
-            ),
-            const Gap(4),
-            Text(reason, style: AppFontStyle.medium14black1A(context)),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "merchant.cancel_reason".tr(),
+                style: AppFontStyle.regular12red(context),
+              ),
+              const Gap(4),
+              Text(
+                reason,
+                style: AppFontStyle.medium14black1A(context),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ],
     );

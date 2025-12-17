@@ -9,20 +9,29 @@ class NotificationIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        SvgPicture.asset(AppIcons.iconsNotificationIcon),
-        const Positioned(
-          right: -2,
-          top: -4,
-          child: CircleAvatar(
-            radius: 6,
-            backgroundColor: AppColors.white,
-            child: CircleAvatar(radius: 4, backgroundColor: AppColors.primary),
-          ),
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            SvgPicture.asset(AppIcons.iconsNotificationIcon),
+            const Positioned(
+              right: -2,
+              top: -4,
+              child: CircleAvatar(
+                radius: 6,
+                backgroundColor: AppColors.white,
+                child: CircleAvatar(
+                  radius: 4,
+                  backgroundColor: AppColors.primary,
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
