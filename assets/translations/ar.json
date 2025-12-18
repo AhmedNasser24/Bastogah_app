@@ -52,6 +52,7 @@
     "discount" : "الخصم:",
     "orders_price" : "مبلغ الطلب:",
     "total_price" : "قيمة الطلب:",
-    "currency" : "{} د.ع"
+    "currency" : "{} د.ع",
+    "quantity" : "العدد:"
   }
 }

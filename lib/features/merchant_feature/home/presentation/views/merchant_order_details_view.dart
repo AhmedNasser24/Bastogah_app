@@ -30,6 +30,7 @@ class MerchantOrderDetailsView extends StatelessWidget {
                       CustomerDetailsSection(),
                       DriverDetailsSection(),
                       OrderPriceDetailsSection(),
+                      OrderItemsSection(),
                       Gap(20),
                     ],
                   ),
@@ -38,6 +39,94 @@ class MerchantOrderDetailsView extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class OrderItemsSection extends StatelessWidget {
+  const OrderItemsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 20,
+      children: [
+        Text(
+          "merchant.products".tr(),
+          style: AppFontStyle.bold18Black4B(context),
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 700,
+            mainAxisSpacing: 24,
+            crossAxisSpacing: 24,
+            mainAxisExtent: 70,
+          ),
+          itemCount: 10,
+          itemBuilder: (context, index) => orderItem(context),
+        ),
+      ],
+    );
+  }
+
+  SizedBox orderItem(BuildContext context) {
+    return SizedBox(
+      height: 70,
+      width: double.infinity,
+      child: Row(
+        children: [
+          Container(
+            height: 70,
+            width: 70,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              image: const DecorationImage(
+                image: AssetImage(AppImages.imagesPizzaImage),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const Gap(8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "بيتزا",
+                  style: AppFontStyle.semibold14black1A(context),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  "عجينة البيتزا, صلصة البيتزا, شاورما لحم, جبنة الموزريلا, فلفل, زيتون",
+                  style: AppFontStyle.semibold12grey(context),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "merchant.quantity".tr(),
+                      style: AppFontStyle.semibold12grey(context),
+                    ),
+                    const Gap(4),
+                    Text("2", style: AppFontStyle.semibold12black4B(context)),
+                    const Spacer(),
+                    Text(
+                      "merchant.currency".tr(args: ["5000"]),
+                      style: AppFontStyle.bold14Primary(context),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
