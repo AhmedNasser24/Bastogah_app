@@ -1,43 +1,18 @@
-import 'dart:math';
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/theme/app_colors.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
+import 'city_field.dart';
+import 'governorate_field.dart';
 
-class MerchantAddressField extends StatelessWidget {
+class MerchantAddressField extends StatefulWidget {
   const MerchantAddressField({super.key});
 
   @override
+  State<MerchantAddressField> createState() => _MerchantAddressFieldState();
+}
+
+class _MerchantAddressFieldState extends State<MerchantAddressField> {
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomTextFormField(
-          title: 'merchant.governorate'.tr(),
-          hintText: 'merchant.select_governorate'.tr(),
-          suffixIcon: Transform.rotate(
-            angle: pi / 2,
-            child: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 20,
-              color: AppColors.grey,
-            ),
-          ),
-        ),
-        CustomTextFormField(
-          title: 'merchant.city'.tr(),
-          hintText: 'merchant.select_city'.tr(),
-          suffixIcon: Transform.rotate(
-            angle: pi / 2,
-            child: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 20,
-              color: AppColors.grey,
-            ),
-          ),
-        ),
-      ],
-    );
+    return const Column(children: [GovernorateField(), CityField()]);
   }
 }
