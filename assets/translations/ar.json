@@ -1,6 +1,8 @@
 {
   "validation": {
-    "required_field": "هذا الحقل مطلوب"
+    "required_field": "هذا الحقل مطلوب",
+    "invalid_number" : "رقم غير صالح",
+    "invalid_phone_number" : "رقم هاتف غير صالح"
   },
 
   "merchant": {
@@ -16,7 +18,6 @@
     "products": "المنتجات",
     "reports": "التقارير",
     "my_account": "حسابي",
-    "customer_phone": "هاتف العميل",
     "customer_address": "الموقع",
     "driver": "السائق",
     "delivery_amount": "مبلغ التوصيل",
@@ -41,18 +42,32 @@
       "address": "العنوان",
       "phone": "رقم الهاتف",
       "location": "الموقع الجغرافي"
-
     },
     "customer": "الزبون",
     "show_location": "عرض الموقع",
     "not_assigned_yet": "لم يتم التعيين بعد",
-    "price" : "السعر",
-    "delivery" : "التوصيل:",
-    "service" : "الخدمة:",
-    "discount" : "الخصم:",
-    "orders_price" : "مبلغ الطلب:",
-    "total_price" : "قيمة الطلب:",
-    "currency" : "{} د.ع",
-    "quantity" : "العدد:"
+    "price": "السعر",
+    "delivery": "التوصيل:",
+    "service": "الخدمة:",
+    "discount": "الخصم:",
+    "orders_price": "مبلغ الطلب:",
+    "total_price": "قيمة الطلب:",
+    "currency": "{} د.ع",
+    "quantity": "العدد:",
+    "add_new_order": "إضافة طلب جديد",
+    "order_info": "معلومات الطلب",
+    "enter_new_order_details": "أدخل تفاصيل الطلب الجديد",
+    "customer_name": "اسم الزبون",
+    "enter_customer_name": "أدخل اسم الزبون...",
+    "customer_phone": "هاتف الزبون",
+    "enter_customer_phone": "ادخل هاتف الزبون...",
+    "governorate": "المحافظة",
+    "select_governorate": "اختر المحافظة..",
+    "city": "المدينة",
+    "select_city": "اختر المدينة...",
+    "total_amount": "إجمالي المبلغ",
+    "enter_total_amount": "أدخل المبلغ الإجمالي...",
+    "enter_delivery_amount": "ادخل مبلغ التوصيل...",
+    "add_order" : "إضافة الطلب"
   }
 }

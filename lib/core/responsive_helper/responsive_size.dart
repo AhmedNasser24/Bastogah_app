@@ -4,7 +4,7 @@ import '../extenstion/media_query_extension.dart';
 import 'size_config.dart';
 
 double responsiveSize(BuildContext context, double size) {
-  double scaleFactor = getScaleFactor(context);
+  // double scaleFactor = getScaleFactor(context);
   // double lowerLimit = context.isMobile ? size * 1 : size * 1;
   // double upperLimit = context.isMobile ? size * 1 : size * 1;
   // size = size * scaleFactor;

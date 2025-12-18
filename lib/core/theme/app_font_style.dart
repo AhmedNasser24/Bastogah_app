@@ -44,6 +44,11 @@ class AppFontStyle {
     fontSize: responsiveSize(context, 18),
     fontWeight: FontWeight.bold,
   );
+  static TextStyle bold20Black1A(BuildContext context) => TextStyle(
+    color: AppColors.black1A,
+    fontSize: responsiveSize(context, 20),
+    fontWeight: FontWeight.bold,
+  );
   static TextStyle bold30black1A(BuildContext context) => TextStyle(
     color: AppColors.black1A,
     fontSize: responsiveSize(context, 30),

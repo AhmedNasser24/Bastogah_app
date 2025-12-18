@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_font_style.dart';
@@ -58,10 +59,10 @@ class CustomTextFormField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // if (title != null) ...{
-        //   Text(title!, style: AppFontStyle.regular16WhiteE7),
-        //   const Gap(6),
-        // },
+        if (title != null) ...{
+          Text(title!, style: AppFontStyle.semibold14black4B(context)),
+          const Gap(6),
+        },
         TextFormField(
           autovalidateMode: AutovalidateMode.onUserInteraction,
           inputFormatters: inputFormatters,

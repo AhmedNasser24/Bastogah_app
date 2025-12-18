@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../features/merchant_feature/auth/presentation/views/merchant_login_view.dart';
+import '../../../features/merchant_feature/home/presentation/views/merchant_add_new_order_view.dart';
 import '../../../features/merchant_feature/merchant_layout/presentation/views/merchant_layout.dart';
 import '../route_name.dart';
 import '../router_animation.dart';
@@ -66,6 +67,14 @@ List<RouteBase> merchantRoutes = [
       context: context,
       state: state,
       child: const MerchantOrderDetailsView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.merchantAddNewOrder,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const MerchantAddNewOrderView(),
     ),
   ),
 ];
