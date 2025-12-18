@@ -63,17 +63,20 @@ class AppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Row(
-        spacing: 10,
-        children: [
-          const BackArrowButton(),
-          Text(
-            'merchant.add_new_order'.tr(),
-            style: AppFontStyle.bold14black1A(context),
-          ),
-        ],
+    return SizedBox(
+      height: 60,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Row(
+          spacing: 10,
+          children: [
+            const BackArrowButton(),
+            Text(
+              'merchant.add_new_order'.tr(),
+              style: AppFontStyle.bold14black1A(context),
+            ),
+          ],
+        ),
       ),
     );
   }
