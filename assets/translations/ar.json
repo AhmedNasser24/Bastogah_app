@@ -11,7 +11,17 @@
     "phone_number" : "رقم الهاتف",
     "send_otp" : "أرسال لي رمز التحقق",
     "remembered_password": "تذكرت كلمة المرور؟",
-    "login": "تسجيل الدخول"
+    "login": "تسجيل الدخول",
+    "enter_otp": "أدخل رمز التحقق",
+    "enter_otp_subtitle": "تم إرسال رمز مكون من 4 أرقام إلى رقم هاتفك",
+    "confirm_otp": "تأكيد الرمز",
+    "resend_otp": "إعادة إرسال الرمز",
+    "do_not_receive_otp": "لم يصلك الرمز؟",
+    "create_new_password" : "أنشاء كلمة مرور جديدة",
+    "create_new_password_subtitle": "من فضلك أنشئ كلمة مرور قوية لحماية حسابك.",
+    "update_password": "تحديث كلمة المرور" ,
+    "new_password": "كلمة المرور الجديدة",
+    "confirm_password": "تأكيد كلمة المرور الجديدة"
   },
 
 

@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../../core/theme/app_font_style.dart';
-import 'forget_password_phone_field.dart';
+import 'new_password_and_confirm_password_field.dart';
 import 'remember_password_widget.dart';
-import 'send_otp_button.dart';
+import 'update_password_button.dart';
 
-class ForgetPasswordBody extends StatelessWidget {
-  const ForgetPasswordBody({super.key});
-
+class CreateNewPasswordBody extends StatelessWidget {
+  const CreateNewPasswordBody({super.key});
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -32,19 +31,19 @@ class ForgetPasswordBody extends StatelessWidget {
               spacing: 8,
               children: [
                 Text(
-                  "auth.forget_password".tr(),
+                  "auth.create_new_password".tr(),
                   style: AppFontStyle.semibold20black1A(context),
                 ),
                 Text(
-                  "auth.forget_password_subtitle".tr(),
+                  "auth.create_new_password_subtitle".tr(),
                   style: AppFontStyle.regular16black4B(context),
                 ),
               ],
             ),
             const Gap(30),
-            const ForgetPasswordPhoneField(),
+            const NewPasswordAndConfirmPasswordField(),
             const Gap(30),
-            const SendOtpButton(),
+            const UpdatePasswordButton(),
             // const Gap(10),
             const RemembedPasswordWidget(),
             const Gap(20),
