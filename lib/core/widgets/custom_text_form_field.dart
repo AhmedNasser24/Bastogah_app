@@ -31,6 +31,7 @@ class CustomTextFormField extends StatelessWidget {
     this.borderWidth,
     this.enableBorderColor = AppColors.lightGrey,
     this.focusBorderColor = AppColors.primary,
+    this.suffix,
   });
   final String? hintText;
   final TextInputType? keyboardType;
@@ -53,6 +54,7 @@ class CustomTextFormField extends StatelessWidget {
   final double? borderWidth;
   final Color enableBorderColor;
   final Color focusBorderColor;
+  final Widget? suffix;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -80,7 +82,7 @@ class CustomTextFormField extends StatelessWidget {
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(16),
-
+            suffix: suffix,
             prefixIcon: prefixIcon,
             suffixIcon: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),

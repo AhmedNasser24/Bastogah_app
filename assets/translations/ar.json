@@ -1,9 +1,19 @@
 {
+
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number" : "رقم غير صالح",
     "invalid_phone_number" : "رقم هاتف غير صالح"
   },
+  "auth" : {
+    "forget_password": "نسيت كلمة المرور؟",
+    "forget_password_subtitle": "أدخل رقم هاتفك وسنرسل لك رمز التحقق لإعادة تعيين كلمة المرور.",
+    "phone_number" : "رقم الهاتف",
+    "send_otp" : "أرسال لي رمز التحقق",
+    "remembered_password": "تذكرت كلمة المرور؟",
+    "login": "تسجيل الدخول"
+  },
+
 
   "merchant": {
     "welcome": "مرحبًا بك",

@@ -16,7 +16,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 class AppRoute {
   static GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: RouteName.merchantAddNewOrder,
+    initialLocation: RouteName.merchantForgotPassword,
     routes: [
       GoRoute(
         path: RouteName.splash,
