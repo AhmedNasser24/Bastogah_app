@@ -87,7 +87,7 @@ class CustomButtonToShowOverlayDialogState
 
             // ========== THE DIALOG ==========
             Positioned(
-              top: position.dy + 80,
+              top: position.dy + 90,
               right: position.dx,
               child: Material(
                 color: Colors.transparent,
