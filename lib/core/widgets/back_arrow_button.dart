@@ -6,13 +6,17 @@ import 'package:go_router/go_router.dart';
 import '../theme/app_colors.dart';
 
 class BackArrowButton extends StatelessWidget {
-  const BackArrowButton({super.key});
-
+  const BackArrowButton({super.key, this.onTap});
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pop();
+        if (onTap != null) {
+          onTap!();
+        } else {
+          context.pop();
+        }
       },
       borderRadius: BorderRadius.circular(16),
       child: Container(

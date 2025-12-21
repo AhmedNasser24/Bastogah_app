@@ -6,11 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../../core/theme/app_font_style.dart';
-import 'forget_password_phone_field.dart';
+import 'otp_input.dart';
 import 'remember_password_widget.dart';
+import 'resent_otp_button.dart';
 
 class OtpVerificationBody extends StatelessWidget {
-  const OtpVerificationBody({super.key});
+  const OtpVerificationBody({super.key, required this.pageController});
+  final PageController pageController;
+
   final String phoneNumber = "+964 7700 123456";
   @override
   Widget build(BuildContext context) {
@@ -22,9 +25,16 @@ class OtpVerificationBody extends StatelessWidget {
             const Gap(20),
             Image.asset(AppImages.imagesLogoOrange),
             const Gap(10),
-            const Align(
+            Align(
               alignment: AlignmentDirectional.centerStart,
-              child: BackArrowButton(),
+              child: BackArrowButton(
+                onTap: () {
+                  pageController.previousPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
             ),
             const Gap(20),
             Column(
@@ -50,9 +60,11 @@ class OtpVerificationBody extends StatelessWidget {
               ],
             ),
             const Gap(30),
-            const ForgetPasswordPhoneField(),
+            const ResentOtpButton(),
+            const Gap(10),
+            const OtpInput(),
             const Gap(30),
-            const ConfirmOtpButton(),
+            ConfirmOtpButton(pageController: pageController),
             // const Gap(10),
             const RemembedPasswordWidget(),
             const Gap(20),

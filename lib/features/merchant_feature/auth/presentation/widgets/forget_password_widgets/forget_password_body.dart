@@ -10,8 +10,8 @@ import 'remember_password_widget.dart';
 import 'send_otp_button.dart';
 
 class ForgetPasswordBody extends StatelessWidget {
-  const ForgetPasswordBody({super.key});
-
+  const ForgetPasswordBody({super.key , required this.pageController});
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -44,7 +44,7 @@ class ForgetPasswordBody extends StatelessWidget {
             const Gap(30),
             const ForgetPasswordPhoneField(),
             const Gap(30),
-            const SendOtpButton(),
+            SendOtpButton(pageController: pageController),
             // const Gap(10),
             const RemembedPasswordWidget(),
             const Gap(20),

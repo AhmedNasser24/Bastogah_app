@@ -18,11 +18,12 @@ class _MerchantForgetPasswordState extends State<MerchantForgetPassword> {
     return Scaffold(
       body: SafeArea(
         child: PageView(
+          physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
-          children: const [
-            ForgetPasswordBody(),
-            OtpVerificationBody(),
-            CreateNewPasswordBody(),
+          children: [
+             ForgetPasswordBody(pageController: _pageController),
+            OtpVerificationBody(pageController: _pageController),
+            CreateNewPasswordBody(pageController: _pageController),
           ],
         ),
       ),

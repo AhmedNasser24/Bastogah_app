@@ -10,7 +10,9 @@ import 'remember_password_widget.dart';
 import 'update_password_button.dart';
 
 class CreateNewPasswordBody extends StatelessWidget {
-  const CreateNewPasswordBody({super.key});
+  const CreateNewPasswordBody({super.key, required this.pageController});
+  final PageController pageController;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -21,9 +23,16 @@ class CreateNewPasswordBody extends StatelessWidget {
             const Gap(20),
             Image.asset(AppImages.imagesLogoOrange),
             const Gap(10),
-            const Align(
+            Align(
               alignment: AlignmentDirectional.centerStart,
-              child: BackArrowButton(),
+              child: BackArrowButton(
+                onTap: () {
+                  pageController.previousPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
             ),
             const Gap(20),
             Column(
