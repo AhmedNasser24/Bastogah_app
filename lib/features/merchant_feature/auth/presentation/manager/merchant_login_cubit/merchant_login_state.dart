@@ -9,6 +9,6 @@ class MerchantLoginLoading extends MerchantLoginState {}
 class MerchantLoginSuccess extends MerchantLoginState {}
 
 class MerchantLoginFailure extends MerchantLoginState {
-  final String error;
-  MerchantLoginFailure({required this.error});
+  final String errMessage;
+  MerchantLoginFailure({required this.errMessage});
 }

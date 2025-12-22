@@ -9,7 +9,7 @@ import '../../domain/repos/merchant_auth_repo.dart';
 import '../remote_data_source/merchant_auth.dart';
 
 class MerchantAuthRepoImpl extends MerchantAuthRepo {
-  final MerchantAuth merchantAuth;
+  final MerchantAuthDataSource merchantAuth;
   MerchantAuthRepoImpl({required this.merchantAuth});
   @override
   Future<Either<Failure, void>> login({
@@ -34,19 +34,19 @@ class MerchantAuthRepoImpl extends MerchantAuthRepo {
   Future<void> _saveUserDataLocally(LoginModel loginModel) async {
     await SharedPreferenceSingleton.setString(
       ApiKeys.accessToken,
-      loginModel.accessToken,
+      loginModel.accessToken!,
     );
     await SharedPreferenceSingleton.setString(
       ApiKeys.refreshToken,
-      loginModel.refreshToken,
+      loginModel.refreshToken!,
     );
     await SharedPreferenceSingleton.setString(
       ApiKeys.userId,
-      loginModel.userId,
+      loginModel.userId!,
     );
     await SharedPreferenceSingleton.setString(
       ApiKeys.roles,
-      loginModel.role.value,
+      loginModel.role!.value,
     );
   }
 }

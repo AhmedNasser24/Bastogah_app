@@ -1,3 +1,5 @@
+import 'package:bastogah_app/core/api/api_keys.dart';
+import 'package:bastogah_app/core/local_storage_services/shared_preference_singleton.dart';
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:flutter/material.dart';
@@ -38,10 +40,20 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void _navigateToNext() async {
+    // remove this after testing
+    await clearTokens();
+
     await Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
         context.go(RouteName.merchantLogin);
       }
     });
+  }
+
+  Future<void> clearTokens() async {
+    await SharedPreferenceSingleton.remove(ApiKeys.accessToken);
+    await SharedPreferenceSingleton.remove(ApiKeys.refreshToken);
+    await SharedPreferenceSingleton.remove(ApiKeys.userId);
+    await SharedPreferenceSingleton.remove(ApiKeys.roles);
   }
 }

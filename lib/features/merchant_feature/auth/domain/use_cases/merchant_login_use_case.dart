@@ -4,12 +4,12 @@ import 'package:dartz/dartz.dart';
 import '../../../../../core/errors/failure.dart';
 
 class MerchantLoginUseCase {
-  final MerchantAuthRepo repo;
-  MerchantLoginUseCase({required this.repo});
+  final MerchantAuthRepo merchantAuthRepo;
+  MerchantLoginUseCase({required this.merchantAuthRepo});
   Future<Either<Failure, void>> call({
     required String username,
     required String password,
   }) async {
-    return await repo.login(username: username, password: password);
+    return await merchantAuthRepo.login(username: username, password: password);
   }
 }

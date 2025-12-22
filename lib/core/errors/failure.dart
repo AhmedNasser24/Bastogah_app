@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
+
 abstract class Failure {
   final String errMessage;
 
@@ -29,7 +31,9 @@ class ServerFailure extends Failure {
       case DioExceptionType.cancel:
         return const ServerFailure('Your request is canceled');
       case DioExceptionType.connectionError:
-        return const ServerFailure('check your internet connection and try again');
+        return ServerFailure(
+          'check_your_internet_connection_and_try_again'.tr(),
+        );
       case DioExceptionType.unknown:
         return const ServerFailure('unKnown Error');
     }
@@ -39,8 +43,8 @@ class ServerFailure extends Failure {
     int statusCode,
     Map<String, dynamic> errData,
   ) {
-    if (statusCode == 400 || statusCode == 401 ) {
-      return ServerFailure(errData["errorMassege"]);
+    if (statusCode == 401) {
+      return ServerFailure(errData["message"]);
     } else {
       return const ServerFailure('Unknown bad response');
     }

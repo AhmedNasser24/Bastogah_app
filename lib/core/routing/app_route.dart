@@ -13,20 +13,18 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'shell',
 );
 
-class AppRoute {
-  static GoRouter router = GoRouter(
-    navigatorKey: _rootNavigatorKey,
-    initialLocation: RouteName.merchantForgotPassword,
-    routes: [
-      GoRoute(
-        path: RouteName.splash,
-        pageBuilder: (context, state) => buildPageWithSlideTransition(
-          context: context,
-          state: state,
-          child: const SplashView(),
-        ),
+GoRouter appRouter = GoRouter(
+  navigatorKey: _rootNavigatorKey,
+  initialLocation: RouteName.splash,
+  routes: [
+    GoRoute(
+      path: RouteName.splash,
+      pageBuilder: (context, state) => buildPageWithSlideTransition(
+        context: context,
+        state: state,
+        child: const SplashView(),
       ),
-      ...merchantRoutes,
-    ],
-  );
-}
+    ),
+    ...merchantRoutes,
+  ],
+);

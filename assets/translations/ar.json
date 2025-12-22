@@ -1,5 +1,6 @@
 {
 
+  "check_your_internet_connection_and_try_again": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number" : "رقم غير صالح",
@@ -12,6 +13,7 @@
     "send_otp" : "أرسال لي رمز التحقق",
     "remembered_password": "تذكرت كلمة المرور؟",
     "login": "تسجيل الدخول",
+    "login_successful": "تم تسجيل الدخول بنجاح",
     "enter_otp": "أدخل رمز التحقق",
     "enter_otp_subtitle": "تم إرسال رمز مكون من 4 أرقام إلى رقم هاتفك",
     "confirm_otp": "تأكيد الرمز",
@@ -21,7 +23,8 @@
     "create_new_password_subtitle": "من فضلك أنشئ كلمة مرور قوية لحماية حسابك.",
     "update_password": "تحديث كلمة المرور" ,
     "new_password": "كلمة المرور الجديدة",
-    "confirm_password": "تأكيد كلمة المرور الجديدة"
+    "confirm_password": "تأكيد كلمة المرور الجديدة",
+    "passwords_do_not_match": "كلمتا المرور غير متطابقتان"
   },
 
 

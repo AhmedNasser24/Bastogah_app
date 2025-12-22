@@ -2,13 +2,16 @@ import 'package:bastogah_app/core/api/api_keys.dart';
 import 'package:bastogah_app/core/enums/roles_enum.dart';
 
 class LoginModel {
-  final String userId, accessToken, refreshToken;
-  final RolesEnum role;
-  const LoginModel({
-    required this.userId,
-    required this.accessToken,
-    required this.refreshToken,
-    required this.role,
+  String? userId, accessToken, refreshToken;
+  RolesEnum? role;
+  String? username, password;
+  LoginModel({
+    this.userId,
+    this.accessToken,
+    this.refreshToken,
+    this.role,
+    this.username,
+    this.password,
   });
 
   factory LoginModel.fromJson(Map<String, dynamic> json) {

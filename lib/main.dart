@@ -5,12 +5,18 @@ import 'package:bastogah_app/core/languages/lang.dart';
 import 'package:bastogah_app/core/routing/app_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'core/dependency_injection/get_it_setup.dart';
+import 'core/local_storage_services/shared_preference_singleton.dart'
+    show SharedPreferenceSingleton;
 import 'core/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-
+  getItSetup();
+  await Future.wait([
+    EasyLocalization.ensureInitialized(),
+    SharedPreferenceSingleton.init(),
+  ]);
   runApp(
     EasyLocalization(
       supportedLocales: supportedLocales,
@@ -35,7 +41,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.getThemeLight,
-      routerConfig: AppRoute.router,
+      routerConfig: appRouter,
     );
   }
 }

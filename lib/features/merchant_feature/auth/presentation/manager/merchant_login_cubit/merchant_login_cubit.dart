@@ -19,7 +19,7 @@ class MerchantLoginCubit extends Cubit<MerchantLoginState> {
     );
 
     result.fold(
-      (fail) => emit(MerchantLoginFailure(error: fail.toString())),
+      (fail) => emit(MerchantLoginFailure(errMessage: fail.errMessage)),
       (ok) => emit(MerchantLoginSuccess()),
     );
   }
