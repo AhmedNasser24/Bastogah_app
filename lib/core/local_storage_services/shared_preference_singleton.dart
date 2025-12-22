@@ -18,7 +18,6 @@ class SharedPreferenceSingleton {
 
   static Future<void> setString(String key, String value) async {
     await _instance.setString(key, value);
-    
   }
 
   static String getString(String key) {
@@ -27,13 +26,11 @@ class SharedPreferenceSingleton {
 
   static Future<void> setInt(String key, int value) async {
     await _instance.setInt(key, value);
-    
   }
 
   static int getInt(String key) {
     return _instance.getInt(key) ?? 0;
   }
-
 
   static Future<void> remove(String key) async {
     await _instance.remove(key);

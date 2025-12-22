@@ -85,10 +85,7 @@ class MerchantOrderItem extends StatelessWidget {
                     ],
                   ),
                   if (selectedFilter == MerchantFilterEnums.cancelled)
-                    const CancelReason(
-                      reason:
-                          "afddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddالعميل طلب إلغاء الطلب",
-                    ),
+                    const CancelReason(reason: "العميل طلب إلغاء الطلب"),
                 ],
               ),
             ),

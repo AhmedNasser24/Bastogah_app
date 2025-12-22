@@ -21,7 +21,7 @@ class _MerchantForgetPasswordState extends State<MerchantForgetPassword> {
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
-             ForgetPasswordBody(pageController: _pageController),
+            ForgetPasswordBody(pageController: _pageController),
             OtpVerificationBody(pageController: _pageController),
             CreateNewPasswordBody(pageController: _pageController),
           ],

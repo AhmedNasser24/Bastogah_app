@@ -10,7 +10,7 @@ import 'remember_password_widget.dart';
 import 'send_otp_button.dart';
 
 class ForgetPasswordBody extends StatelessWidget {
-  const ForgetPasswordBody({super.key , required this.pageController});
+  const ForgetPasswordBody({super.key, required this.pageController});
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
