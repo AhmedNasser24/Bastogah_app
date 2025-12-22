@@ -6,7 +6,7 @@ import 'merchant_order_item.dart';
 class MerchantOrderItemsGridView extends StatelessWidget {
   const MerchantOrderItemsGridView({super.key});
 
-  final MerchantFilterEnums selectedFilter = MerchantFilterEnums.cancelled;
+  final MerchantFilterEnum selectedFilter = MerchantFilterEnum.cancelled;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MerchantOrderItemsGridView extends StatelessWidget {
         maxCrossAxisExtent: 800,
         mainAxisSpacing: 0,
         crossAxisSpacing: 0,
-        mainAxisExtent: selectedFilter == MerchantFilterEnums.cancelled
+        mainAxisExtent: selectedFilter == MerchantFilterEnum.cancelled
             ? 310
             : 235,
       ),

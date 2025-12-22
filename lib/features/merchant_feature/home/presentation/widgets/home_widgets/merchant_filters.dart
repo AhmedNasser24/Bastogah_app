@@ -3,8 +3,10 @@ import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/models/merchant_filter_model.dart';
+import '../../manager/cubit/merchant_get_orders_cubit.dart';
 
 class MerchantFilters extends StatefulWidget {
   const MerchantFilters({super.key});
@@ -35,10 +37,13 @@ class _MerchantFiltersState extends State<MerchantFilters> {
                   setState(() {
                     selectedIndex = index;
                   });
+                  BlocProvider.of<MerchantGetOrdersCubit>(
+                    context,
+                  ).fetchOrders(status: merchantFilters[index].filter.status);
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  padding: const EdgeInsets.all(14),
+                  padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
@@ -55,7 +60,7 @@ class _MerchantFiltersState extends State<MerchantFilters> {
                       style: isSelected(index)
                           ? AppFontStyle.bold14Primary(context)
                           : merchantFilters[index].filter ==
-                                MerchantFilterEnums.cancelled
+                                MerchantFilterEnum.cancelled
                           ? AppFontStyle.semibold14red(context)
                           : AppFontStyle.semibold14grey(context),
                       textAlign: TextAlign.center,
@@ -73,13 +78,15 @@ class _MerchantFiltersState extends State<MerchantFilters> {
 
   String getCurrentFilter() {
     switch (merchantFilters[selectedIndex].filter) {
-      case MerchantFilterEnums.pending:
+      case MerchantFilterEnum.pending:
         return "merchant.filter.new_orders".tr();
-      case MerchantFilterEnums.inprogress:
+      case MerchantFilterEnum.waitingDriver:
+        return "merchant.filter.waiting_for_driver".tr();
+      case MerchantFilterEnum.inprogress:
         return "merchant.filter.in_progress_orders".tr();
-      case MerchantFilterEnums.completed:
+      case MerchantFilterEnum.completed:
         return "merchant.filter.completed_orders".tr();
-      case MerchantFilterEnums.cancelled:
+      case MerchantFilterEnum.cancelled:
         return "merchant.filter.cancelled_orders".tr();
     }
   }

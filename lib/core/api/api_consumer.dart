@@ -1,25 +1,25 @@
 abstract class ApiConsumer {
-  Future<Map<String, dynamic>> get(
+  Future get(
     String path, {
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
   });
 
-  Future<Map<String, dynamic>> post(
-    String path, {
-    Map<String, dynamic>? body,
-    Map<String, dynamic>? queryParameters,
-    Map<String, String>? headers,
-  });
-
-  Future<Map<String, dynamic>> put(
+  Future post(
     String path, {
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
   });
 
-  Future<Map<String, dynamic>> delete(
+  Future put(
+    String path, {
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? queryParameters,
+    Map<String, String>? headers,
+  });
+
+  Future delete(
     String path, {
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParameters,

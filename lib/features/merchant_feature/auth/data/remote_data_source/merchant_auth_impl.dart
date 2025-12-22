@@ -4,14 +4,14 @@ import 'package:bastogah_app/features/merchant_feature/auth/data/remote_data_sou
 import '../../../../../core/api/api_consumer.dart';
 
 class MerchantAuthDataSourceImpl extends MerchantAuthDataSource {
-  final ApiConsumer dioConsumer;
-  MerchantAuthDataSourceImpl({required this.dioConsumer});
+  final ApiConsumer apiConsumer;
+  MerchantAuthDataSourceImpl({required this.apiConsumer});
   @override
   Future<Map<String, dynamic>> login({
     required String username,
     required String password,
   }) async {
-    var body = await dioConsumer.post(
+    var body = await apiConsumer.post(
       EndPoint.merchantLogin,
       body: {"username": username, "password": password},
     );

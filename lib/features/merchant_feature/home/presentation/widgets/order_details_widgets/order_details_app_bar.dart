@@ -10,7 +10,7 @@ import '../../../../../../core/widgets/back_arrow_button.dart';
 class OrderDetailsAppBar extends StatelessWidget {
   const OrderDetailsAppBar({super.key});
 
-  final MerchantFilterEnums selectedFilter = MerchantFilterEnums.inprogress;
+  final MerchantFilterEnum selectedFilter = MerchantFilterEnum.inprogress;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -34,25 +34,31 @@ class OrderDetailsAppBar extends StatelessWidget {
 
   Widget orderStatuesWidget(BuildContext context) {
     switch (selectedFilter) {
-      case MerchantFilterEnums.pending:
+      case MerchantFilterEnum.pending:
         return orderStatueBackground(
           context,
           color: AppColors.yellow,
           text: "merchant.filter.pending".tr(),
         );
-      case MerchantFilterEnums.inprogress:
+      case MerchantFilterEnum.waitingDriver:
+        return orderStatueBackground(
+          context,
+          color: AppColors.purple,
+          text: "merchant.filter.waiting_for_driver".tr(),
+        );
+      case MerchantFilterEnum.inprogress:
         return orderStatueBackground(
           context,
           color: AppColors.primary,
           text: "merchant.filter.in_progress".tr(),
         );
-      case MerchantFilterEnums.completed:
+      case MerchantFilterEnum.completed:
         return orderStatueBackground(
           context,
           color: AppColors.green,
           text: "merchant.filter.completed".tr(),
         );
-      case MerchantFilterEnums.cancelled:
+      case MerchantFilterEnum.cancelled:
         return orderStatueBackground(
           context,
           color: AppColors.red,

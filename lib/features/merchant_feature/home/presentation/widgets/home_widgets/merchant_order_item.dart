@@ -13,7 +13,7 @@ import '../../../../../../core/theme/app_font_style.dart';
 
 class MerchantOrderItem extends StatelessWidget {
   const MerchantOrderItem({super.key, required this.selectedFilter});
-  final MerchantFilterEnums selectedFilter;
+  final MerchantFilterEnum selectedFilter;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -84,7 +84,7 @@ class MerchantOrderItem extends StatelessWidget {
                       ),
                     ],
                   ),
-                  if (selectedFilter == MerchantFilterEnums.cancelled)
+                  if (selectedFilter == MerchantFilterEnum.cancelled)
                     const CancelReason(reason: "العميل طلب إلغاء الطلب"),
                 ],
               ),

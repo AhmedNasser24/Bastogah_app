@@ -7,7 +7,7 @@ class DioConsumer extends ApiConsumer {
   final Dio dio;
 
   @override
-  Future<Map<String, dynamic>> get(
+  Future get(
     String path, {
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
@@ -21,7 +21,7 @@ class DioConsumer extends ApiConsumer {
   }
 
   @override
-  Future<Map<String, dynamic>> post(
+  Future post(
     String path, {
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParameters,
@@ -37,7 +37,7 @@ class DioConsumer extends ApiConsumer {
   }
 
   @override
-  Future<Map<String, dynamic>> put(
+  Future put(
     String path, {
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParameters,
@@ -53,7 +53,7 @@ class DioConsumer extends ApiConsumer {
   }
 
   @override
-  Future<Map<String, dynamic>> delete(
+  Future delete(
     String path, {
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParameters,

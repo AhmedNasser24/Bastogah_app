@@ -5,9 +5,11 @@ import 'package:bastogah_app/core/languages/lang.dart';
 import 'package:bastogah_app/core/routing/app_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/dependency_injection/get_it_setup.dart';
 import 'core/local_storage_services/shared_preference_singleton.dart'
     show SharedPreferenceSingleton;
+import 'core/simple_bloc_observer.dart';
 import 'core/theme/app_theme.dart';
 
 void main() async {
@@ -17,6 +19,7 @@ void main() async {
     EasyLocalization.ensureInitialized(),
     SharedPreferenceSingleton.init(),
   ]);
+  Bloc.observer = MyBlocObserver();
   runApp(
     EasyLocalization(
       supportedLocales: supportedLocales,

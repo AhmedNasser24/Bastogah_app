@@ -6,7 +6,7 @@ import 'item.dart';
 import 'merchant_location.dart';
 import 'region.dart';
 
-class OrderItemModel {
+class MerchantOrderItemModel {
   String? id;
   String? merchant;
   String? merchantName;
@@ -48,13 +48,13 @@ class OrderItemModel {
   String? notes;
   int? commissionPercent;
   int? commissionAmount;
-  List<String>? originalProducts;
+  List<dynamic>? originalProducts;
   bool? driverSalaryPaid;
   DateTime? createdAt;
   DateTime? updatedAt;
   int? v;
 
-  OrderItemModel({
+  MerchantOrderItemModel({
     this.id,
     this.merchant,
     this.merchantName,
@@ -103,8 +103,8 @@ class OrderItemModel {
     this.v,
   });
 
-  factory OrderItemModel.fromJson(Map<String, dynamic> json) {
-    return OrderItemModel(
+  factory MerchantOrderItemModel.fromJson(Map<String, dynamic> json) {
+    return MerchantOrderItemModel(
       id: json['_id'] as String?,
       merchant: json['merchant'] as String?,
       merchantName: json['merchantName'] as String?,
@@ -158,7 +158,7 @@ class OrderItemModel {
       notes: json['notes'] as String?,
       commissionPercent: json['commissionPercent'] as int?,
       commissionAmount: json['commissionAmount'] as int?,
-      originalProducts: json['originalProducts'] as List<String>?,
+      originalProducts: json['originalProducts'] as List<dynamic>?,
       driverSalaryPaid: json['driverSalaryPaid'] as bool?,
       createdAt: json['createdAt'] == null
           ? null
@@ -222,7 +222,7 @@ class OrderItemModel {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! OrderItemModel) return false;
+    if (other is! MerchantOrderItemModel) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }

@@ -2,14 +2,14 @@ import 'package:collection/collection.dart';
 
 class MerchantLocation {
   String? type;
-  List<double>? coordinates;
+  List<dynamic>? coordinates;
 
   MerchantLocation({this.type, this.coordinates});
 
   factory MerchantLocation.fromJson(Map<String, dynamic> json) {
     return MerchantLocation(
       type: json['type'] as String?,
-      coordinates: json['coordinates'] as List<double>?,
+      coordinates: json['coordinates'] as List<dynamic>?,
     );
   }
 

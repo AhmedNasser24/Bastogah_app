@@ -49,6 +49,7 @@
     "accept_order": "قبول الطلب",
     "filter": {
       "pending": "قيد الانتظار",
+      "waiting_for_driver": "انتظار سائق",
       "in_progress": "قيد التنفيذ",
       "completed": "مكتمل",
       "cancelled": "ملغي",
