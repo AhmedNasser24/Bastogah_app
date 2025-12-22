@@ -31,6 +31,7 @@ class MerchantLoginButton extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           title: 'merchant.login'.tr(),
+          isLoading: state is MerchantLoginLoading,
           onTap: () {
             if (formKey.currentState!.validate()) {
               BlocProvider.of<MerchantLoginCubit>(

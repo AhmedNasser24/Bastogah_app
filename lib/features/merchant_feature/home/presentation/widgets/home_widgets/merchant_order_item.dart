@@ -1,7 +1,7 @@
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
 import 'package:bastogah_app/features/merchant_feature/home/presentation/widgets/home_widgets/accept_order_button.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -10,15 +10,20 @@ import 'package:go_router/go_router.dart';
 import '../../../../../../core/enums/merchant_filter_enums.dart';
 import '../../../../../../core/routing/route_name.dart';
 import '../../../../../../core/theme/app_font_style.dart';
+import '../../../data/models/order_item_model/order_item_model.dart';
 
 class MerchantOrderItem extends StatelessWidget {
-  const MerchantOrderItem({super.key, required this.selectedFilter});
-  final MerchantFilterEnum selectedFilter;
+  const MerchantOrderItem({
+    super.key,
+    required this.currentStatus,
+    required this.order,
+  });
+  final int currentStatus;
+  final MerchantOrderItemModel order;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Nested route
         context.push(RouteName.merchantOrderDetails);
       },
       child: Padding(
@@ -29,7 +34,7 @@ class MerchantOrderItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    "#65485321485",
+                    order.billNo!,
                     style: AppFontStyle.bold16Black1A(context),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -48,7 +53,7 @@ class MerchantOrderItem extends StatelessWidget {
               child: Column(
                 spacing: 30,
                 children: [
-                  const Row(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Flexible(
@@ -56,27 +61,37 @@ class MerchantOrderItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           spacing: 30,
                           children: [
-                            CustomerPhone(phoneNumber: "0715465456846"),
+                            CustomerPhone(phoneNumber: order.phone ?? "--"),
                             // Spacer(),
-                            Driver(driverName: "احمد علي"),
+                            Driver(
+                              driverName: order.driverName!.isEmpty
+                                  ? "--"
+                                  : order.driverName!,
+                            ),
                           ],
                         ),
                       ),
-                      // Spacer(),
+                      const Gap(4),
                       Flexible(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           spacing: 30,
                           children: [
-                            CustomerAddress(
-                              address: "كركوك - شارع 60 متر - مجمع البستنة",
-                            ),
+                            CustomerAddress(address: order.address ?? "--"),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Flexible(child: NetAmount(amount: "15000")),
-                                SizedBox(width: 16),
-                                Flexible(child: DeliveryAmount(amount: "5000")),
+                                Flexible(
+                                  child: NetAmount(
+                                    amount: order.itemsPrice.toString(),
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Flexible(
+                                  child: DeliveryAmount(
+                                    amount: order.shippingPrice.toString(),
+                                  ),
+                                ),
                               ],
                             ),
                           ],
@@ -84,8 +99,8 @@ class MerchantOrderItem extends StatelessWidget {
                       ),
                     ],
                   ),
-                  if (selectedFilter == MerchantFilterEnum.cancelled)
-                    const CancelReason(reason: "العميل طلب إلغاء الطلب"),
+                  if (currentStatus == MerchantFilterEnum.cancelled.status)
+                    CancelReason(reason: order.cancelReason ?? "--"),
                 ],
               ),
             ),
@@ -117,7 +132,7 @@ class CustomerPhone extends StatelessWidget {
               child: Text(
                 phoneNumber,
                 style: AppFontStyle.medium14black1A(context),
-
+                textDirection: TextDirection.ltr,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
