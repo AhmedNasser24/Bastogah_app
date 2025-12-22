@@ -24,7 +24,7 @@ class MerchantOrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.push(RouteName.merchantOrderDetails);
+        context.push(RouteName.merchantOrderDetails, extra: order);
       },
       child: Padding(
         padding: const EdgeInsets.all(12.0),

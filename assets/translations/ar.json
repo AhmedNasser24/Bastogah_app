@@ -92,6 +92,7 @@
     "total_amount": "إجمالي المبلغ",
     "enter_total_amount": "أدخل المبلغ الإجمالي...",
     "enter_delivery_amount": "ادخل مبلغ التوصيل...",
-    "add_order" : "إضافة الطلب"
+    "add_order" : "إضافة الطلب",
+    "client_has_no_location": "العميل ليس لديه موقع محفوظ"
   }
 }

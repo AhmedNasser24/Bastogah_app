@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../features/merchant_feature/auth/presentation/views/merchant_forget_password.dart';
 import '../../../features/merchant_feature/auth/presentation/views/merchant_login_view.dart';
+import '../../../features/merchant_feature/home/data/models/order_item_model/order_item_model.dart';
 import '../../../features/merchant_feature/home/presentation/views/merchant_add_new_order_view.dart';
 import '../../../features/merchant_feature/merchant_layout/presentation/views/merchant_layout.dart';
 import '../route_name.dart';
@@ -75,7 +76,9 @@ List<RouteBase> merchantRoutes = [
     pageBuilder: (context, state) => buildPageWithSlideTransition(
       context: context,
       state: state,
-      child: const MerchantOrderDetailsView(),
+      child: MerchantOrderDetailsView(
+        order: state.extra as MerchantOrderItemModel,
+      ),
     ),
   ),
   GoRoute(

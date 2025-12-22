@@ -2,7 +2,9 @@ import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:bastogah_app/features/merchant_feature/home/data/models/order_item_model/item.dart';
+import 'package:bastogah_app/features/merchant_feature/home/data/models/order_item_model/order_item_model.dart';
+import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -11,27 +13,28 @@ import '../widgets/order_details_widgets/order_details_app_bar.dart';
 import '../widgets/order_details_widgets/show_location_map_image.dart';
 
 class MerchantOrderDetailsView extends StatelessWidget {
-  const MerchantOrderDetailsView({super.key});
+  const MerchantOrderDetailsView({super.key, required this.order});
+  final MerchantOrderItemModel order;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
-              OrderDetailsAppBar(),
+              const OrderDetailsAppBar(),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: 30,
                     children: [
-                      CustomerDetailsSection(),
-                      DriverDetailsSection(),
-                      OrderPriceDetailsSection(),
-                      OrderItemsSection(),
-                      Gap(20),
+                      CustomerDetailsSection(order: order),
+                      DriverDetailsSection(driverName: order.driverName),
+                      OrderPriceDetailsSection(order: order),
+                      OrderItemsSection(order: order),
+                      const Gap(20),
                     ],
                   ),
                 ),
@@ -45,8 +48,9 @@ class MerchantOrderDetailsView extends StatelessWidget {
 }
 
 class OrderItemsSection extends StatelessWidget {
-  const OrderItemsSection({super.key});
+  const OrderItemsSection({super.key, required this.order});
 
+  final MerchantOrderItemModel order;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -66,14 +70,15 @@ class OrderItemsSection extends StatelessWidget {
             crossAxisSpacing: 24,
             mainAxisExtent: 70,
           ),
-          itemCount: 10,
-          itemBuilder: (context, index) => orderItem(context),
+          itemCount: order.items?.length ?? 0,
+          itemBuilder: (context, index) =>
+              orderItem(context, order.items![index]),
         ),
       ],
     );
   }
 
-  SizedBox orderItem(BuildContext context) {
+  SizedBox orderItem(BuildContext context, Item item) {
     return SizedBox(
       height: 70,
       width: double.infinity,
@@ -97,13 +102,13 @@ class OrderItemsSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "بيتزا",
+                  item.productName ?? "--",
                   style: AppFontStyle.semibold14black1A(context),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  "عجينة البيتزا, صلصة البيتزا, شاورما لحم, جبنة الموزريلا, فلفل, زيتون",
+                  item.notes ?? "",
                   style: AppFontStyle.semibold12grey(context),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -115,10 +120,13 @@ class OrderItemsSection extends StatelessWidget {
                       style: AppFontStyle.semibold12grey(context),
                     ),
                     const Gap(4),
-                    Text("2", style: AppFontStyle.semibold12black4B(context)),
+                    Text(
+                      item.qty.toString(),
+                      style: AppFontStyle.semibold12black4B(context),
+                    ),
                     const Spacer(),
                     Text(
-                      "merchant.currency".tr(args: ["5000"]),
+                      "merchant.currency".tr(args: [item.price.toString()]),
                       style: AppFontStyle.bold14Primary(context),
                     ),
                   ],
@@ -133,8 +141,8 @@ class OrderItemsSection extends StatelessWidget {
 }
 
 class OrderPriceDetailsSection extends StatelessWidget {
-  const OrderPriceDetailsSection({super.key});
-
+  const OrderPriceDetailsSection({super.key, required this.order});
+  final MerchantOrderItemModel order;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -145,19 +153,23 @@ class OrderPriceDetailsSection extends StatelessWidget {
         customPrice(
           context,
           title: "merchant.orders_price".tr(),
-          price: "15000",
+          price: order.itemsPrice?.toString() ?? "0",
         ),
         const Gap(12),
         customPrice(
           context,
           title: "merchant.discount".tr(),
-          price: "-5000",
+          price: order.totalDiscount?.toString() ?? "0",
           color: AppColors.red,
         ),
         const Gap(12),
-        customPrice(context, title: "merchant.service".tr(), price: "1200"),
+        customPrice(context, title: "merchant.service".tr(), price: "--"),
         const Gap(12),
-        customPrice(context, title: "merchant.delivery".tr(), price: "5000"),
+        customPrice(
+          context,
+          title: "merchant.delivery".tr(),
+          price: order.shippingPrice?.toString() ?? "0",
+        ),
         const Gap(20),
         Row(
           children: [
@@ -167,7 +179,9 @@ class OrderPriceDetailsSection extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              "merchant.currency".tr(args: ["16200"]),
+              "merchant.currency".tr(
+                args: [order.clientPrice?.toString() ?? "0"],
+              ),
               style: AppFontStyle.semibold16Primary(context),
             ),
           ],
@@ -196,8 +210,8 @@ class OrderPriceDetailsSection extends StatelessWidget {
 }
 
 class DriverDetailsSection extends StatelessWidget {
-  const DriverDetailsSection({super.key});
-  final String? driverName = "احمد علي";
+  const DriverDetailsSection({super.key, required this.driverName});
+  final String? driverName;
   final String? driverImage = AppImages.imagesCircleAvatarImage;
   @override
   Widget build(BuildContext context) {
@@ -240,8 +254,9 @@ class DriverDetailsSection extends StatelessWidget {
 }
 
 class CustomerDetailsSection extends StatelessWidget {
-  const CustomerDetailsSection({super.key});
+  const CustomerDetailsSection({super.key, required this.order});
 
+  final MerchantOrderItemModel order;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -256,21 +271,22 @@ class CustomerDetailsSection extends StatelessWidget {
           context,
           icon: AppIcons.iconsPerson24Icon,
           title: "merchant.order_details.customer_name".tr(),
-          subtitle: "خالد علي",
+          subtitle: order.clientName ?? "--",
         ),
         const Gap(16),
         customCustomerDetails(
           context,
           icon: AppIcons.iconsHome24Icon,
           title: "merchant.order_details.address".tr(),
-          subtitle: "شارع واحد - الحي الأول - بغداد",
+          subtitle: order.address ?? "--",
         ),
         const Gap(16),
         customCustomerDetails(
           context,
           icon: AppIcons.iconsPhone24Icon,
           title: "merchant.order_details.phone".tr(),
-          subtitle: "07701234567",
+          subtitle: order.phone ?? "--",
+          textDirection: TextDirection.ltr,
         ),
         const Gap(16),
         customCustomerDetails(
@@ -279,7 +295,7 @@ class CustomerDetailsSection extends StatelessWidget {
           title: "merchant.order_details.location".tr(),
         ),
         const Gap(8),
-        const ShowLocationMapImage(),
+        ShowLocationMapImage(lat: order.locationLat, lng: order.locationLng),
       ],
     );
   }
@@ -289,6 +305,7 @@ class CustomerDetailsSection extends StatelessWidget {
     required String icon,
     required String title,
     String? subtitle,
+    TextDirection? textDirection,
   }) {
     return Row(
       children: [
@@ -306,7 +323,11 @@ class CustomerDetailsSection extends StatelessWidget {
               Text(title, style: AppFontStyle.regular14grey(context)),
               if (subtitle != null) ...[
                 const Gap(4),
-                Text(subtitle, style: AppFontStyle.regular16black4B(context)),
+                Text(
+                  subtitle,
+                  style: AppFontStyle.regular16black4B(context),
+                  textDirection: textDirection,
+                ),
               ],
             ],
           ),
