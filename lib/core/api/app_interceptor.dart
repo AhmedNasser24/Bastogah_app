@@ -36,6 +36,7 @@ class AppInterceptors extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     log("dio interceptor Error : ${err.toString()}");
+
     if (SharedPreferenceSingleton.getString(ApiKeys.accessToken).isNotEmpty) {
       if (err.response?.statusCode == StatusCode.unauthorized) {
         await refreshToken();
@@ -83,23 +84,21 @@ class AppInterceptors extends Interceptor {
       String refreshToken = SharedPreferenceSingleton.getString(
         ApiKeys.refreshToken,
       );
+      log("===============refreshToken : $refreshToken");
       var response = await dio.get(
         EndPoint.refreshToken,
         queryParameters: {"token": refreshToken},
       );
       String newAccessToken = response.data[ApiKeys.accessToken];
-      log("newAccessToken : $newAccessToken");
+      log("=============newAccessToken : $newAccessToken");
       SharedPreferenceSingleton.setString(ApiKeys.accessToken, newAccessToken);
-      log("refresh token success");
+      log("================refresh token success");
     } catch (e) {
-      log("refresh token error : ${e.toString()}");
+      log("==================refresh token error : ${e.toString()}");
     }
   }
 
   Future<void> clearTokens() async {
-    await SharedPreferenceSingleton.remove(ApiKeys.accessToken);
-    await SharedPreferenceSingleton.remove(ApiKeys.refreshToken);
-    await SharedPreferenceSingleton.remove(ApiKeys.userId);
-    await SharedPreferenceSingleton.remove(ApiKeys.roles);
+    await SharedPreferenceSingleton.clear();
   }
 }

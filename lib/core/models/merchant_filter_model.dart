@@ -8,7 +8,7 @@ class MerchantFilterModel {
   const MerchantFilterModel({required this.filter, required this.title});
 }
 
-List<MerchantFilterModel> merchantFilters = [
+List<MerchantFilterModel> merchantOrderFilters = [
   MerchantFilterModel(
     filter: MerchantFilterEnum.pending,
     title: "merchant.filter.pending".tr(),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../merchant_layout/presentation/widgets/merchant_app_bar.dart';
+import '../widgets/merchant_filters_for_products.dart';
 
 class MerchantProductsView extends StatelessWidget {
   const MerchantProductsView({super.key});
@@ -18,6 +19,7 @@ class MerchantProductsView extends StatelessWidget {
             slivers: [
               SliverToBoxAdapter(child: CustomSearchField()),
               SliverGap(12),
+              SliverToBoxAdapter(child: MerchantFiltersForProducts()),
             ],
           ),
         ),

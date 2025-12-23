@@ -8,7 +8,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../widgets/home_widgets/current_dues.dart';
-import '../widgets/home_widgets/merchant_filters.dart';
+import '../widgets/home_widgets/merchant_filters_home.dart';
 import '../widgets/home_widgets/merchant_order_items.dart';
 
 class MerchantHomeView extends StatefulWidget {
@@ -60,7 +60,7 @@ class _MerchantHomeViewState extends State<MerchantHomeView> {
                   SliverGap(12),
                   SliverToBoxAdapter(child: CustomSearchField()),
                   SliverGap(12),
-                  SliverToBoxAdapter(child: MerchantFilters()),
+                  SliverToBoxAdapter(child: MerchantFiltersHome()),
                   SliverGap(12),
                   MerchantOrderItems(),
                 ],

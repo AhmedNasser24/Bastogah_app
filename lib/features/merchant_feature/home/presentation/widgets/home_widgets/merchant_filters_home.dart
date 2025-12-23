@@ -8,14 +8,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/models/merchant_filter_model.dart';
 import '../../manager/cubit/merchant_get_orders_cubit.dart';
 
-class MerchantFilters extends StatefulWidget {
-  const MerchantFilters({super.key});
+class MerchantFiltersHome extends StatefulWidget {
+  const MerchantFiltersHome({super.key});
 
   @override
-  State<MerchantFilters> createState() => _MerchantFiltersState();
+  State<MerchantFiltersHome> createState() => _MerchantFiltersHomeState();
 }
 
-class _MerchantFiltersState extends State<MerchantFilters> {
+class _MerchantFiltersHomeState extends State<MerchantFiltersHome> {
   int selectedIndex = 0;
   bool isSelected(int index) {
     return selectedIndex == index;
@@ -36,7 +36,7 @@ class _MerchantFiltersState extends State<MerchantFilters> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: List.generate(
-                  merchantFilters.length,
+                  merchantOrderFilters.length,
                   (index) => InkWell(
                     onTap: () {
                       setState(() {
@@ -45,7 +45,7 @@ class _MerchantFiltersState extends State<MerchantFilters> {
                       BlocProvider.of<MerchantGetOrdersCubit>(
                         context,
                       ).fetchOrders(
-                        status: merchantFilters[index].filter.status,
+                        status: merchantOrderFilters[index].filter.status,
                       );
                     },
                     child: AnimatedContainer(
@@ -63,10 +63,10 @@ class _MerchantFiltersState extends State<MerchantFilters> {
                       ),
                       child: Center(
                         child: Text(
-                          merchantFilters[index].title,
+                          merchantOrderFilters[index].title,
                           style: isSelected(index)
                               ? AppFontStyle.bold14Primary(context)
-                              : merchantFilters[index].filter ==
+                              : merchantOrderFilters[index].filter ==
                                     MerchantFilterEnum.cancelled
                               ? AppFontStyle.semibold14red(context)
                               : AppFontStyle.semibold14grey(context),
@@ -86,7 +86,7 @@ class _MerchantFiltersState extends State<MerchantFilters> {
   }
 
   String getCurrentFilter() {
-    switch (merchantFilters[selectedIndex].filter) {
+    switch (merchantOrderFilters[selectedIndex].filter) {
       case MerchantFilterEnum.pending:
         return "merchant.filter.new_orders".tr();
       case MerchantFilterEnum.waitingDriver:

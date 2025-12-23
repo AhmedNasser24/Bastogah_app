@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bastogah_app/core/api/api_keys.dart';
 import 'package:bastogah_app/core/local_storage_services/shared_preference_singleton.dart';
 import 'package:bastogah_app/core/routing/route_name.dart';
@@ -56,11 +58,11 @@ class _SplashViewState extends State<SplashView> {
     });
   }
 
-  // Future<void> clearTokens() async {
-  //   log('Clearing tokens for testing purposes');
-  //   await SharedPreferenceSingleton.remove(ApiKeys.accessToken);
-  //   await SharedPreferenceSingleton.remove(ApiKeys.refreshToken);
-  //   await SharedPreferenceSingleton.remove(ApiKeys.userId);
-  //   await SharedPreferenceSingleton.remove(ApiKeys.roles);
-  // }
+  Future<void> clearTokens() async {
+    log('Clearing tokens for testing purposes');
+    await SharedPreferenceSingleton.remove(ApiKeys.accessToken);
+    await SharedPreferenceSingleton.remove(ApiKeys.refreshToken);
+    await SharedPreferenceSingleton.remove(ApiKeys.userId);
+    await SharedPreferenceSingleton.remove(ApiKeys.roles);
+  }
 }

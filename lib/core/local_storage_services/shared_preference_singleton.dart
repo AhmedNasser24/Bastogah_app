@@ -35,4 +35,8 @@ class SharedPreferenceSingleton {
   static Future<void> remove(String key) async {
     await _instance.remove(key);
   }
+
+  static Future<void> clear() async {
+    await _instance.clear();
+  }
 }
