@@ -1,8 +1,10 @@
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/widgets/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
@@ -10,6 +12,7 @@ import '../../../../../core/theme/app_icons.dart';
 import '../widgets/custom_check_box.dart';
 import '../widgets/merchant_product_details_app_bar.dart';
 import '../widgets/merchant_product_image.dart';
+import '../widgets/best_sellers_display.dart';
 
 class MerchantProductDetailsView extends StatelessWidget {
   const MerchantProductDetailsView({super.key});
@@ -34,7 +37,7 @@ class MerchantProductDetailsView extends StatelessWidget {
                       ProductDetailsSection(),
                       MoreOptionsSection(),
                       RemovedGradientSection(),
-                      MostPopularSection(),
+                      BestSellersDisplay(),
                       Gap(20),
                     ],
                   ),
@@ -46,6 +49,7 @@ class MerchantProductDetailsView extends StatelessWidget {
               child: CustomButton(
                 title: "merchant.edit".tr(),
                 prefixIcon: AppIcons.iconsEditIcon,
+                onTap: () => context.push(RouteName.merchantAddOrEditProduct),
               ),
             ),
             const Gap(20),
@@ -175,31 +179,6 @@ class RemovedGradientSection extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ],
-    );
-  }
-}
-
-class MostPopularSection extends StatelessWidget {
-  const MostPopularSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 12,
-      children: [
-        Text(
-          "merchant.most_popular".tr(),
-          style: AppFontStyle.semibold18black1A(context),
-        ),
-        Row(
-          children: [
-            const CustomCheckBox(),
-            const Gap(8),
-            Text("مشروم", style: AppFontStyle.regular14black4B(context)),
-          ],
         ),
       ],
     );

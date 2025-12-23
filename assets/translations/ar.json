@@ -1,5 +1,5 @@
 {
-
+  "yes" : "نعم" ,
   "check_your_internet_connection_and_try_again": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
@@ -99,6 +99,22 @@
     "more_options"  : "إضافات (اختياري)",
     "remove_ingredients" : "إزالة مكونات",
     "most_popular" :"يظهر في الاكثر مبيعاً",
-    "top_rated" : "الأعلى تقييماً"
+    "top_rated" : "الأعلى تقييماً",
+    "add_product": "إضافة منتج",
+    "edit_product": "تعديل المنتج",
+    "product_name": "اسم المنتج",
+    "enter_product_name": "أدخل اسم المنتج...",
+    "product_price": "سعر المنتج",
+    "enter_product_price": "0 د.ع",
+    "product_description": "وصف المنتج",
+    "enter_product_description": "أدخل وصف المنتج...",
+    "category" : "التصنيف",
+    "select_category" : "اختر التصنيف",
+    "available_additions": "الاضافات المتاحة",
+    "select_available_additions": "اختر الاضافات المتاحة",
+    "removable_ingredients": "المكونات القابلة للإزالة",
+    "select_removable_ingredients": "اختر المكونات القابلة للإزالة",
+    "save": "حفظ" ,
+    "add" : "إضافة"
   }
 }

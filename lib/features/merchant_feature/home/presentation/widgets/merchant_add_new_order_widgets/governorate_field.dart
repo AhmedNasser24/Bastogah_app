@@ -50,9 +50,9 @@ class _GovernorateFieldState extends State<GovernorateField> {
           });
           dev.log('showGovernorateDialog: $showGovernorateDialog');
         },
-        readOnly: true,
         title: 'merchant.governorate'.tr(),
         hintText: 'merchant.select_governorate'.tr(),
+        readOnly: true,
         suffixIcon: Transform.rotate(
           angle: pi / 2,
           child: const Icon(

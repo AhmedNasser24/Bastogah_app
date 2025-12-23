@@ -10,6 +10,7 @@ class RouteName {
   static const String merchantProducts = '/merchant/products';
   static const String merchantProductDetails =
       '/merchant/products/product-details';
+  static const String merchantAddOrEditProduct = '/merchant/products/add-edit';
   static const String merchantReports = '/merchant/reports';
   static const String merchantProfile = '/merchant/profile';
   static const String merchantAddNewOrder = '/merchant/home/add-new-order';

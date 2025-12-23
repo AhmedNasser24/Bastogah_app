@@ -91,7 +91,7 @@ class CustomTextFormField extends StatelessWidget {
             fillColor: fillColor,
             filled: filled,
             hintText: hintText,
-            hintStyle: hintStyle ?? AppFontStyle.regular16grey(context),
+            hintStyle: hintStyle ?? AppFontStyle.regular14grey(context),
             enabledBorder: enableOutlineInputBorder(),
             focusedBorder: focusOutlineInputBorder(),
             border: enableOutlineInputBorder(),
