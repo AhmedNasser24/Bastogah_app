@@ -37,7 +37,7 @@ class _MerchantFiltersHomeState extends State<MerchantFiltersHome> {
                 mainAxisSize: MainAxisSize.min,
                 children: List.generate(
                   merchantOrderFilters.length,
-                  (index) => InkWell(
+                  (index) => GestureDetector(
                     onTap: () {
                       setState(() {
                         selectedIndex = index;

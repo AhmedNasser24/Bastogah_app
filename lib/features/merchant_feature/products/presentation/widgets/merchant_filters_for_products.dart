@@ -36,7 +36,7 @@ class _MerchantFiltersForProductsState
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
               merchantProductFilters.length,
-              (index) => InkWell(
+              (index) => GestureDetector(
                 onTap: () {
                   setState(() {
                     selectedIndex = index;
