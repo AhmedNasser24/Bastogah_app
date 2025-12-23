@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bastogah_app/core/enums/merchant_filter_enums.dart';
 import 'package:bastogah_app/features/merchant_feature/home/domain/repo/home_repo.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/models/order_item_model/order_item_model.dart';

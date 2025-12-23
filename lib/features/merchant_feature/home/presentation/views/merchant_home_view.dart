@@ -29,16 +29,21 @@ class _MerchantHomeViewState extends State<MerchantHomeView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => merchantGetOrdersCubit,
-      child: const CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: CurrentDues()),
-          SliverGap(12),
-          SliverToBoxAdapter(child: SearchField()),
-          SliverGap(12),
-          SliverToBoxAdapter(child: MerchantFilters()),
-          SliverGap(12),
-          MerchantOrderItemsGridView(),
-        ],
+      child: RefreshIndicator(
+        onRefresh: () async {
+          merchantGetOrdersCubit.refresh();
+        },
+        child: const CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: CurrentDues()),
+            SliverGap(12),
+            SliverToBoxAdapter(child: SearchField()),
+            SliverGap(12),
+            SliverToBoxAdapter(child: MerchantFilters()),
+            SliverGap(12),
+            MerchantOrderItemsGridView(),
+          ],
+        ),
       ),
     );
   }
