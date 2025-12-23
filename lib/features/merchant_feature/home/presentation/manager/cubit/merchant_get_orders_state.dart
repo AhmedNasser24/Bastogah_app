@@ -11,10 +11,16 @@ class GetOrdersLoading extends MerchantGetOrdersState {}
 
 class GetOrdersSuccessFull extends MerchantGetOrdersState {
   final List<MerchantOrderItemModel> orders;
-  GetOrdersSuccessFull({required this.orders});
+  final bool moreItem;
+  final int currentStatus;
+  GetOrdersSuccessFull({
+    required this.orders,
+    required this.moreItem,
+    required this.currentStatus,
+  });
 
   @override
-  List<Object?> get props => [orders];
+  List<Object?> get props => [orders, moreItem, currentStatus];
 }
 
 class GetOrdersFailure extends MerchantGetOrdersState {

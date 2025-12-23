@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/enums/merchant_filter_enums.dart';
-import 'merchant_order_item.dart';
+import 'merchant_order_items_grid_pagination.dart';
 
-class MerchantOrderItemsGridView extends StatelessWidget {
-  const MerchantOrderItemsGridView({super.key});
+class MerchantOrderItems extends StatelessWidget {
+  const MerchantOrderItems({super.key});
 
   final MerchantFilterEnum selectedFilter = MerchantFilterEnum.cancelled;
 
@@ -15,9 +15,6 @@ class MerchantOrderItemsGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MerchantGetOrdersCubit, MerchantGetOrdersState>(
       builder: (context, state) {
-        int currentStatus = BlocProvider.of<MerchantGetOrdersCubit>(
-          context,
-        ).currentStatus;
         if (state is GetOrdersLoading) {
           return const SliverFillRemaining(
             child: Center(child: CircularProgressIndicator()),
@@ -33,22 +30,7 @@ class MerchantOrderItemsGridView extends StatelessWidget {
             ),
           );
         } else if (state is GetOrdersSuccessFull) {
-          return SliverGrid.builder(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 800,
-              mainAxisSpacing: 0,
-              crossAxisSpacing: 0,
-              mainAxisExtent:
-                  currentStatus == MerchantFilterEnum.cancelled.status
-                  ? 310
-                  : 235,
-            ),
-            itemCount: state.orders.length,
-            itemBuilder: (context, index) => MerchantOrderItem(
-              currentStatus: currentStatus,
-              order: state.orders[index],
-            ),
-          );
+          return MerchantOrderItemsGridPagination(state: state);
         } else {
           return const SliverFillRemaining(child: SizedBox.shrink());
         }

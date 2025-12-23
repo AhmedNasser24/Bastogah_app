@@ -7,7 +7,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../widgets/home_widgets/current_dues.dart';
 import '../widgets/home_widgets/merchant_filters.dart';
-import '../widgets/home_widgets/merchant_order_items_grid_view.dart';
+import '../widgets/home_widgets/merchant_order_items.dart';
 
 class MerchantHomeView extends StatefulWidget {
   const MerchantHomeView({super.key});
@@ -18,11 +18,25 @@ class MerchantHomeView extends StatefulWidget {
 
 class _MerchantHomeViewState extends State<MerchantHomeView> {
   late MerchantGetOrdersCubit merchantGetOrdersCubit;
+  ScrollController controller = ScrollController();
   @override
   void initState() {
     super.initState();
     merchantGetOrdersCubit = getIt.get<MerchantGetOrdersCubit>();
     merchantGetOrdersCubit.fetchOrders(status: 0);
+    controller.addListener(() {
+      if (controller.position.pixels >=
+              controller.position.maxScrollExtent - 200 &&
+          merchantGetOrdersCubit.moreItem) {
+        merchantGetOrdersCubit.fetchMoreOrders();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -33,15 +47,16 @@ class _MerchantHomeViewState extends State<MerchantHomeView> {
         onRefresh: () async {
           merchantGetOrdersCubit.refresh();
         },
-        child: const CustomScrollView(
-          slivers: [
+        child: CustomScrollView(
+          controller: controller,
+          slivers: const [
             SliverToBoxAdapter(child: CurrentDues()),
             SliverGap(12),
             SliverToBoxAdapter(child: SearchField()),
             SliverGap(12),
             SliverToBoxAdapter(child: MerchantFilters()),
             SliverGap(12),
-            MerchantOrderItemsGridView(),
+            MerchantOrderItems(),
           ],
         ),
       ),

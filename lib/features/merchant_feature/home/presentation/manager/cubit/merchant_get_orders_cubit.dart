@@ -13,7 +13,7 @@ class MerchantGetOrdersCubit extends Cubit<MerchantGetOrdersState> {
   MerchantGetOrdersCubit({required this.homeRepo}) : super(GetOrdersInitial());
   final MerchantHomeRepo homeRepo;
 
-  int currentStatus = MerchantFilterEnum.pending.status;
+  int _currentStatus = MerchantFilterEnum.pending.status;
   int _skip = 0;
   bool moreItem = true;
   final int maxItem = 20;
@@ -26,7 +26,7 @@ class MerchantGetOrdersCubit extends Cubit<MerchantGetOrdersState> {
 
     emit(GetOrdersLoading());
     log("loading");
-    currentStatus = status;
+    _currentStatus = status;
     var result = await homeRepo.fetchOrders(skip: _skip, status: status);
     result.fold(
       (failure) => emit(GetOrdersFailure(errorMessage: failure.errMessage)),
@@ -37,14 +37,25 @@ class MerchantGetOrdersCubit extends Cubit<MerchantGetOrdersState> {
           _skip += 20;
         }
         log(orders.toString());
-        emit(GetOrdersSuccessFull(orders: _orders));
+        emit(
+          GetOrdersSuccessFull(
+            orders: _orders,
+            moreItem: moreItem,
+            currentStatus: _currentStatus,
+          ),
+        );
       },
     );
   }
 
-  void getMoreOrders() async {
+  void fetchMoreOrders() async {
+    log("moreItems : $moreItem");
     if (!moreItem) return;
-    var result = await homeRepo.fetchOrders(skip: _skip, status: currentStatus);
+    log("fetching more orders");
+    var result = await homeRepo.fetchOrders(
+      skip: _skip,
+      status: _currentStatus,
+    );
     result.fold(
       (failure) => emit(GetOrdersFailure(errorMessage: failure.errMessage)),
       (orders) {
@@ -53,12 +64,18 @@ class MerchantGetOrdersCubit extends Cubit<MerchantGetOrdersState> {
         if (moreItem) {
           _skip += 20;
         }
-        emit(GetOrdersSuccessFull(orders: _orders));
+        emit(
+          GetOrdersSuccessFull(
+            orders: _orders,
+            moreItem: moreItem,
+            currentStatus: _currentStatus,
+          ),
+        );
       },
     );
   }
 
   void refresh() {
-    fetchOrders(status: currentStatus);
+    fetchOrders(status: _currentStatus);
   }
 }
