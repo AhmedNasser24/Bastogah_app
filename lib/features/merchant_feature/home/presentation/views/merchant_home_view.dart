@@ -1,5 +1,7 @@
 import 'package:bastogah_app/features/merchant_feature/home/presentation/manager/cubit/merchant_get_orders_cubit.dart';
-import 'package:bastogah_app/features/merchant_feature/home/presentation/widgets/home_widgets/search_field.dart';
+import 'package:bastogah_app/core/widgets/custom_search_field.dart';
+import 'package:bastogah_app/features/merchant_feature/merchant_layout/presentation/widgets/merchant_app_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -43,22 +45,29 @@ class _MerchantHomeViewState extends State<MerchantHomeView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => merchantGetOrdersCubit,
-      child: RefreshIndicator(
-        onRefresh: () async {
-          merchantGetOrdersCubit.refresh();
-        },
-        child: CustomScrollView(
-          controller: controller,
-          slivers: const [
-            SliverToBoxAdapter(child: CurrentDues()),
-            SliverGap(12),
-            SliverToBoxAdapter(child: SearchField()),
-            SliverGap(12),
-            SliverToBoxAdapter(child: MerchantFilters()),
-            SliverGap(12),
-            MerchantOrderItems(),
-          ],
-        ),
+      child: Column(
+        children: [
+          MerchantAppBar(title: "merchant.hello".tr()),
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async {
+                merchantGetOrdersCubit.refresh();
+              },
+              child: CustomScrollView(
+                controller: controller,
+                slivers: const [
+                  SliverToBoxAdapter(child: CurrentDues()),
+                  SliverGap(12),
+                  SliverToBoxAdapter(child: CustomSearchField()),
+                  SliverGap(12),
+                  SliverToBoxAdapter(child: MerchantFilters()),
+                  SliverGap(12),
+                  MerchantOrderItems(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

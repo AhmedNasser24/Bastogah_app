@@ -1,5 +1,4 @@
 import 'package:bastogah_app/core/theme/app_images.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -7,8 +6,8 @@ import '../../../../../core/theme/app_font_style.dart';
 import 'notification_icon_button.dart';
 
 class MerchantAppBar extends StatelessWidget {
-  const MerchantAppBar({super.key});
-
+  const MerchantAppBar({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,8 +20,9 @@ class MerchantAppBar extends StatelessWidget {
             Image.asset(AppImages.imagesLogoOrange),
             const Gap(10),
             Text(
-              "merchant.hello".tr(),
+              title,
               style: AppFontStyle.bold16Black1A(context),
+              overflow: TextOverflow.fade,
             ),
             const Spacer(),
             const NotificationIconButton(),

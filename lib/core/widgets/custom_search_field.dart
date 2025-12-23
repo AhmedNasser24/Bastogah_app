@@ -2,17 +2,17 @@ import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../../core/theme/app_icons.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
+import '../theme/app_icons.dart';
+import 'custom_text_form_field.dart';
 
-class SearchField extends StatefulWidget {
-  const SearchField({super.key});
+class CustomSearchField extends StatefulWidget {
+  const CustomSearchField({super.key});
 
   @override
-  State<SearchField> createState() => _SearchFieldState();
+  State<CustomSearchField> createState() => _CustomSearchFieldState();
 }
 
-class _SearchFieldState extends State<SearchField> {
+class _CustomSearchFieldState extends State<CustomSearchField> {
   final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {

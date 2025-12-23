@@ -1,5 +1,4 @@
 import 'package:bastogah_app/core/theme/app_colors.dart';
-import 'package:bastogah_app/features/merchant_feature/merchant_layout/presentation/widgets/merchant_app_bar.dart';
 import 'package:flutter/material.dart';
 import '../widgets/custom_merchant_bottom_nav_bar.dart';
 
@@ -12,12 +11,7 @@ class MerchantLayout extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            children: [
-              const MerchantAppBar(),
-              Expanded(child: child),
-            ],
-          ),
+          child: child,
         ),
       ),
       bottomNavigationBar: const CustomMerchantBottomNavBar(),
