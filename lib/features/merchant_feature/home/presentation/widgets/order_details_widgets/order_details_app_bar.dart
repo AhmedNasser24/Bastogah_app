@@ -8,9 +8,13 @@ import '../../../../../../core/theme/app_font_style.dart';
 import '../../../../../../core/widgets/back_arrow_button.dart';
 
 class OrderDetailsAppBar extends StatelessWidget {
-  const OrderDetailsAppBar({super.key});
-
-  final MerchantFilterEnum selectedFilter = MerchantFilterEnum.inprogress;
+  const OrderDetailsAppBar({
+    super.key,
+    required this.orderId,
+    required this.status,
+  });
+  final String? orderId;
+  final int status;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,7 +25,9 @@ class OrderDetailsAppBar extends StatelessWidget {
           const Gap(10),
           Expanded(
             child: Text(
-              "merchant.order_detail".tr(namedArgs: {"orderId": "#4654654358"}),
+              "merchant.order_detail".tr(
+                namedArgs: {"orderId": orderId ?? "--"},
+              ),
               style: AppFontStyle.bold14black1A(context),
             ),
           ),
@@ -33,6 +39,7 @@ class OrderDetailsAppBar extends StatelessWidget {
   }
 
   Widget orderStatuesWidget(BuildContext context) {
+    MerchantFilterEnum selectedFilter = MerchantFilterEnum.values[status];
     switch (selectedFilter) {
       case MerchantFilterEnum.pending:
         return orderStatueBackground(

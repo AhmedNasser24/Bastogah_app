@@ -23,7 +23,7 @@ class MerchantOrderDetailsView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
-              const OrderDetailsAppBar(),
+              OrderDetailsAppBar(orderId: order.billNo, status: order.status!),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(

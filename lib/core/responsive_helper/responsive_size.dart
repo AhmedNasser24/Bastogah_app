@@ -4,19 +4,19 @@ import '../extenstion/media_query_extension.dart';
 import 'size_config.dart';
 
 double responsiveSize(BuildContext context, double size) {
-  // double scaleFactor = getScaleFactor(context);
-  // double lowerLimit = context.isMobile ? size * 1 : size * 1;
-  // double upperLimit = context.isMobile ? size * 1 : size * 1;
-  // size = size * scaleFactor;
+  double scaleFactor = getScaleFactor(context);
+  double lowerLimit = context.isMobile ? size * 0.8 : size * 1;
+  double upperLimit = context.isMobile ? size * 1 : size * 1;
+  size = size * scaleFactor;
 
-  return size;
+  return size.clamp(lowerLimit, upperLimit);
 }
 
 double getScaleFactor(BuildContext context) {
   double screenWidth = context.screenWidth;
 
   if (screenWidth < SizeConfig.mobileBreakpoint) {
-    return screenWidth / 360; // Mobile
+    return screenWidth / 390; // Mobile
   } else if (screenWidth < SizeConfig.tabletBreakpoint) {
     return screenWidth / 1000; // Tablet
   } else {

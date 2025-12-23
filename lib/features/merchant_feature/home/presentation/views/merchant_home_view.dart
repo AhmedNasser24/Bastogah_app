@@ -32,11 +32,11 @@ class _MerchantHomeViewState extends State<MerchantHomeView> {
       child: const CustomScrollView(
         slivers: [
           SliverToBoxAdapter(child: CurrentDues()),
-          SliverGap(20),
+          SliverGap(12),
           SliverToBoxAdapter(child: SearchField()),
-          SliverGap(20),
+          SliverGap(12),
           SliverToBoxAdapter(child: MerchantFilters()),
-          SliverGap(20),
+          SliverGap(12),
           MerchantOrderItemsGridView(),
         ],
       ),

@@ -28,42 +28,51 @@ class _MerchantFiltersState extends State<MerchantFilters> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: List.generate(
-            merchantFilters.length,
-            (index) => Expanded(
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    selectedIndex = index;
-                  });
-                  BlocProvider.of<MerchantGetOrdersCubit>(
-                    context,
-                  ).fetchOrders(status: merchantFilters[index].filter.status);
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: isSelected(index)
-                            ? AppColors.primary
-                            : Colors.transparent,
-                        width: 4,
+        Center(
+          child: SizedBox(
+            height: 40,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(
+                  merchantFilters.length,
+                  (index) => InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                      BlocProvider.of<MerchantGetOrdersCubit>(
+                        context,
+                      ).fetchOrders(
+                        status: merchantFilters[index].filter.status,
+                      );
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      padding: const EdgeInsets.symmetric(horizontal: 14),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: isSelected(index)
+                                ? AppColors.primary
+                                : Colors.transparent,
+                            width: 4,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      merchantFilters[index].title,
-                      style: isSelected(index)
-                          ? AppFontStyle.bold14Primary(context)
-                          : merchantFilters[index].filter ==
-                                MerchantFilterEnum.cancelled
-                          ? AppFontStyle.semibold14red(context)
-                          : AppFontStyle.semibold14grey(context),
-                      textAlign: TextAlign.center,
+                      child: Center(
+                        child: Text(
+                          merchantFilters[index].title,
+                          style: isSelected(index)
+                              ? AppFontStyle.bold14Primary(context)
+                              : merchantFilters[index].filter ==
+                                    MerchantFilterEnum.cancelled
+                              ? AppFontStyle.semibold14red(context)
+                              : AppFontStyle.semibold14grey(context),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
                     ),
                   ),
                 ),

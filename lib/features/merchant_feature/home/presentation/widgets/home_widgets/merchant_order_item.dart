@@ -31,19 +31,24 @@ class MerchantOrderItem extends StatelessWidget {
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Text(
-                    order.billNo!,
-                    style: AppFontStyle.bold16Black1A(context),
-                    overflow: TextOverflow.ellipsis,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text(
+                      order.billNo!,
+                      style: AppFontStyle.bold16Black1A(context),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
                 // const Spacer(),
                 const AcceptOrderButton(),
               ],
             ),
-            const SizedBox(height: 12),
+            const Gap(8),
             Container(
               padding: const EdgeInsets.all(12.0),
               decoration: BoxDecoration(
@@ -62,7 +67,6 @@ class MerchantOrderItem extends StatelessWidget {
                           spacing: 30,
                           children: [
                             CustomerPhone(phoneNumber: order.phone ?? "--"),
-                            // Spacer(),
                             Driver(
                               driverName: order.driverName!.isEmpty
                                   ? "--"
@@ -71,7 +75,7 @@ class MerchantOrderItem extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const Gap(4),
+                      const Gap(8),
                       Flexible(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,11 +133,14 @@ class CustomerPhone extends StatelessWidget {
             SvgPicture.asset(AppIcons.iconsPhone16Icon),
             const Gap(4),
             Flexible(
-              child: Text(
-                phoneNumber,
-                style: AppFontStyle.medium14black1A(context),
-                textDirection: TextDirection.ltr,
-                overflow: TextOverflow.ellipsis,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  phoneNumber,
+                  style: AppFontStyle.medium14black1A(context),
+                  textDirection: TextDirection.ltr,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           ],
@@ -216,16 +223,22 @@ class NetAmount extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "merchant.net_amount".tr(),
-          style: AppFontStyle.regular12black4B(context),
-          overflow: TextOverflow.ellipsis,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "merchant.net_amount".tr(),
+            style: AppFontStyle.regular12black4B(context),
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         const Gap(4),
-        Text(
-          "$amount د.ع",
-          style: AppFontStyle.medium14black1A(context),
-          overflow: TextOverflow.ellipsis,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "$amount د.ع",
+            style: AppFontStyle.medium14black1A(context),
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );
@@ -240,16 +253,22 @@ class DeliveryAmount extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "merchant.delivery_amount".tr(),
-          style: AppFontStyle.regular12black4B(context),
-          overflow: TextOverflow.ellipsis,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "merchant.delivery_amount".tr(),
+            style: AppFontStyle.regular12black4B(context),
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         const Gap(4),
-        Text(
-          "$amount د.ع",
-          style: AppFontStyle.medium14black1A(context),
-          overflow: TextOverflow.ellipsis,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "$amount د.ع",
+            style: AppFontStyle.medium14black1A(context),
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );

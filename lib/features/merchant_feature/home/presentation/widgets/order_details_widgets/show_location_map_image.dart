@@ -2,6 +2,7 @@ import 'package:bastogah_app/core/flutter_toast/show_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../../core/launcher/my_url_launcher.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_font_style.dart';
 import '../../../../../../core/theme/app_images.dart';
@@ -20,10 +21,10 @@ class ShowLocationMapImage extends StatelessWidget {
           InkWell(
             onTap: () {
               if (lat == null || lng == null) {
-                showErrorToast( "merchant.client_has_no_location".tr());
+                showErrorToast("merchant.client_has_no_location".tr());
                 return;
               }
-              // launch google map with lat and lng
+              MyUrlLauncher().openGoogleMaps(lat: lat!, lng: lng!);
             },
             child: Container(
               padding: const EdgeInsets.symmetric(
