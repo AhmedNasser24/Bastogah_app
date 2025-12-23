@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_colors.dart';
+import '../widgets/add_edit_product_image.dart';
 import '../widgets/add_product_button.dart';
 import '../widgets/merchant_add_edit_product_app_bar.dart';
 
@@ -36,6 +37,7 @@ class _MerchantAddOrEditProductViewState
                   child: Column(
                     spacing: 12,
                     children: [
+                      const AddEditProductImage(),
                       CustomTextFormField(
                         title: "merchant.product_name".tr(),
                         hintText: "merchant.enter_product_name".tr(),

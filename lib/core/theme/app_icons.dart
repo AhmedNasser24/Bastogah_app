@@ -14,6 +14,10 @@ class AppIcons {
 
   static const String iconsAddIcon = "assets/icons/add_icon.svg";
 
+  static const String iconsAddImageGrey = "assets/icons/add_image_grey.svg";
+
+  static const String iconsAddImageOrange = "assets/icons/add_image_orange.svg";
+
   static const String iconsBackArrowIcon = "assets/icons/back_arrow_icon.svg";
 
   static const String iconsCalenderIcon = "assets/icons/calender_icon.svg";
@@ -22,13 +26,21 @@ class AppIcons {
 
   static const String iconsCheckIcon = "assets/icons/check_icon.svg";
 
+  static const String iconsDeleteImage = "assets/icons/delete_image.svg";
+
   static const String iconsDollarIcon = "assets/icons/dollar_icon.svg";
 
   static const String iconsEditIcon = "assets/icons/edit_icon.svg";
 
+  static const String iconsEditImage = "assets/icons/edit_image.svg";
+
+  static const String iconsEmptyImage = "assets/icons/empty_image.svg";
+
   static const String iconsForgetPasswordPhoneIcon = "assets/icons/forget_password_phone_icon.svg";
 
   static const String iconsForwardIcon = "assets/icons/forward_icon.svg";
+
+  static const String iconsGallary = "assets/icons/gallary.svg";
 
   static const String iconsHome24Icon = "assets/icons/home24_icon.svg";
 
