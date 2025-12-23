@@ -9,6 +9,7 @@ import '../../../features/merchant_feature/auth/presentation/views/merchant_logi
 import '../../../features/merchant_feature/home/data/models/order_item_model/order_item_model.dart';
 import '../../../features/merchant_feature/home/presentation/views/merchant_add_new_order_view.dart';
 import '../../../features/merchant_feature/merchant_layout/presentation/views/merchant_layout.dart';
+import '../../../features/merchant_feature/products/presentation/views/merchant_product_details_view.dart';
 import '../route_name.dart';
 import '../router_animation.dart';
 
@@ -88,6 +89,14 @@ List<RouteBase> merchantRoutes = [
       context: context,
       state: state,
       child: const MerchantAddNewOrderView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.merchantProductDetails,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const MerchantProductDetailsView(),
     ),
   ),
 ];

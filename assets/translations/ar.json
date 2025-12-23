@@ -93,6 +93,12 @@
     "enter_total_amount": "أدخل المبلغ الإجمالي...",
     "enter_delivery_amount": "ادخل مبلغ التوصيل...",
     "add_order" : "إضافة الطلب",
-    "client_has_no_location": "العميل ليس لديه موقع محفوظ"
+    "client_has_no_location": "العميل ليس لديه موقع محفوظ",
+    "product_details": "تفاصيل المنتج",
+    "edit" : "تعديل",
+    "more_options"  : "إضافات (اختياري)",
+    "remove_ingredients" : "إزالة مكونات",
+    "most_popular" :"يظهر في الاكثر مبيعاً",
+    "top_rated" : "الأعلى تقييماً"
   }
 }
