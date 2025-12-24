@@ -18,7 +18,10 @@ class CustomMerchantBottomNavBar extends StatefulWidget {
 
 class _CustomMerchantBottomNavBarState
     extends State<CustomMerchantBottomNavBar> {
-  int _currentIndex = 0;
+  bool isSelected(int index) {
+    String currentPath = GoRouterState.of(context).uri.path;
+    return currentPath == merchantBottomBarItems[index].routeName;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +34,16 @@ class _CustomMerchantBottomNavBarState
               child: InkWell(
                 onTap: () {
                   context.go(merchantBottomBarItems[i].routeName);
-                  setState(() {
-                    _currentIndex = i;
-                  });
+                  // setState(() {
+                  //   _currentIndex = i;
+                  // });
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   decoration: BoxDecoration(
-                    color: i == _currentIndex
+                    color: isSelected(i)
                         ? AppColors.secondary
                         : AppColors.white,
                     borderRadius: BorderRadius.circular(14),
@@ -49,13 +52,12 @@ class _CustomMerchantBottomNavBarState
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        i == _currentIndex
-                            ? SvgPicture.asset(
-                                merchantBottomBarItems[i].activeIcon,
-                              )
-                            : SvgPicture.asset(
-                                merchantBottomBarItems[i].inactiveIcon,
-                              ),
+                        SvgPicture.asset(
+                          isSelected(i)
+                              ? merchantBottomBarItems[i].activeIcon
+                              : merchantBottomBarItems[i].inactiveIcon,
+                        ),
+
                         const Gap(4),
                         Text(
                           merchantBottomBarItems[i].title.tr(),

@@ -48,6 +48,7 @@ List<RouteBase> merchantRoutes = [
     },
     routes: [
       GoRoute(
+        name: RouteName.merchantHome,
         path: RouteName.merchantHome,
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
@@ -56,6 +57,7 @@ List<RouteBase> merchantRoutes = [
         ),
       ),
       GoRoute(
+        name: RouteName.merchantProducts,
         path: RouteName.merchantProducts,
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
@@ -64,6 +66,7 @@ List<RouteBase> merchantRoutes = [
         ),
       ),
       GoRoute(
+        name: RouteName.merchantReports,
         path: RouteName.merchantReports,
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
@@ -72,6 +75,7 @@ List<RouteBase> merchantRoutes = [
         ),
       ),
       GoRoute(
+        name: RouteName.merchantProfile,
         path: RouteName.merchantProfile,
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,

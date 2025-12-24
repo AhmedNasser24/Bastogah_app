@@ -23,7 +23,7 @@ class MerchantPrivacyView extends StatelessWidget {
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    spacing: 15,
+                    spacing: 10,
                     children: [
                       const Gap(15),
                       profileTile(
@@ -81,7 +81,7 @@ class MerchantPrivacyView extends StatelessWidget {
                   ),
                 ),
                 const Gap(8),
-                Text(title, style: AppFontStyle.regular16black1A(context)),
+                Text(title, style: AppFontStyle.regular14black1A(context)),
                 const Spacer(),
                 SvgPicture.asset(AppIcons.iconsForwardIcon, fit: BoxFit.cover),
               ],
