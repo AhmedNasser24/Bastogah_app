@@ -18,6 +18,7 @@ import '../../../features/merchant_feature/profile/presentation/views/merchant_e
 import '../../../features/merchant_feature/profile/presentation/views/merchant_help_support_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_notification_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_privacy_view.dart';
+import '../../../features/merchant_feature/reports/presentation/views/merchant_report_view.dart';
 import '../route_name.dart';
 import '../router_animation.dart';
 
@@ -71,7 +72,7 @@ List<RouteBase> merchantRoutes = [
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
           state: state,
-          child: const Center(child: Text('reports')),
+          child: const MerchantReportsView(),
         ),
       ),
       GoRoute(

@@ -36,7 +36,7 @@ class MerchantNotificationItem extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundColor: isNew ? AppColors.primary : AppColors.whiteFA,
+              backgroundColor: isNew ? AppColors.primary : AppColors.whiteF5,
               child: Icon(
                 Icons.notifications_none,
                 color: isNew ? AppColors.white : AppColors.grey,
