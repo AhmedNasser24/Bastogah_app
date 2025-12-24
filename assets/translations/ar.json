@@ -1,16 +1,16 @@
 {
-  "yes" : "نعم" ,
+  "yes": "نعم",
   "check_your_internet_connection_and_try_again": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
-    "invalid_number" : "رقم غير صالح",
-    "invalid_phone_number" : "رقم هاتف غير صالح"
+    "invalid_number": "رقم غير صالح",
+    "invalid_phone_number": "رقم هاتف غير صالح"
   },
-  "auth" : {
+  "auth": {
     "forget_password": "نسيت كلمة المرور؟",
     "forget_password_subtitle": "أدخل رقم هاتفك وسنرسل لك رمز التحقق لإعادة تعيين كلمة المرور.",
-    "phone_number" : "رقم الهاتف",
-    "send_otp" : "أرسال لي رمز التحقق",
+    "phone_number": "رقم الهاتف",
+    "send_otp": "أرسال لي رمز التحقق",
     "remembered_password": "تذكرت كلمة المرور؟",
     "login": "تسجيل الدخول",
     "login_successful": "تم تسجيل الدخول بنجاح",
@@ -19,14 +19,13 @@
     "confirm_otp": "تأكيد الرمز",
     "resend_otp": "إعادة الإرسال({seconds})",
     "do_not_receive_otp": "لم يصلك الرمز؟",
-    "create_new_password" : "أنشاء كلمة مرور جديدة",
+    "create_new_password": "أنشاء كلمة مرور جديدة",
     "create_new_password_subtitle": "من فضلك أنشئ كلمة مرور قوية لحماية حسابك.",
-    "update_password": "تحديث كلمة المرور" ,
+    "update_password": "تحديث كلمة المرور",
     "new_password": "كلمة المرور الجديدة",
     "confirm_password": "تأكيد كلمة المرور الجديدة",
     "passwords_do_not_match": "كلمتا المرور غير متطابقتان"
   },
-
 
   "merchant": {
     "welcome": "مرحبًا بك",
@@ -92,14 +91,14 @@
     "total_amount": "إجمالي المبلغ",
     "enter_total_amount": "أدخل المبلغ الإجمالي...",
     "enter_delivery_amount": "ادخل مبلغ التوصيل...",
-    "add_order" : "إضافة الطلب",
+    "add_order": "إضافة الطلب",
     "client_has_no_location": "العميل ليس لديه موقع محفوظ",
     "product_details": "تفاصيل المنتج",
-    "edit" : "تعديل",
-    "more_options"  : "إضافات (اختياري)",
-    "remove_ingredients" : "إزالة مكونات",
-    "most_popular" :"يظهر في الاكثر مبيعاً",
-    "top_rated" : "الأعلى تقييماً",
+    "edit": "تعديل",
+    "more_options": "إضافات (اختياري)",
+    "remove_ingredients": "إزالة مكونات",
+    "most_popular": "يظهر في الاكثر مبيعاً",
+    "top_rated": "الأعلى تقييماً",
     "add_product": "إضافة منتج",
     "edit_product": "تعديل المنتج",
     "product_name": "اسم المنتج",
@@ -108,13 +107,21 @@
     "enter_product_price": "0 د.ع",
     "product_description": "وصف المنتج",
     "enter_product_description": "أدخل وصف المنتج...",
-    "category" : "التصنيف",
-    "select_category" : "اختر التصنيف",
+    "category": "التصنيف",
+    "select_category": "اختر التصنيف",
     "available_additions": "الاضافات المتاحة",
     "select_available_additions": "اختر الاضافات المتاحة",
     "removable_ingredients": "المكونات القابلة للإزالة",
     "select_removable_ingredients": "اختر المكونات القابلة للإزالة",
-    "save": "حفظ" ,
-    "add" : "إضافة"
+    "save": "حفظ",
+    "add": "إضافة",
+    "profile": {
+      "add_subcategories": "إضافة الاقسام الفرعية",
+      "add_product_categories": "إضافة تصنيفات المنتج ",
+      "edit_profile": "تعديل الملف الشخصي",
+      "notification": "الإشعارات",
+      "privacy": "الخصوصية والأمان",
+      "help": "المساعدة والدعم"
+    }
   }
 }

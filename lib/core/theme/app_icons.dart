@@ -36,6 +36,8 @@ class AppIcons {
 
   static const String iconsEmptyImage = "assets/icons/empty_image.svg";
 
+  static const String iconsFilterProfileIcon = "assets/icons/filter_profile_icon.svg";
+
   static const String iconsForgetPasswordPhoneIcon = "assets/icons/forget_password_phone_icon.svg";
 
   static const String iconsForwardIcon = "assets/icons/forward_icon.svg";
@@ -58,9 +60,13 @@ class AppIcons {
 
   static const String iconsNotificationIcon = "assets/icons/notification_icon.svg";
 
+  static const String iconsNotificationProfileIcon = "assets/icons/notification_profile_icon.svg";
+
   static const String iconsPerson24Icon = "assets/icons/person24_icon.svg";
 
   static const String iconsPersonIcon = "assets/icons/person_icon.svg";
+
+  static const String iconsPersonProfileIcon = "assets/icons/person_profile_icon.svg";
 
   static const String iconsPhone16Icon = "assets/icons/phone16_icon.svg";
 
@@ -69,6 +75,12 @@ class AppIcons {
   static const String iconsPin16Icon = "assets/icons/pin16_icon.svg";
 
   static const String iconsPin24Icon = "assets/icons/pin24_icon.svg";
+
+  static const String iconsPrivacyProfileIcon = "assets/icons/privacy_profile_icon.svg";
+
+  static const String iconsProfileAdditionIcon = "assets/icons/profile_addition_icon.svg";
+
+  static const String iconsQuestionProfileIcon = "assets/icons/question_profile_icon.svg";
 
   static const String iconsReloadIcon = "assets/icons/reload_icon.svg";
 

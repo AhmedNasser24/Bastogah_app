@@ -1,6 +1,7 @@
 import 'package:bastogah_app/features/merchant_feature/home/presentation/views/merchant_home_view.dart';
 import 'package:bastogah_app/features/merchant_feature/home/presentation/views/merchant_order_details_view.dart';
 import 'package:bastogah_app/features/merchant_feature/products/presentation/views/merchant_products_view.dart';
+import 'package:bastogah_app/features/merchant_feature/profile/presentation/views/merchant_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -69,7 +70,7 @@ List<RouteBase> merchantRoutes = [
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
           state: state,
-          child: const Center(child: Text('profile')),
+          child: const MerchantProfileView(),
         ),
       ),
     ],
