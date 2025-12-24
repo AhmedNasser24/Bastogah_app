@@ -34,9 +34,6 @@ class _CustomMerchantBottomNavBarState
               child: InkWell(
                 onTap: () {
                   context.go(merchantBottomBarItems[i].routeName);
-                  // setState(() {
-                  //   _currentIndex = i;
-                  // });
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
