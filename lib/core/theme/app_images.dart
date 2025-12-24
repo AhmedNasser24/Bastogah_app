@@ -13,5 +13,7 @@ class AppImages {
   static const String imagesMap = "assets/images/map.png";
 
   static const String imagesPizzaImage = "assets/images/pizza_image.png";
+
+  static const String imagesResturantLogo = "assets/images/resturant_logo.png";
 }
 

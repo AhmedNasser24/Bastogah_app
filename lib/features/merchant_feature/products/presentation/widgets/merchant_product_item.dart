@@ -14,7 +14,7 @@ class MerchantProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(RouteName.merchantProductDetails);
+        context.push(RouteName.merchantProductDetails);
       },
       child: SizedBox(
         height: 70,

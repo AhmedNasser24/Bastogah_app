@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_icons.dart';
+import '../widgets/profile_info_section.dart';
 
 class MerchantProfileView extends StatelessWidget {
   const MerchantProfileView({super.key});
@@ -15,6 +16,9 @@ class MerchantProfileView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
+          const Gap(20),
+          const ProfileInfoSection(),
+          const Gap(20),
           profileTile(
             context,
             imagePath: AppIcons.iconsProfileAdditionIcon,
