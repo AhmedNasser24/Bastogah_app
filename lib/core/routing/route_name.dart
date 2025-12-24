@@ -20,5 +20,6 @@ class RouteName {
   static const String merchantPrivacy = '/merchant/privacy';
   static const String merchantNotification = '/merchant/notification';
   static const String merchantEditProfile = '/merchant/edit-profile';
+  static const String merchantHelpSupport = '/merchant/help-support';
   static const String merchantAddNewOrder = '/merchant/home/add-new-order';
 }

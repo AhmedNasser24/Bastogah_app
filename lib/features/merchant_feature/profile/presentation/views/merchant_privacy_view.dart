@@ -1,11 +1,9 @@
-import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
@@ -32,17 +30,13 @@ class MerchantPrivacyView extends StatelessWidget {
                         context,
                         imagePath: AppIcons.iconsPrivacyProfileIcon,
                         title: "auth.change_password".tr(),
-                        onTap: () {
-                          context.push(RouteName.merchantAddSubCategories);
-                        },
+                        onTap: () {},
                       ),
                       profileTile(
                         context,
                         imagePath: AppIcons.iconsPrivacyProfileIcon,
                         title: "auth.two_factor_authentication".tr(),
-                        onTap: () {
-                          context.push(RouteName.merchantAddProductCategory);
-                        },
+                        onTap: () {},
                       ),
 
                       const Gap(20),
@@ -57,7 +51,7 @@ class MerchantPrivacyView extends StatelessWidget {
     );
   }
 
-  GestureDetector profileTile(
+  Widget profileTile(
     BuildContext context, {
     required String imagePath,
     required String title,

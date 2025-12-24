@@ -128,7 +128,7 @@
       "profile_info": "المعلومات الشخصية",
       "notification": "الإشعارات",
       "privacy": "الخصوصية والأمان",
-      "help": "المساعدة والدعم",
+      "help_support": "المساعدة والدعم",
       "orders" : "الطلبات",
       "ratings" : "التقييم",
       "add_another_category": "إضافة تصنيف اخر",
@@ -137,7 +137,9 @@
       "phone_number" : "رقم الهاتف",
       "store_kind" : "نوع المتجر",
       "save_changes" : "حفظ التغييرات",
-      "press_to_change_photo" : "اضغط لتغيير الصورة"
+      "press_to_change_photo" : "اضغط لتغيير الصورة",
+      "call_now" : "اتصل الآن",
+      "call_directly" : "الاتصال المباشرة"
     }
   }
 }
