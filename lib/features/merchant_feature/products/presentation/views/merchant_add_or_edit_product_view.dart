@@ -13,8 +13,8 @@ import '../widgets/add_product_button.dart';
 import '../widgets/merchant_add_edit_product_app_bar.dart';
 
 class MerchantAddOrEditProductView extends StatefulWidget {
-  const MerchantAddOrEditProductView({super.key});
-  final isEdit = false;
+  const MerchantAddOrEditProductView({super.key , required this.isEdit});
+  final bool isEdit;
   @override
   State<MerchantAddOrEditProductView> createState() =>
       _MerchantAddOrEditProductViewState();

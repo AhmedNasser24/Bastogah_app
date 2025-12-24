@@ -49,7 +49,10 @@ class MerchantProductDetailsView extends StatelessWidget {
               child: CustomButton(
                 title: "merchant.edit".tr(),
                 prefixIcon: AppIcons.iconsEditIcon,
-                onTap: () => context.push(RouteName.merchantAddOrEditProduct),
+                onTap: () => context.push(
+                  RouteName.merchantAddOrEditProduct,
+                  extra: true,
+                ),
               ),
             ),
             const Gap(20),

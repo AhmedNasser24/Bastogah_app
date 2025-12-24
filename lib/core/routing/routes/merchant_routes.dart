@@ -105,7 +105,7 @@ List<RouteBase> merchantRoutes = [
     pageBuilder: (context, state) => buildPageWithSlideTransition(
       context: context,
       state: state,
-      child: const MerchantAddOrEditProductView(),
+      child: MerchantAddOrEditProductView(isEdit: state.extra as bool),
     ),
   ),
 ];
