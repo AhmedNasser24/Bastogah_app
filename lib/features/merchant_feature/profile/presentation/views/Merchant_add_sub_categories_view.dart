@@ -35,6 +35,7 @@ class MerchantAddSubCategoriesView extends StatelessWidget {
                       CustomTextFormField(hintText: "burger".tr()),
                       CustomTextFormField(hintText: "sandwich".tr()),
                       const AddAnotherCategoryButton(),
+                      const Gap(20),
                     ],
                   ),
                 ),

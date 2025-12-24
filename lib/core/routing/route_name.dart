@@ -17,5 +17,7 @@ class RouteName {
       '/merchant/profile/add-subcategories';
   static const String merchantAddProductCategory =
       '/merchant/profile/add-product-category';
+  static const String merchantPrivacy = '/merchant/privacy';
+  static const String merchantEditProfile = '/merchant/edit-profile';
   static const String merchantAddNewOrder = '/merchant/home/add-new-order';
 }

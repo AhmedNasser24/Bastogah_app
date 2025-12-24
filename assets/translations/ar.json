@@ -3,6 +3,7 @@
   "sandwich": "ساندويتش",
   "salsa": "صلصة",
   "yes": "نعم",
+  "cancel": "إلغاء",
   "check_your_internet_connection_and_try_again": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
@@ -11,6 +12,7 @@
   },
   "auth": {
     "forget_password": "نسيت كلمة المرور؟",
+    "change_password": "تغيير كلمة المرور",
     "forget_password_subtitle": "أدخل رقم هاتفك وسنرسل لك رمز التحقق لإعادة تعيين كلمة المرور.",
     "phone_number": "رقم الهاتف",
     "send_otp": "أرسال لي رمز التحقق",
@@ -27,7 +29,8 @@
     "update_password": "تحديث كلمة المرور",
     "new_password": "كلمة المرور الجديدة",
     "confirm_password": "تأكيد كلمة المرور الجديدة",
-    "passwords_do_not_match": "كلمتا المرور غير متطابقتان"
+    "passwords_do_not_match": "كلمتا المرور غير متطابقتان",
+    "two_factor_authentication": "التحقق بخطوتين"
   },
 
   "merchant": {
@@ -122,13 +125,19 @@
       "add_subcategories": "إضافة الاقسام الفرعية",
       "add_product_categories": "إضافة تصنيفات المنتج ",
       "edit_profile": "تعديل الملف الشخصي",
+      "profile_info": "المعلومات الشخصية",
       "notification": "الإشعارات",
       "privacy": "الخصوصية والأمان",
       "help": "المساعدة والدعم",
       "orders" : "الطلبات",
       "ratings" : "التقييم",
       "add_another_category": "إضافة تصنيف اخر",
-      "restaurant_category" : "تصنيف المطعم"
+      "restaurant_category" : "تصنيف المطعم" ,
+      "full_name" : "الاسم الكامل",
+      "phone_number" : "رقم الهاتف",
+      "store_kind" : "نوع المتجر",
+      "save_changes" : "حفظ التغييرات",
+      "press_to_change_photo" : "اضغط لتغيير الصورة"
     }
   }
 }

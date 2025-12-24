@@ -22,6 +22,8 @@ class AppIcons {
 
   static const String iconsCalenderIcon = "assets/icons/calender_icon.svg";
 
+  static const String iconsCameraProfileIcon = "assets/icons/camera_profile_icon.svg";
+
   static const String iconsCancelIcon = "assets/icons/cancel_icon.svg";
 
   static const String iconsCheckIcon = "assets/icons/check_icon.svg";

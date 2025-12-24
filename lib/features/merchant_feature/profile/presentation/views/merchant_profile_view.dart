@@ -53,7 +53,9 @@ class MerchantProfileView extends StatelessWidget {
             context,
             imagePath: AppIcons.iconsPrivacyProfileIcon,
             title: "merchant.profile.privacy".tr(),
-            onTap: () {},
+            onTap: () {
+              context.push(RouteName.merchantPrivacy);
+            },
           ),
           profileTile(
             context,

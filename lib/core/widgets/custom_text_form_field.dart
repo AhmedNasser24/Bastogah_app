@@ -32,6 +32,9 @@ class CustomTextFormField extends StatelessWidget {
     this.enableBorderColor = AppColors.lightGrey,
     this.focusBorderColor = AppColors.primary,
     this.suffix,
+    this.titleStyle,
+    this.textDirection,
+    this.textAlign = TextAlign.start,
   });
   final String? hintText;
   final TextInputType? keyboardType;
@@ -51,10 +54,13 @@ class CustomTextFormField extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final List<TextInputFormatter>? inputFormatters;
   final String? title;
+  final TextStyle? titleStyle;
   final double? borderWidth;
   final Color enableBorderColor;
   final Color focusBorderColor;
   final Widget? suffix;
+  final TextDirection? textDirection;
+  final TextAlign textAlign;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -62,7 +68,10 @@ class CustomTextFormField extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (title != null) ...{
-          Text(title!, style: AppFontStyle.semibold14black4B(context)),
+          Text(
+            title!,
+            style: titleStyle ?? AppFontStyle.semibold14black4B(context),
+          ),
           const Gap(6),
         },
         TextFormField(
@@ -79,6 +88,8 @@ class CustomTextFormField extends StatelessWidget {
           readOnly: readOnly,
           maxLines: maxLines,
           style: AppFontStyle.regular16black1A(context),
+          textDirection: textDirection,
+          textAlign: textAlign,
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(16),
