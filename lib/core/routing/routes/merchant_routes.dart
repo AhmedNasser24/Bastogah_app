@@ -1,6 +1,7 @@
 import 'package:bastogah_app/features/merchant_feature/home/presentation/views/merchant_home_view.dart';
 import 'package:bastogah_app/features/merchant_feature/home/presentation/views/merchant_order_details_view.dart';
 import 'package:bastogah_app/features/merchant_feature/products/presentation/views/merchant_products_view.dart';
+import 'package:bastogah_app/features/merchant_feature/profile/presentation/views/Merchant_add_sub_categories_view.dart';
 import 'package:bastogah_app/features/merchant_feature/profile/presentation/views/merchant_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +13,7 @@ import '../../../features/merchant_feature/home/presentation/views/merchant_add_
 import '../../../features/merchant_feature/merchant_layout/presentation/views/merchant_layout.dart';
 import '../../../features/merchant_feature/products/presentation/views/merchant_add_or_edit_product_view.dart';
 import '../../../features/merchant_feature/products/presentation/views/merchant_product_details_view.dart';
+import '../../../features/merchant_feature/profile/presentation/views/merchant_add_product_category_view.dart';
 import '../route_name.dart';
 import '../router_animation.dart';
 
@@ -107,6 +109,22 @@ List<RouteBase> merchantRoutes = [
       context: context,
       state: state,
       child: MerchantAddOrEditProductView(isEdit: state.extra as bool),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.merchantAddSubCategories,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const MerchantAddSubCategoriesView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.merchantAddProductCategory,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const MerchantAddProductCategoryView(),
     ),
   ),
 ];

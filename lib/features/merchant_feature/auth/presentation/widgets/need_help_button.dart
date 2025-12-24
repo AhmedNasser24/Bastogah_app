@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
@@ -16,7 +17,7 @@ class NeedHelpButton extends StatelessWidget {
       textStyle: AppFontStyle.semibold14black4B(context),
       borderColor: AppColors.lightGrey,
       color: Colors.transparent,
-      suffixIcon: AppIcons.iconsNeedHelpIcon,
+      suffixIcon: SvgPicture.asset(AppIcons.iconsNeedHelpIcon),
       onTap: () {},
     );
   }

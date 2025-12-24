@@ -1,7 +1,6 @@
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -25,8 +24,8 @@ class CustomButton extends StatelessWidget {
   final double? borderRadius;
   final Color color;
   final Color? borderColor;
-  final String? prefixIcon;
-  final String? suffixIcon;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final double maxWidth;
   final bool isLoading;
   @override
@@ -66,17 +65,13 @@ class CustomButton extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     spacing: 6,
                     children: [
-                      if (prefixIcon != null) ...[
-                        SvgPicture.asset(prefixIcon!),
-                      ],
+                      if (prefixIcon != null) ...[prefixIcon!],
                       Text(
                         title!,
                         style: textStyle ?? AppFontStyle.bold16White(context),
                         overflow: TextOverflow.ellipsis,
                       ),
-                      if (suffixIcon != null) ...[
-                        SvgPicture.asset(suffixIcon!),
-                      ],
+                      if (suffixIcon != null) ...[suffixIcon!],
                     ],
                   ),
           ),

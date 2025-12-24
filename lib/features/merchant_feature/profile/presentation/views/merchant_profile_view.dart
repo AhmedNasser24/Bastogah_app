@@ -1,9 +1,11 @@
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_icons.dart';
 import '../widgets/profile_info_section.dart';
@@ -23,13 +25,17 @@ class MerchantProfileView extends StatelessWidget {
             context,
             imagePath: AppIcons.iconsProfileAdditionIcon,
             title: "merchant.profile.add_subcategories".tr(),
-            onTap: () {},
+            onTap: () {
+              context.push(RouteName.merchantAddSubCategories);
+            },
           ),
           profileTile(
             context,
             imagePath: AppIcons.iconsFilterProfileIcon,
             title: "merchant.profile.add_product_categories".tr(),
-            onTap: () {},
+            onTap: () {
+              context.push(RouteName.merchantAddProductCategory);
+            },
           ),
           profileTile(
             context,

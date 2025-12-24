@@ -48,7 +48,7 @@ class MerchantProductDetailsView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: CustomButton(
                 title: "merchant.edit".tr(),
-                prefixIcon: AppIcons.iconsEditIcon,
+                prefixIcon: SvgPicture.asset(AppIcons.iconsEditIcon),
                 onTap: () => context.push(
                   RouteName.merchantAddOrEditProduct,
                   extra: true,

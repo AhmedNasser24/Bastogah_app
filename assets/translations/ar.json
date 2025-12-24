@@ -1,4 +1,7 @@
 {
+  "burger": "برجر",
+  "sandwich": "ساندويتش",
+  "salsa": "صلصة",
   "yes": "نعم",
   "check_your_internet_connection_and_try_again": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى",
   "validation": {
@@ -123,7 +126,9 @@
       "privacy": "الخصوصية والأمان",
       "help": "المساعدة والدعم",
       "orders" : "الطلبات",
-      "ratings" : "التقييم"
+      "ratings" : "التقييم",
+      "add_another_category": "إضافة تصنيف اخر",
+      "restaurant_category" : "تصنيف المطعم"
     }
   }
 }
