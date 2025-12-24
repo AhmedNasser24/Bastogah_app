@@ -15,6 +15,7 @@ import '../../../features/merchant_feature/products/presentation/views/merchant_
 import '../../../features/merchant_feature/products/presentation/views/merchant_product_details_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_add_product_category_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_edit_profile_view.dart';
+import '../../../features/merchant_feature/profile/presentation/views/merchant_notification_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_privacy_view.dart';
 import '../route_name.dart';
 import '../router_animation.dart';
@@ -143,6 +144,14 @@ List<RouteBase> merchantRoutes = [
       context: context,
       state: state,
       child: const MerchantEditProfileView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.merchantNotification,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const MerchantNotificationView(),
     ),
   ),
 ];

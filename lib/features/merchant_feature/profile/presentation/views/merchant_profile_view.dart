@@ -41,13 +41,17 @@ class MerchantProfileView extends StatelessWidget {
             context,
             imagePath: AppIcons.iconsPersonProfileIcon,
             title: "merchant.profile.edit_profile".tr(),
-            onTap: () {},
+            onTap: () {
+              context.push(RouteName.merchantEditProfile);
+            },
           ),
           profileTile(
             context,
             imagePath: AppIcons.iconsNotificationProfileIcon,
             title: "merchant.profile.notification".tr(),
-            onTap: () {},
+            onTap: () {
+              context.push(RouteName.merchantNotification);
+            },
           ),
           profileTile(
             context,
