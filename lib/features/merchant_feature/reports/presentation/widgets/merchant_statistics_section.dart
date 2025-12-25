@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-class StatisticsSection extends StatelessWidget {
-  const StatisticsSection({super.key});
+class MerchantStatisticsSection extends StatelessWidget {
+  const MerchantStatisticsSection({super.key});
 
   @override
   Widget build(BuildContext context) {

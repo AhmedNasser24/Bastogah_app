@@ -1,4 +1,5 @@
 import 'package:bastogah_app/core/routing/route_name.dart';
+import 'package:bastogah_app/core/routing/routes/driver_routes.dart';
 import 'package:bastogah_app/features/global_feature/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.merchantReports,
+  initialLocation: RouteName.driverReports,
   routes: [
     GoRoute(
       path: RouteName.splash,
@@ -25,6 +26,7 @@ GoRouter appRouter = GoRouter(
         child: const SplashView(),
       ),
     ),
+    ...driverRoutes,
     ...merchantRoutes,
   ],
 );

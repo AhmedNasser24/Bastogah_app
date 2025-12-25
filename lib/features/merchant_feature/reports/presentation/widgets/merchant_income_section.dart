@@ -1,13 +1,13 @@
-import 'package:bastogah_app/features/merchant_feature/reports/presentation/widgets/report_bar_chart.dart';
+import 'package:bastogah_app/features/merchant_feature/reports/presentation/widgets/merchant_report_bar_chart.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
-import 'report_filter.dart';
+import 'merchant_report_filter.dart';
 
-class IncomeSection extends StatelessWidget {
-  const IncomeSection({super.key});
+class MerchantIncomeSection extends StatelessWidget {
+  const MerchantIncomeSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class IncomeSection extends StatelessWidget {
           "merchant.reports.income".tr(),
           style: AppFontStyle.bold18Black1A(context),
         ),
-        const ReportFilter(),
+        const MerchantReportFilter(),
         const Gap(0),
         const Center(child: MerchantReportBarChart()),
       ],

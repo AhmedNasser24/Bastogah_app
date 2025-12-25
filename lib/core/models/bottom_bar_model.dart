@@ -3,12 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 
 import '../routing/route_name.dart';
 
-class MerchantBottomBarModel {
+class BottomBarModel {
   final String title;
   final String inactiveIcon;
   final String activeIcon;
   final String routeName;
-  MerchantBottomBarModel({
+  BottomBarModel({
     required this.title,
     required this.inactiveIcon,
     required this.activeIcon,
@@ -16,26 +16,47 @@ class MerchantBottomBarModel {
   });
 }
 
-List<MerchantBottomBarModel> merchantBottomBarItems = [
-  MerchantBottomBarModel(
+List<BottomBarModel> driverBottomBarItems = [
+  BottomBarModel(
+    title: 'merchant.home'.tr(),
+    inactiveIcon: AppIcons.iconsInactiveHomeIcon,
+    activeIcon: AppIcons.iconsActiveHomeIcon,
+    routeName: RouteName.driverHome,
+  ),
+  BottomBarModel(
+    title: 'merchant.reports'.tr(),
+    inactiveIcon: AppIcons.iconsInactiveReportIcon,
+    activeIcon: AppIcons.iconsActiveReportIcon,
+    routeName: RouteName.driverReports,
+  ),
+  BottomBarModel(
+    title: 'merchant.my_account'.tr(),
+    inactiveIcon: AppIcons.iconsInactiveProfileIcon,
+    activeIcon: AppIcons.iconsActiveProfileIcon,
+    routeName: RouteName.driverProfile,
+  ),
+];
+
+List<BottomBarModel> merchantBottomBarItems = [
+  BottomBarModel(
     title: 'merchant.home'.tr(),
     inactiveIcon: AppIcons.iconsInactiveHomeIcon,
     activeIcon: AppIcons.iconsActiveHomeIcon,
     routeName: RouteName.merchantHome,
   ),
-  MerchantBottomBarModel(
+  BottomBarModel(
     title: 'merchant.products'.tr(),
     inactiveIcon: AppIcons.iconsInactiveProductIcon,
     activeIcon: AppIcons.iconsActiveProductsIcon,
     routeName: RouteName.merchantProducts,
   ),
-  MerchantBottomBarModel(
+  BottomBarModel(
     title: 'merchant.reports'.tr(),
     inactiveIcon: AppIcons.iconsInactiveReportIcon,
     activeIcon: AppIcons.iconsActiveReportIcon,
     routeName: RouteName.merchantReports,
   ),
-  MerchantBottomBarModel(
+  BottomBarModel(
     title: 'merchant.my_account'.tr(),
     inactiveIcon: AppIcons.iconsInactiveProfileIcon,
     activeIcon: AppIcons.iconsActiveProfileIcon,

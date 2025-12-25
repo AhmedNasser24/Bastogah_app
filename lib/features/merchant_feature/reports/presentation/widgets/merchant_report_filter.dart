@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 
-class ReportFilter extends StatefulWidget {
-  const ReportFilter({super.key});
+class MerchantReportFilter extends StatefulWidget {
+  const MerchantReportFilter({super.key});
 
   @override
-  State<ReportFilter> createState() => _ReportFilterState();
+  State<MerchantReportFilter> createState() => _MerchantReportFilterState();
 }
 
-class _ReportFilterState extends State<ReportFilter> {
+class _MerchantReportFilterState extends State<MerchantReportFilter> {
   List<String> filters = ["week".tr(), "month".tr(), "year".tr()];
   int selectedIndex = 0;
   @override

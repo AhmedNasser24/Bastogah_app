@@ -8,19 +8,17 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 
-class CustomMerchantBottomNavBar extends StatefulWidget {
-  const CustomMerchantBottomNavBar({super.key});
+class DriverBottomNavBar extends StatefulWidget {
+  const DriverBottomNavBar({super.key});
 
   @override
-  State<CustomMerchantBottomNavBar> createState() =>
-      _CustomMerchantBottomNavBarState();
+  State<DriverBottomNavBar> createState() => _DriverBottomNavBarState();
 }
 
-class _CustomMerchantBottomNavBarState
-    extends State<CustomMerchantBottomNavBar> {
+class _DriverBottomNavBarState extends State<DriverBottomNavBar> {
   bool isSelected(int index) {
     String currentPath = GoRouterState.of(context).uri.path;
-    return currentPath == merchantBottomBarItems[index].routeName;
+    return currentPath == driverBottomBarItems[index].routeName;
   }
 
   @override
@@ -29,11 +27,11 @@ class _CustomMerchantBottomNavBarState
       height: 65,
       child: Row(
         children: [
-          for (int i = 0; i < merchantBottomBarItems.length; i++)
+          for (int i = 0; i < driverBottomBarItems.length; i++)
             Expanded(
               child: InkWell(
                 onTap: () {
-                  context.go(merchantBottomBarItems[i].routeName);
+                  context.go(driverBottomBarItems[i].routeName);
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
@@ -51,13 +49,13 @@ class _CustomMerchantBottomNavBarState
                       children: [
                         SvgPicture.asset(
                           isSelected(i)
-                              ? merchantBottomBarItems[i].activeIcon
-                              : merchantBottomBarItems[i].inactiveIcon,
+                              ? driverBottomBarItems[i].activeIcon
+                              : driverBottomBarItems[i].inactiveIcon,
                         ),
 
                         const Gap(4),
                         Text(
-                          merchantBottomBarItems[i].title.tr(),
+                          driverBottomBarItems[i].title.tr(),
                           style: AppFontStyle.medium10primary(context),
                         ),
                       ],

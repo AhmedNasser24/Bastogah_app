@@ -1,13 +1,13 @@
 import 'package:bastogah_app/features/merchant_feature/merchant_layout/presentation/widgets/merchant_app_bar.dart';
-import 'package:bastogah_app/features/merchant_feature/reports/presentation/widgets/merchant_income_section.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../widgets/merchant_statistics_section.dart';
+import '../widgets/driver_income_section.dart';
+import '../widgets/driver_statistics_section.dart';
 
-class MerchantReportsView extends StatelessWidget {
-  const MerchantReportsView({super.key});
+class DriverReportsView extends StatelessWidget {
+  const DriverReportsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class MerchantReportsView extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
-                MerchantIncomeSection(),
+                DriverIncomeSection(),
                 Gap(24),
-                MerchantStatisticsSection(),
+                DriverStatisticsSection(),
                 Gap(16),
               ],
             ),
