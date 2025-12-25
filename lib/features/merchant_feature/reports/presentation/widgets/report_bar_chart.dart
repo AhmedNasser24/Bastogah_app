@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 
-class MerchantBarChart extends StatefulWidget {
-  const MerchantBarChart({super.key});
+class MerchantReportBarChart extends StatefulWidget {
+  const MerchantReportBarChart({super.key});
 
   @override
-  State<MerchantBarChart> createState() => _MerchantBarChartState();
+  State<MerchantReportBarChart> createState() => _MerchantReportBarChartState();
 }
 
-class _MerchantBarChartState extends State<MerchantBarChart> {
+class _MerchantReportBarChartState extends State<MerchantReportBarChart> {
   late List<String> daysOfWeek;
   late List<double> dataOfDays;
   late double maxValue;

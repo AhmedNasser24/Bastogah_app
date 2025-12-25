@@ -9,25 +9,27 @@ class CustomButton extends StatelessWidget {
     this.textStyle,
     this.onTap,
     this.width,
-    this.borderRadius,
+    this.borderRadius = 16.0,
     this.color = AppColors.primary,
     this.borderColor,
     this.prefixIcon,
     this.suffixIcon,
     this.maxWidth = 400,
     this.isLoading = false,
+    this.padding = const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
   });
   final String? title;
   final TextStyle? textStyle;
   final VoidCallback? onTap;
   final double? width;
-  final double? borderRadius;
+  final double borderRadius;
   final Color color;
   final Color? borderColor;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final double maxWidth;
   final bool isLoading;
+  final EdgeInsetsGeometry padding;
   @override
   Widget build(BuildContext context) {
     return AbsorbPointer(
@@ -36,16 +38,14 @@ class CustomButton extends StatelessWidget {
         onTap: onTap,
         splashColor: Colors.transparent,
         hoverColor: Colors.transparent,
-        borderRadius: BorderRadius.circular(
-          borderRadius != null ? borderRadius! : 16.0,
-        ),
+        borderRadius: BorderRadius.circular(borderRadius),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          padding: padding,
           width: width,
           constraints: BoxConstraints(maxWidth: maxWidth),
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
+            borderRadius: BorderRadius.circular(borderRadius),
             border: borderColor != null
                 ? Border.all(color: borderColor!, width: 1)
                 : null,

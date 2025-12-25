@@ -5,6 +5,9 @@
   "yes": "نعم",
   "cancel": "إلغاء",
   "check_your_internet_connection_and_try_again": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى",
+  "week" : "الأسبوع",
+  "month" : "الشهر",
+  "year" : "السنة",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number": "رقم غير صالح",
@@ -140,6 +143,8 @@
       "press_to_change_photo" : "اضغط لتغيير الصورة",
       "call_now" : "اتصل الآن",
       "call_directly" : "الاتصال المباشرة"
-    }
+    },
+    
+    "monthly_statistics" : "احصائيات الشهر"
   }
 }
