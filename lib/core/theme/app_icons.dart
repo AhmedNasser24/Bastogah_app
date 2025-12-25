@@ -46,6 +46,8 @@ class AppIcons {
 
   static const String iconsGallary = "assets/icons/gallary.svg";
 
+  static const String iconsGreenWallet = "assets/icons/green_wallet.svg";
+
   static const String iconsHelpPhone = "assets/icons/help_phone.svg";
 
   static const String iconsHome24Icon = "assets/icons/home24_icon.svg";

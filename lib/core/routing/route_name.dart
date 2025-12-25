@@ -11,6 +11,7 @@ class RouteName {
   static const String driverNotification = '/driver/notification';
   static const String driverEditProfile = '/driver/edit-profile';
   static const String driverHelpSupport = '/driver/help-support';
+  static const String driverWalletAndEarnings = '/driver/wallet-and-earnings';
 
   // merchant routes
   static const String merchantLogin = '/merchant/login';

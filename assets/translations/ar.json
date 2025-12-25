@@ -155,7 +155,8 @@
   } ,
 
   "driver" : {
-     "wallet_and_earnings" : "المحفظة والارباح"
+     "wallet_and_earnings" : "المحفظة والارباح",
+     "dues" : "المستحقات"
   }
 
 }

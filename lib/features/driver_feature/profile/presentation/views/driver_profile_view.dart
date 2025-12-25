@@ -37,7 +37,9 @@ class DriverProfileView extends StatelessWidget {
             context,
             imagePath: AppIcons.iconsReportTransactionExpense,
             title: "driver.wallet_and_earnings".tr(),
-            onTap: () {},
+            onTap: () {
+              context.push(RouteName.driverWalletAndEarnings);
+            },
           ),
 
           profileTile(

@@ -6,6 +6,7 @@ import '../../../features/driver_feature/driver_layout/presentation/views/driver
 import '../../../features/driver_feature/profile/presentation/views/driver_help_support_view.dart';
 import '../../../features/driver_feature/profile/presentation/views/driver_notification_view.dart';
 import '../../../features/driver_feature/profile/presentation/views/driver_edit_profile_view.dart';
+import '../../../features/driver_feature/profile/presentation/views/driver_wallet_and_earnings_view.dart';
 import '../../../features/driver_feature/reports/presentation/views/driver_report_view.dart';
 import '../../../features/merchant_feature/home/data/models/order_item_model/order_item_model.dart';
 import '../../../features/merchant_feature/home/presentation/views/merchant_add_new_order_view.dart';
@@ -103,6 +104,14 @@ List<RouteBase> driverRoutes = [
       context: context,
       state: state,
       child: const DriverNotificationView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.driverWalletAndEarnings,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const DriverWalletAndEarningsView(),
     ),
   ),
   GoRoute(
