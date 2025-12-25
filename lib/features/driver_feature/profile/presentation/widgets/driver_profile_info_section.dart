@@ -34,7 +34,59 @@ class DriverProfileInfoSection extends StatelessWidget {
             rating(context, rating: 4.5),
           ],
         ),
+        const Gap(0),
+        Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              infoTile(
+                context,
+                title: "driver.location".tr(),
+                subtitle: "البصرة",
+                iconPath: AppIcons.iconsPin16Icon,
+              ),
+              infoTile(
+                context,
+                title: "driver.member_since".tr(),
+                subtitle: "يناير 2024",
+                iconPath: AppIcons.iconsPersonIcon,
+              ),
+            ],
+          ),
+        ),
       ],
+    );
+  }
+
+  SizedBox infoTile(
+    BuildContext context, {
+    required String title,
+    required String subtitle,
+    required String iconPath,
+  }) {
+    return SizedBox(
+      width: 160,
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: AppColors.secondary,
+            radius: 20,
+            child: Center(child: SvgPicture.asset(iconPath)),
+          ),
+          const Gap(8),
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: AppFontStyle.regular12grey(context)),
+                const Gap(4),
+                Text(subtitle, style: AppFontStyle.semibold14black4B(context)),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

@@ -16,7 +16,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.driverWalletAndEarnings,
+  initialLocation: RouteName.driverProfile,
   routes: [
     GoRoute(
       path: RouteName.splash,

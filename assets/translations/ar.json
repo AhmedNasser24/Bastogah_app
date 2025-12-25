@@ -158,7 +158,9 @@
      "wallet_and_earnings" : "المحفظة والارباح",
      "dues" : "المستحقات",
      "currency" : "دينار عراقي",
-     "last_process" : "اخر العمليات"
+     "last_process" : "اخر العمليات",
+     "location" : "المنطقة",
+     "member_since" : "عضو منذ"
   }
 
 }
