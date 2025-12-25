@@ -33,7 +33,8 @@
     "new_password": "كلمة المرور الجديدة",
     "confirm_password": "تأكيد كلمة المرور الجديدة",
     "passwords_do_not_match": "كلمتا المرور غير متطابقتان",
-    "two_factor_authentication": "التحقق بخطوتين"
+    "two_factor_authentication": "التحقق بخطوتين",
+    "logout": "تسجيل الخروج"
   },
 
   "merchant": {
@@ -142,7 +143,8 @@
       "save_changes" : "حفظ التغييرات",
       "press_to_change_photo" : "اضغط لتغيير الصورة",
       "call_now" : "اتصل الآن",
-      "call_directly" : "الاتصال المباشرة"
+      "call_directly" : "الاتصال المباشرة",
+      "drivens" : "توصيلة"
     },
 
     "monthly_statistics" : "احصائيات الشهر",
@@ -150,5 +152,10 @@
     "daily_order_rate" : "معدل الطلبات اليومية",
     "orders" : "الطلبات" ,
     "delivery_payments" : "مدفوعات التوصيل"
+  } ,
+
+  "driver" : {
+     "wallet_and_earnings" : "المحفظة والارباح"
   }
+
 }

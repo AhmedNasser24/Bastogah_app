@@ -8,6 +8,9 @@ class RouteName {
   static const String driverHome = '/driver/home';
   static const String driverReports = '/driver/reports';
   static const String driverProfile = '/driver/profile';
+  static const String driverNotification = '/driver/notification';
+  static const String driverEditProfile = '/driver/edit-profile';
+  static const String driverHelpSupport = '/driver/help-support';
 
   // merchant routes
   static const String merchantLogin = '/merchant/login';

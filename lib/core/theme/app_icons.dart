@@ -60,6 +60,8 @@ class AppIcons {
 
   static const String iconsLockIcon = "assets/icons/lock_icon.svg";
 
+  static const String iconsLogOut = "assets/icons/log_out.svg";
+
   static const String iconsNeedHelpIcon = "assets/icons/need_help_icon.svg";
 
   static const String iconsNotificationIcon = "assets/icons/notification_icon.svg";

@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-class ProfileInfoSection extends StatelessWidget {
-  const ProfileInfoSection({super.key});
+class DriverProfileInfoSection extends StatelessWidget {
+  const DriverProfileInfoSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,10 @@ class ProfileInfoSection extends StatelessWidget {
       spacing: 12,
       children: [
         const CircleAvatar(
-          radius: 51.5,
-          backgroundColor: AppColors.lightGrey,
-          child: CircleAvatar(
-            radius: 50,
-            backgroundImage: AssetImage(AppImages.imagesResturantLogo),
-          ),
+          radius: 50,
+          backgroundImage: AssetImage(AppImages.imagesDriverPhote),
         ),
-        Text("شاورما كورنر", style: AppFontStyle.bold20Black1A(context)),
+        Text("محمد علي", style: AppFontStyle.bold20Black1A(context)),
         Text(
           "+966 123 456 789",
           style: AppFontStyle.regular14black4B(context),
@@ -33,7 +29,7 @@ class ProfileInfoSection extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 16,
           children: [
-            noOfOrders(context, noOfOrders: 342),
+            noOfDrivens(context, noOfDrivens: 342),
             Container(height: 40, width: 1, color: AppColors.grey),
             rating(context, rating: 4.5),
           ],
@@ -42,12 +38,15 @@ class ProfileInfoSection extends StatelessWidget {
     );
   }
 
-  Widget noOfOrders(BuildContext context, {required int noOfOrders}) {
+  Widget noOfDrivens(BuildContext context, {required int noOfDrivens}) {
     return Column(
       children: [
-        Text(noOfOrders.toString(), style: AppFontStyle.bold18Black1A(context)),
         Text(
-          "merchant.profile.orders".tr(),
+          noOfDrivens.toString(),
+          style: AppFontStyle.bold18Black1A(context),
+        ),
+        Text(
+          "merchant.profile.drivens".tr(),
           style: AppFontStyle.regular12grey(context),
         ),
       ],

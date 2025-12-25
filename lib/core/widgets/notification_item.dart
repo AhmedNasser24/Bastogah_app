@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../core/theme/app_colors.dart';
-import '../../../../../core/theme/app_font_style.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_font_style.dart';
 
-class MerchantNotificationItem extends StatelessWidget {
-  const MerchantNotificationItem({
+class NotificationItem extends StatelessWidget {
+  const NotificationItem({
     super.key,
     required this.isNew,
     required this.title,
