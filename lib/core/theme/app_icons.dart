@@ -32,6 +32,8 @@ class AppIcons {
 
   static const String iconsDollarIcon = "assets/icons/dollar_icon.svg";
 
+  static const String iconsDriverOrderDetailsGreenPhone = "assets/icons/driver_order_details_green_phone.svg";
+
   static const String iconsEditIcon = "assets/icons/edit_icon.svg";
 
   static const String iconsEditImage = "assets/icons/edit_image.svg";

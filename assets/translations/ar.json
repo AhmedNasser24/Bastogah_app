@@ -8,6 +8,7 @@
   "week" : "الأسبوع",
   "month" : "الشهر",
   "year" : "السنة",
+  "store" : "المتجر",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number": "رقم غير صالح",
@@ -59,6 +60,7 @@
     "filter": {
       "pending": "قيد الانتظار",
       "waiting_for_driver": "انتظار سائق",
+      "waiting_for_delivery": "قيد التوصيل",
       "in_progress": "قيد التنفيذ",
       "completed": "مكتمل",
       "cancelled": "ملغي",

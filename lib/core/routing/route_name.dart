@@ -6,6 +6,7 @@ class RouteName {
 
   static const String driverLogin = '/driver/login';
   static const String driverHome = '/driver/home';
+  static const String driverOrderDetails = '/driver/home/order-details';
   static const String driverReports = '/driver/reports';
   static const String driverProfile = '/driver/profile';
   static const String driverNotification = '/driver/notification';
