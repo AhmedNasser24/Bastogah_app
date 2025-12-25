@@ -156,7 +156,9 @@
 
   "driver" : {
      "wallet_and_earnings" : "المحفظة والارباح",
-     "dues" : "المستحقات"
+     "dues" : "المستحقات",
+     "currency" : "دينار عراقي",
+     "last_process" : "اخر العمليات"
   }
 
 }

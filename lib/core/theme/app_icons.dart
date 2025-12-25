@@ -109,5 +109,11 @@ class AppIcons {
   static const String iconsTimeOrangeIcon = "assets/icons/time_orange_icon.svg";
 
   static const String iconsUsernameIcon = "assets/icons/username_icon.svg";
+
+  static const String iconsWalletContainer = "assets/icons/wallet_container.svg";
+
+  static const String iconsWalletContainerBottomLeft = "assets/icons/wallet_container_bottom_left.svg";
+
+  static const String iconsWalletContainerTopRight = "assets/icons/wallet_container_top_right.svg";
 }
 
