@@ -24,6 +24,8 @@ class MerchantAddNewOrderView extends StatelessWidget {
             const AppBar(),
             Expanded(
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(

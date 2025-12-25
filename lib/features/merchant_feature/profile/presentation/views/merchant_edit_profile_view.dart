@@ -28,6 +28,8 @@ class MerchantEditProfileView extends StatelessWidget {
               appBar(context),
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+
                   child: Column(
                     spacing: 12,
                     children: [

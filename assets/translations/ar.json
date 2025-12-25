@@ -144,7 +144,11 @@
       "call_now" : "اتصل الآن",
       "call_directly" : "الاتصال المباشرة"
     },
-    
-    "monthly_statistics" : "احصائيات الشهر"
+
+    "monthly_statistics" : "احصائيات الشهر",
+    "customer_ratings" : "تقييم العملاء",
+    "daily_order_rate" : "معدل الطلبات اليومية",
+    "orders" : "الطلبات" ,
+    "delivery_payments" : "مدفوعات التوصيل"
   }
 }

@@ -31,6 +31,8 @@ class _MerchantFiltersForProductsState
       child: SizedBox(
         height: 40,
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+
           scrollDirection: Axis.horizontal,
           child: Row(
             mainAxisSize: MainAxisSize.min,

@@ -23,6 +23,8 @@ class MerchantHelpSupportView extends StatelessWidget {
               appBar(context),
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+
                   child: Column(
                     children: [
                       const Gap(20),

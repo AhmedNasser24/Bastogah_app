@@ -26,6 +26,8 @@ class MerchantProductDetailsView extends StatelessWidget {
             const MerchantProductDetailsAppBar(),
             const Expanded(
               child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(

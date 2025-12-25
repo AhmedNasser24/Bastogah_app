@@ -34,6 +34,8 @@ class _MerchantLoginViewState extends State<MerchantLoginView> {
           child: Form(
             key: formKey,
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+
               child: Center(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),

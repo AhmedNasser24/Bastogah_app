@@ -26,6 +26,8 @@ class MerchantOrderDetailsView extends StatelessWidget {
               OrderDetailsAppBar(orderId: order.billNo, status: order.status!),
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: 30,

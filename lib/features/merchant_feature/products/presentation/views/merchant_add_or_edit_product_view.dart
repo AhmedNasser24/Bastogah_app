@@ -13,7 +13,7 @@ import '../widgets/add_product_button.dart';
 import '../widgets/merchant_add_edit_product_app_bar.dart';
 
 class MerchantAddOrEditProductView extends StatefulWidget {
-  const MerchantAddOrEditProductView({super.key , required this.isEdit});
+  const MerchantAddOrEditProductView({super.key, required this.isEdit});
   final bool isEdit;
   @override
   State<MerchantAddOrEditProductView> createState() =>
@@ -34,6 +34,8 @@ class _MerchantAddOrEditProductViewState
               MerchantAddEditProductAppBar(isEdit: widget.isEdit),
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+
                   child: Column(
                     spacing: 12,
                     children: [

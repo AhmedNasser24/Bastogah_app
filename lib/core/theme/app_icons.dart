@@ -88,6 +88,14 @@ class AppIcons {
 
   static const String iconsReloadIcon = "assets/icons/reload_icon.svg";
 
+  static const String iconsReportOrder = "assets/icons/report_order.svg";
+
+  static const String iconsReportRating = "assets/icons/report_rating.svg";
+
+  static const String iconsReportStar = "assets/icons/report_star.svg";
+
+  static const String iconsReportTransactionExpense = "assets/icons/report_transaction_expense.svg";
+
   static const String iconsSearchIcon = "assets/icons/search_icon.svg";
 
   static const String iconsStar = "assets/icons/star.svg";

@@ -16,7 +16,15 @@ class MerchantReportsView extends StatelessWidget {
         MerchantAppBar(title: "merchant.reports".tr()),
         const Expanded(
           child: SingleChildScrollView(
-            child: Column(spacing: 24, children: [Gap(0), IncomeSection(), StatisticsSection()]),
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                IncomeSection(),
+                Gap(24),
+                StatisticsSection(),
+                Gap(16),
+              ],
+            ),
           ),
         ),
       ],

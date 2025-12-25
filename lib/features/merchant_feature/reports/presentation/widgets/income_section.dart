@@ -1,6 +1,7 @@
 import 'package:bastogah_app/features/merchant_feature/reports/presentation/widgets/report_bar_chart.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import 'report_filter.dart';
@@ -11,7 +12,7 @@ class IncomeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 14,
+      spacing: 16,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -19,7 +20,8 @@ class IncomeSection extends StatelessWidget {
           style: AppFontStyle.bold18Black1A(context),
         ),
         const ReportFilter(),
-        const MerchantReportBarChart(),
+        const Gap(0),
+        const Center(child: MerchantReportBarChart()),
       ],
     );
   }
