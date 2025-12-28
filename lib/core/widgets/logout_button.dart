@@ -13,7 +13,9 @@ class LogoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      onTap: () {},
+      onTap: () {
+        logoutDialog(context);
+      },
       title: "auth.logout".tr(),
       textStyle: AppFontStyle.medium16Red(context),
       prefixIcon: SvgPicture.asset(AppIcons.iconsLogOut),
@@ -21,6 +23,45 @@ class LogoutButton extends StatelessWidget {
       color: AppColors.white,
       borderRadius: 12,
       borderWidth: 0.5,
+    );
+  }
+
+  void logoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            "auth.logout_confirmation".tr(),
+            style: AppFontStyle.bold16Black1A(context),
+          ),
+          actionsAlignment: MainAxisAlignment.spaceAround,
+          actionsPadding: const EdgeInsets.symmetric(
+            vertical: 16.0,
+            horizontal: 24.0,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "cancel".tr(),
+                style: AppFontStyle.bold16Primary(context),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "auth.logout".tr(),
+                style: AppFontStyle.medium16Red(context),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

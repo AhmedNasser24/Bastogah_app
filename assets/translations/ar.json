@@ -35,7 +35,8 @@
     "confirm_password": "تأكيد كلمة المرور الجديدة",
     "passwords_do_not_match": "كلمتا المرور غير متطابقتان",
     "two_factor_authentication": "التحقق بخطوتين",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "logout_confirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
   },
 
   "merchant": {
@@ -164,7 +165,11 @@
      "location" : "المنطقة",
      "member_since" : "عضو منذ",
      "accept_order" : "قبول الطلب",
-     "cancel_order" : " إلغاء الطلب"
+     "cancel_order" : " إلغاء الطلب",
+     "deliver_from" : "الاستلام من",
+     "deliver_to" : "التوصيل إلى",
+     "customer_phone" : "هاتف الزبون",
+     "order_value" : "قيمة الطلب"
   }
 
 }
