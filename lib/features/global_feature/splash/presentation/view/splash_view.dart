@@ -52,7 +52,7 @@ class _SplashViewState extends State<SplashView> {
         ).isNotEmpty) {
           context.go(RouteName.merchantHome);
         } else {
-          context.go(RouteName.merchantLogin);
+          context.go(RouteName.merchantAndDriverLogin);
         }
       }
     });

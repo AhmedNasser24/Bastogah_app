@@ -3,6 +3,9 @@ import 'package:bastogah_app/core/routing/routes/driver_routes.dart';
 import 'package:bastogah_app/features/global_feature/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../features/global_feature/auth/presentation/views/forget_password.dart';
+import '../../features/global_feature/auth/presentation/views/merchant_and_driver_login_view.dart';
+import '../../features/global_feature/common/presentation/views/driver_help_support_view.dart';
 import 'router_animation.dart';
 import 'routes/merchant_routes.dart';
 
@@ -26,7 +29,31 @@ GoRouter appRouter = GoRouter(
         child: const SplashView(),
       ),
     ),
+    GoRoute(
+      path: RouteName.merchantAndDriverLogin,
+      pageBuilder: (context, state) => buildPageWithSlideTransition(
+        context: context,
+        state: state,
+        child: const MerchantAndDriverLoginView(),
+      ),
+    ),
+    GoRoute(
+      path: RouteName.forgotPassword,
+      pageBuilder: (context, state) => buildPageWithSlideTransition(
+        context: context,
+        state: state,
+        child: const ForgetPasswordView(),
+      ),
+    ),
     ...driverRoutes,
     ...merchantRoutes,
+    GoRoute(
+      path: RouteName.helpSupport,
+      pageBuilder: (context, state) => buildPageWithSlideTransition(
+        context: context,
+        state: state,
+        child: const HelpSupportView(),
+      ),
+    ),
   ],
 );

@@ -72,7 +72,7 @@ class AppInterceptors extends Interceptor {
       if (err.response?.statusCode == StatusCode.refreshFailed) {
         await clearTokens();
         // change route according to role
-        appRouter.go(RouteName.merchantLogin, extra: true);
+        appRouter.go(RouteName.merchantAndDriverLogin, extra: true);
         return;
       }
     }

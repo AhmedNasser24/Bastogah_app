@@ -20,7 +20,7 @@ class RemembedPasswordWidget extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(padding: const EdgeInsets.all(4)),
           onPressed: () {
-            context.go(RouteName.merchantLogin);
+            context.go(RouteName.merchantAndDriverLogin);
           },
           child: Text(
             "auth.login".tr(),

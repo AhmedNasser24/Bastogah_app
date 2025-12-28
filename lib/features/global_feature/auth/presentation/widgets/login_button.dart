@@ -9,8 +9,8 @@ import '../../../../../core/models/login_model.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../manager/merchant_login_cubit/merchant_login_cubit.dart';
 
-class MerchantLoginButton extends StatelessWidget {
-  const MerchantLoginButton({
+class LoginButton extends StatelessWidget {
+  const LoginButton({
     super.key,
     required this.formKey,
     required this.loginModel,

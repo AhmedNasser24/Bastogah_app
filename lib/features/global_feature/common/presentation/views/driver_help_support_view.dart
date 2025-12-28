@@ -9,8 +9,8 @@ import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
 
-class MerchantHelpSupportView extends StatelessWidget {
-  const MerchantHelpSupportView({super.key});
+class HelpSupportView extends StatelessWidget {
+  const HelpSupportView({super.key});
 
   @override
   Widget build(BuildContext context) {

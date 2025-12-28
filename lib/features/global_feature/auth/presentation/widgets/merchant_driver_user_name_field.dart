@@ -6,8 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/models/login_model.dart';
 import '../../../../../core/theme/app_icons.dart';
 
-class MerchantUserNameField extends StatelessWidget {
-  const MerchantUserNameField({super.key, required this.loginModel});
+class MerchantDriverUserNameField extends StatelessWidget {
+  const MerchantDriverUserNameField({super.key, required this.loginModel});
   final LoginModel loginModel;
 
   @override

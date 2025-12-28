@@ -4,14 +4,14 @@ import '../widgets/forget_password_widgets/create_new_password_body.dart';
 import '../widgets/forget_password_widgets/forget_password_body.dart';
 import '../widgets/forget_password_widgets/otp_verification_body.dart';
 
-class MerchantForgetPassword extends StatefulWidget {
-  const MerchantForgetPassword({super.key});
+class ForgetPasswordView extends StatefulWidget {
+  const ForgetPasswordView({super.key});
 
   @override
-  State<MerchantForgetPassword> createState() => _MerchantForgetPasswordState();
+  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
 }
 
-class _MerchantForgetPasswordState extends State<MerchantForgetPassword> {
+class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {

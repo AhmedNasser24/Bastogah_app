@@ -1,5 +1,5 @@
 import 'package:bastogah_app/core/api/end_point.dart';
-import 'package:bastogah_app/features/merchant_feature/auth/data/remote_data_source/merchant_auth.dart';
+import 'package:bastogah_app/features/global_feature/auth/data/remote_data_source/merchant_auth.dart';
 
 import '../../../../../core/api/api_consumer.dart';
 

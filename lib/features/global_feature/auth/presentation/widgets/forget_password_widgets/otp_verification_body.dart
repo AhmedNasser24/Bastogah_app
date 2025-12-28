@@ -1,6 +1,6 @@
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:bastogah_app/core/widgets/back_arrow_button.dart';
-import 'package:bastogah_app/features/merchant_feature/auth/presentation/widgets/forget_password_widgets/confirm_otp_button.dart';
+import 'package:bastogah_app/features/global_feature/auth/presentation/widgets/forget_password_widgets/confirm_otp_button.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

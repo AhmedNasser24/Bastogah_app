@@ -1,4 +1,4 @@
-import 'package:bastogah_app/features/merchant_feature/auth/domain/repos/merchant_auth_repo.dart';
+import 'package:bastogah_app/features/global_feature/auth/domain/repos/merchant_auth_repo.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../../core/errors/failure.dart';

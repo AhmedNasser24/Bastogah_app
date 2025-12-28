@@ -1,6 +1,9 @@
 class RouteName {
   // global routes
   static const String splash = '/';
+  static const String merchantAndDriverLogin = '/login';
+  static const String forgotPassword = '/forgot-password';
+  static const String helpSupport = '/help-support';
 
   // Driver routes
 
@@ -11,12 +14,9 @@ class RouteName {
   static const String driverProfile = '/driver/profile';
   static const String driverNotification = '/driver/notification';
   static const String driverEditProfile = '/driver/edit-profile';
-  static const String driverHelpSupport = '/driver/help-support';
   static const String driverWalletAndEarnings = '/driver/wallet-and-earnings';
 
   // merchant routes
-  static const String merchantLogin = '/merchant/login';
-  static const String merchantForgotPassword = '/merchant/forgot-password';
   static const String merchantHome = '/merchant/home';
   static const String merchantOrderDetails = '/merchant/home/order-details';
   static const String merchantProducts = '/merchant/products';
@@ -32,6 +32,5 @@ class RouteName {
   static const String merchantPrivacy = '/merchant/privacy';
   static const String merchantNotification = '/merchant/notification';
   static const String merchantEditProfile = '/merchant/edit-profile';
-  static const String merchantHelpSupport = '/merchant/help-support';
   static const String merchantAddNewOrder = '/merchant/home/add-new-order';
 }

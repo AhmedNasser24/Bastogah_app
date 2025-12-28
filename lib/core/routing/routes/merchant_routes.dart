@@ -4,8 +4,6 @@ import 'package:bastogah_app/features/merchant_feature/products/presentation/vie
 import 'package:bastogah_app/features/merchant_feature/profile/presentation/views/Merchant_add_sub_categories_view.dart';
 import 'package:bastogah_app/features/merchant_feature/profile/presentation/views/merchant_profile_view.dart';
 import 'package:go_router/go_router.dart';
-import '../../../features/merchant_feature/auth/presentation/views/merchant_forget_password.dart';
-import '../../../features/merchant_feature/auth/presentation/views/merchant_login_view.dart';
 import '../../../features/merchant_feature/home/data/models/order_item_model/order_item_model.dart';
 import '../../../features/merchant_feature/home/presentation/views/merchant_add_new_order_view.dart';
 import '../../../features/merchant_feature/merchant_layout/presentation/views/merchant_layout.dart';
@@ -13,7 +11,6 @@ import '../../../features/merchant_feature/products/presentation/views/merchant_
 import '../../../features/merchant_feature/products/presentation/views/merchant_product_details_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_add_product_category_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_edit_profile_view.dart';
-import '../../../features/merchant_feature/profile/presentation/views/merchant_help_support_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_notification_view.dart';
 import '../../../features/merchant_feature/profile/presentation/views/merchant_privacy_view.dart';
 import '../../../features/merchant_feature/reports/presentation/views/merchant_report_view.dart';
@@ -21,22 +18,6 @@ import '../route_name.dart';
 import '../router_animation.dart';
 
 List<RouteBase> merchantRoutes = [
-  GoRoute(
-    path: RouteName.merchantLogin,
-    pageBuilder: (context, state) => buildPageWithSlideTransition(
-      context: context,
-      state: state,
-      child: const MerchantLoginView(),
-    ),
-  ),
-  GoRoute(
-    path: RouteName.merchantForgotPassword,
-    pageBuilder: (context, state) => buildPageWithSlideTransition(
-      context: context,
-      state: state,
-      child: const MerchantForgetPassword(),
-    ),
-  ),
   ShellRoute(
     pageBuilder: (context, state, child) {
       return buildPageWithSlideTransition(
@@ -156,14 +137,6 @@ List<RouteBase> merchantRoutes = [
       context: context,
       state: state,
       child: const MerchantNotificationView(),
-    ),
-  ),
-  GoRoute(
-    path: RouteName.merchantHelpSupport,
-    pageBuilder: (context, state) => buildPageWithSlideTransition(
-      context: context,
-      state: state,
-      child: const MerchantHelpSupportView(),
     ),
   ),
 ];

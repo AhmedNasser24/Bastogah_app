@@ -1,4 +1,4 @@
-import 'package:bastogah_app/features/merchant_feature/auth/domain/use_cases/merchant_login_use_case.dart';
+import 'package:bastogah_app/features/global_feature/auth/domain/use_cases/merchant_login_use_case.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -69,7 +69,7 @@ class MerchantProfileView extends StatelessWidget {
             imagePath: AppIcons.iconsQuestionProfileIcon,
             title: "merchant.profile.help_support".tr(),
             onTap: () {
-              context.push(RouteName.merchantHelpSupport);
+              context.push(RouteName.helpSupport);
             },
           ),
           const Gap(20),

@@ -1,14 +1,14 @@
-import 'package:bastogah_app/features/merchant_feature/auth/data/remote_data_source/merchant_auth.dart';
-import 'package:bastogah_app/features/merchant_feature/auth/domain/repos/merchant_auth_repo.dart';
-import 'package:bastogah_app/features/merchant_feature/auth/domain/use_cases/merchant_login_use_case.dart';
+import 'package:bastogah_app/features/global_feature/auth/data/remote_data_source/merchant_auth.dart';
+import 'package:bastogah_app/features/global_feature/auth/domain/repos/merchant_auth_repo.dart';
+import 'package:bastogah_app/features/global_feature/auth/domain/use_cases/merchant_login_use_case.dart';
 import 'package:bastogah_app/features/merchant_feature/home/data/repo/home_repo_impl.dart';
 import 'package:bastogah_app/features/merchant_feature/home/domain/repo/home_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../features/merchant_feature/auth/data/remote_data_source/merchant_auth_impl.dart';
-import '../../features/merchant_feature/auth/data/repo/merchant_auth_repo_impl.dart';
-import '../../features/merchant_feature/auth/presentation/manager/merchant_login_cubit/merchant_login_cubit.dart';
+import '../../features/global_feature/auth/data/remote_data_source/merchant_auth_impl.dart';
+import '../../features/global_feature/auth/data/repo/merchant_auth_repo_impl.dart';
+import '../../features/global_feature/auth/presentation/manager/merchant_login_cubit/merchant_login_cubit.dart';
 import '../../features/merchant_feature/home/data/data_source/remote_data_source/merchant_home_remote_data_source.dart';
 import '../../features/merchant_feature/home/data/data_source/remote_data_source/merchant_home_remote_data_source_impl.dart'
     show MerchantHomeRemoteDataSourceImpl;
