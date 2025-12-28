@@ -30,7 +30,7 @@ class LoginButton extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomButton(
-          title: 'merchant.login'.tr(),
+          title: 'auth.login'.tr(),
           isLoading: state is MerchantLoginLoading,
           onTap: () {
             if (formKey.currentState!.validate()) {

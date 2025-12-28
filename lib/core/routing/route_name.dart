@@ -2,12 +2,13 @@ class RouteName {
   // global routes
   static const String splash = '/';
   static const String merchantAndDriverLogin = '/login';
+  static const String userLogin = '/user/login';
+
   static const String forgotPassword = '/forgot-password';
   static const String helpSupport = '/help-support';
 
   // Driver routes
 
-  static const String driverLogin = '/driver/login';
   static const String driverHome = '/driver/home';
   static const String driverOrderDetails = '/driver/home/order-details';
   static const String driverReports = '/driver/reports';

@@ -1,14 +1,15 @@
+import 'package:bastogah_app/core/widgets/custom_text_form_field.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../core/theme/app_font_style.dart';
-import '../../../../../../core/theme/app_icons.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../../core/models/login_model.dart';
+import '../../../../../core/theme/app_icons.dart';
 
-class ForgetPasswordPhoneField extends StatelessWidget {
-  const ForgetPasswordPhoneField({super.key});
+class UserLoginPhoneField extends StatelessWidget {
+  const UserLoginPhoneField({super.key, required this.loginModel});
+  final LoginModel loginModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,15 @@ class ForgetPasswordPhoneField extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: SvgPicture.asset(AppIcons.iconsAuthPhone16GreyIcon),
       ),
-      suffixIcon: SizedBox(
-        width: 45,
-        child: Center(
-          child: Text("964+", style: AppFontStyle.regular14black4B(context)),
-        ),
-      ),
+      onChanged: (value) {
+        loginModel.userPhone = value;
+      },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'validation.required_field'.tr();
+        }
+        return null;
+      },
     );
   }
 }

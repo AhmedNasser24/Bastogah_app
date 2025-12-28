@@ -18,6 +18,8 @@ class AppIcons {
 
   static const String iconsAddImageOrange = "assets/icons/add_image_orange.svg";
 
+  static const String iconsAuthPhone16GreyIcon = "assets/icons/auth_phone_16_grey_icon.svg";
+
   static const String iconsBackArrowIcon = "assets/icons/back_arrow_icon.svg";
 
   static const String iconsCalenderIcon = "assets/icons/calender_icon.svg";
@@ -41,8 +43,6 @@ class AppIcons {
   static const String iconsEmptyImage = "assets/icons/empty_image.svg";
 
   static const String iconsFilterProfileIcon = "assets/icons/filter_profile_icon.svg";
-
-  static const String iconsForgetPasswordPhoneIcon = "assets/icons/forget_password_phone_icon.svg";
 
   static const String iconsForwardIcon = "assets/icons/forward_icon.svg";
 

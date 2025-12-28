@@ -7,14 +7,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/theme/app_icons.dart';
 
-class MerchantPasswordField extends StatefulWidget {
-  const MerchantPasswordField({super.key, required this.loginModel});
+class LoginPasswordField extends StatefulWidget {
+  const LoginPasswordField({super.key, required this.loginModel});
   final LoginModel loginModel;
   @override
-  State<MerchantPasswordField> createState() => _MerchantPasswordFieldState();
+  State<LoginPasswordField> createState() => _LoginPasswordFieldState();
 }
 
-class _MerchantPasswordFieldState extends State<MerchantPasswordField> {
+class _LoginPasswordFieldState extends State<LoginPasswordField> {
   bool obscureText = true;
 
   @override

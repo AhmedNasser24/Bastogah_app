@@ -21,7 +21,7 @@ class NeedHelpButton extends StatelessWidget {
       color: Colors.transparent,
       suffixIcon: SvgPicture.asset(AppIcons.iconsNeedHelpIcon),
       onTap: () {
-        context.go(RouteName.helpSupport);
+        context.push(RouteName.helpSupport);
       },
     );
   }

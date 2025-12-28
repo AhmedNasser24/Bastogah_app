@@ -13,7 +13,7 @@ class ForgetPasswordTextButton extends StatelessWidget {
       alignment: AlignmentDirectional.centerEnd,
       child: TextButton(
         onPressed: () {
-          context.go(RouteName.forgotPassword);
+          context.push(RouteName.forgotPassword);
         },
         child: Text(
           'auth.forget_password'.tr(),

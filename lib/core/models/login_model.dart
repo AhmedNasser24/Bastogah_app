@@ -4,7 +4,7 @@ import 'package:bastogah_app/core/enums/roles_enum.dart';
 class LoginModel {
   String? userId, accessToken, refreshToken;
   RolesEnum? role;
-  String? username, password;
+  String? username, password, userPhone;
   LoginModel({
     this.userId,
     this.accessToken,

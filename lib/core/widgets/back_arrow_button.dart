@@ -14,7 +14,7 @@ class BackArrowButton extends StatelessWidget {
       onTap: () {
         if (onTap != null) {
           onTap!();
-        } else {
+        } else if (GoRouter.of(context).canPop()) {
           context.pop();
         }
       },

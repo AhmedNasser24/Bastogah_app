@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/global_feature/auth/presentation/views/forget_password.dart';
 import '../../features/global_feature/auth/presentation/views/merchant_and_driver_login_view.dart';
+import '../../features/global_feature/auth/presentation/views/user_login_view.dart';
 import '../../features/global_feature/common/presentation/views/driver_help_support_view.dart';
 import 'router_animation.dart';
 import 'routes/merchant_routes.dart';
@@ -19,7 +20,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.driverHome,
+  initialLocation: RouteName.userLogin,
   routes: [
     GoRoute(
       path: RouteName.splash,
@@ -35,6 +36,14 @@ GoRouter appRouter = GoRouter(
         context: context,
         state: state,
         child: const MerchantAndDriverLoginView(),
+      ),
+    ),
+    GoRoute(
+      path: RouteName.userLogin,
+      pageBuilder: (context, state) => buildPageWithSlideTransition(
+        context: context,
+        state: state,
+        child: const UserLoginView(),
       ),
     ),
     GoRoute(

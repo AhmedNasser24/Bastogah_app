@@ -36,13 +36,14 @@
     "passwords_do_not_match": "كلمتا المرور غير متطابقتان",
     "two_factor_authentication": "التحقق بخطوتين",
     "logout": "تسجيل الخروج",
-    "logout_confirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
+    "logout_confirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "do_not_have_account": "ليس لديك حساب؟",
+    "sign_up": "إنشاء حساب"
   },
 
   "merchant": {
     "welcome": "مرحبًا بك",
     "hello": "أهلاً بك",
-    "login": "دخول للحساب",
     "username_hint": "اسم المستخدم",
     "password_hint": "كلمة المرور",
     "forget_password": "نسيت كلمة المرور؟",
