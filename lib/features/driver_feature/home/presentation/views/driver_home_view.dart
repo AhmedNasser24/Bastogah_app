@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../merchant_feature/home/presentation/widgets/home_widgets/current_dues.dart';
 import '../widgets/home_widgets/driver_filters_home.dart';
+import '../widgets/home_widgets/driver_order_items_list.dart';
 
 class DriverHomeView extends StatefulWidget {
   const DriverHomeView({super.key});
@@ -55,8 +56,8 @@ class _DriverHomeViewState extends State<DriverHomeView> {
                 SliverToBoxAdapter(child: CustomSearchField()),
                 SliverGap(12),
                 SliverToBoxAdapter(child: DriverFiltersHome()),
-                // SliverGap(12),
-                // MerchantOrderItems(),
+                SliverGap(12),
+                DriverOrderItemsList(),
               ],
             ),
           ),

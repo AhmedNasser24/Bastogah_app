@@ -10,6 +10,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/dependency_injection/get_it_setup.dart';
+import '../../../../../core/widgets/custom_refresh_indicator.dart';
 import '../widgets/home_widgets/current_dues.dart';
 import '../widgets/home_widgets/merchant_filters_home.dart';
 import '../widgets/home_widgets/merchant_order_items.dart';
@@ -53,7 +54,7 @@ class _MerchantHomeViewState extends State<MerchantHomeView> {
           children: [
             MerchantAppBar(title: "merchant.hello".tr()),
             Expanded(
-              child: RefreshIndicator(
+              child: CustomRefreshIndicator(
                 onRefresh: () async {
                   merchantGetOrdersCubit.refresh();
                 },
