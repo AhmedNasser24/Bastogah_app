@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/enums/driver_filter_enum.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
@@ -7,31 +8,47 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/widgets/order_date_and_time_section.dart';
+import '../widgets/order_details_widgets/driver_accept_order.dart';
 import '../widgets/order_details_widgets/driver_order_details_app_bar.dart';
+import '../widgets/order_details_widgets/driver_refused_order_button.dart';
 
 class DriverOrderDetailsView extends StatelessWidget {
   const DriverOrderDetailsView({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    DriverFilterEnum driverFilterStatus = DriverFilterEnum.inDelivery;
+    return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
-              DriverOrderDetailsAppBar(orderId: "#65488465416", status: 2),
+              DriverOrderDetailsAppBar(
+                orderId: "65488465416 # ",
+                status: driverFilterStatus.status,
+              ),
               Expanded(
                 child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // crossAxisAlignment: CrossAxisAlignment.start,
                     spacing: 30,
                     children: [
-                      OrderPriceDetailsSection(),
-                      StoreSection(),
-                      OrderItemsSection(),
-                      Gap(20),
+                      const OrderDateAndTimeSection(),
+                      const OrderPriceDetailsSection(),
+                      const StoreSection(),
+                      const OrderItemsSection(),
+                      const Gap(20),
+                      switch (driverFilterStatus) {
+                        DriverFilterEnum.pending =>
+                          const DriverAcceptOrderButton(),
+                        DriverFilterEnum.inDelivery =>
+                          const DriverRefusedOrderButton(),
+                        (_) => const SizedBox.shrink(),
+                      },
+
+                      const Gap(20),
                     ],
                   ),
                 ),
@@ -77,6 +94,7 @@ class StoreSection extends StatelessWidget {
                 ],
               ),
             ),
+            const Gap(8),
             SvgPicture.asset(AppIcons.iconsDriverOrderDetailsGreenPhone),
           ],
         ),

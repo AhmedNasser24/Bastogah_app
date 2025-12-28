@@ -162,7 +162,9 @@
      "currency" : "دينار عراقي",
      "last_process" : "اخر العمليات",
      "location" : "المنطقة",
-     "member_since" : "عضو منذ"
+     "member_since" : "عضو منذ",
+     "accept_order" : "قبول الطلب",
+     "cancel_order" : " إلغاء الطلب"
   }
 
 }
