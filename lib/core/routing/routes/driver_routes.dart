@@ -1,5 +1,5 @@
+import 'package:bastogah_app/features/driver_feature/home/presentation/views/driver_home_view.dart';
 import 'package:bastogah_app/features/driver_feature/profile/presentation/views/driver_profile_view.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../features/driver_feature/driver_layout/presentation/views/driver_layout.dart';
 import '../../../features/driver_feature/home/presentation/views/driver_order_details_view.dart';
@@ -27,7 +27,7 @@ List<RouteBase> driverRoutes = [
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
           state: state,
-          child: const Center(child: Text('Driver Profile View')),
+          child: const DriverHomeView(),
         ),
       ),
 
