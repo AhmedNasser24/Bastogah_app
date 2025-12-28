@@ -18,7 +18,11 @@ class AppIcons {
 
   static const String iconsAddImageOrange = "assets/icons/add_image_orange.svg";
 
+  static const String iconsAuthCity20Grey = "assets/icons/auth_city_20_grey.svg";
+
   static const String iconsAuthPhone16GreyIcon = "assets/icons/auth_phone_16_grey_icon.svg";
+
+  static const String iconsAuthPin20Grey = "assets/icons/auth_pin_20_grey.svg";
 
   static const String iconsBackArrowIcon = "assets/icons/back_arrow_icon.svg";
 

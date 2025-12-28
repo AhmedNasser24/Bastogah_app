@@ -94,8 +94,6 @@ class CustomButtonToShowOverlayDialogState
               child: Material(
                 color: Colors.transparent,
                 child: Container(
-                  width: 300,
-                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
@@ -104,9 +102,12 @@ class CustomButtonToShowOverlayDialogState
                     ],
                   ),
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxHeight: 300),
+                    constraints: BoxConstraints(
+                      maxHeight: 300,
+                      maxWidth: renderBox.size.width,
+                    ),
                     child: ListView(
-                      padding: EdgeInsets.zero,
+                      padding: const EdgeInsets.all(8.0),
                       children: widget.widgetListInDialog!.asMap().entries.map((
                         entry,
                       ) {

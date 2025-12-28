@@ -4,13 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../core/models/login_model.dart';
-import '../../../../../core/theme/app_font_style.dart';
-import '../../../../../core/theme/app_icons.dart';
+import '../../../../../../core/theme/app_font_style.dart';
+import '../../../../../../core/theme/app_icons.dart';
 
-class UserLoginPhoneField extends StatelessWidget {
-  const UserLoginPhoneField({super.key, required this.loginModel});
-  final LoginModel loginModel;
+class RegisterPhoneField extends StatelessWidget {
+  const RegisterPhoneField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +30,7 @@ class UserLoginPhoneField extends StatelessWidget {
           ),
         ),
       ),
-      onChanged: (value) {
-        loginModel.userPhone = value;
-      },
+      onChanged: (value) {},
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'validation.required_field'.tr();

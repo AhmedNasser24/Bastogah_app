@@ -1,35 +1,37 @@
 import 'dart:developer' as dev;
 import 'dart:math';
 
+import 'package:bastogah_app/core/theme/app_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../../core/dialog/custom_button_to_show_overlay_dialog.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_font_style.dart';
 import '../../../../../../core/widgets/custom_text_form_field.dart';
 
-class GovernorateField extends StatefulWidget {
-  const GovernorateField({super.key});
+class RegisterCityField extends StatefulWidget {
+  const RegisterCityField({super.key});
 
   @override
-  State<GovernorateField> createState() => _GovernorateFieldState();
+  State<RegisterCityField> createState() => _RegisterCityFieldState();
 }
 
-class _GovernorateFieldState extends State<GovernorateField> {
-  bool showGovernorateDialog = false;
-  final GlobalKey _governorateButtonKey = GlobalKey();
+class _RegisterCityFieldState extends State<RegisterCityField> {
+  bool showDialog = false;
+  final GlobalKey _buttonKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return CustomButtonToShowOverlayDialog(
-      showDialog: showGovernorateDialog,
-      buttonKey: _governorateButtonKey,
+      showDialog: showDialog,
+      buttonKey: _buttonKey,
       widgetListInDialog: [
         for (int i = 0; i < 9; i++)
           InkWell(
             onTap: () {
               setState(() {
-                showGovernorateDialog = false;
+                showDialog = false;
               });
             },
             child: Padding(
@@ -43,16 +45,19 @@ class _GovernorateFieldState extends State<GovernorateField> {
           ),
       ],
       mainWidget: CustomTextFormField(
-        key: _governorateButtonKey,
+        key: _buttonKey,
         onTap: () {
           setState(() {
-            showGovernorateDialog = true;
+            showDialog = true;
           });
-          dev.log('showGovernorateDialog: $showGovernorateDialog');
+          dev.log('showCityDialog: $showDialog');
         },
-        title: 'merchant.governorate'.tr(),
-        hintText: 'merchant.select_governorate'.tr(),
         readOnly: true,
+        hintText: 'merchant.select_city'.tr(),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SvgPicture.asset(AppIcons.iconsAuthCity20Grey),
+        ),
         suffixIcon: Transform.rotate(
           angle: pi / 2,
           child: const Icon(
