@@ -41,7 +41,8 @@ class CustomButton extends StatelessWidget {
         splashColor: Colors.transparent,
         hoverColor: Colors.transparent,
         borderRadius: BorderRadius.circular(borderRadius),
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
           padding: padding,
           width: width,
           constraints: BoxConstraints(maxWidth: maxWidth),

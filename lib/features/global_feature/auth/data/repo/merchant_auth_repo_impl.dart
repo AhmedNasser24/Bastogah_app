@@ -46,7 +46,7 @@ class MerchantAuthRepoImpl extends MerchantAuthRepo {
     );
     await SharedPreferenceSingleton.setString(
       ApiKeys.roles,
-      loginModel.role!.value,
+      loginModel.role!.title,
     );
   }
 }

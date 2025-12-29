@@ -9,10 +9,17 @@
   "month" : "الشهر",
   "year" : "السنة",
   "store" : "المتجر",
+  "select_role" : "هل أنت؟",
+  "confirm": "تأكيد",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number": "رقم غير صالح",
     "invalid_phone_number": "رقم هاتف غير صالح"
+  },
+  "role" : {
+    "merchant": "تاجر",
+    "customer": "زبون",
+    "driver": "سائق"
   },
   "auth": {
     "forget_password": "نسيت كلمة المرور؟",

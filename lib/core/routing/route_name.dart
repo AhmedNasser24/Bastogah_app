@@ -1,6 +1,7 @@
 class RouteName {
   // global routes
   static const String splash = '/';
+  static const String role = '/role';
   static const String merchantAndDriverLogin = '/login';
   static const String userLogin = '/user/login';
   static const String userRegister = '/user/register';
