@@ -51,7 +51,9 @@
     "user_login_subtitle": "سجل الدخول إلى حسابك ابدأ بطلب منتجاتنا.",
     "user_register_title": "إنشاء حساب جديد",
     "already_have_account": "هل لديك حساب؟",
-    "user_register_terms_and_conditions": "بإنشائك حسابًا، فإنك توافق على الشروط والأحكام وسياسة الخصوصية الخاصة بنا."
+    "user_register_terms_and_conditions": "بإنشائك حسابًا، فإنك توافق على الشروط والأحكام وسياسة الخصوصية الخاصة بنا.",
+    "password_changed_successfully": "تم تغيير كلمة المرور بنجاح" ,
+    "you_are_able_to_login_now": "يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة الخاصة بك."
   },
 
   "merchant": {

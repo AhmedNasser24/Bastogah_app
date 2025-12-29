@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/forget_password_widgets/changed_password_successfully_body.dart';
 import '../widgets/forget_password_widgets/create_new_password_body.dart';
 import '../widgets/forget_password_widgets/forget_password_body.dart';
 import '../widgets/forget_password_widgets/otp_verification_body.dart';
@@ -21,6 +22,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
+            ChangedPasswordSuccessfullyBody(pageController: _pageController),
             ForgetPasswordBody(pageController: _pageController),
             OtpVerificationBody(pageController: _pageController),
             CreateNewPasswordBody(pageController: _pageController),
