@@ -35,6 +35,7 @@ class CustomTextFormField extends StatelessWidget {
     this.titleStyle,
     this.textDirection,
     this.textAlign = TextAlign.start,
+    this.titlePrefixIcon,
   });
   final String? hintText;
   final TextInputType? keyboardType;
@@ -61,6 +62,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffix;
   final TextDirection? textDirection;
   final TextAlign textAlign;
+  final Widget? titlePrefixIcon;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -68,9 +70,14 @@ class CustomTextFormField extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (title != null) ...{
-          Text(
-            title!,
-            style: titleStyle ?? AppFontStyle.semibold14black4B(context),
+          Row(
+            children: [
+              if (titlePrefixIcon != null) ...{titlePrefixIcon!, const Gap(4)},
+              Text(
+                title!,
+                style: titleStyle ?? AppFontStyle.semibold14black4B(context),
+              ),
+            ],
           ),
           const Gap(6),
         },

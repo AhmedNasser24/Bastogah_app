@@ -88,6 +88,8 @@ class AppIcons {
 
   static const String iconsNotificationProfileIcon = "assets/icons/notification_profile_icon.svg";
 
+  static const String iconsPerson20Grey = "assets/icons/person_20_grey.svg";
+
   static const String iconsPerson24Icon = "assets/icons/person24_icon.svg";
 
   static const String iconsPersonIcon = "assets/icons/person_icon.svg";
@@ -105,6 +107,10 @@ class AppIcons {
   static const String iconsPrivacyProfileIcon = "assets/icons/privacy_profile_icon.svg";
 
   static const String iconsProfileAdditionIcon = "assets/icons/profile_addition_icon.svg";
+
+  static const String iconsProfileCoupons = "assets/icons/profile_coupons.svg";
+
+  static const String iconsProfileRating = "assets/icons/profile_rating.svg";
 
   static const String iconsQuestionProfileIcon = "assets/icons/question_profile_icon.svg";
 
@@ -129,6 +135,8 @@ class AppIcons {
   static const String iconsUserCart = "assets/icons/user_cart.svg";
 
   static const String iconsUserMyOrderRepeat = "assets/icons/user_my_order_repeat.svg";
+
+  static const String iconsUserProfilePhone = "assets/icons/user_profile_phone.svg";
 
   static const String iconsUsernameIcon = "assets/icons/username_icon.svg";
 

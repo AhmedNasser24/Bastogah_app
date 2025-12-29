@@ -21,5 +21,7 @@ class AppImages {
   static const String imagesPizzaImage = "assets/images/pizza_image.png";
 
   static const String imagesResturantLogo = "assets/images/resturant_logo.png";
+
+  static const String imagesUserProfileImage = "assets/images/user_profile_image.png";
 }
 

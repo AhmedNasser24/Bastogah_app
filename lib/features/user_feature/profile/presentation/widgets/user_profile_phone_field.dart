@@ -6,15 +6,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
-class DriverProfilePhoneField extends StatefulWidget {
-  const DriverProfilePhoneField({super.key});
+class UserProfilePhoneField extends StatefulWidget {
+  const UserProfilePhoneField({super.key});
 
   @override
-  State<DriverProfilePhoneField> createState() =>
-      _DriverProfilePhoneFieldState();
+  State<UserProfilePhoneField> createState() => _UserProfilePhoneFieldState();
 }
 
-class _DriverProfilePhoneFieldState extends State<DriverProfilePhoneField> {
+class _UserProfilePhoneFieldState extends State<UserProfilePhoneField> {
   final TextEditingController controller = TextEditingController(
     text: "+962 7 1234 5678",
   );

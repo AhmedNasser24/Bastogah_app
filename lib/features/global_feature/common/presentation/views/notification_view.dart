@@ -6,8 +6,8 @@ import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
 import '../../../../../core/widgets/notification_item.dart';
 
-class DriverNotificationView extends StatelessWidget {
-  const DriverNotificationView({super.key});
+class NotificationView extends StatelessWidget {
+  const NotificationView({super.key});
   final String title = "طلب جديد متاح";
   final String subtitle =
       "لقد تم طلب شاورما دبل لحم مع بطاطا مقلية من قبل العميل محمد احمد في منطقتك";

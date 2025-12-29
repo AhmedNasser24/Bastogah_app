@@ -9,10 +9,10 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/logout_button.dart';
-import '../widgets/driver_profile_info_section.dart';
+import '../widgets/user_profile_info_section.dart' show UserProfileInfoSection;
 
-class DriverProfileView extends StatelessWidget {
-  const DriverProfileView({super.key});
+class UserProfileView extends StatelessWidget {
+  const UserProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,26 +22,25 @@ class DriverProfileView extends StatelessWidget {
       child: Column(
         children: [
           const Gap(20),
-          const DriverProfileInfoSection(),
+          const UserProfileInfoSection(),
           const Gap(20),
 
           profileTile(
             context,
             imagePath: AppIcons.iconsPersonProfileIcon,
-            title: "merchant.profile.edit_profile".tr(),
+            title: "merchant.profile.profile_info".tr(),
             onTap: () {
-              context.push(RouteName.driverEditProfile);
+              context.push(RouteName.userEditProfile);
             },
           ),
           profileTile(
             context,
-            imagePath: AppIcons.iconsReportTransactionExpense,
-            title: "driver.wallet_and_earnings".tr(),
+            imagePath: AppIcons.iconsPin24Icon,
+            title: "user.saved_addresses".tr(),
             onTap: () {
-              context.push(RouteName.driverWalletAndEarnings);
+              // context.push(RouteName.merchantEditProfile);
             },
           ),
-
           profileTile(
             context,
             imagePath: AppIcons.iconsNotificationProfileIcon,
@@ -50,13 +49,36 @@ class DriverProfileView extends StatelessWidget {
               context.push(RouteName.notification);
             },
           ),
-
+          profileTile(
+            context,
+            imagePath: AppIcons.iconsProfileRating,
+            title: "user.ratings".tr(),
+            onTap: () {
+              // context.push(RouteName.notification);
+            },
+          ),
+          profileTile(
+            context,
+            imagePath: AppIcons.iconsProfileCoupons,
+            title: "user.coupons".tr(),
+            onTap: () {
+              // context.push(RouteName.notification);
+            },
+          ),
+          profileTile(
+            context,
+            imagePath: AppIcons.iconsPrivacyProfileIcon,
+            title: "merchant.profile.privacy".tr(),
+            onTap: () {
+              context.push(RouteName.privacy);
+            },
+          ),
           profileTile(
             context,
             imagePath: AppIcons.iconsQuestionProfileIcon,
             title: "merchant.profile.help_support".tr(),
             onTap: () {
-              context.push(RouteName.driverEditProfile);
+              context.push(RouteName.helpSupport);
             },
           ),
           const Gap(20),

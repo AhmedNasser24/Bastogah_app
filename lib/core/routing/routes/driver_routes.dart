@@ -3,7 +3,6 @@ import 'package:bastogah_app/features/driver_feature/profile/presentation/views/
 import 'package:go_router/go_router.dart';
 import '../../../features/driver_feature/driver_layout/presentation/views/driver_layout.dart';
 import '../../../features/driver_feature/home/presentation/views/driver_order_details_view.dart';
-import '../../../features/driver_feature/profile/presentation/views/driver_notification_view.dart';
 import '../../../features/driver_feature/profile/presentation/views/driver_edit_profile_view.dart';
 import '../../../features/driver_feature/profile/presentation/views/driver_wallet_and_earnings_view.dart';
 import '../../../features/driver_feature/reports/presentation/views/driver_report_view.dart';
@@ -67,14 +66,7 @@ List<RouteBase> driverRoutes = [
       child: const DriverEditProfileView(),
     ),
   ),
-  GoRoute(
-    path: RouteName.driverNotification,
-    pageBuilder: (context, state) => buildPageWithSlideTransition(
-      context: context,
-      state: state,
-      child: const DriverNotificationView(),
-    ),
-  ),
+
   GoRoute(
     path: RouteName.driverWalletAndEarnings,
     pageBuilder: (context, state) => buildPageWithSlideTransition(

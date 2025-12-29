@@ -14,7 +14,7 @@ class RegisterFullNameField extends StatelessWidget {
       hintText: "auth.full_name".tr(),
       prefixIcon: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SvgPicture.asset(AppIcons.iconsUsernameIcon),
+        child: SvgPicture.asset(AppIcons.iconsPerson20Grey),
       ),
       onChanged: (value) {},
       validator: (value) {

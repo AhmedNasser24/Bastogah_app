@@ -62,7 +62,7 @@ class _RegisterCityFieldState extends State<RegisterCityField> {
           angle: pi / 2,
           child: const Icon(
             Icons.arrow_back_ios_new_rounded,
-            size: 20,
+            size: 16,
             color: AppColors.grey,
           ),
         ),

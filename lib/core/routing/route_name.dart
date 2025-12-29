@@ -7,6 +7,7 @@ class RouteName {
   static const String userRegister = '/user/register';
   static const String forgotPassword = '/forgot-password';
   static const String helpSupport = '/help-support';
+  static const String notification = '/merchant/notification';
 
   // User routes
   static const String userHome = '/user/home';
@@ -14,14 +15,13 @@ class RouteName {
   static const String userDiscounts = '/user/discounts';
   static const String userFavorites = '/user/favorites';
   static const String userProfile = '/user/profile';
-
+  static const String userEditProfile = '/user/edit-profile';
   // Driver routes
 
   static const String driverHome = '/driver/home';
   static const String driverOrderDetails = '/driver/home/order-details';
   static const String driverReports = '/driver/reports';
   static const String driverProfile = '/driver/profile';
-  static const String driverNotification = '/driver/notification';
   static const String driverEditProfile = '/driver/edit-profile';
   static const String driverWalletAndEarnings = '/driver/wallet-and-earnings';
 
@@ -38,8 +38,7 @@ class RouteName {
       '/merchant/profile/add-subcategories';
   static const String merchantAddProductCategory =
       '/merchant/profile/add-product-category';
-  static const String merchantPrivacy = '/merchant/privacy';
-  static const String merchantNotification = '/merchant/notification';
+  static const String privacy = '/privacy';
   static const String merchantEditProfile = '/merchant/edit-profile';
   static const String merchantAddNewOrder = '/merchant/home/add-new-order';
 }

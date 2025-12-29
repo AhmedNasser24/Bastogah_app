@@ -11,17 +11,17 @@ import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_font_style.dart';
 import '../../../../../../core/widgets/custom_text_form_field.dart';
 
-class RegisterGovernorateField extends StatefulWidget {
-  const RegisterGovernorateField({super.key});
+class UserProfileCityField extends StatefulWidget {
+  const UserProfileCityField({super.key});
 
   @override
-  State<RegisterGovernorateField> createState() =>
-      _RegisterGovernorateFieldState();
+  State<UserProfileCityField> createState() => _UserProfileCityFieldState();
 }
 
-class _RegisterGovernorateFieldState extends State<RegisterGovernorateField> {
+class _UserProfileCityFieldState extends State<UserProfileCityField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
+  TextEditingController controller = TextEditingController(text: "حارثية");
   @override
   Widget build(BuildContext context) {
     return CustomButtonToShowOverlayDialog(
@@ -47,6 +47,7 @@ class _RegisterGovernorateFieldState extends State<RegisterGovernorateField> {
       ],
       mainWidget: CustomTextFormField(
         key: _buttonKey,
+        controller: controller,
         onTap: () {
           setState(() {
             showDialog = true;
@@ -54,11 +55,10 @@ class _RegisterGovernorateFieldState extends State<RegisterGovernorateField> {
           dev.log('showGovernerateDialog: $showDialog');
         },
         readOnly: true,
-        hintText: 'merchant.select_governorate'.tr(),
-        prefixIcon: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SvgPicture.asset(AppIcons.iconsAuthPin20Grey),
-        ),
+        title: "merchant.city".tr(),
+        titleStyle: AppFontStyle.regular16grey(context),
+        hintText: 'merchant.select_city'.tr(),
+        titlePrefixIcon: SvgPicture.asset(AppIcons.iconsAuthCity20Grey),
         suffixIcon: Transform.rotate(
           angle: pi / 2,
           child: const Icon(

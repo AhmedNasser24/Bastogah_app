@@ -34,7 +34,7 @@ class UserAppBar extends StatelessWidget {
             NotificationIconButton(
               isThereNewNotification: true,
               onTap: () {
-                context.push(RouteName.merchantNotification);
+                context.push(RouteName.notification);
               },
             ),
           ],

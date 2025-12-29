@@ -8,8 +8,8 @@ import 'package:gap/gap.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
 
-class MerchantPrivacyView extends StatelessWidget {
-  const MerchantPrivacyView({super.key});
+class PrivacyView extends StatelessWidget {
+  const PrivacyView({super.key});
 
   @override
   Widget build(BuildContext context) {

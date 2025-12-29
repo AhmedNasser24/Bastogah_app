@@ -53,7 +53,7 @@ class MerchantProfileView extends StatelessWidget {
             imagePath: AppIcons.iconsNotificationProfileIcon,
             title: "merchant.profile.notification".tr(),
             onTap: () {
-              context.push(RouteName.merchantNotification);
+              context.push(RouteName.notification);
             },
           ),
           profileTile(
@@ -61,7 +61,7 @@ class MerchantProfileView extends StatelessWidget {
             imagePath: AppIcons.iconsPrivacyProfileIcon,
             title: "merchant.profile.privacy".tr(),
             onTap: () {
-              context.push(RouteName.merchantPrivacy);
+              context.push(RouteName.privacy);
             },
           ),
           profileTile(

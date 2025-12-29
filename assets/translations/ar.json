@@ -204,7 +204,10 @@
     "buy_again" : "اطلب مجددأً",
     "total_amount" : "المجموع: {} د.ع",
     "received" : "تم الاستلام",
-    "not_received_yet" : "لم يتم الاستلام بعد"
+    "not_received_yet" : "لم يتم الاستلام بعد",
+    "ratings" : "التقييمات",
+    "coupons" : "الكوبونات",
+    "saved_addresses" : "العناوين المحفوظة"
   }
 
 
