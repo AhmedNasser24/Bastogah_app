@@ -170,6 +170,11 @@ class AppFontStyle {
     fontSize: responsiveSize(context, 16),
     fontWeight: FontWeight.w600,
   );
+  static TextStyle semibold20Primary(BuildContext context) => TextStyle(
+    color: AppColors.primary,
+    fontSize: responsiveSize(context, 20),
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle semibold16White(BuildContext context) => TextStyle(
     color: AppColors.white,
     fontSize: responsiveSize(context, 16),

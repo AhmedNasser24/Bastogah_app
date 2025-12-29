@@ -194,6 +194,10 @@
      "deliver_to" : "التوصيل إلى",
      "customer_phone" : "هاتف الزبون",
      "order_value" : "قيمة الطلب"
+  } ,
+
+  "user" : {
+    "my_orders" : "طلباتي"
   }
 
 }

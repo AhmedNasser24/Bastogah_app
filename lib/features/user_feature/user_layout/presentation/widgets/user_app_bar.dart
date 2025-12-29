@@ -1,10 +1,12 @@
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
+import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/notification_icon_button.dart';
 
 class UserAppBar extends StatelessWidget {
@@ -27,6 +29,8 @@ class UserAppBar extends StatelessWidget {
               overflow: TextOverflow.fade,
             ),
             const Spacer(),
+            SvgPicture.asset(AppIcons.iconsUserCart, height: 20, width: 20),
+            const Gap(6),
             NotificationIconButton(
               isThereNewNotification: true,
               onTap: () {

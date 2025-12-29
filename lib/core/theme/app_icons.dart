@@ -126,6 +126,8 @@ class AppIcons {
 
   static const String iconsTimeOrangeIcon = "assets/icons/time_orange_icon.svg";
 
+  static const String iconsUserCart = "assets/icons/user_cart.svg";
+
   static const String iconsUsernameIcon = "assets/icons/username_icon.svg";
 
   static const String iconsWalletContainer = "assets/icons/wallet_container.svg";
