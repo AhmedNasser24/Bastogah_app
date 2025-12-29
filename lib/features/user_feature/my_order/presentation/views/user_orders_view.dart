@@ -1,5 +1,5 @@
+import 'package:bastogah_app/features/user_feature/my_order/presentation/widgets/list_of_my_order_item.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 import '../widgets/user_order_app_bar.dart';
 
@@ -11,12 +11,7 @@ class UserOrdersView extends StatelessWidget {
     return const Column(
       children: [
         UserOrdersAppBar(),
-        SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(children: [Gap(20), Text('User Orders View')]),
-          ),
-        ),
+        Expanded(child: ListOfMyOrderItem()),
       ],
     );
   }

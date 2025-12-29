@@ -197,7 +197,15 @@
   } ,
 
   "user" : {
-    "my_orders" : "طلباتي"
+    "my_orders" : "طلباتي",
+    "amount" : "{} د.ع",
+    "order_id" : "رقم الطلب: {}" ,
+    "no_of_orders" : "{} منتجات",
+    "buy_again" : "اطلب مجددأً",
+    "total_amount" : "المجموع: {} د.ع",
+    "received" : "تم الاستلام",
+    "not_received_yet" : "لم يتم الاستلام بعد"
   }
+
 
 }
