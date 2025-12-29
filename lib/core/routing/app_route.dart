@@ -1,5 +1,6 @@
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/routing/routes/driver_routes.dart';
+import 'package:bastogah_app/core/routing/routes/user_routes.dart';
 import 'package:bastogah_app/features/global_feature/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -22,7 +23,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.role,
+  initialLocation: RouteName.userHome,
   routes: [
     GoRoute(
       path: RouteName.splash,
@@ -74,6 +75,7 @@ GoRouter appRouter = GoRouter(
     ),
     ...driverRoutes,
     ...merchantRoutes,
+    ...userRoutes,
     GoRoute(
       path: RouteName.helpSupport,
       pageBuilder: (context, state) => buildPageWithSlideTransition(

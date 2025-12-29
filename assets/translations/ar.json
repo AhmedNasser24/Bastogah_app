@@ -55,7 +55,15 @@
     "password_changed_successfully": "تم تغيير كلمة المرور بنجاح" ,
     "you_are_able_to_login_now": "يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة الخاصة بك."
   },
-
+  "bottom_nav_bar": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "reports": "التقارير",
+    "my_account": "حسابي",
+    "my_orders": "طلباتي",
+    "favorites": "المفضلة",
+    "discounts": "الخصومات"
+  },
   "merchant": {
     "welcome": "مرحبًا بك",
     "hello": "أهلاً بك",

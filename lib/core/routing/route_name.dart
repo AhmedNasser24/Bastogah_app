@@ -8,6 +8,13 @@ class RouteName {
   static const String forgotPassword = '/forgot-password';
   static const String helpSupport = '/help-support';
 
+  // User routes
+  static const String userHome = '/user/home';
+  static const String userOrders = '/user/orders';
+  static const String userDiscounts = '/user/discounts';
+  static const String userFavorites = '/user/favorites';
+  static const String userProfile = '/user/profile';
+
   // Driver routes
 
   static const String driverHome = '/driver/home';

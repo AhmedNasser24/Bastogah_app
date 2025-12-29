@@ -10,6 +10,12 @@ class AppIcons {
 
   static const String iconsActiveReportIcon = "assets/icons/active_report_icon.svg";
 
+  static const String iconsActiveUserDiscount = "assets/icons/active_user_discount.svg";
+
+  static const String iconsActiveUserFavourite = "assets/icons/active_user_favourite.svg";
+
+  static const String iconsActiveUserOrders = "assets/icons/active_user_orders.svg";
+
   static const String iconsAdd24Icon = "assets/icons/add24_icon.svg";
 
   static const String iconsAddIcon = "assets/icons/add_icon.svg";
@@ -65,6 +71,12 @@ class AppIcons {
   static const String iconsInactiveProfileIcon = "assets/icons/inactive_profile_icon.svg";
 
   static const String iconsInactiveReportIcon = "assets/icons/inactive_report_icon.svg";
+
+  static const String iconsInactiveUserDiscount = "assets/icons/inactive_user_discount.svg";
+
+  static const String iconsInactiveUserFavourite = "assets/icons/inactive_user_favourite.svg";
+
+  static const String iconsInactiveUserOrder = "assets/icons/inactive_user_order.svg";
 
   static const String iconsLockIcon = "assets/icons/lock_icon.svg";
 
