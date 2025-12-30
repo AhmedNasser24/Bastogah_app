@@ -207,7 +207,9 @@
     "not_received_yet" : "لم يتم الاستلام بعد",
     "ratings" : "التقييمات",
     "coupons" : "الكوبونات",
-    "saved_addresses" : "العناوين المحفوظة"
+    "my_ratings" : "تقييماتي",
+    "saved_addresses" : "العناوين المحفوظة",
+    "copy" : "نسخ"
   }
 
 

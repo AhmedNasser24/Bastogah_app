@@ -6,6 +6,7 @@ import 'package:bastogah_app/features/user_feature/profile/presentation/views/us
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../features/user_feature/profile/presentation/views/user_coupons_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_edit_profile_view.dart';
 import '../../../features/user_feature/user_layout/presentation/views/user_layout.dart';
 
@@ -75,6 +76,14 @@ List<RouteBase> userRoutes = [
       context: context,
       state: state,
       child: const UserMyRatingView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.userCoupons,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const UserCouponsView(),
     ),
   ),
 ];

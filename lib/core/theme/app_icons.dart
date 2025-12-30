@@ -40,6 +40,8 @@ class AppIcons {
 
   static const String iconsCheckIcon = "assets/icons/check_icon.svg";
 
+  static const String iconsCopy24Orange = "assets/icons/copy_24_orange.svg";
+
   static const String iconsDeleteImage = "assets/icons/delete_image.svg";
 
   static const String iconsDollarIcon = "assets/icons/dollar_icon.svg";
