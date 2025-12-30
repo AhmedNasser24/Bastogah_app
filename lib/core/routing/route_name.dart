@@ -16,6 +16,7 @@ class RouteName {
   static const String userFavorites = '/user/favorites';
   static const String userProfile = '/user/profile';
   static const String userEditProfile = '/user/edit-profile';
+  static const String userMyRating = '/user/my-rating';
   // Driver routes
 
   static const String driverHome = '/driver/home';

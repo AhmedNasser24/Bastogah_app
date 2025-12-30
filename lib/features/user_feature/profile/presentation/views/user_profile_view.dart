@@ -54,7 +54,7 @@ class UserProfileView extends StatelessWidget {
             imagePath: AppIcons.iconsProfileRating,
             title: "user.ratings".tr(),
             onTap: () {
-              // context.push(RouteName.notification);
+              context.push(RouteName.userMyRating);
             },
           ),
           profileTile(
