@@ -54,7 +54,6 @@ class UserCouponsView extends StatelessWidget {
                                 child: Center(
                                   child: Text(
                                     "FREE20",
-
                                     style: AppFontStyle.bold14Primary(context),
                                     textAlign: TextAlign.center,
                                   ),

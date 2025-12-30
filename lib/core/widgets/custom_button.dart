@@ -63,19 +63,22 @@ class CustomButton extends StatelessWidget {
                       strokeWidth: 2,
                     ),
                   )
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 6,
-                    children: [
-                      if (prefixIcon != null) ...[prefixIcon!],
-                      Text(
-                        title!,
-                        style: textStyle ?? AppFontStyle.bold16White(context),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      if (suffixIcon != null) ...[suffixIcon!],
-                    ],
+                : FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 6,
+                      children: [
+                        if (prefixIcon != null) ...[prefixIcon!],
+                        Text(
+                          title!,
+                          style: textStyle ?? AppFontStyle.bold16White(context),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        if (suffixIcon != null) ...[suffixIcon!],
+                      ],
+                    ),
                   ),
           ),
         ),

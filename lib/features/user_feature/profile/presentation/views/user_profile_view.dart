@@ -38,7 +38,7 @@ class UserProfileView extends StatelessWidget {
             imagePath: AppIcons.iconsPin24Icon,
             title: "user.saved_addresses".tr(),
             onTap: () {
-              // context.push(RouteName.merchantEditProfile);
+              context.push(RouteName.userSavedAddresses);
             },
           ),
           profileTile(
@@ -62,7 +62,7 @@ class UserProfileView extends StatelessWidget {
             imagePath: AppIcons.iconsProfileCoupons,
             title: "user.coupons".tr(),
             onTap: () {
-              // context.push(RouteName.notification);
+              context.push(RouteName.userCoupons);
             },
           ),
           profileTile(

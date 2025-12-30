@@ -140,6 +140,10 @@ class AppIcons {
 
   static const String iconsUserProfilePhone = "assets/icons/user_profile_phone.svg";
 
+  static const String iconsUserSavedAddressDeleteIcon = "assets/icons/user_saved_address_delete_icon.svg";
+
+  static const String iconsUserSavedAddressEditIcon = "assets/icons/user_saved_address_edit_icon.svg";
+
   static const String iconsUsernameIcon = "assets/icons/username_icon.svg";
 
   static const String iconsWalletContainer = "assets/icons/wallet_container.svg";

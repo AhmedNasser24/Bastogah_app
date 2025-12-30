@@ -11,6 +11,8 @@
   "store" : "المتجر",
   "select_role" : "هل أنت؟",
   "confirm": "تأكيد",
+  "edit": "تعديل",
+  "delete": "حذف",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number": "رقم غير صالح",
@@ -209,6 +211,7 @@
     "coupons" : "الكوبونات",
     "my_ratings" : "تقييماتي",
     "saved_addresses" : "العناوين المحفوظة",
+    "add": "إضافة",
     "copy" : "نسخ"
   }
 

@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../features/user_feature/profile/presentation/views/user_coupons_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_edit_profile_view.dart';
+import '../../../features/user_feature/profile/presentation/views/user_saved_address_view.dart';
 import '../../../features/user_feature/user_layout/presentation/views/user_layout.dart';
 
 List<RouteBase> userRoutes = [
@@ -84,6 +85,14 @@ List<RouteBase> userRoutes = [
       context: context,
       state: state,
       child: const UserCouponsView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.userSavedAddresses,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const UserSavedAddressView(),
     ),
   ),
 ];
