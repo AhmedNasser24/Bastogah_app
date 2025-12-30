@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
 import 'package:bastogah_app/core/widgets/custom_button.dart';
@@ -5,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
@@ -123,7 +125,9 @@ class UserSavedAddressView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
                 child: CustomButton(
-                  onTap: () {},
+                  onTap: () {
+                    context.push(RouteName.userAddNewAddress);
+                  },
                   title: "user.add".tr(),
                   width: 80,
                   textStyle: AppFontStyle.medium16White(context),

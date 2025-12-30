@@ -212,7 +212,13 @@
     "my_ratings" : "تقييماتي",
     "saved_addresses" : "العناوين المحفوظة",
     "add": "إضافة",
-    "copy" : "نسخ"
+    "copy" : "نسخ",
+    "add_new_address" : "إضافة عنوان جديد",
+    "add_address" : "إضافة عنوان",
+    "address_name" : "اسم العنوان",
+    "address_name_hint" : "المنزل/العمل",
+    "address_details" : "تفاصيل العنوان",
+    "address_details_hint" : "شارع رئيسي, مقابل جامع"
   }
 
 

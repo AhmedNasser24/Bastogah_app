@@ -6,6 +6,7 @@ import 'package:bastogah_app/features/user_feature/profile/presentation/views/us
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../features/user_feature/profile/presentation/views/user_add_new_address_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_coupons_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_edit_profile_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_saved_address_view.dart';
@@ -93,6 +94,14 @@ List<RouteBase> userRoutes = [
       context: context,
       state: state,
       child: const UserSavedAddressView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.userAddNewAddress,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const UserAddNewAddressView(),
     ),
   ),
 ];

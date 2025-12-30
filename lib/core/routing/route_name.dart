@@ -19,6 +19,7 @@ class RouteName {
   static const String userMyRating = '/user/my-rating';
   static const String userCoupons = '/user/coupons';
   static const String userSavedAddresses = '/user/saved-addresses';
+  static const String userAddNewAddress = '/user/add-new-address';
   // Driver routes
 
   static const String driverHome = '/driver/home';
