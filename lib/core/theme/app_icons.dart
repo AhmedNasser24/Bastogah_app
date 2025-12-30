@@ -54,6 +54,8 @@ class AppIcons {
 
   static const String iconsEmptyImage = "assets/icons/empty_image.svg";
 
+  static const String iconsFavourite24White = "assets/icons/favourite_24_white.svg";
+
   static const String iconsFilterProfileIcon = "assets/icons/filter_profile_icon.svg";
 
   static const String iconsForwardIcon = "assets/icons/forward_icon.svg";
@@ -130,11 +132,15 @@ class AppIcons {
 
   static const String iconsStar = "assets/icons/star.svg";
 
+  static const String iconsStar12White = "assets/icons/star_12_white.svg";
+
   static const String iconsTimeGreyIcon = "assets/icons/time_grey_icon.svg";
 
   static const String iconsTimeOrangeIcon = "assets/icons/time_orange_icon.svg";
 
   static const String iconsUserCart = "assets/icons/user_cart.svg";
+
+  static const String iconsUserFavouriteFreeDeliveryIcon = "assets/icons/user_favourite_free_delivery_icon.svg";
 
   static const String iconsUserMyOrderRepeat = "assets/icons/user_my_order_repeat.svg";
 

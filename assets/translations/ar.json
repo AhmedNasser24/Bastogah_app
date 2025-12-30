@@ -218,7 +218,9 @@
     "address_name" : "اسم العنوان",
     "address_name_hint" : "المنزل/العمل",
     "address_details" : "تفاصيل العنوان",
-    "address_details_hint" : "شارع رئيسي, مقابل جامع"
+    "address_details_hint" : "شارع رئيسي, مقابل جامع",
+    "order_now" : "اطلب الآن",
+    "favourite": "المفضلة"
   }
 
 
