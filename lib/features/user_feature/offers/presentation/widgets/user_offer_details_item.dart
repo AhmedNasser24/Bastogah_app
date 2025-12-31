@@ -1,3 +1,4 @@
+import 'package:bastogah_app/features/user_feature/offers/presentation/widgets/user_offer_details_item_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,11 +8,10 @@ import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import 'favourite_item_image.dart';
 import '../../../../../core/widgets/favourite_icon_button.dart';
 
-class UserFavouriteItem extends StatelessWidget {
-  const UserFavouriteItem({super.key});
+class UserOfferDetailsItem extends StatelessWidget {
+  const UserOfferDetailsItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class UserFavouriteItem extends StatelessWidget {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(24)),
             child: Column(
               children: [
-                const Expanded(flex: 3, child: FavouriteItemImage()),
+                const Expanded(flex: 3, child: UserOfferDetailsItemImage()),
                 Expanded(
                   flex: 1,
                   child: Padding(
@@ -66,14 +66,12 @@ class UserFavouriteItem extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        SvgPicture.asset(
-                          AppIcons.iconsUserFavouriteFreeDeliveryIcon,
-                        ),
+                        SvgPicture.asset(AppIcons.iconsUserOfferWeekEnd),
                         const Gap(4),
                         Expanded(
                           child: Text(
-                            "توصيل مجاني",
-                            style: AppFontStyle.medium14green(context),
+                            "عروض نهاية الأسبوع",
+                            style: AppFontStyle.medium14Primary(context),
                           ),
                         ),
                         const Gap(8),
@@ -123,9 +121,9 @@ class UserFavouriteItem extends StatelessWidget {
             ),
             child: Row(
               children: [
-                SvgPicture.asset(AppIcons.iconsStar12White),
+                SvgPicture.asset(AppIcons.iconsDollar14White),
                 const Gap(4),
-                Text("مميز", style: AppFontStyle.regular12White(context)),
+                Text("خصم 35%", style: AppFontStyle.regular12White(context)),
               ],
             ),
           ),

@@ -44,6 +44,8 @@ class AppIcons {
 
   static const String iconsDeleteImage = "assets/icons/delete_image.svg";
 
+  static const String iconsDollar14White = "assets/icons/dollar_14_white.svg";
+
   static const String iconsDollarIcon = "assets/icons/dollar_icon.svg";
 
   static const String iconsDriverOrderDetailsGreenPhone = "assets/icons/driver_order_details_green_phone.svg";
@@ -87,6 +89,8 @@ class AppIcons {
   static const String iconsLogOut = "assets/icons/log_out.svg";
 
   static const String iconsNeedHelpIcon = "assets/icons/need_help_icon.svg";
+
+  static const String iconsNotFavourite24White = "assets/icons/not_favourite_24_white.svg";
 
   static const String iconsNotificationIcon = "assets/icons/notification_icon.svg";
 
@@ -143,6 +147,8 @@ class AppIcons {
   static const String iconsUserFavouriteFreeDeliveryIcon = "assets/icons/user_favourite_free_delivery_icon.svg";
 
   static const String iconsUserMyOrderRepeat = "assets/icons/user_my_order_repeat.svg";
+
+  static const String iconsUserOfferWeekEnd = "assets/icons/user_offer_week_end.svg";
 
   static const String iconsUserProfilePhone = "assets/icons/user_profile_phone.svg";
 

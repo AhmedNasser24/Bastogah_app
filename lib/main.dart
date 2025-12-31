@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
 import 'package:bastogah_app/core/languages/lang.dart';
@@ -39,6 +40,11 @@ class MyApp extends StatelessWidget {
     log("width : ${context.screenWidth}");
     log("height : ${context.screenHeight}");
     return MaterialApp.router(
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
+        overscroll: true,
+        scrollbars: true,
+      ),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

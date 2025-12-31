@@ -12,7 +12,8 @@ class RouteName {
   // User routes
   static const String userHome = '/user/home';
   static const String userOrders = '/user/orders';
-  static const String userDiscounts = '/user/discounts';
+  static const String userOffers = '/user/offers';
+  static const String userOffersDetails = '/user/offers/details';
   static const String userFavorites = '/user/favorites';
   static const String userProfile = '/user/profile';
   static const String userEditProfile = '/user/edit-profile';

@@ -25,7 +25,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.userFavorites,
+  initialLocation: RouteName.userOffersDetails,
   routes: [
     GoRoute(
       path: RouteName.splash,

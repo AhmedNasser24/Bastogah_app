@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../features/user_feature/favourites/presentation/views/user_favourite_view.dart';
+import '../../../features/user_feature/offers/presentation/views/user_offers_details_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_add_new_address_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_coupons_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_edit_profile_view.dart';
@@ -40,11 +41,11 @@ List<RouteBase> userRoutes = [
         ),
       ),
       GoRoute(
-        path: RouteName.userDiscounts,
+        path: RouteName.userOffers,
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
           state: state,
-          child: const Center(child: Text("User discounts View")),
+          child: const Center(child: Text("User offer View")),
         ),
       ),
       GoRoute(
@@ -64,6 +65,14 @@ List<RouteBase> userRoutes = [
         ),
       ),
     ],
+  ),
+  GoRoute(
+    path: RouteName.userOffersDetails,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const UserOffersDetailsView(),
+    ),
   ),
   GoRoute(
     path: RouteName.userEditProfile,

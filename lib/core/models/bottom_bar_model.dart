@@ -33,7 +33,7 @@ List<BottomBarModel> userBottomBarItems = [
     title: 'bottom_nav_bar.discounts'.tr(),
     inactiveIcon: AppIcons.iconsInactiveUserDiscount,
     activeIcon: AppIcons.iconsActiveUserDiscount,
-    routeName: RouteName.userDiscounts,
+    routeName: RouteName.userOffers,
   ),
   BottomBarModel(
     title: 'bottom_nav_bar.favorites'.tr(),

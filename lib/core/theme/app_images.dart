@@ -4,6 +4,8 @@ class AppImages {
   
   static const String imagesAppLogo = "assets/images/app_logo.png";
 
+  static const String imagesAsianFood = "assets/images/asian_food.png";
+
   static const String imagesBurger = "assets/images/burger.png";
 
   static const String imagesChangePasswordSuccessfully = "assets/images/change_password_successfully.png";
