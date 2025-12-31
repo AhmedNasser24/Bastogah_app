@@ -175,6 +175,11 @@ class AppFontStyle {
     fontSize: responsiveSize(context, 12),
     fontWeight: FontWeight.w600,
   );
+  static TextStyle semibold12black1A(BuildContext context) => TextStyle(
+    color: AppColors.black1A,
+    fontSize: responsiveSize(context, 12),
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle semibold14red(BuildContext context) => TextStyle(
     color: AppColors.red,
     fontSize: responsiveSize(context, 14),
@@ -193,6 +198,11 @@ class AppFontStyle {
   static TextStyle semibold16White(BuildContext context) => TextStyle(
     color: AppColors.white,
     fontSize: responsiveSize(context, 16),
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle semibold14White(BuildContext context) => TextStyle(
+    color: AppColors.white,
+    fontSize: responsiveSize(context, 14),
     fontWeight: FontWeight.w600,
   );
   static TextStyle semibold16black4B(BuildContext context) => TextStyle(

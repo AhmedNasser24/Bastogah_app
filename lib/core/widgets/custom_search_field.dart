@@ -7,7 +7,6 @@ import 'custom_text_form_field.dart';
 
 class CustomSearchField extends StatefulWidget {
   const CustomSearchField({super.key});
-
   @override
   State<CustomSearchField> createState() => _CustomSearchFieldState();
 }
@@ -22,7 +21,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
         Expanded(
           child: CustomTextFormField(
             controller: controller,
-            hintText: "merchant.search".tr(),
+            hintText: "search_hint".tr(),
             prefixIcon: Padding(
               padding: const EdgeInsets.all(8.0),
               child: SvgPicture.asset(AppIcons.iconsSearchIcon),
@@ -33,7 +32,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
           onTap: () => controller.clear(),
           borderRadius: BorderRadius.circular(14),
           child: Container(
-            padding: const EdgeInsets.all(18),
+            padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
               border: Border.all(color: AppColors.lightGrey),

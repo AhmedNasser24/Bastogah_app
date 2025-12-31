@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/user_offer_details_app_bar.dart';
-import '../widgets/user_offer_details_item.dart';
+import '../widgets/user_offer_details_store_item.dart';
 
 class UserOffersDetailsView extends StatelessWidget {
   const UserOffersDetailsView({super.key});
@@ -25,7 +25,7 @@ class UserOffersDetailsView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: UserOfferDetailsItem(),
+                  child: UserOfferDetailsStoreItem(),
                 );
               },
             ),

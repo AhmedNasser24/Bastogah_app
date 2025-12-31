@@ -10,8 +10,8 @@ import '../../../../../core/widgets/custom_button.dart';
 import 'favourite_item_image.dart';
 import '../../../../../core/widgets/favourite_icon_button.dart';
 
-class UserFavouriteItem extends StatelessWidget {
-  const UserFavouriteItem({super.key});
+class UserFavouriteStoreItem extends StatelessWidget {
+  const UserFavouriteStoreItem({super.key});
 
   @override
   Widget build(BuildContext context) {

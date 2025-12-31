@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/theme/app_images.dart';
 
-class UserOfferDetailsItemImage extends StatelessWidget {
-  const UserOfferDetailsItemImage({super.key});
+class UserOfferItemImage extends StatelessWidget {
+  const UserOfferItemImage({super.key});
 
   @override
   Widget build(BuildContext context) {

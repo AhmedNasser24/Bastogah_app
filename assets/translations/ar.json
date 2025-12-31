@@ -13,6 +13,7 @@
   "confirm": "تأكيد",
   "edit": "تعديل",
   "delete": "حذف",
+  "search_hint": "ابحث هنا...",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number": "رقم غير صالح",
@@ -220,7 +221,8 @@
     "address_details" : "تفاصيل العنوان",
     "address_details_hint" : "شارع رئيسي, مقابل جامع",
     "order_now" : "اطلب الآن",
-    "favourite": "المفضلة"
+    "favourite": "المفضلة",
+    "special_offers": "العروض خاصة"
   }
 
 

@@ -2,7 +2,7 @@ import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/widgets/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';

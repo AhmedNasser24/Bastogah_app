@@ -1,6 +1,7 @@
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/routing/router_animation.dart';
 import 'package:bastogah_app/features/user_feature/my_order/presentation/views/user_orders_view.dart';
+import 'package:bastogah_app/features/user_feature/offers/presentation/views/user_offer_view.dart';
 import 'package:bastogah_app/features/user_feature/profile/presentation/views/user_profile_view.dart';
 import 'package:bastogah_app/features/user_feature/profile/presentation/views/user_my_rating_view.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ List<RouteBase> userRoutes = [
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
           state: state,
-          child: const Center(child: Text("User offer View")),
+          child: const UserOffersView(),
         ),
       ),
       GoRoute(

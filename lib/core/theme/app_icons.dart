@@ -96,6 +96,8 @@ class AppIcons {
 
   static const String iconsNotificationProfileIcon = "assets/icons/notification_profile_icon.svg";
 
+  static const String iconsOfferIcon16White = "assets/icons/offer_icon_16_white.svg";
+
   static const String iconsPerson20Grey = "assets/icons/person_20_grey.svg";
 
   static const String iconsPerson24Icon = "assets/icons/person24_icon.svg";

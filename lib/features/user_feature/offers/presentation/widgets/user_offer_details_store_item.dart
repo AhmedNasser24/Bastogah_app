@@ -1,4 +1,4 @@
-import 'package:bastogah_app/features/user_feature/offers/presentation/widgets/user_offer_details_item_image.dart';
+import 'package:bastogah_app/features/user_feature/offers/presentation/widgets/user_offer_item_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,8 +10,8 @@ import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/favourite_icon_button.dart';
 
-class UserOfferDetailsItem extends StatelessWidget {
-  const UserOfferDetailsItem({super.key});
+class UserOfferDetailsStoreItem extends StatelessWidget {
+  const UserOfferDetailsStoreItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class UserOfferDetailsItem extends StatelessWidget {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(24)),
             child: Column(
               children: [
-                const Expanded(flex: 3, child: UserOfferDetailsItemImage()),
+                const Expanded(flex: 3, child: UserOfferItemImage()),
                 Expanded(
                   flex: 1,
                   child: Padding(
