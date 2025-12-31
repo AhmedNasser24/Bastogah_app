@@ -13,6 +13,8 @@ class UserOfferDetailsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      automaticallyImplyLeading: false,
+      automaticallyImplyActions: false,
       expandedHeight: 170,
       pinned: true,
       toolbarHeight: 80,
