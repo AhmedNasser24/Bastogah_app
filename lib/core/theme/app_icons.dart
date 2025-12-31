@@ -84,6 +84,8 @@ class AppIcons {
 
   static const String iconsInactiveUserOrder = "assets/icons/inactive_user_order.svg";
 
+  static const String iconsInfo28BlackIcon = "assets/icons/info_28_black_icon.svg";
+
   static const String iconsLockIcon = "assets/icons/lock_icon.svg";
 
   static const String iconsLogOut = "assets/icons/log_out.svg";
@@ -133,6 +135,8 @@ class AppIcons {
   static const String iconsReportStar = "assets/icons/report_star.svg";
 
   static const String iconsReportTransactionExpense = "assets/icons/report_transaction_expense.svg";
+
+  static const String iconsResturantIcon = "assets/icons/resturant_icon.svg";
 
   static const String iconsSearchIcon = "assets/icons/search_icon.svg";
 

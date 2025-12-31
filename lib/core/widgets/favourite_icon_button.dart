@@ -33,7 +33,9 @@ class _FavouriteIconButtonState extends State<FavouriteIconButton> {
         child: CircleAvatar(
           radius: widget.radius,
           backgroundColor: widget.backgroundColor,
-          child: isFavourite ? widget.activeIcon : widget.inactiveIcon,
+          child: Center(
+            child: isFavourite ? widget.activeIcon : widget.inactiveIcon,
+          ),
         ),
       ),
     );

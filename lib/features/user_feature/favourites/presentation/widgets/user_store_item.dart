@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
@@ -17,74 +19,84 @@ class UserStoreItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Card(
-          elevation: 1,
-          child: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(24)),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 180,
-                  width: double.infinity,
-                  child: FavouriteItemImage(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                    vertical: 8.0,
+        GestureDetector(
+          onTap: () {
+            context.push(RouteName.userProducts);
+          },
+          child: Card(
+            elevation: 1,
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 180,
+                    width: double.infinity,
+                    child: FavouriteItemImage(),
                   ),
-                  child: Row(
-                    spacing: 4,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "بيتزا هت",
-                          style: AppFontStyle.medium16black1A(context),
-                          overflow: TextOverflow.ellipsis,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 8.0,
+                    ),
+                    child: Row(
+                      spacing: 4,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "بيتزا هت",
+                            style: AppFontStyle.medium16black1A(context),
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                      const Gap(8),
-                      SvgPicture.asset(AppIcons.iconsStar),
-                      Text(
-                        "4.5",
-                        style: AppFontStyle.regular14black1A(context),
-                      ),
-                      Text("(256)", style: AppFontStyle.regular12grey(context)),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                    vertical: 8.0,
-                  ),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppIcons.iconsUserFavouriteFreeDeliveryIcon,
-                      ),
-                      const Gap(4),
-                      Expanded(
-                        child: Text(
-                          "توصيل مجاني",
-                          style: AppFontStyle.medium14green(context),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                        const Gap(8),
+                        SvgPicture.asset(AppIcons.iconsStar),
+                        Text(
+                          "4.5",
+                          style: AppFontStyle.regular14black1A(context),
                         ),
-                      ),
-                      const Gap(8),
-                      CustomButton(
-                        width: 120,
-                        onTap: () {},
-                        title: "user.order_now".tr(),
-                        textStyle: AppFontStyle.semibold14Primary(context),
-                        color: AppColors.secondary,
-                      ),
-                    ],
+                        Text(
+                          "(256)",
+                          style: AppFontStyle.regular12grey(context),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 8.0,
+                    ),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppIcons.iconsUserFavouriteFreeDeliveryIcon,
+                        ),
+                        const Gap(4),
+                        Expanded(
+                          child: Text(
+                            "توصيل مجاني",
+                            style: AppFontStyle.medium14green(context),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        const Gap(8),
+                        CustomButton(
+                          width: 120,
+                          onTap: () {},
+                          title: "user.order_now".tr(),
+                          textStyle: AppFontStyle.semibold14Primary(context),
+                          color: AppColors.secondary,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
