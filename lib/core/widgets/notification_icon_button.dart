@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
+import '../routing/route_name.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_icons.dart';
 
@@ -8,14 +10,14 @@ class NotificationIconButton extends StatelessWidget {
   const NotificationIconButton({
     super.key,
     required this.isThereNewNotification,
-    required this.onTap,
   });
   final bool isThereNewNotification;
-  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        context.push(RouteName.notification);
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Stack(

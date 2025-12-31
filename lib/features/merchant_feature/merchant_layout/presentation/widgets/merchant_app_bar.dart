@@ -1,8 +1,6 @@
-import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/notification_icon_button.dart';
@@ -27,12 +25,7 @@ class MerchantAppBar extends StatelessWidget {
               overflow: TextOverflow.fade,
             ),
             const Spacer(),
-            NotificationIconButton(
-              isThereNewNotification: true,
-              onTap: () {
-                context.push(RouteName.notification);
-              },
-            ),
+            const NotificationIconButton(isThereNewNotification: true),
           ],
         ),
       ),

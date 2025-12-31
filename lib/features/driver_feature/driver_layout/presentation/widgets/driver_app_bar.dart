@@ -25,7 +25,7 @@ class DriverAppBar extends StatelessWidget {
               overflow: TextOverflow.fade,
             ),
             const Spacer(),
-            NotificationIconButton(isThereNewNotification: true, onTap: () {}),
+            const NotificationIconButton(isThereNewNotification: true),
           ],
         ),
       ),

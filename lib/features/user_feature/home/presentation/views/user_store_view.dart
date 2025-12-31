@@ -1,46 +1,43 @@
 import 'package:bastogah_app/core/widgets/back_arrow_button.dart';
+import 'package:bastogah_app/core/widgets/cart_icon_button.dart';
 import 'package:bastogah_app/core/widgets/custom_search_field.dart';
-import 'package:bastogah_app/features/user_feature/offers/presentation/widgets/user_offer_item.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
-import '../../../../../core/widgets/cart_icon_button.dart';
 import '../../../../../core/widgets/notification_icon_button.dart';
+import '../../../favourites/presentation/widgets/user_store_item.dart';
 
-class UserOffersView extends StatelessWidget {
-  const UserOffersView({super.key});
+class UserStoreView extends StatelessWidget {
+  const UserStoreView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        appBar(context, address: "مطاعم"),
+        appBar(context, title: "مطاعم"),
         const CustomSearchField(),
+        const Gap(12),
         Expanded(
-          child: CustomScrollView(
-            slivers: [
-              const SliverGap(16),
-              SliverGrid.builder(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  mainAxisSpacing: 12,
-                  crossAxisSpacing: 12,
-                  maxCrossAxisExtent: 600,
-                  mainAxisExtent: 270,
-                ),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return const UserOfferItem();
-                },
-              ),
-            ],
+          child: GridView.builder(
+            physics: const BouncingScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              maxCrossAxisExtent: 600,
+              mainAxisExtent: 290,
+            ),
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return const UserStoreItem();
+            },
           ),
         ),
       ],
     );
   }
 
-  Widget appBar(BuildContext context, {required String address}) {
+  Widget appBar(BuildContext context, {required String title}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: SizedBox(
@@ -51,7 +48,7 @@ class UserOffersView extends StatelessWidget {
             const BackArrowButton(),
             const Gap(10),
             Text(
-              address,
+              title,
               style: AppFontStyle.semibold20black1A(context),
               overflow: TextOverflow.fade,
             ),

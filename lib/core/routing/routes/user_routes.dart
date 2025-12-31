@@ -1,10 +1,10 @@
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/routing/router_animation.dart';
+import 'package:bastogah_app/features/user_feature/home/presentation/views/user_store_view.dart';
 import 'package:bastogah_app/features/user_feature/my_order/presentation/views/user_orders_view.dart';
 import 'package:bastogah_app/features/user_feature/offers/presentation/views/user_offer_view.dart';
 import 'package:bastogah_app/features/user_feature/profile/presentation/views/user_profile_view.dart';
 import 'package:bastogah_app/features/user_feature/profile/presentation/views/user_my_rating_view.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../features/user_feature/favourites/presentation/views/user_favourite_view.dart';
@@ -30,7 +30,7 @@ List<RouteBase> userRoutes = [
         pageBuilder: (context, state) => buildPageWithSlideTransition(
           context: context,
           state: state,
-          child: const Center(child: Text("User Home View")),
+          child: const UserStoreView(),
         ),
       ),
       GoRoute(

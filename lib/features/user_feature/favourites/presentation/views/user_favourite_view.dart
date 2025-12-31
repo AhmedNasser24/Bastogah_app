@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/user_favourite_app_bar.dart';
-import '../widgets/user_favourite_store_item.dart';
+import '../widgets/user_store_item.dart';
 
 class UserFavouriteView extends StatelessWidget {
   const UserFavouriteView({super.key});
@@ -22,7 +22,7 @@ class UserFavouriteView extends StatelessWidget {
             ),
             itemCount: 10,
             itemBuilder: (context, index) {
-              return const UserFavouriteStoreItem();
+              return const UserStoreItem();
             },
           ),
         ),
