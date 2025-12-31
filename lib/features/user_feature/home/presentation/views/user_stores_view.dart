@@ -8,8 +8,8 @@ import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/notification_icon_button.dart';
 import '../../../favourites/presentation/widgets/user_store_item.dart';
 
-class UserStoreView extends StatelessWidget {
-  const UserStoreView({super.key});
+class UserStoresView extends StatelessWidget {
+  const UserStoresView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,14 @@
-import 'package:bastogah_app/core/widgets/back_arrow_button.dart';
 import 'package:bastogah_app/core/widgets/custom_search_field.dart';
 import 'package:bastogah_app/features/user_feature/offers/presentation/widgets/user_offer_item.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
+import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/cart_icon_button.dart';
+import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/notification_icon_button.dart';
 
 class UserOffersView extends StatelessWidget {
@@ -15,11 +18,29 @@ class UserOffersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        appBar(context, address: "مطاعم"),
+        appBar(context, address: "بغداد,العراق"),
         const CustomSearchField(),
         Expanded(
           child: CustomScrollView(
             slivers: [
+              const SliverGap(16),
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: CustomButton(
+                          prefixIcon: SvgPicture.asset(
+                            AppIcons.iconsOfferIcon16White,
+                          ),
+                          title: "user.special_offers".tr(),
+                          textStyle: AppFontStyle.semibold14White(context),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const SliverGap(16),
               SliverGrid.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -48,11 +69,11 @@ class UserOffersView extends StatelessWidget {
         width: double.infinity,
         child: Row(
           children: [
-            const BackArrowButton(),
+            SvgPicture.asset(AppIcons.iconsPin24Icon),
             const Gap(10),
             Text(
               address,
-              style: AppFontStyle.semibold20black1A(context),
+              style: AppFontStyle.semibold12black1A(context),
               overflow: TextOverflow.fade,
             ),
             const Spacer(),
