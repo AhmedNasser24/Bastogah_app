@@ -25,7 +25,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.userStoreRating,
+  initialLocation: RouteName.writeYourReview,
   routes: [
     GoRoute(
       path: RouteName.splash,

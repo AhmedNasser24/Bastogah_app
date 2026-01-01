@@ -144,6 +144,8 @@ class AppIcons {
 
   static const String iconsStar12White = "assets/icons/star_12_white.svg";
 
+  static const String iconsStarOutline = "assets/icons/star_outline.svg";
+
   static const String iconsTimeGreyIcon = "assets/icons/time_grey_icon.svg";
 
   static const String iconsTimeOrangeIcon = "assets/icons/time_orange_icon.svg";

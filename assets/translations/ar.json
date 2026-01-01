@@ -224,7 +224,9 @@
     "favourite": "المفضلة",
     "special_offers": "العروض خاصة",
     "customer_reviews": "آراء العملاء",
-    "write_your_review" : "اكتب تقييمك"
+    "write_your_review" : "اكتب تقييمك",
+    "write_your_review_hint" : "قم بكتابة تقييمك...",
+    "submit" : "إرسال"
   }
 
 

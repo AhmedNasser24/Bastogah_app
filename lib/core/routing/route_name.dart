@@ -14,6 +14,7 @@ class RouteName {
   static const String userStores = '/user/home/stores';
   static const String userProducts = '/user/home/products';
   static const String userStoreRating = '/user/home/store-rating';
+  static const String writeYourReview = '/user/home/write-your-review';
   static const String userOrders = '/user/orders';
   static const String userOffers = '/user/offers';
   static const String userOffersDetails = '/user/offers/details';
