@@ -25,6 +25,7 @@ class UserStoreItem extends StatelessWidget {
           },
           child: Card(
             elevation: 1,
+            color: AppColors.white,
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(

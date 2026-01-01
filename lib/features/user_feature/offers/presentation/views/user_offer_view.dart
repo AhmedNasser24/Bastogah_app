@@ -7,9 +7,8 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
-import '../../../../../core/widgets/cart_icon_button.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../core/widgets/notification_icon_button.dart';
+import '../../../user_layout/presentation/widgets/user_app_bar.dart';
 
 class UserOffersView extends StatelessWidget {
   const UserOffersView({super.key});
@@ -18,7 +17,7 @@ class UserOffersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        appBar(context, address: "بغداد,العراق"),
+        const UserAppBar(address: "بغداد,العراق"),
         const CustomSearchField(),
         Expanded(
           child: CustomScrollView(
@@ -58,31 +57,6 @@ class UserOffersView extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-
-  Widget appBar(BuildContext context, {required String address}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: SizedBox(
-        height: 32,
-        width: double.infinity,
-        child: Row(
-          children: [
-            SvgPicture.asset(AppIcons.iconsPin24Icon),
-            const Gap(10),
-            Text(
-              address,
-              style: AppFontStyle.semibold12black1A(context),
-              overflow: TextOverflow.fade,
-            ),
-            const Spacer(),
-            const CartIconButton(),
-            const Gap(8),
-            const NotificationIconButton(isThereNewNotification: true),
-          ],
-        ),
-      ),
     );
   }
 }
