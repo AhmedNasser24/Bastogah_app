@@ -66,6 +66,7 @@ class _WriteYourReviewViewState extends State<WriteYourReviewView> {
                             ? AppFontStyle.bold16White(context)
                             : AppFontStyle.bold16Grey(context),
                       ),
+                      const Gap(20),
                     ],
                   ),
                 ),

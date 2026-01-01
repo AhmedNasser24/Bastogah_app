@@ -1,5 +1,6 @@
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/routing/router_animation.dart';
+import 'package:bastogah_app/features/user_feature/home/presentation/views/user_product_details_view.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/views/user_stores_view.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/views/write_your_review_view.dart';
 import 'package:bastogah_app/features/user_feature/my_order/presentation/views/user_orders_view.dart';
@@ -77,6 +78,14 @@ List<RouteBase> userRoutes = [
         ),
       ),
     ],
+  ),
+  GoRoute(
+    path: RouteName.userProductDetails,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const UserProductDetailsView(),
+    ),
   ),
   GoRoute(
     path: RouteName.userProducts,

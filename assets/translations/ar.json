@@ -226,7 +226,12 @@
     "customer_reviews": "آراء العملاء",
     "write_your_review" : "اكتب تقييمك",
     "write_your_review_hint" : "قم بكتابة تقييمك...",
-    "submit" : "إرسال"
+    "submit" : "إرسال",
+    "special_note" : "تعليمات خاصة",
+    "special_note_hint" : "اكتب ملاحظتك هنا...",
+    "special_note_title" : "اذا كانت لديك أي ملاحظات تخص الطلب, يرجى كتابتها هنا",
+    "add_to_cart" : "أضف  للسلة",
+    "quantity" : "الكمية"
   }
 
 

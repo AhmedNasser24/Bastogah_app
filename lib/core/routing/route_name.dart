@@ -8,6 +8,8 @@ class RouteName {
   static const String forgotPassword = '/forgot-password';
   static const String helpSupport = '/help-support';
   static const String notification = '/merchant/notification';
+  static const String userProductDetails =
+      '/user/home/products/product-details';
 
   // User routes
   static const String userHome = '/user/home';

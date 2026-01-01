@@ -1,9 +1,11 @@
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
@@ -38,7 +40,9 @@ class UserStoreRatingView extends StatelessWidget {
                     ),
                     const Spacer(),
                     CustomButton(
-                      onTap: () {},
+                      onTap: () {
+                        context.push(RouteName.writeYourReview);
+                      },
                       title: "user.write_your_review".tr(),
                       width: 120,
                       padding: const EdgeInsets.symmetric(
