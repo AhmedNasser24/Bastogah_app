@@ -45,17 +45,18 @@ class _SplashViewState extends State<SplashView> {
     // remove this after testing
     // await clearTokens();
 
-    await Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
-        if (SharedPreferenceSingleton.getString(
-          ApiKeys.accessToken,
-        ).isNotEmpty) {
-          context.go(RouteName.merchantHome);
-        } else {
-          context.go(RouteName.merchantAndDriverLogin);
-        }
-      }
-    });
+    // await Future.delayed(const Duration(seconds: 3), () {
+    //   if (mounted) {
+    //     if (SharedPreferenceSingleton.getString(
+    //       ApiKeys.accessToken,
+    //     ).isNotEmpty) {
+    //       context.go(RouteName.merchantHome);
+    //     } else {
+    //       context.go(RouteName.merchantAndDriverLogin);
+    //     }
+    //   }
+    // });
+    context.go(RouteName.role);
   }
 
   Future<void> clearTokens() async {
