@@ -1,8 +1,10 @@
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
@@ -56,51 +58,54 @@ class ResturantInfoSection extends StatelessWidget {
       // need this row for making box constraint work
       mainAxisSize: MainAxisSize.min,
       children: [
-        Expanded(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16.0),
-            padding: const EdgeInsets.all(12.0),
-            constraints: const BoxConstraints(maxWidth: 600),
-            decoration: BoxDecoration(
-              color: AppColors.secondary,
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                resturantLogo(),
-                const Gap(8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 10,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              "مطعم بيتزا هت",
-                              style: AppFontStyle.bold18Black1A(context),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+        Flexible(
+          child: GestureDetector(
+            onTap: () => context.push(RouteName.userStoreRating),
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.all(12.0),
+              constraints: const BoxConstraints(maxWidth: 600),
+              decoration: BoxDecoration(
+                color: AppColors.secondary,
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  resturantLogo(),
+                  const Gap(8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 10,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "مطعم بيتزا هت",
+                                style: AppFontStyle.bold18Black1A(context),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
-                          ),
-                          const Gap(8),
-                          SvgPicture.asset(AppIcons.iconsInfo28BlackIcon),
-                        ],
-                      ),
-                      Text(
-                        "شاورما - طعام سريع",
-                        style: AppFontStyle.medium14black4B(context),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      resturantRating(context),
-                    ],
+                            const Gap(8),
+                            SvgPicture.asset(AppIcons.iconsInfo28BlackIcon),
+                          ],
+                        ),
+                        Text(
+                          "شاورما - طعام سريع",
+                          style: AppFontStyle.medium14black4B(context),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        resturantRating(context),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

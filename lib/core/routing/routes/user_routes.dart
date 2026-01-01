@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../features/user_feature/favourites/presentation/views/user_favourite_view.dart';
 import '../../../features/user_feature/home/presentation/views/user_products_view.dart';
+import '../../../features/user_feature/home/presentation/views/user_store_rating_view.dart';
 import '../../../features/user_feature/offers/presentation/views/user_offers_details_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_add_new_address_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_coupons_view.dart';
@@ -74,6 +75,14 @@ List<RouteBase> userRoutes = [
       context: context,
       state: state,
       child: const UserProductsView(),
+    ),
+  ),
+  GoRoute(
+    path: RouteName.userStoreRating,
+    pageBuilder: (context, state) => buildPageWithSlideTransition(
+      context: context,
+      state: state,
+      child: const UserStoreRatingView(),
     ),
   ),
   GoRoute(

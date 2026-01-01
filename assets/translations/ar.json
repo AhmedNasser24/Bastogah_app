@@ -222,7 +222,9 @@
     "address_details_hint" : "شارع رئيسي, مقابل جامع",
     "order_now" : "اطلب الآن",
     "favourite": "المفضلة",
-    "special_offers": "العروض خاصة"
+    "special_offers": "العروض خاصة",
+    "customer_reviews": "آراء العملاء",
+    "write_your_review" : "اكتب تقييمك"
   }
 
 
