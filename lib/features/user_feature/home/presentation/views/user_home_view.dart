@@ -1,5 +1,7 @@
+import 'package:bastogah_app/features/user_feature/home/presentation/widgets/custom_slider.dart';
 import 'package:bastogah_app/features/user_feature/user_layout/presentation/widgets/user_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../core/widgets/custom_search_field.dart';
 import '../widgets/sliver_list_of_user_product_items.dart';
@@ -17,6 +19,9 @@ class UserHomeView extends StatelessWidget {
         Expanded(
           child: CustomScrollView(
             slivers: [
+              SliverGap(16),
+              SliverToBoxAdapter(child: CustomSlider()),
+              SliverGap(16),
               // SliverListOfUserStoreItems(),
               SliverListOfUserProductItems(),
             ],

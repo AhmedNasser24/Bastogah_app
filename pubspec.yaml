@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  carousel_slider: ^5.1.1
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   dio: ^5.9.0
@@ -48,6 +49,7 @@ dependencies:
   image_picker: ^1.2.1
   pretty_dio_logger: ^1.4.0
   shared_preferences: ^2.5.4
+  smooth_page_indicator: ^2.0.1
   url_launcher: ^6.3.2
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
@@ -118,6 +120,7 @@ flutter_assets:
   ignore_comments: true
   field_prefix: null
   classname: AppIcons
+
 #!=======================IMAGES========================
 # flutter_assets:
 #   assets_path: assets/images
