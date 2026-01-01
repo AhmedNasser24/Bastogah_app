@@ -12,6 +12,8 @@ class AppImages {
 
   static const String imagesCircleAvatarImage = "assets/images/circle_avatar_image.png";
 
+  static const String imagesClothes = "assets/images/clothes.png";
+
   static const String imagesCustomerLogo = "assets/images/customer_logo.png";
 
   static const String imagesDriverPhote = "assets/images/driver_phote.png";

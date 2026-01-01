@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/widgets/custom_search_field.dart';
+import '../widgets/home_store_category.dart';
 import '../widgets/sliver_list_of_user_product_items.dart';
 import '../widgets/sliver_list_of_user_store_items.dart';
 import '../widgets/user_home_filter.dart';
@@ -20,6 +21,8 @@ class UserHomeView extends StatelessWidget {
         Expanded(
           child: CustomScrollView(
             slivers: [
+              SliverGap(16),
+              SliverToBoxAdapter(child: HomeStoreCategory()),
               SliverGap(16),
               SliverToBoxAdapter(child: CustomSlider()),
               SliverGap(16),
