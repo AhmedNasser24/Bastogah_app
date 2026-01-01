@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
+import '../../../../../core/widgets/favourite_icon_button.dart';
 
 class UserHomeProductItem extends StatelessWidget {
   const UserHomeProductItem({super.key});
@@ -18,24 +19,44 @@ class UserHomeProductItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              height: 60,
-              width: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.asset(AppImages.imagesPizzaHut, fit: BoxFit.cover),
-              ),
+            Stack(
+              children: [
+                Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      AppImages.imagesPizzaHut,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 4,
+                  top: 4,
+                  child: FavouriteIconButton(
+                    activeIcon: SvgPicture.asset(
+                      AppIcons.iconsFavourite24White,
+                    ),
+                    inactiveIcon: SvgPicture.asset(
+                      AppIcons.iconsNotFavourite24White,
+                    ),
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              ],
             ),
             const Gap(8),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
