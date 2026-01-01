@@ -65,9 +65,9 @@ class _CustomSliderState extends State<CustomSlider> {
         AnimatedSmoothIndicator(
           activeIndex: _currentIndex,
           count: imgList.length,
-          effect: const SlideEffect(
-            dotWidth: 12,
-            dotHeight: 12,
+          effect: const ExpandingDotsEffect(
+            dotWidth: 10,
+            dotHeight: 10,
           ), // You can customize this further
           onDotClicked: (index) {
             _carouselController.animateToPage(

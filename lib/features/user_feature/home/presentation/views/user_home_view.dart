@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/widgets/custom_search_field.dart';
 import '../widgets/sliver_list_of_user_product_items.dart';
 import '../widgets/sliver_list_of_user_store_items.dart';
+import '../widgets/user_home_filter.dart';
 
 class UserHomeView extends StatelessWidget {
   const UserHomeView({super.key});
@@ -21,6 +22,8 @@ class UserHomeView extends StatelessWidget {
             slivers: [
               SliverGap(16),
               SliverToBoxAdapter(child: CustomSlider()),
+              SliverGap(16),
+              SliverToBoxAdapter(child: UserHomeFilter()),
               SliverGap(16),
               // SliverListOfUserStoreItems(),
               SliverListOfUserProductItems(),
