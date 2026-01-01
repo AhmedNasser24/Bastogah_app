@@ -1,8 +1,10 @@
 import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CustomSlider extends StatefulWidget {
@@ -32,12 +34,19 @@ class _CustomSliderState extends State<CustomSlider> {
           carouselController: _carouselController,
           items: imgList
               .map(
-                (item) => Container(
-                  margin: const EdgeInsets.all(5.0),
-                  width: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                    child: Image.asset(item, fit: BoxFit.cover),
+                (item) => GestureDetector(
+                  onTap: () {
+                    context.push(RouteName.userStores);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(5.0),
+                    width: double.infinity,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                      child: Image.asset(item, fit: BoxFit.cover),
+                    ),
                   ),
                 ),
               )
