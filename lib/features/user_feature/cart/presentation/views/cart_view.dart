@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
+import '../widgets/cart_payment_section.dart';
 import '../widgets/cart_submit_order_button.dart';
 import '../widgets/code_discount_field.dart';
 import '../widgets/order_salary_section_for_cart.dart';
@@ -30,6 +31,7 @@ class CartView extends StatelessWidget {
                       CartItem(),
                       CodeDiscountField(),
                       AddressSectionForCart(),
+                      CartPaymentSection(),
                       OrderSalarySectionForCart(),
                       CartSubmitOrderButton(),
                       Gap(20),

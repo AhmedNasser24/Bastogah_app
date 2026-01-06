@@ -22,6 +22,10 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
           child: CustomTextFormField(
             controller: controller,
             hintText: "search_hint".tr(),
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 12,
+            ),
             prefixIcon: Padding(
               padding: const EdgeInsets.all(8.0),
               child: SvgPicture.asset(AppIcons.iconsSearchIcon),

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_icons.dart';
+import '../../../../../core/theme/app_images.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
 
 class UserOfferDetailsAppBar extends StatelessWidget {
@@ -15,6 +16,7 @@ class UserOfferDetailsAppBar extends StatelessWidget {
       automaticallyImplyLeading: false,
       expandedHeight: 170,
       backgroundColor: AppColors.white,
+      scrolledUnderElevation: 0,
       pinned: true,
       toolbarHeight: 60,
       title: Row(
@@ -48,10 +50,7 @@ class UserOfferDetailsAppBar extends StatelessWidget {
               children: [
                 SizedBox(
                   width: double.infinity,
-                  child: Image.network(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5TcyKQ9vyk4-GTxk_nVGqsXZc1EEImmONvw&s',
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(AppImages.imagesBurger, fit: BoxFit.cover),
                 ),
                 Positioned(
                   // bottom: 0,

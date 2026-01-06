@@ -21,6 +21,17 @@ class _UserAddNewAddressGovernorateFieldState
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
   TextEditingController controller = TextEditingController();
+  List<String> governorates = [
+    "بغداد",
+    "البصرة",
+    "الموصل",
+    "أربيل",
+    "النجف",
+    "كربلاء",
+    "السليمانية",
+    "دهوك",
+    "الأنبار",
+  ];
   @override
   Widget build(BuildContext context) {
     return CustomButtonToShowOverlayDialog(
@@ -33,12 +44,16 @@ class _UserAddNewAddressGovernorateFieldState
               setState(() {
                 showDialog = false;
               });
+              controller.text = governorates[i];
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Row(
                 children: [
-                  Text("السويس", style: AppFontStyle.regular16black1A(context)),
+                  Text(
+                    governorates[i],
+                    style: AppFontStyle.regular16black1A(context),
+                  ),
                 ],
               ),
             ),

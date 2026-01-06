@@ -60,7 +60,6 @@ class AddressSectionForCart extends StatelessWidget {
         backgroundColor: AppColors.white,
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          spacing: 18,
           children: [
             Row(
               children: [
@@ -77,17 +76,20 @@ class AddressSectionForCart extends StatelessWidget {
                 ),
               ],
             ),
+            const Gap(24),
             addressTile(
               context,
               title: "المنزل",
               subTitle: "بغداد، المنصور، شارع الرئيسي",
               isSelected: true,
             ),
+            const Gap(18),
             addressTile(
               context,
               title: "العمل",
               subTitle: "بغداد، الكرادة، شارع الزهور",
             ),
+            const Gap(24),
             CustomButton(
               onTap: () {
                 context.push(RouteName.userAddNewAddress);
@@ -129,7 +131,7 @@ class AddressSectionForCart extends StatelessWidget {
             ],
           ),
         ),
-        const Gap(4),
+        const Gap(6),
         isSelected
             ? SvgPicture.asset(AppIcons.iconsCartAddressCheck)
             : const SizedBox.shrink(),

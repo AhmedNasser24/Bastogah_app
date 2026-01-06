@@ -10,7 +10,7 @@ class MerchantProductItemsGridView extends StatelessWidget {
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 700,
         crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
+        mainAxisSpacing: 20,
         mainAxisExtent: 70,
       ),
       itemCount: 20,

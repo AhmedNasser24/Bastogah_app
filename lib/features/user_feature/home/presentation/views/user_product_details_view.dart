@@ -108,6 +108,7 @@ class _ProductQuantitySectionState extends State<ProductQuantitySection> {
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+        constraints: const BoxConstraints(maxWidth: 500),
         decoration: ShapeDecoration(
           gradient: const LinearGradient(
             begin: Alignment.topCenter,

@@ -35,6 +35,9 @@ class RegisterPhoneField extends StatelessWidget {
         if (value == null || value.isEmpty) {
           return 'validation.required_field'.tr();
         }
+        if (value.length < 9 || value.length > 9) {
+          return 'validation.invalid_phone_number'.tr();
+        }
         return null;
       },
     );

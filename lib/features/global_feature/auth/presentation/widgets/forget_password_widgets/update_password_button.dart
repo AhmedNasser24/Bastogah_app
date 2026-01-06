@@ -5,14 +5,19 @@ import '../../../../../../core/theme/app_font_style.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 
 class UpdatePasswordButton extends StatelessWidget {
-  const UpdatePasswordButton({super.key});
-
+  const UpdatePasswordButton({super.key, required this.pageController});
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     return CustomButton(
       title: "auth.update_password".tr(),
       textStyle: AppFontStyle.semibold16White(context),
-      onTap: () {},
+      onTap: () {
+        pageController.nextPage(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      },
     );
   }
 }

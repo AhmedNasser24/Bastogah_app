@@ -20,6 +20,17 @@ class _UserAddNewAddressCityFieldState
     extends State<UserAddNewAddressCityField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
+  List<String> cities = [
+    "بغداد",
+    "البصرة",
+    "الموصل",
+    "أربيل",
+    "النجف",
+    "كربلاء",
+    "السليمانية",
+    "دهوك",
+    "الأنبار",
+  ];
   TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -27,9 +38,10 @@ class _UserAddNewAddressCityFieldState
       showDialog: showDialog,
       buttonKey: _buttonKey,
       widgetListInDialog: [
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < cities.length; i++)
           InkWell(
             onTap: () {
+              controller.text = cities[i];
               setState(() {
                 showDialog = false;
               });
@@ -38,7 +50,10 @@ class _UserAddNewAddressCityFieldState
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Row(
                 children: [
-                  Text("السويس", style: AppFontStyle.regular16black1A(context)),
+                  Text(
+                    cities[i],
+                    style: AppFontStyle.regular16black1A(context),
+                  ),
                 ],
               ),
             ),

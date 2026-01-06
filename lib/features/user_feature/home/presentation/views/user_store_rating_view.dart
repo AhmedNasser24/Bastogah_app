@@ -81,74 +81,76 @@ class ResturantRatingSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
-          child: Container(
-            width: double.infinity,
-            margin: const EdgeInsets.symmetric(horizontal: 16.0),
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            constraints: const BoxConstraints(maxWidth: 600),
-            decoration: ShapeDecoration(
-              gradient: const LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xFFFF6800), Color(0xFFFD9900)],
+          child: Center(
+            child: Container(
+              width: double.infinity,
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              constraints: const BoxConstraints(maxWidth: 600),
+              decoration: ShapeDecoration(
+                gradient: const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xFFFF6800), Color(0xFFFD9900)],
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24),
+                ),
               ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Row(
-                          children: [
-                            Text(
-                              "4.8",
-                              style: AppFontStyle.bold48White(context),
-                            ),
-                            Text(
-                              " من 5",
-                              style: AppFontStyle.medium18White(context),
-                            ),
-                          ],
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            children: [
+                              Text(
+                                "4.8",
+                                style: AppFontStyle.bold48White(context),
+                              ),
+                              Text(
+                                " من 5",
+                                style: AppFontStyle.medium18White(context),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      // const Gap(4),
-                      FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Row(
-                          children: List.generate(
-                            5,
-                            (index) => Padding(
-                              padding: const EdgeInsets.only(left: 4.0),
-                              child: SvgPicture.asset(
-                                AppIcons.iconsStar12White,
-                                width: 20,
-                                height: 20,
+                        // const Gap(4),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            children: List.generate(
+                              5,
+                              (index) => Padding(
+                                padding: const EdgeInsets.only(left: 4.0),
+                                child: SvgPicture.asset(
+                                  AppIcons.iconsStar12White,
+                                  width: 20,
+                                  height: 20,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const Gap(10),
-                      Text(
-                        "بناءً على 450+ تقييم",
-                        style: AppFontStyle.medium18White(context),
-                      ),
-                    ],
+                        const Gap(10),
+                        Text(
+                          "بناءً على 450+ تقييم",
+                          style: AppFontStyle.medium18White(context),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SvgPicture.asset(
-                  AppIcons.iconsTopRating,
-                  width: 120,
-                  height: 120,
-                ),
-              ],
+                  SvgPicture.asset(
+                    AppIcons.iconsTopRating,
+                    width: 120,
+                    height: 120,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -167,48 +169,50 @@ class ResturantInfoSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16.0),
-            padding: const EdgeInsets.all(12.0),
-            constraints: const BoxConstraints(maxWidth: 600),
-            decoration: BoxDecoration(
-              color: AppColors.secondary,
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                resturantLogo(),
-                const Gap(8),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 10,
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              "مطعم بيتزا هت",
-                              style: AppFontStyle.bold18Black1A(context),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.all(12.0),
+              constraints: const BoxConstraints(maxWidth: 600),
+              decoration: BoxDecoration(
+                color: AppColors.secondary,
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  resturantLogo(),
+                  const Gap(8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 10,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "مطعم بيتزا هت",
+                                style: AppFontStyle.bold18Black1A(context),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
-                          ),
-                          const Gap(8),
-                          resturantRating(context),
-                        ],
-                      ),
-                      Text(
-                        "شاورما - طعام سريع",
-                        style: AppFontStyle.medium14black4B(context),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                            const Gap(8),
+                            resturantRating(context),
+                          ],
+                        ),
+                        Text(
+                          "شاورما - طعام سريع",
+                          style: AppFontStyle.medium14black4B(context),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -54,7 +54,7 @@ class CreateNewPasswordBody extends StatelessWidget {
             const Gap(30),
             const NewPasswordAndConfirmPasswordField(),
             const Gap(30),
-            const UpdatePasswordButton(),
+            UpdatePasswordButton(pageController: pageController),
             // const Gap(10),
             const RemembedPasswordWidget(),
             const Gap(20),

@@ -21,15 +21,28 @@ class RegisterCityField extends StatefulWidget {
 class _RegisterCityFieldState extends State<RegisterCityField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
+  TextEditingController controller = TextEditingController();
+  List<String> cities = [
+    "بغداد",
+    "البصرة",
+    "الموصل",
+    "أربيل",
+    "النجف",
+    "كربلاء",
+    "السليمانية",
+    "دهوك",
+    "الأنبار",
+  ];
   @override
   Widget build(BuildContext context) {
     return CustomButtonToShowOverlayDialog(
       showDialog: showDialog,
       buttonKey: _buttonKey,
       widgetListInDialog: [
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < cities.length; i++)
           InkWell(
             onTap: () {
+              controller.text = cities[i];
               setState(() {
                 showDialog = false;
               });
@@ -38,7 +51,10 @@ class _RegisterCityFieldState extends State<RegisterCityField> {
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Row(
                 children: [
-                  Text("السويس", style: AppFontStyle.regular16black1A(context)),
+                  Text(
+                    cities[i],
+                    style: AppFontStyle.regular16black1A(context),
+                  ),
                 ],
               ),
             ),
@@ -46,6 +62,7 @@ class _RegisterCityFieldState extends State<RegisterCityField> {
       ],
       mainWidget: CustomTextFormField(
         key: _buttonKey,
+        controller: controller,
         onTap: () {
           setState(() {
             showDialog = true;

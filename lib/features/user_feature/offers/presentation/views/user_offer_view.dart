@@ -19,8 +19,10 @@ class UserOffersView extends StatelessWidget {
       children: [
         const UserAppBar(address: "بغداد,العراق"),
         const CustomSearchField(),
+        const Gap(12),
         Expanded(
           child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
             slivers: [
               const SliverGap(16),
               SliverToBoxAdapter(

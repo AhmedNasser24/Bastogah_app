@@ -21,6 +21,17 @@ class UserProfileCityField extends StatefulWidget {
 class _UserProfileCityFieldState extends State<UserProfileCityField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
+  List<String> cities = [
+    "بغداد",
+    "البصرة",
+    "الموصل",
+    "أربيل",
+    "النجف",
+    "كربلاء",
+    "السليمانية",
+    "دهوك",
+    "الأنبار",
+  ];
   TextEditingController controller = TextEditingController(text: "حارثية");
   @override
   Widget build(BuildContext context) {
@@ -28,9 +39,10 @@ class _UserProfileCityFieldState extends State<UserProfileCityField> {
       showDialog: showDialog,
       buttonKey: _buttonKey,
       widgetListInDialog: [
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < cities.length; i++)
           InkWell(
             onTap: () {
+              controller.text = cities[i];
               setState(() {
                 showDialog = false;
               });
@@ -39,7 +51,10 @@ class _UserProfileCityFieldState extends State<UserProfileCityField> {
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Row(
                 children: [
-                  Text("السويس", style: AppFontStyle.regular16black1A(context)),
+                  Text(
+                    cities[i],
+                    style: AppFontStyle.regular16black1A(context),
+                  ),
                 ],
               ),
             ),

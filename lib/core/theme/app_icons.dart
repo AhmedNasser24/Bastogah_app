@@ -44,6 +44,8 @@ class AppIcons {
 
   static const String iconsCartDollarIcon = "assets/icons/cart_dollar_icon.svg";
 
+  static const String iconsCartPaymentCheck = "assets/icons/cart_payment_check.svg";
+
   static const String iconsCheckIcon = "assets/icons/check_icon.svg";
 
   static const String iconsCodeDiscountIcon = "assets/icons/code_discount_icon.svg";
@@ -109,6 +111,12 @@ class AppIcons {
   static const String iconsNotificationProfileIcon = "assets/icons/notification_profile_icon.svg";
 
   static const String iconsOfferIcon16White = "assets/icons/offer_icon_16_white.svg";
+
+  static const String iconsPaymentCashActiveIcon = "assets/icons/payment_cash_active_icon.svg";
+
+  static const String iconsPaymentCreditInactiveIcon = "assets/icons/payment_credit_inactive_icon.svg";
+
+  static const String iconsPaymentMethodIcon = "assets/icons/payment_method_icon.svg";
 
   static const String iconsPerson20Grey = "assets/icons/person_20_grey.svg";
 

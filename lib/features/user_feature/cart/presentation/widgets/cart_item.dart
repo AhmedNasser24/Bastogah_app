@@ -46,6 +46,7 @@ class CartItem extends StatelessWidget {
                 ),
                 const Gap(4),
                 Text("فود لاند", style: AppFontStyle.regular12grey(context)),
+                const Gap(4),
                 orderWith(context),
                 orderWithout(context),
                 orderNote(context),

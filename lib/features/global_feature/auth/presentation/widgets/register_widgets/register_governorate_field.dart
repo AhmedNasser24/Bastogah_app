@@ -22,15 +22,28 @@ class RegisterGovernorateField extends StatefulWidget {
 class _RegisterGovernorateFieldState extends State<RegisterGovernorateField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
+  TextEditingController controller = TextEditingController();
+  List<String> governorates = [
+    "بغداد",
+    "البصرة",
+    "الموصل",
+    "أربيل",
+    "النجف",
+    "كربلاء",
+    "السليمانية",
+    "دهوك",
+    "الأنبار",
+  ];
   @override
   Widget build(BuildContext context) {
     return CustomButtonToShowOverlayDialog(
       showDialog: showDialog,
       buttonKey: _buttonKey,
       widgetListInDialog: [
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < governorates.length; i++)
           InkWell(
             onTap: () {
+              controller.text = governorates[i];
               setState(() {
                 showDialog = false;
               });
@@ -39,7 +52,10 @@ class _RegisterGovernorateFieldState extends State<RegisterGovernorateField> {
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Row(
                 children: [
-                  Text("السويس", style: AppFontStyle.regular16black1A(context)),
+                  Text(
+                    governorates[i],
+                    style: AppFontStyle.regular16black1A(context),
+                  ),
                 ],
               ),
             ),
@@ -47,6 +63,7 @@ class _RegisterGovernorateFieldState extends State<RegisterGovernorateField> {
       ],
       mainWidget: CustomTextFormField(
         key: _buttonKey,
+        controller: controller,
         onTap: () {
           setState(() {
             showDialog = true;

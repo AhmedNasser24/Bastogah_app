@@ -243,7 +243,10 @@
     "delivery_fee" : "رسوم التوصيل",
     "subtotal" : "المجموع الفرعي",
     "delivery_address" : "عنوان التوصيل",
-    "select_delivery_address" : "اختر عنوان التوصيل"
+    "select_delivery_address" : "اختر عنوان التوصيل",
+    "payment_method" : "طريقة الدفع",
+    "cash" : "الدفع نقداً",
+    "credit" : "البطاقة الائتمانية"
   }
 
 

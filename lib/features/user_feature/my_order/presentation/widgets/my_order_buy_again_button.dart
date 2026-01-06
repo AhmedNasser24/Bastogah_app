@@ -13,8 +13,8 @@ class MyOrderBuyAgainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-      width: 150,
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+      width: 140,
       title: "user.buy_again".tr(),
       textStyle: AppFontStyle.semibold14Primary(context),
       color: Colors.transparent,

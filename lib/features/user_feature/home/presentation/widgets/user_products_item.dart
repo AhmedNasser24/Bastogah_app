@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
 
@@ -12,7 +14,7 @@ class UserProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // context.push(RouteName.merchantProductDetails);
+        context.push(RouteName.userProductDetails);
       },
       child: SizedBox(
         height: 70,

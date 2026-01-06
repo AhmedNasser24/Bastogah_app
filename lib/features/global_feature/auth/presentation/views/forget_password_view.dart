@@ -22,10 +22,10 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
-            ChangedPasswordSuccessfullyBody(pageController: _pageController),
             ForgetPasswordBody(pageController: _pageController),
             OtpVerificationBody(pageController: _pageController),
             CreateNewPasswordBody(pageController: _pageController),
+            ChangedPasswordSuccessfullyBody(pageController: _pageController),
           ],
         ),
       ),

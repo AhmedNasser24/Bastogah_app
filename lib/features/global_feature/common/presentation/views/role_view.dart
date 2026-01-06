@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:bastogah_app/core/constant/constants.dart';
 import 'package:bastogah_app/core/enums/roles_enum.dart';
+import 'package:bastogah_app/core/local_storage_services/shared_preference_singleton.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/widgets/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -74,6 +76,10 @@ class _RoleViewState extends State<RoleView> {
                     title: "confirm".tr(),
                     color: AppColors.primary,
                     onTap: () {
+                      SharedPreferenceSingleton.setString(
+                        kRole,
+                        roles[selectedIndex].title,
+                      );
                       context.push(roles[selectedIndex].routeName);
                     },
                   ),

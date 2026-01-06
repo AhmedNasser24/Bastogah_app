@@ -4,7 +4,7 @@ import 'package:bastogah_app/core/routing/routes/user_routes.dart';
 import 'package:bastogah_app/features/global_feature/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../features/global_feature/auth/presentation/views/forget_password.dart';
+import '../../features/global_feature/auth/presentation/views/forget_password_view.dart';
 import '../../features/global_feature/auth/presentation/views/merchant_and_driver_login_view.dart';
 import '../../features/global_feature/auth/presentation/views/user_login_view.dart';
 import '../../features/global_feature/auth/presentation/views/user_register_view.dart';
@@ -25,7 +25,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.cart,
+  initialLocation: RouteName.splash,
   routes: [
     GoRoute(
       path: RouteName.splash,

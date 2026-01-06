@@ -20,6 +20,7 @@ class UserHomeView extends StatelessWidget {
       children: [
         UserAppBar(address: "بغداد,العراق"),
         CustomSearchField(),
+        Gap(12),
         Expanded(
           child: CustomScrollView(
             slivers: [
@@ -30,8 +31,8 @@ class UserHomeView extends StatelessWidget {
               SliverGap(16),
               SliverToBoxAdapter(child: UserHomeFilter()),
               SliverGap(16),
-              // SliverListOfUserStoreItems(),
-              SliverListOfUserProductItems(),
+              SliverListOfUserStoreItems(),
+              // SliverListOfUserProductItems(),
             ],
           ),
         ),

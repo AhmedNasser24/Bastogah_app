@@ -43,7 +43,7 @@ class UserMyRatingView extends StatelessWidget {
               const BackArrowButton(),
               const Gap(8),
               Text(
-                "user.my_rating".tr(),
+                "user.my_ratings".tr(),
                 style: AppFontStyle.bold16Black1A(context),
               ),
             ],

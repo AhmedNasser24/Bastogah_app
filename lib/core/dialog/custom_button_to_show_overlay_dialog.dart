@@ -12,12 +12,15 @@ class CustomButtonToShowOverlayDialog extends StatefulWidget {
     this.onTapOnChildrenItem,
     this.showDialog = false,
     required this.buttonKey,
+    this.horizontal = 0,
+    this.vertical = 80,
   });
   final Widget mainWidget;
   final List<Widget>? widgetListInDialog;
   final List<VoidCallback>? onTapOnChildrenItem;
   final bool showDialog;
   final GlobalKey buttonKey;
+  final double horizontal, vertical;
   @override
   CustomButtonToShowOverlayDialogState createState() =>
       CustomButtonToShowOverlayDialogState();
@@ -89,8 +92,8 @@ class CustomButtonToShowOverlayDialogState
 
             // ========== THE DIALOG ==========
             Positioned(
-              top: position.dy + 90,
-              right: position.dx,
+              top: position.dy + widget.vertical,
+              right: position.dx + widget.horizontal,
               child: Material(
                 color: Colors.transparent,
                 child: Container(

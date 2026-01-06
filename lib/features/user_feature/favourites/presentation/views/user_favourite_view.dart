@@ -18,7 +18,7 @@ class UserFavouriteView extends StatelessWidget {
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
               maxCrossAxisExtent: 600,
-              mainAxisExtent: 290,
+              mainAxisExtent: 300,
             ),
             itemCount: 10,
             itemBuilder: (context, index) {

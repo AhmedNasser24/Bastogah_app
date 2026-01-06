@@ -22,17 +22,17 @@ class UserProductsView extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             const UserProductsAppBar(),
-
-            const SliverToBoxAdapter(child: UserProductFilter()),
-            const SliverGap(16),
             const SliverToBoxAdapter(child: ResturantInfoSection()),
             const SliverGap(16),
+            const SliverToBoxAdapter(child: UserProductFilter()),
+            const SliverGap(16),
+
             SliverGrid.builder(
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 700,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
-                mainAxisExtent: 80,
+                mainAxisExtent: 90,
               ),
               itemCount: 10,
               itemBuilder: (context, index) {
@@ -59,52 +59,54 @@ class ResturantInfoSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
-          child: GestureDetector(
-            onTap: () => context.push(RouteName.userStoreRating),
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16.0),
-              padding: const EdgeInsets.all(12.0),
-              constraints: const BoxConstraints(maxWidth: 600),
-              decoration: BoxDecoration(
-                color: AppColors.secondary,
-                borderRadius: BorderRadius.circular(24),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  resturantLogo(),
-                  const Gap(8),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      spacing: 10,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                "مطعم بيتزا هت",
-                                style: AppFontStyle.bold18Black1A(context),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
+          child: Center(
+            child: GestureDetector(
+              onTap: () => context.push(RouteName.userStoreRating),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.all(12.0),
+                constraints: const BoxConstraints(maxWidth: 600),
+                decoration: BoxDecoration(
+                  color: AppColors.secondary,
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    resturantLogo(),
+                    const Gap(8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 10,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "مطعم بيتزا هت",
+                                  style: AppFontStyle.bold18Black1A(context),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
-                            ),
-                            const Gap(8),
-                            SvgPicture.asset(AppIcons.iconsInfo28BlackIcon),
-                          ],
-                        ),
-                        Text(
-                          "شاورما - طعام سريع",
-                          style: AppFontStyle.medium14black4B(context),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        resturantRating(context),
-                      ],
+                              const Gap(8),
+                              SvgPicture.asset(AppIcons.iconsInfo28BlackIcon),
+                            ],
+                          ),
+                          Text(
+                            "شاورما - طعام سريع",
+                            style: AppFontStyle.medium14black4B(context),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          resturantRating(context),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

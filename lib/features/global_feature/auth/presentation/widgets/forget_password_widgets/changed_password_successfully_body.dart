@@ -27,7 +27,14 @@ class ChangedPasswordSuccessfullyBody extends StatelessWidget {
             const Gap(10),
             Align(
               alignment: AlignmentDirectional.centerStart,
-              child: BackArrowButton(onTap: () {}), // don't make pop action
+              child: BackArrowButton(
+                onTap: () {
+                  pageController.previousPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ), // don't make pop action
             ),
             const Gap(20),
             Image.asset(AppImages.imagesChangePasswordSuccessfully),

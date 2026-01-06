@@ -21,15 +21,28 @@ class _MerchantAddNewOrderGovernorateFieldState
     extends State<MerchantAddNewOrderGovernorateField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
+  TextEditingController controller = TextEditingController();
+  List<String> governorates = [
+    "القاهرة",
+    "الجيزة",
+    "الإسكندرية",
+    "الدقهلية",
+    "الشرقية",
+    "الغربية",
+    "المنوفية",
+    "البحيرة",
+    "سوهاج",
+  ];
   @override
   Widget build(BuildContext context) {
     return CustomButtonToShowOverlayDialog(
       showDialog: showDialog,
       buttonKey: _buttonKey,
       widgetListInDialog: [
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < governorates.length; i++)
           InkWell(
             onTap: () {
+              controller.text = governorates[i];
               setState(() {
                 showDialog = false;
               });
@@ -38,7 +51,10 @@ class _MerchantAddNewOrderGovernorateFieldState
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Row(
                 children: [
-                  Text("السويس", style: AppFontStyle.regular16black1A(context)),
+                  Text(
+                    governorates[i],
+                    style: AppFontStyle.regular16black1A(context),
+                  ),
                 ],
               ),
             ),
@@ -46,6 +62,7 @@ class _MerchantAddNewOrderGovernorateFieldState
       ],
       mainWidget: CustomTextFormField(
         key: _buttonKey,
+        controller: controller,
         onTap: () {
           setState(() {
             showDialog = true;

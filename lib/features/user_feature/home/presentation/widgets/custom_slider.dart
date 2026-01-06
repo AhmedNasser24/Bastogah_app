@@ -52,9 +52,9 @@ class _CustomSliderState extends State<CustomSlider> {
               )
               .toList(),
           options: CarouselOptions(
-            height: context.screenWidth > 800
-                ? 220
-                : 180.0, // Removed to use aspect ratio
+            height: context.screenWidth > 600
+                ? 190
+                : 160.0, // Removed to use aspect ratio
 
             autoPlay: true,
             enlargeCenterPage: true,

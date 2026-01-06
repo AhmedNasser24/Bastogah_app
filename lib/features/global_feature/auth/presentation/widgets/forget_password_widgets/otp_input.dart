@@ -17,6 +17,11 @@ class _OtpInputState extends State<OtpInput> {
     4,
     (_) => TextEditingController(),
   );
+  @override
+  void initState() {
+    super.initState();
+    _focusNodes[0].requestFocus();
+  }
 
   @override
   void dispose() {
@@ -58,6 +63,8 @@ class _OtpInputState extends State<OtpInput> {
             _focusNodes[index + 1].requestFocus(); // move forward
           } else if (value.isEmpty && index > 0) {
             _focusNodes[index - 1].requestFocus(); // move backward
+          } else if (index == 3 && value.isNotEmpty) {
+            _focusNodes[index].unfocus(); // hide keyboard on last box
           }
         },
       ),
@@ -88,7 +95,7 @@ class _OtpInputState extends State<OtpInput> {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: _buildOtpBox(index),
           );
-        }),
+        }).reversed.toList(),
       ),
     );
   }

@@ -23,6 +23,17 @@ class _UserProfileGovernorateFieldState
     extends State<UserProfileGovernorateField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
+  List<String> governorates = [
+    "بغداد",
+    "البصرة",
+    "الموصل",
+    "أربيل",
+    "النجف",
+    "كربلاء",
+    "السليمانية",
+    "دهوك",
+    "الأنبار",
+  ];
   TextEditingController controller = TextEditingController(text: "بغداد");
   @override
   Widget build(BuildContext context) {
@@ -30,9 +41,10 @@ class _UserProfileGovernorateFieldState
       showDialog: showDialog,
       buttonKey: _buttonKey,
       widgetListInDialog: [
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < governorates.length; i++)
           InkWell(
             onTap: () {
+              controller.text = governorates[i];
               setState(() {
                 showDialog = false;
               });
@@ -41,7 +53,10 @@ class _UserProfileGovernorateFieldState
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Row(
                 children: [
-                  Text("السويس", style: AppFontStyle.regular16black1A(context)),
+                  Text(
+                    governorates[i],
+                    style: AppFontStyle.regular16black1A(context),
+                  ),
                 ],
               ),
             ),

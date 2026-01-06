@@ -17,7 +17,7 @@ class DriverOrderDetailsView extends StatelessWidget {
   const DriverOrderDetailsView({super.key});
   @override
   Widget build(BuildContext context) {
-    DriverFilterEnum driverFilterStatus = DriverFilterEnum.inDelivery;
+    DriverFilterEnum driverFilterStatus = DriverFilterEnum.pending;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -39,7 +39,6 @@ class DriverOrderDetailsView extends StatelessWidget {
                       const OrderPriceDetailsSection(),
                       const StoreSection(),
                       const OrderItemsSection(),
-                      const Gap(20),
                       switch (driverFilterStatus) {
                         DriverFilterEnum.pending =>
                           const DriverAcceptOrderButton(),

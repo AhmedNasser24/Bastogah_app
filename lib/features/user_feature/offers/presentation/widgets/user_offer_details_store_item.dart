@@ -19,6 +19,7 @@ class UserOfferDetailsStoreItem extends StatelessWidget {
       children: [
         Card(
           elevation: 1,
+          color: AppColors.white,
           child: Container(
             height: 290,
             width: double.infinity,
