@@ -13,55 +13,58 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 80,
-          width: 80,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(AppImages.imagesBurger, fit: BoxFit.cover),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 80,
+            width: 80,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(AppImages.imagesBurger, fit: BoxFit.cover),
+            ),
           ),
-        ),
-        const Gap(12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Text(
-                      "برجر لحم بالجبنة",
-                      style: AppFontStyle.bold14black1A(context),
+          const Gap(12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        "برجر لحم بالجبنة",
+                        style: AppFontStyle.bold14black1A(context),
+                      ),
                     ),
-                  ),
-                  const Gap(4),
-                  SvgPicture.asset(AppIcons.iconsDeleteCartIcon),
-                ],
-              ),
-              const Gap(4),
-              Text("فود لاند", style: AppFontStyle.regular12grey(context)),
-              orderWith(context),
-              orderWithout(context),
-              orderNote(context),
-              const Gap(8),
-              Row(
-                children: [
-                  Text(
-                    "user.amount".tr(args: ["15000"]),
-                    style: AppFontStyle.bold16Primary(context),
-                  ),
-                  const Spacer(),
-                  const DetectItemQuantity(),
-                ],
-              ),
-            ],
+                    const Gap(4),
+                    SvgPicture.asset(AppIcons.iconsDeleteCartIcon),
+                  ],
+                ),
+                const Gap(4),
+                Text("فود لاند", style: AppFontStyle.regular12grey(context)),
+                orderWith(context),
+                orderWithout(context),
+                orderNote(context),
+                const Gap(8),
+                Row(
+                  children: [
+                    Text(
+                      "user.amount".tr(args: ["15000"]),
+                      style: AppFontStyle.bold16Primary(context),
+                    ),
+                    const Spacer(),
+                    const DetectItemQuantity(),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

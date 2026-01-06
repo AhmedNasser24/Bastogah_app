@@ -56,6 +56,7 @@ class CodeDiscountField extends StatelessWidget {
               CustomButton(
                 title: "user.apply".tr(),
                 width: 100,
+                padding: const EdgeInsets.all(10),
                 gradient: const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,

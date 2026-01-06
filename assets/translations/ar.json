@@ -241,7 +241,9 @@
     "apply": "تطبيق",
     "total" : "المجموع الكلي",
     "delivery_fee" : "رسوم التوصيل",
-    "subtotal" : "المجموع الفرعي"
+    "subtotal" : "المجموع الفرعي",
+    "delivery_address" : "عنوان التوصيل",
+    "select_delivery_address" : "اختر عنوان التوصيل"
   }
 
 

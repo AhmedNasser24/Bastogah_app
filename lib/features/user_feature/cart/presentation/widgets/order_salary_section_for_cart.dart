@@ -11,6 +11,7 @@ class OrderSalarySectionForCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const Gap(12),
         Row(
           children: [
             Text(

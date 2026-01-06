@@ -40,6 +40,8 @@ class AppIcons {
 
   static const String iconsCart32White = "assets/icons/cart_32_white.svg";
 
+  static const String iconsCartAddressCheck = "assets/icons/cart_address_check.svg";
+
   static const String iconsCartDollarIcon = "assets/icons/cart_dollar_icon.svg";
 
   static const String iconsCheckIcon = "assets/icons/check_icon.svg";
