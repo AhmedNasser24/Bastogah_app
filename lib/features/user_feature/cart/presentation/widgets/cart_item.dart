@@ -1,0 +1,191 @@
+import 'package:bastogah_app/core/theme/app_font_style.dart';
+import 'package:bastogah_app/core/theme/app_images.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
+
+import '../../../../../core/theme/app_colors.dart';
+import '../../../../../core/theme/app_icons.dart';
+
+class CartItem extends StatelessWidget {
+  const CartItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 80,
+          width: 80,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(AppImages.imagesBurger, fit: BoxFit.cover),
+          ),
+        ),
+        const Gap(12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      "برجر لحم بالجبنة",
+                      style: AppFontStyle.bold14black1A(context),
+                    ),
+                  ),
+                  const Gap(4),
+                  SvgPicture.asset(AppIcons.iconsDeleteCartIcon),
+                ],
+              ),
+              const Gap(4),
+              Text("فود لاند", style: AppFontStyle.regular12grey(context)),
+              orderWith(context),
+              orderWithout(context),
+              orderNote(context),
+              const Gap(8),
+              Row(
+                children: [
+                  Text(
+                    "user.amount".tr(args: ["15000"]),
+                    style: AppFontStyle.bold16Primary(context),
+                  ),
+                  const Spacer(),
+                  const DetectItemQuantity(),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget orderWith(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 6.0),
+      child: Wrap(
+        // runSpacing: 4,
+        // spacing: 8,
+        children: [
+          for (int i = 0; i < 2; i++)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+              child: Text(
+                "+ جبنة تشيدر",
+                style: AppFontStyle.regular10Primary(context),
+              ),
+            ),
+          for (int i = 0; i < 3; i++)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2),
+              child: Text(
+                "+ صلصة",
+                style: AppFontStyle.regular10Primary(context),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget orderWithout(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 6.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "user.without".tr(),
+            style: AppFontStyle.regular10black4B(context),
+          ),
+          Expanded(
+            child: Wrap(
+              // runSpacing: 4,
+              // spacing: 8,
+              children: [
+                for (int i = 0; i < 9; i++)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 2.0,
+                      vertical: 2,
+                    ),
+                    child: Text(
+                      "خس${i != 8 ? "، " : ""}",
+                      style: AppFontStyle.regular10black4B(context),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget orderNote(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 6.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("user.note".tr(), style: AppFontStyle.regular10black4B(context)),
+          Expanded(
+            child: Text(
+              "لا تضع بصل أو خيار مخلل في البرجر من فضلك ",
+              style: AppFontStyle.regular10black4B(context),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DetectItemQuantity extends StatefulWidget {
+  const DetectItemQuantity({super.key});
+
+  @override
+  State<DetectItemQuantity> createState() => _DetectItemQuantityState();
+}
+
+class _DetectItemQuantityState extends State<DetectItemQuantity> {
+  int quantity = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: 8,
+      children: [
+        IconButton(
+          onPressed: () {
+            setState(() {
+              if (quantity > 1) {
+                quantity--;
+              }
+            });
+          },
+
+          icon: const Icon(Icons.remove, size: 20, color: AppColors.black1A),
+        ),
+
+        Text(
+          "$quantity", // This should be the current quantity
+          style: AppFontStyle.bold14black1A(context),
+        ),
+
+        IconButton(
+          onPressed: () {
+            setState(() {
+              quantity++;
+            });
+          },
+          icon: const Icon(Icons.add, size: 20, color: AppColors.black1A),
+        ),
+      ],
+    );
+  }
+}

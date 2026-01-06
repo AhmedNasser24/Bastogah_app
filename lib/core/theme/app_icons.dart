@@ -44,6 +44,8 @@ class AppIcons {
 
   static const String iconsCopy24Orange = "assets/icons/copy_24_orange.svg";
 
+  static const String iconsDeleteCartIcon = "assets/icons/delete_cart_icon.svg";
+
   static const String iconsDeleteImage = "assets/icons/delete_image.svg";
 
   static const String iconsDollar14White = "assets/icons/dollar_14_white.svg";

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:bastogah_app/features/user_feature/home/presentation/widgets/custom_slider.dart';
 import 'package:bastogah_app/features/user_feature/user_layout/presentation/widgets/user_app_bar.dart';
 import 'package:flutter/material.dart';

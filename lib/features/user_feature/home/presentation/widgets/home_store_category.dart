@@ -1,4 +1,3 @@
-import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:flutter/material.dart';

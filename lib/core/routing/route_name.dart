@@ -10,6 +10,7 @@ class RouteName {
   static const String notification = '/merchant/notification';
   static const String userProductDetails =
       '/user/home/products/product-details';
+  static const String cart = '/user/home/cart';
 
   // User routes
   static const String userHome = '/user/home';
