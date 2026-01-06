@@ -5,6 +5,9 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
+import '../widgets/cart_submit_order_button.dart';
+import '../widgets/code_discount_field.dart';
+import '../widgets/order_salary_section_for_cart.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -20,7 +23,15 @@ class CartView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(children: [CartItem()]),
+                  child: Column(
+                    spacing: 24,
+                    children: [
+                      CartItem(),
+                      CodeDiscountField(),
+                      OrderSalarySectionForCart(),
+                      CartSubmitOrderButton(),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -101,7 +101,7 @@ class _ProductQuantitySectionState extends State<ProductQuantitySection> {
     );
   }
 
-  InkWell addToCartButton(BuildContext context) {
+  Widget addToCartButton(BuildContext context) {
     return InkWell(
       onTap: () {
         // context.push(RouteName.userCartView);

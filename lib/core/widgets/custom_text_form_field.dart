@@ -36,6 +36,7 @@ class CustomTextFormField extends StatelessWidget {
     this.textDirection,
     this.textAlign = TextAlign.start,
     this.titlePrefixIcon,
+    this.contentPadding,
   });
   final String? hintText;
   final TextInputType? keyboardType;
@@ -63,6 +64,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextDirection? textDirection;
   final TextAlign textAlign;
   final Widget? titlePrefixIcon;
+  final EdgeInsetsGeometry? contentPadding;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -99,7 +101,7 @@ class CustomTextFormField extends StatelessWidget {
           textAlign: textAlign,
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(16),
+            contentPadding: contentPadding ?? const EdgeInsets.all(16),
             suffix: suffix,
             prefixIcon: prefixIcon,
             suffixIcon: Padding(

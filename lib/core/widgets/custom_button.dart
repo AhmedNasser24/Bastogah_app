@@ -18,6 +18,7 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     this.padding = const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
     this.borderWidth = 1,
+    this.gradient,
   });
   final String? title;
   final TextStyle? textStyle;
@@ -32,6 +33,7 @@ class CustomButton extends StatelessWidget {
   final bool isLoading;
   final EdgeInsetsGeometry padding;
   final double borderWidth;
+  final Gradient? gradient;
   @override
   Widget build(BuildContext context) {
     return AbsorbPointer(
@@ -47,7 +49,8 @@ class CustomButton extends StatelessWidget {
           width: width,
           constraints: BoxConstraints(maxWidth: maxWidth),
           decoration: BoxDecoration(
-            color: color,
+            color: gradient == null ? color : null,
+            gradient: gradient,
             borderRadius: BorderRadius.circular(borderRadius),
             border: borderColor != null
                 ? Border.all(color: borderColor!, width: borderWidth)

@@ -234,7 +234,14 @@
     "quantity" : "الكمية",
     "cart" : "سلة التسوق",
     "without" : "بدون: ",
-    "note" : "ملاحظة: "
+    "note" : "ملاحظة: ",
+    "submit_order" : "إتمام الطلب",
+    "discount_code" : "كود الخصم",
+    "enter_discount_code" : "أدخل كود الخصم",
+    "apply": "تطبيق",
+    "total" : "المجموع الكلي",
+    "delivery_fee" : "رسوم التوصيل",
+    "subtotal" : "المجموع الفرعي"
   }
 
 
