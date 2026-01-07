@@ -5,6 +5,7 @@
   "yes": "نعم",
   "cancel": "إلغاء",
   "check_your_internet_connection_and_try_again": "تحقق من اتصالك بالإنترنت وحاول مرة أخرى",
+  "internet_connection_restored": "تم استعادة اتصال الإنترنت",
   "week" : "الأسبوع",
   "month" : "الشهر",
   "year" : "السنة",
@@ -14,6 +15,8 @@
   "edit": "تعديل",
   "delete": "حذف",
   "search_hint": "ابحث هنا...",
+  "no_region_found": "لم يتم العثور على منطقة",
+  "no_city_found": "لم يتم العثور على مدينة",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number": "رقم غير صالح",
