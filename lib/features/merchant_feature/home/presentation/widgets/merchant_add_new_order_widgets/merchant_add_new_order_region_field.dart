@@ -6,59 +6,58 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/dialog/custom_button_to_show_overlay_dialog.dart';
-import '../../../../../../core/models/city_model.dart';
+import '../../../../../../core/models/region_model.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_font_style.dart';
 import '../../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../global_feature/get_city_region/presentation/manager/city_region_cubit/city_region_cubit.dart';
 
-class MerchantAddNewOrderCityField extends StatefulWidget {
-  const MerchantAddNewOrderCityField({super.key});
+class MerchantAddNewOrderRegionField extends StatefulWidget {
+  const MerchantAddNewOrderRegionField({super.key});
 
   @override
-  State<MerchantAddNewOrderCityField> createState() =>
-      _MerchantAddNewOrderCityFieldState();
+  State<MerchantAddNewOrderRegionField> createState() =>
+      _MerchantAddNewOrderRegionFieldState();
 }
 
-class _MerchantAddNewOrderCityFieldState
-    extends State<MerchantAddNewOrderCityField> {
+class _MerchantAddNewOrderRegionFieldState
+    extends State<MerchantAddNewOrderRegionField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
   TextEditingController controller = TextEditingController();
-  List<CityModel> cities = [];
+  List<RegionModel> regions = [];
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<CityRegionCubit, CityRegionState>(
       listener: (context, state) {
-        if (state is FetchCitiesSuccess) {
-          cities = state.cities;
-          controller.clear();
-        } else if (state is NoInternetConnectionState) {
-          cities = [];
-          controller.clear();
+        if (state is FetchRegionsSuccess) {
+          regions = state.regions;
         }
       },
       child: CustomButtonToShowOverlayDialog(
         showDialog: showDialog,
         buttonKey: _buttonKey,
         vertical: 80,
-        widgetListInDialog: cities.isNotEmpty
-            ? cities
+        widgetListInDialog: regions.isNotEmpty
+            ? regions
                   .map(
-                    (city) => InkWell(
-                      onTap: () {
-                        controller.text = city.name;
+                    (region) => InkWell(
+                      onTap: () async {
                         setState(() {
                           showDialog = false;
                         });
+                        controller.text = region.name;
+                        BlocProvider.of<CityRegionCubit>(
+                          context,
+                        ).fetchCities(regionId: region.id);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
                         child: Row(
                           children: [
                             Text(
-                              city.name,
+                              region.name,
                               style: AppFontStyle.regular16black1A(context),
                             ),
                           ],
@@ -79,7 +78,7 @@ class _MerchantAddNewOrderCityFieldState
                     child: Row(
                       children: [
                         Text(
-                          "no_city_found".tr(),
+                          "no_region_found".tr(),
                           style: AppFontStyle.regular16black1A(context),
                         ),
                       ],
@@ -94,11 +93,11 @@ class _MerchantAddNewOrderCityFieldState
             setState(() {
               showDialog = true;
             });
-            dev.log('showCityDialog: $showDialog');
+            dev.log('showGovernorateDialog: $showDialog');
           },
+          title: 'merchant.governorate'.tr(),
+          hintText: 'merchant.select_governorate'.tr(),
           readOnly: true,
-          title: 'merchant.city'.tr(),
-          hintText: 'merchant.select_city'.tr(),
           suffixIcon: Transform.rotate(
             angle: pi / 2,
             child: const Icon(

@@ -1,64 +1,62 @@
 import 'dart:developer' as dev;
-import 'dart:math';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/dialog/custom_button_to_show_overlay_dialog.dart';
-import '../../../../../../core/models/city_model.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_font_style.dart';
 import '../../../../../../core/widgets/custom_text_form_field.dart';
-import '../../../../../global_feature/get_city_region/presentation/manager/city_region_cubit/city_region_cubit.dart';
+import '../../../../../core/models/region_model.dart';
+import '../../../../global_feature/get_city_region/presentation/manager/city_region_cubit/city_region_cubit.dart';
 
-class MerchantAddNewOrderCityField extends StatefulWidget {
-  const MerchantAddNewOrderCityField({super.key});
+class UserAddNewAddressRegionField extends StatefulWidget {
+  const UserAddNewAddressRegionField({super.key});
 
   @override
-  State<MerchantAddNewOrderCityField> createState() =>
-      _MerchantAddNewOrderCityFieldState();
+  State<UserAddNewAddressRegionField> createState() =>
+      _UserAddNewAddressRegionFieldState();
 }
 
-class _MerchantAddNewOrderCityFieldState
-    extends State<MerchantAddNewOrderCityField> {
+class _UserAddNewAddressRegionFieldState
+    extends State<UserAddNewAddressRegionField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
   TextEditingController controller = TextEditingController();
-  List<CityModel> cities = [];
+  List<RegionModel> regions = [];
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<CityRegionCubit, CityRegionState>(
       listener: (context, state) {
-        if (state is FetchCitiesSuccess) {
-          cities = state.cities;
-          controller.clear();
-        } else if (state is NoInternetConnectionState) {
-          cities = [];
-          controller.clear();
+        if (state is FetchRegionsSuccess) {
+          regions = state.regions;
         }
       },
       child: CustomButtonToShowOverlayDialog(
         showDialog: showDialog,
         buttonKey: _buttonKey,
         vertical: 80,
-        widgetListInDialog: cities.isNotEmpty
-            ? cities
+        widgetListInDialog: regions.isNotEmpty
+            ? regions
                   .map(
-                    (city) => InkWell(
-                      onTap: () {
-                        controller.text = city.name;
+                    (region) => InkWell(
+                      onTap: () async {
                         setState(() {
                           showDialog = false;
                         });
+                        controller.text = region.name;
+                        BlocProvider.of<CityRegionCubit>(
+                          context,
+                        ).fetchCities(regionId: region.id);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
                         child: Row(
                           children: [
                             Text(
-                              city.name,
+                              region.name,
                               style: AppFontStyle.regular16black1A(context),
                             ),
                           ],
@@ -79,7 +77,7 @@ class _MerchantAddNewOrderCityFieldState
                     child: Row(
                       children: [
                         Text(
-                          "no_city_found".tr(),
+                          "no_region_found".tr(),
                           style: AppFontStyle.regular16black1A(context),
                         ),
                       ],
@@ -94,18 +92,14 @@ class _MerchantAddNewOrderCityFieldState
             setState(() {
               showDialog = true;
             });
-            dev.log('showCityDialog: $showDialog');
+            dev.log('showGovernerateDialog: $showDialog');
           },
           readOnly: true,
-          title: 'merchant.city'.tr(),
-          hintText: 'merchant.select_city'.tr(),
-          suffixIcon: Transform.rotate(
-            angle: pi / 2,
-            child: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 20,
-              color: AppColors.grey,
-            ),
+          title: "merchant.governorate".tr(),
+          hintText: 'merchant.select_governorate'.tr(),
+          suffixIcon: const Icon(
+            Icons.keyboard_arrow_down_rounded,
+            color: AppColors.grey,
           ),
         ),
       ),

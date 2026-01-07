@@ -4,7 +4,9 @@ import 'package:bastogah_app/core/widgets/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
+import '../routing/route_name.dart';
 import '../theme/app_colors.dart';
 
 class LogoutButton extends StatelessWidget {
@@ -52,7 +54,7 @@ class LogoutButton extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                context.go(RouteName.login);
               },
               child: Text(
                 "auth.logout".tr(),

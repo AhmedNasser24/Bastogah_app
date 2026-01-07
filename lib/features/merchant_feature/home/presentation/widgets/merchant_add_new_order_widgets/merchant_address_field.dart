@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import 'merchant_add_new_order_city_field.dart';
-import 'merchant_add_new_order_governorate_field.dart';
+import 'merchant_add_new_order_region_field.dart';
 
 class MerchantAddressField extends StatefulWidget {
   const MerchantAddressField({super.key});
@@ -15,7 +16,8 @@ class _MerchantAddressFieldState extends State<MerchantAddressField> {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        MerchantAddNewOrderGovernorateField(),
+        MerchantAddNewOrderRegionField(),
+        Gap(12),
         MerchantAddNewOrderCityField(),
       ],
     );
