@@ -1,7 +1,7 @@
 import 'package:bastogah_app/core/dependency_injection/get_it_setup.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
-import 'package:bastogah_app/features/global_feature/auth/presentation/manager/merchant_login_cubit/merchant_login_cubit.dart';
+import 'package:bastogah_app/features/global_feature/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +31,7 @@ class _UserRegisterViewState extends State<UserRegisterView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<MerchantLoginCubit>(),
+      create: (context) => getIt<LoginCubit>(),
       child: Scaffold(
         body: SafeArea(
           child: Form(

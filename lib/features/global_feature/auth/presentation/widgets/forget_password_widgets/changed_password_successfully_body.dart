@@ -56,7 +56,7 @@ class ChangedPasswordSuccessfullyBody extends StatelessWidget {
             CustomButton(
               title: "auth.login".tr(),
               onTap: () => context.push(
-                RouteName.userLogin,
+                RouteName.login,
               ), // handle this according to role selection
             ),
             const Gap(30),

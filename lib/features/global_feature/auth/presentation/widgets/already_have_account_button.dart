@@ -20,7 +20,7 @@ class AlreadyHaveAccountButton extends StatelessWidget {
         TextButton(
           style: TextButton.styleFrom(padding: const EdgeInsets.all(4)),
           onPressed: () {
-            context.go(RouteName.userLogin);
+            context.go(RouteName.login);
           },
           child: Text(
             "auth.login".tr(),

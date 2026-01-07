@@ -1,28 +1,24 @@
-import 'package:easy_localization/easy_localization.dart';
-
 import '../routing/route_name.dart';
 
 enum RolesEnum {
-  merchant('role.merchant', RouteName.merchantAndDriverLogin),
-  customer('role.customer', RouteName.userRegister),
-  driver('role.driver', RouteName.merchantAndDriverLogin);
+  merchant('merchant', RouteName.login),
+  client('client', RouteName.userRegister),
+  driver('driver', RouteName.login);
 
-  final String key;
+  final String title;
   final String routeName;
-  const RolesEnum(this.key, this.routeName);
-
-  String get title => key.tr();
+  const RolesEnum(this.title, this.routeName);
 
   static RolesEnum fromValue(String value) {
     switch (value) {
       case 'merchant':
         return RolesEnum.merchant;
-      case 'customer':
-        return RolesEnum.customer;
+      case 'client':
+        return RolesEnum.client;
       case 'driver':
         return RolesEnum.driver;
       default:
-        return RolesEnum.customer;
+        return RolesEnum.client;
     }
   }
 }

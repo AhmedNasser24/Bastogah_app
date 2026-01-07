@@ -47,7 +47,7 @@ class _SplashViewState extends State<SplashView> {
 
     await Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        context.go(RouteName.role);
+        context.go(RouteName.login);
 
         // if (SharedPreferenceSingleton.getString(
         //   ApiKeys.accessToken,

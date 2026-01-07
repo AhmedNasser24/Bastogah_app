@@ -4,7 +4,7 @@ import 'package:bastogah_app/core/enums/roles_enum.dart';
 class LoginModel {
   String? userId, accessToken, refreshToken;
   RolesEnum? role;
-  String? username, password, userPhone;
+  String? username, password;
   LoginModel({
     this.userId,
     this.accessToken,
@@ -21,7 +21,9 @@ class LoginModel {
       refreshToken: json[ApiKeys.refreshToken],
       role: json[ApiKeys.roles][0] == 'merchant'
           ? RolesEnum.merchant
-          : RolesEnum.customer,
+          : json[ApiKeys.roles][0] == "client"
+          ? RolesEnum.client
+          : RolesEnum.driver,
     );
   }
 }

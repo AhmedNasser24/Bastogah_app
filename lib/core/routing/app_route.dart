@@ -5,13 +5,11 @@ import 'package:bastogah_app/features/global_feature/splash/presentation/view/sp
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/global_feature/auth/presentation/views/forget_password_view.dart';
-import '../../features/global_feature/auth/presentation/views/merchant_and_driver_login_view.dart';
-import '../../features/global_feature/auth/presentation/views/user_login_view.dart';
+import '../../features/global_feature/auth/presentation/views/login_view.dart';
 import '../../features/global_feature/auth/presentation/views/user_register_view.dart';
 import '../../features/global_feature/common/presentation/views/help_support_view.dart';
 import '../../features/global_feature/common/presentation/views/notification_view.dart';
 import '../../features/global_feature/common/presentation/views/privacy_view.dart';
-import '../../features/global_feature/common/presentation/views/role_view.dart';
 import 'router_animation.dart';
 import 'routes/merchant_routes.dart';
 
@@ -35,30 +33,30 @@ GoRouter appRouter = GoRouter(
         child: const SplashView(),
       ),
     ),
+    // GoRoute(
+    //   path: RouteName.role,
+    //   pageBuilder: (context, state) => buildPageWithSlideTransition(
+    //     context: context,
+    //     state: state,
+    //     child: const RoleView(),
+    //   ),
+    // ),
     GoRoute(
-      path: RouteName.role,
+      path: RouteName.login,
       pageBuilder: (context, state) => buildPageWithSlideTransition(
         context: context,
         state: state,
-        child: const RoleView(),
+        child: const LoginView(),
       ),
     ),
-    GoRoute(
-      path: RouteName.merchantAndDriverLogin,
-      pageBuilder: (context, state) => buildPageWithSlideTransition(
-        context: context,
-        state: state,
-        child: const MerchantAndDriverLoginView(),
-      ),
-    ),
-    GoRoute(
-      path: RouteName.userLogin,
-      pageBuilder: (context, state) => buildPageWithSlideTransition(
-        context: context,
-        state: state,
-        child: const UserLoginView(),
-      ),
-    ),
+    // GoRoute(
+    //   path: RouteName.login,
+    //   pageBuilder: (context, state) => buildPageWithSlideTransition(
+    //     context: context,
+    //     state: state,
+    //     child: const UserLoginView(),
+    //   ),
+    // ),
     GoRoute(
       path: RouteName.userRegister,
       pageBuilder: (context, state) => buildPageWithSlideTransition(

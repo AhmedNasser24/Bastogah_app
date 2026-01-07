@@ -1,14 +1,14 @@
-import 'package:bastogah_app/features/global_feature/auth/data/remote_data_source/merchant_auth.dart';
-import 'package:bastogah_app/features/global_feature/auth/domain/repos/merchant_auth_repo.dart';
-import 'package:bastogah_app/features/global_feature/auth/domain/use_cases/merchant_login_use_case.dart';
+import 'package:bastogah_app/features/global_feature/auth/data/remote_data_source/auth_data_source.dart';
+import 'package:bastogah_app/features/global_feature/auth/domain/repos/auth_repo.dart';
+import 'package:bastogah_app/features/global_feature/auth/domain/use_cases/login_use_case.dart';
 import 'package:bastogah_app/features/merchant_feature/home/data/repo/home_repo_impl.dart';
 import 'package:bastogah_app/features/merchant_feature/home/domain/repo/home_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../features/global_feature/auth/data/remote_data_source/merchant_auth_impl.dart';
-import '../../features/global_feature/auth/data/repo/merchant_auth_repo_impl.dart';
-import '../../features/global_feature/auth/presentation/manager/merchant_login_cubit/merchant_login_cubit.dart';
+import '../../features/global_feature/auth/data/remote_data_source/auth_data_source_impl.dart';
+import '../../features/global_feature/auth/data/repo/auth_repo_impl.dart';
+import '../../features/global_feature/auth/presentation/manager/login_cubit/login_cubit.dart';
 import '../../features/merchant_feature/home/data/data_source/remote_data_source/merchant_home_remote_data_source.dart';
 import '../../features/merchant_feature/home/data/data_source/remote_data_source/merchant_home_remote_data_source_impl.dart'
     show MerchantHomeRemoteDataSourceImpl;
@@ -41,8 +41,8 @@ void getItSetup() {
     ),
   );
   // data source
-  getIt.registerLazySingleton<MerchantAuthDataSource>(
-    () => MerchantAuthDataSourceImpl(apiConsumer: getIt.get<ApiConsumer>()),
+  getIt.registerLazySingleton<AuthDataSource>(
+    () => AuthDataSourceImpl(apiConsumer: getIt.get<ApiConsumer>()),
   );
   getIt.registerLazySingleton<MerchantHomeRemoteDataSource>(
     () =>
@@ -50,12 +50,11 @@ void getItSetup() {
   );
 
   // repo
-  getIt.registerLazySingleton<MerchantAuthRepo>(
-    () =>
-        MerchantAuthRepoImpl(merchantAuth: getIt.get<MerchantAuthDataSource>()),
+  getIt.registerLazySingleton<AuthRepo>(
+    () => AuthRepoImpl(authDataSource: getIt.get<AuthDataSource>()),
   );
-  getIt.registerLazySingleton<MerchantLoginUseCase>(
-    () => MerchantLoginUseCase(merchantAuthRepo: getIt.get<MerchantAuthRepo>()),
+  getIt.registerLazySingleton<LoginUseCase>(
+    () => LoginUseCase(authRepo: getIt.get<AuthRepo>()),
   );
   getIt.registerLazySingleton<MerchantHomeRepo>(
     () => MerchantHomeRepoImpl(
@@ -64,8 +63,8 @@ void getItSetup() {
   );
 
   // cubit
-  getIt.registerFactory<MerchantLoginCubit>(
-    () => MerchantLoginCubit(loginUseCase: getIt.get<MerchantLoginUseCase>()),
+  getIt.registerFactory<LoginCubit>(
+    () => LoginCubit(loginUseCase: getIt.get<LoginUseCase>()),
   );
   getIt.registerFactory<MerchantGetOrdersCubit>(
     () => MerchantGetOrdersCubit(homeRepo: getIt.get<MerchantHomeRepo>()),
