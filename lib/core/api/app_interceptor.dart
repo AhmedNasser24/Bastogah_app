@@ -36,8 +36,10 @@ class AppInterceptors extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
     log("dio interceptor Error : ${err.toString()}");
-
-    if (SharedPreferenceSingleton.getString(ApiKeys.accessToken).isNotEmpty) {
+    log("dio interceptor Error Path : ${err.requestOptions.path}");
+    String currentEndPoint = err.requestOptions.path;
+    if (currentEndPoint != EndPoint.login &&
+        currentEndPoint != EndPoint.register) {
       if (err.response?.statusCode == StatusCode.unauthorized) {
         await refreshToken();
         String newAccessToken = SharedPreferenceSingleton.getString(
