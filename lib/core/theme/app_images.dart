@@ -3,7 +3,7 @@ class AppImages {
   AppImages._();
 
   static const String imagesAppLogo = "assets/images/app_logo.png";
-
+  static const String imagesNoImage = "assets/images/no_image.jpg";
   static const String imagesAsianFood = "assets/images/asian_food.png";
 
   static const String imagesBurger = "assets/images/burger.png";

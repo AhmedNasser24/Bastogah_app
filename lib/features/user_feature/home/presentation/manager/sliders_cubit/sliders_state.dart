@@ -19,4 +19,8 @@ final class SlidersLoadedSuccess extends SlidersState {
   List<Object> get props => [sliders];
 }
 
-final class SlidersFailure extends SlidersState {}
+final class SlidersFailure extends SlidersState {
+  final String errMessage;
+
+  const SlidersFailure({required this.errMessage});
+}

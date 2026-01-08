@@ -9,15 +9,16 @@ part 'sliders_state.dart';
 class SlidersCubit extends Cubit<SlidersState> {
   SlidersCubit({required this.userHomeRepo}) : super(SlidersInitial());
   final UserHomeRepo userHomeRepo;
-
+  List<SliderModel> sliders = [];
   Future<void> getSliders() async {
     emit(SlidersLoading());
     final result = await userHomeRepo.getSliders();
     result.fold(
       (failure) {
-        emit(SlidersFailure());
+        emit(SlidersFailure(errMessage: failure.errMessage));
       },
       (sliders) {
+        this.sliders = sliders;
         emit(SlidersLoadedSuccess(sliders: sliders));
       },
     );
