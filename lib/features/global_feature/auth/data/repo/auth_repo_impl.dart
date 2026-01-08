@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../../core/api/api_keys.dart';
+import '../../../../../core/constant/constants.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/local_storage_services/shared_preference_singleton.dart';
 import '../../domain/repos/auth_repo.dart';
@@ -24,6 +25,9 @@ class AuthRepoImpl implements AuthRepo {
       );
       LoginModel loginModel = LoginModel.fromJson(body);
       await _saveUserDataLocally(loginModel);
+
+      await fetchProfileDataAndSaveItLocally();
+
       return right(loginModel.role!);
     } on DioException catch (e) {
       return left(ServerFailure.fromDioException(e));
@@ -49,5 +53,22 @@ class AuthRepoImpl implements AuthRepo {
       ApiKeys.roles,
       loginModel.role!.title,
     );
+  }
+
+  @override
+  Future<Either<Failure, void>> fetchProfileDataAndSaveItLocally() async {
+    try {
+      var body = await authDataSource.fetchProfileData();
+      await _saveProfileDataLocally(body);
+      return right(null);
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      return left(ServerFailure.defaultFailure(e.toString()));
+    }
+  }
+
+  Future<void> _saveProfileDataLocally(Map<String, dynamic> body) async {
+    SharedPreferenceSingleton.setString(kProfileDataKey, body.toString());
   }
 }
