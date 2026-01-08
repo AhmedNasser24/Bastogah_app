@@ -1,5 +1,5 @@
 import 'package:bastogah_app/core/theme/app_font_style.dart';
-import 'package:bastogah_app/features/merchant_feature/home/presentation/manager/cubit/merchant_get_orders_cubit.dart';
+import 'package:bastogah_app/features/merchant_feature/home/presentation/manager/merchant_get_orders_cubit/merchant_get_orders_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -16,6 +16,9 @@ class EndPoint {
 
   // user End Points
   static const String sliders = "/sliders";
+  static const String merchantCategories = "/merchant-categories";
+  static const String merchants = "/users/merchants";
+  static const String products = "/products";
 
   // Merchant End Points
   static const String merchantGetOrders = "/orders";

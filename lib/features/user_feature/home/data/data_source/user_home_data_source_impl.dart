@@ -1,7 +1,12 @@
 import 'package:bastogah_app/core/api/api_consumer.dart';
 import 'package:bastogah_app/core/api/end_point.dart';
+import 'package:bastogah_app/features/user_feature/home/data/model/merchant_category_model.dart';
 import 'package:bastogah_app/features/user_feature/home/data/model/slider_model.dart';
 
+import '../model/user_merchant_model.dart';
+import '../model/user_product_model.dart';
+import '../params/user_merchant_param.dart';
+import '../params/user_product_param.dart';
 import 'user_home_data_source.dart';
 
 class UserHomeDataSourceImpl implements UserHomeDataSource {
@@ -12,5 +17,33 @@ class UserHomeDataSourceImpl implements UserHomeDataSource {
   Future<List<SliderModel>> getSliders() async {
     var dataList = await apiConsumer.get(EndPoint.sliders);
     return SliderModel.fromJsonList(dataList);
+  }
+
+  @override
+  Future<List<MerchantCategoryModel>> getMerchantCategories() async {
+    var dataList = await apiConsumer.get(EndPoint.merchantCategories);
+    return MerchantCategoryModel.fromJsonList(dataList);
+  }
+
+  @override
+  Future<List<UserMerchantModel>> getMerchants({
+    required UserMerchantParam userMerchantParam,
+  }) async {
+    var dataList = await apiConsumer.get(
+      EndPoint.merchants,
+      queryParameters: userMerchantParam.toQueryParameters(),
+    );
+    return UserMerchantModel.fromJsonList(dataList);
+  }
+
+  @override
+  Future<List<UserProductModel>> getProducts({
+    required UserProductParam userProductParam,
+  }) async {
+    var dataList = await apiConsumer.get(
+      EndPoint.products,
+      queryParameters: userProductParam.toQueryParameters(),
+    );
+    return UserProductModel.fromJsonList(dataList);
   }
 }

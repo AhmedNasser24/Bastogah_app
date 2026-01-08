@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/models/merchant_filter_model.dart';
-import '../../manager/cubit/merchant_get_orders_cubit.dart';
+import '../../manager/merchant_get_orders_cubit/merchant_get_orders_cubit.dart';
 
 class MerchantFiltersHome extends StatefulWidget {
   const MerchantFiltersHome({super.key});

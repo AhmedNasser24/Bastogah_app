@@ -28,7 +28,8 @@ class CustomCachedImage extends StatelessWidget {
       width: width,
       height: height,
       fit: fit ?? BoxFit.cover,
-      imageUrl: "${EndPoint.imageBaseUrl}$imagePath",
+      // imageUrl: "${EndPoint.imageBaseUrl}$imagePath",
+      imageUrl: imagePath, // this for test only
       color: color,
       fadeInDuration: const Duration(milliseconds: 300),
       errorListener: (value) {

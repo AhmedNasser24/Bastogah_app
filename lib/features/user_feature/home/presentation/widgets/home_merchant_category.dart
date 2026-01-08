@@ -3,14 +3,14 @@ import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class HomeStoreCategory extends StatefulWidget {
-  const HomeStoreCategory({super.key});
+class HomeMerchantCategory extends StatefulWidget {
+  const HomeMerchantCategory({super.key});
 
   @override
-  State<HomeStoreCategory> createState() => _HomeStoreCategoryState();
+  State<HomeMerchantCategory> createState() => _HomeMerchantCategoryState();
 }
 
-class _HomeStoreCategoryState extends State<HomeStoreCategory> {
+class _HomeMerchantCategoryState extends State<HomeMerchantCategory> {
   @override
   Widget build(BuildContext context) {
     return Center(

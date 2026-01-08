@@ -23,7 +23,8 @@ class CustomSlider extends StatefulWidget {
 
 class _CustomSliderState extends State<CustomSlider> {
   final List<String> imgList = const [
-    "1760948317782-95611-image.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNURVD38XtPap6C6sf4u5APb0uFk8G9PQ7wA&s"
+        "1760948317782-95611-image.jpg",
     AppImages.imagesPizzaHut,
     "1760948317782-95611-image.jpg",
     AppImages.imagesBurger,

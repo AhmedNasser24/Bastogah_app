@@ -20,10 +20,13 @@ import '../../features/global_feature/get_city_region/domain/repo/city_region_re
 import '../../features/merchant_feature/home/data/data_source/remote_data_source/merchant_home_remote_data_source.dart';
 import '../../features/merchant_feature/home/data/data_source/remote_data_source/merchant_home_remote_data_source_impl.dart'
     show MerchantHomeRemoteDataSourceImpl;
-import '../../features/merchant_feature/home/presentation/manager/cubit/merchant_get_orders_cubit.dart';
+import '../../features/merchant_feature/home/presentation/manager/merchant_get_orders_cubit/merchant_get_orders_cubit.dart';
 import '../../features/user_feature/home/data/repo/user_home_repo_impl.dart';
 import '../../features/user_feature/home/domain/repo/user_home_repo.dart';
+import '../../features/user_feature/home/presentation/manager/merchant_categories_cubit/merchant_categories_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/sliders_cubit/sliders_cubit.dart';
+import '../../features/user_feature/home/presentation/manager/user_merchants_cubit/user_merchants_cubit.dart';
+import '../../features/user_feature/home/presentation/manager/user_products_cubit/user_products_cubit.dart';
 import '../api/api_consumer.dart';
 import '../api/app_interceptor.dart';
 import '../api/dio_consumer.dart';
@@ -111,5 +114,14 @@ void getItSetup() {
   );
   getIt.registerFactory<SlidersCubit>(
     () => SlidersCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
+  );
+  getIt.registerFactory<MerchantCategoriesCubit>(
+    () => MerchantCategoriesCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
+  );
+  getIt.registerFactory<UserMerchantsCubit>(
+    () => UserMerchantsCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
+  );
+  getIt.registerFactory<UserProductsCubit>(
+    () => UserProductsCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
   );
 }

@@ -8,8 +8,9 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/widgets/custom_search_field.dart';
+import '../manager/merchant_categories_cubit/merchant_categories_cubit.dart';
 import '../manager/sliders_cubit/sliders_cubit.dart';
-import '../widgets/home_store_category.dart';
+import '../widgets/home_merchant_category.dart';
 import '../widgets/sliver_list_of_user_product_items.dart';
 import '../widgets/sliver_list_of_user_store_items.dart';
 import '../widgets/user_home_filter.dart';
@@ -23,17 +24,23 @@ class UserHomeView extends StatefulWidget {
 
 class _UserHomeViewState extends State<UserHomeView> {
   late SlidersCubit slidersCubit;
+  late MerchantCategoriesCubit merchantCategoriesCubit;
   @override
   void initState() {
     super.initState();
 
     slidersCubit = getIt<SlidersCubit>()..getSliders();
+    merchantCategoriesCubit = getIt<MerchantCategoriesCubit>()
+      ..getMerchantCategories();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => slidersCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => slidersCubit),
+        BlocProvider(create: (context) => merchantCategoriesCubit),
+      ],
       child: const Column(
         children: [
           UserAppBar(address: "بغداد,العراق"),
@@ -43,7 +50,7 @@ class _UserHomeViewState extends State<UserHomeView> {
             child: CustomScrollView(
               slivers: [
                 SliverGap(16),
-                SliverToBoxAdapter(child: HomeStoreCategory()),
+                SliverToBoxAdapter(child: HomeMerchantCategory()),
                 SliverGap(16),
                 SliverToBoxAdapter(child: CustomSlider()),
                 SliverGap(16),

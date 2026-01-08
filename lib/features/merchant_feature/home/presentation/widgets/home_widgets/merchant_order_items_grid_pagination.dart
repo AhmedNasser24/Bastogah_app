@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/enums/merchant_filter_enums.dart';
-import '../../manager/cubit/merchant_get_orders_cubit.dart';
+import '../../manager/merchant_get_orders_cubit/merchant_get_orders_cubit.dart';
 import 'merchant_order_item.dart';
 
 class MerchantOrderItemsGridPagination extends StatelessWidget {
