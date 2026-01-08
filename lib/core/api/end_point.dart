@@ -1,6 +1,7 @@
 class EndPoint {
   static const String baseUrl = "http://209.250.237.58:4069"; // virtual server
   // static const String baseUrl = "http://209.250.237.58:4069";      // live server
+  static const String imageBaseUrl = "$baseUrl/images/";
 
   // -----------------------------------------------------------------------------------
 
@@ -11,6 +12,9 @@ class EndPoint {
   static const String register = "/auth/register";
   static const String regions = "/regions";
   static const String cities = "/cities";
+
+  // user End Points
+  static const String sliders = "/sliders";
 
   // Merchant End Points
   static const String merchantGetOrders = "/orders";

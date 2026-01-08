@@ -4,14 +4,12 @@ import 'dart:ui';
 import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
 import 'package:bastogah_app/core/languages/lang.dart';
 import 'package:bastogah_app/core/routing/app_route.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/dependency_injection/get_it_setup.dart';
 import 'core/local_storage_services/shared_preference_singleton.dart'
     show SharedPreferenceSingleton;
-import 'core/network/check_network_connection.dart';
 import 'core/simple_bloc_observer.dart';
 import 'core/theme/app_theme.dart';
 

@@ -4,8 +4,11 @@ import 'package:bastogah_app/features/global_feature/auth/domain/use_cases/login
 import 'package:bastogah_app/features/global_feature/get_city_region/presentation/manager/city_region_cubit/city_region_cubit.dart';
 import 'package:bastogah_app/features/merchant_feature/home/data/repo/home_repo_impl.dart';
 import 'package:bastogah_app/features/merchant_feature/home/domain/repo/home_repo.dart';
+import 'package:bastogah_app/features/user_feature/home/data/data_source/user_home_data_source.dart';
+import 'package:bastogah_app/features/user_feature/home/data/data_source/user_home_data_source_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../../features/global_feature/auth/data/remote_data_source/auth_data_source_impl.dart';
 import '../../features/global_feature/auth/data/repo/auth_repo_impl.dart';
@@ -18,6 +21,9 @@ import '../../features/merchant_feature/home/data/data_source/remote_data_source
 import '../../features/merchant_feature/home/data/data_source/remote_data_source/merchant_home_remote_data_source_impl.dart'
     show MerchantHomeRemoteDataSourceImpl;
 import '../../features/merchant_feature/home/presentation/manager/cubit/merchant_get_orders_cubit.dart';
+import '../../features/user_feature/home/data/repo/user_home_repo_impl.dart';
+import '../../features/user_feature/home/domain/repo/user_home_repo.dart';
+import '../../features/user_feature/home/presentation/manager/sliders_cubit/sliders_cubit.dart';
 import '../api/api_consumer.dart';
 import '../api/app_interceptor.dart';
 import '../api/dio_consumer.dart';
@@ -42,7 +48,18 @@ void getItSetup() {
   getIt.registerSingleton<ApiConsumer>(
     DioConsumer(
       dio: getIt.get<Dio>()
-        ..interceptors.add(AppInterceptors(dio: getIt.get<Dio>())),
+        ..interceptors.addAll([
+          AppInterceptors(dio: getIt.get<Dio>()),
+          PrettyDioLogger(
+            requestHeader: true,
+            requestBody: true,
+            responseBody: true,
+            responseHeader: false,
+            error: true,
+            compact: true,
+            maxWidth: 90,
+          ),
+        ]),
     ),
   );
   // data source
@@ -85,5 +102,14 @@ void getItSetup() {
   );
   getIt.registerFactory<MerchantGetOrdersCubit>(
     () => MerchantGetOrdersCubit(homeRepo: getIt.get<MerchantHomeRepo>()),
+  );
+  getIt.registerLazySingleton<UserHomeDataSource>(
+    () => UserHomeDataSourceImpl(apiConsumer: getIt.get<ApiConsumer>()),
+  );
+  getIt.registerLazySingleton<UserHomeRepo>(
+    () => UserHomeRepoImpl(userHomeDataSource: getIt.get<UserHomeDataSource>()),
+  );
+  getIt.registerFactory<SlidersCubit>(
+    () => SlidersCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
   );
 }
