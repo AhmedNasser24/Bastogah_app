@@ -7,6 +7,7 @@ import 'package:bastogah_app/core/routing/app_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:toastification/toastification.dart';
 import 'core/dependency_injection/get_it_setup.dart';
 import 'core/local_storage_services/shared_preference_singleton.dart'
     show SharedPreferenceSingleton;
@@ -40,18 +41,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     log("width : ${context.screenWidth}");
     log("height : ${context.screenHeight}");
-    return MaterialApp.router(
-      scrollBehavior: const MaterialScrollBehavior().copyWith(
-        dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
-        overscroll: true,
-        scrollbars: true,
+    return ToastificationWrapper(
+      child: MaterialApp.router(
+        scrollBehavior: const MaterialScrollBehavior().copyWith(
+          dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
+          overscroll: true,
+          scrollbars: true,
+        ),
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.getThemeLight,
+        routerConfig: appRouter,
       ),
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.getThemeLight,
-      routerConfig: appRouter,
     );
   }
 }
