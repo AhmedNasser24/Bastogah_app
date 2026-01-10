@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/models/login_model.dart';
+import '../../../../../core/widgets/custom_toast/custom_toastification.dart';
 import '../widgets/do_not_have_account_button.dart';
 import '../widgets/login_button.dart';
 import '../widgets/need_help_button.dart';
@@ -64,6 +65,33 @@ class _LoginViewState extends State<LoginView> {
                       const Gap(40),
                       const NeedHelpButton(),
                       const Gap(30),
+                      TextButton(
+                        onPressed: () {
+                          CustomToastification.showSuccessToast(
+                            context: context,
+                            message: "Operation completed successfully",
+                          );
+                        },
+                        child: const Text("show success message"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          CustomToastification.showFailureToast(
+                            context: context,
+                            message: "Operation failed",
+                          );
+                        },
+                        child: const Text("show Failure message"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          CustomToastification.showNotificationToast(
+                            context: context,
+                            message: "New update available",
+                          );
+                        },
+                        child: const Text("show Notification message"),
+                      ),
                     ],
                   ),
                 ),

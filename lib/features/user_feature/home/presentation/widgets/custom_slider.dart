@@ -1,7 +1,7 @@
 import 'package:bastogah_app/core/api/end_point.dart';
 import 'package:bastogah_app/core/dependency_injection/get_it_setup.dart';
 import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
-import 'package:bastogah_app/core/flutter_toast/show_toast.dart';
+import 'package:bastogah_app/core/widgets/custom_toast/show_toast.dart';
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/manager/sliders_cubit/sliders_cubit.dart';
@@ -46,7 +46,7 @@ class _CustomSliderState extends State<CustomSlider> {
     return BlocConsumer<SlidersCubit, SlidersState>(
       listener: (context, state) {
         if (state is SlidersFailure) {
-          showErrorToast(state.errMessage);
+          CustomFlutterToast.showErrorToast(state.errMessage);
         }
       },
       builder: (context, state) {

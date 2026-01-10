@@ -13,6 +13,9 @@
 // import 'package:tok_tok_user/core/api/end_points.dart';
 // import 'package:tok_tok_user/core/widgets/custom_toastfication.dart';
 
+// import '../api/end_point.dart';
+// import '../widgets/custom_toast.dart';
+
 // class ImagesService {
 //   static final Dio _dio = Dio()
 //     ..interceptors.add(
@@ -27,51 +30,51 @@
 //       ),
 //     );
 
-//   static Future<String> uploadImage(String path) async {
-//     final formData = FormData.fromMap({
-//       'image': await MultipartFile.fromFile(
-//         path,
-//         filename: path.split('/').last,
-//         contentType: DioMediaType.parse("image/${path.split('.').last}"),
-//       ),
-//     });
-//     try {
-//       final Response response = await _dio.post(
-//         EndPoints.baseUrl + EndPoints.uploadOneImage,
-//         data: formData,
-//       );
-//       return response.data['fileName'];
-//     } on DioException catch (e) {
-//       log(e.response!.data.toString());
-//       throw Exception('Failed to upload image');
-//     }
-//   }
+//   // static Future<String> uploadImage(String path) async {
+//   //   final formData = FormData.fromMap({
+//   //     'image': await MultipartFile.fromFile(
+//   //       path,
+//   //       filename: path.split('/').last,
+//   //       contentType: DioMediaType.parse("image/${path.split('.').last}"),
+//   //     ),
+//   //   });
+//   //   try {
+//   //     final Response response = await _dio.post(
+//   //       EndPoint.baseUrl + EndPoint.uploadOneImage,
+//   //       data: formData,
+//   //     );
+//   //     return response.data['fileName'];
+//   //   } on DioException catch (e) {
+//   //     log(e.response!.data.toString());
+//   //     throw Exception('Failed to upload image');
+//   //   }
+//   // }
 
-//   static Future<String> uploadImageWeb(XFile image) async {
-//     try {
-//       final Uint8List result = await image.readAsBytes();
+//   // static Future<String> uploadImageWeb(XFile image) async {
+//   //   try {
+//   //     final Uint8List result = await image.readAsBytes();
 
-//       final formData = FormData.fromMap({
-//         "image": MultipartFile.fromBytes(
-//           result,
-//           filename: 'image.jpg',
-//           contentType: MediaType("image", "jpeg"),
-//         ),
-//       });
+//   //     final formData = FormData.fromMap({
+//   //       "image": MultipartFile.fromBytes(
+//   //         result,
+//   //         filename: 'image.jpg',
+//   //         contentType: MediaType("image", "jpeg"),
+//   //       ),
+//   //     });
 
-//       // Perform POST request to upload image
-//       final Response response = await _dio.post(
-//         EndPoints.baseUrl + EndPoints.uploadOneImage,
-//         data: formData,
-//       );
+//   //     // Perform POST request to upload image
+//   //     final Response response = await _dio.post(
+//   //       EndPoints.baseUrl + EndPoints.uploadOneImage,
+//   //       data: formData,
+//   //     );
 
-//       return response.data['fileName'];
-//     } on DioException catch (e) {
-//       throw Exception('Failed to upload image : ${e.message}');
-//     } catch (e) {
-//       throw Exception('Failed to upload image');
-//     }
-//   }
+//   //     return response.data['fileName'];
+//   //   } on DioException catch (e) {
+//   //     throw Exception('Failed to upload image : ${e.message}');
+//   //   } catch (e) {
+//   //     throw Exception('Failed to upload image');
+//   //   }
+//   // }
 
 //   static int maxSizeInBytes = 2 * 1024 * 1024; // [2M]
 

@@ -12,6 +12,7 @@ class AppColors {
   static const Color red = Color(0xFFE7000B);
   static const Color purple = Color(0xFF0053D5);
   static const Color green = Color(0xFF00A63E);
+  static const Color green2B = Color(0xFF00B82B);
   static const Color lightGreen = Color(0xFFE6F6EC);
   static const Color yellow = Color(0xFFFDC700);
   static const List<Color> orangeGradient = [

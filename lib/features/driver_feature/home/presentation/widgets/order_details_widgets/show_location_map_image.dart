@@ -1,4 +1,4 @@
-import 'package:bastogah_app/core/flutter_toast/show_toast.dart';
+import 'package:bastogah_app/core/widgets/custom_toast/show_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,9 @@ class ShowLocationMapImage extends StatelessWidget {
           InkWell(
             onTap: () {
               if (lat == null || lng == null) {
-                showErrorToast("merchant.client_has_no_location".tr());
+                CustomFlutterToast.showErrorToast(
+                  "merchant.client_has_no_location".tr(),
+                );
                 return;
               }
               MyUrlLauncher().openGoogleMaps(lat: lat!, lng: lng!);

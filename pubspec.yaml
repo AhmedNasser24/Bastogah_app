@@ -41,6 +41,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_image_compress: ^2.4.0
   flutter_native_splash: ^2.4.7
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.2.3
@@ -52,6 +53,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   shared_preferences: ^2.5.4
   smooth_page_indicator: ^2.0.1
+  toastification: ^3.0.3
   url_launcher: ^6.3.2
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"

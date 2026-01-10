@@ -1,4 +1,4 @@
-import 'package:bastogah_app/core/flutter_toast/show_toast.dart';
+import 'package:bastogah_app/core/widgets/custom_toast/show_toast.dart';
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +23,9 @@ class LoginButton extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginFailure) {
-          showErrorToast(state.errMessage);
+          CustomFlutterToast.showErrorToast(state.errMessage);
         } else if (state is LoginSuccess) {
-          showSuccessToast('auth.login_successful'.tr());
+          CustomFlutterToast.showSuccessToast('auth.login_successful'.tr());
           switch (state.role) {
             case RolesEnum.merchant:
               context.go(RouteName.merchantHome);

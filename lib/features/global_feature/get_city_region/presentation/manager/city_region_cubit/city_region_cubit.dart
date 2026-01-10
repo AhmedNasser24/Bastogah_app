@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bastogah_app/core/flutter_toast/show_toast.dart';
+import 'package:bastogah_app/core/widgets/custom_toast/show_toast.dart';
 import 'package:bastogah_app/core/network/check_network_connection.dart';
 import 'package:bastogah_app/features/global_feature/get_city_region/domain/repo/city_region_repo.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -26,7 +26,9 @@ class CityRegionCubit extends Cubit<CityRegionState> {
         if (result.contains(ConnectivityResult.mobile) ||
             result.contains(ConnectivityResult.wifi) ||
             result.contains(ConnectivityResult.ethernet)) {
-          showSuccessToast("internet_connection_restored".tr());
+          CustomFlutterToast.showSuccessToast(
+            "internet_connection_restored".tr(),
+          );
           fetchRegions();
         }
       });

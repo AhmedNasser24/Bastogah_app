@@ -1,4 +1,4 @@
-import 'package:bastogah_app/core/flutter_toast/show_toast.dart';
+import 'package:bastogah_app/core/widgets/custom_toast/show_toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyUrlLauncher {
@@ -70,7 +70,7 @@ class MyUrlLauncher {
     try {
       launchUrl(url);
     } catch (e) {
-      showErrorToast(e.toString());
+      CustomFlutterToast.showErrorToast(e.toString());
     }
 
     // }
