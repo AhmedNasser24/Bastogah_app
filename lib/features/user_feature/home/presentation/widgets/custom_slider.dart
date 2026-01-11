@@ -13,6 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../../core/widgets/custom_cached_image.dart';
+import '../../../../../core/widgets/custom_skeletonizer.dart';
 
 class CustomSlider extends StatefulWidget {
   const CustomSlider({super.key});
@@ -23,14 +24,9 @@ class CustomSlider extends StatefulWidget {
 
 class _CustomSliderState extends State<CustomSlider> {
   final List<String> imgList = const [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNURVD38XtPap6C6sf4u5APb0uFk8G9PQ7wA&s"
-        "1760948317782-95611-image.jpg",
     AppImages.imagesPizzaHut,
-    "1760948317782-95611-image.jpg",
     AppImages.imagesBurger,
     AppImages.imagesAsianFood,
-    "1760948317782-95611-image.jpg",
-    AppImages.imagesBurger,
   ];
 
   int _currentIndex = 0;
@@ -50,14 +46,55 @@ class _CustomSliderState extends State<CustomSlider> {
         }
       },
       builder: (context, state) {
-        if (state is SlidersLoading || state is SlidersInitial) {
-          return const Center(child: CircularProgressIndicator());
+        if (state is SlidersLoading ||
+            state is SlidersInitial ||
+            state is SlidersFailure) {
+          return Column(
+            children: [
+              CarouselSlider(
+                carouselController: _carouselController,
+                items: imgList
+                    .map(
+                      (image) => Container(
+                        margin: const EdgeInsets.all(5.0),
+                        width: double.infinity,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10.0),
+                          ),
+                          child: CustomSkeletonizer(
+                            child: Image.asset(image, fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                options: carouselOptions(context),
+              ),
+              const Gap(16),
+              AnimatedSmoothIndicator(
+                activeIndex: _currentIndex,
+                count: imgList.length,
+                effect: const ExpandingDotsEffect(
+                  dotWidth: 10,
+                  dotHeight: 10,
+                ), // You can customize this further
+                onDotClicked: (index) {
+                  _carouselController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 800),
+                  );
+                },
+              ),
+            ],
+          );
         }
+
         return Column(
           children: [
             CarouselSlider(
               carouselController: _carouselController,
-              items: imgList
+              items: BlocProvider.of<SlidersCubit>(context).sliders
                   .map(
                     (item) => GestureDetector(
                       onTap: () {
@@ -71,35 +108,18 @@ class _CustomSliderState extends State<CustomSlider> {
                             Radius.circular(10.0),
                           ),
                           // child: Image.asset(item, fit: BoxFit.cover),
-                          child: CustomCachedImage(imagePath: item),
+                          child: CustomCachedImage(imagePath: item.image),
                         ),
                       ),
                     ),
                   )
                   .toList(),
-              options: CarouselOptions(
-                height: context.screenWidth > 600
-                    ? 190
-                    : 160.0, // Removed to use aspect ratio
-
-                autoPlay: true,
-                enlargeCenterPage: true,
-                aspectRatio: 16 / 9,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enableInfiniteScroll: true,
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                viewportFraction: 0.8,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-              ),
+              options: carouselOptions(context),
             ),
             const Gap(16),
             AnimatedSmoothIndicator(
               activeIndex: _currentIndex,
-              count: imgList.length,
+              count: BlocProvider.of<SlidersCubit>(context).sliders.length,
               effect: const ExpandingDotsEffect(
                 dotWidth: 10,
                 dotHeight: 10,
@@ -113,6 +133,27 @@ class _CustomSliderState extends State<CustomSlider> {
             ),
           ],
         );
+      },
+    );
+  }
+
+  CarouselOptions carouselOptions(BuildContext context) {
+    return CarouselOptions(
+      height: context.screenWidth > 600
+          ? 190
+          : 160.0, // Removed to use aspect ratio
+
+      autoPlay: true,
+      enlargeCenterPage: true,
+      aspectRatio: 16 / 9,
+      autoPlayCurve: Curves.fastOutSlowIn,
+      enableInfiniteScroll: true,
+      autoPlayAnimationDuration: const Duration(milliseconds: 800),
+      viewportFraction: 0.8,
+      onPageChanged: (index, reason) {
+        setState(() {
+          _currentIndex = index;
+        });
       },
     );
   }

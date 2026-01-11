@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -142,7 +143,24 @@ class ImagesService {
           //   CropAspectRatioPresetCustom(), // IMPORTANT: iOS supports only one custom aspect ratio in preset list
           // ],
         ),
-        WebUiSettings(context: context),
+        WebUiSettings(
+          context: context,
+          presentStyle: WebPresentStyle.dialog,
+          viewwMode: WebViewMode.mode_0,
+          customDialogBuilder: (cropper, initCropper, crop, rotate, scale) =>
+              Container(
+                height: context.screenHeight / 3,
+                width: context.screenWidth / 3,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: cropper,
+              ),
+          center: true,
+          initialAspectRatio: 1,
+          scalable: true,
+        ),
       ],
     );
 
