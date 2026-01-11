@@ -1,5 +1,6 @@
 import 'package:bastogah_app/features/merchant_feature/profile/presentation/widgets/cancel_edit_profile_button.dart';
 import 'package:bastogah_app/features/merchant_feature/profile/presentation/widgets/save_edit_profile_button.dart';
+import 'package:bastogah_app/core/widgets/custom_profile_logo_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,8 +32,7 @@ class DriverEditProfileView extends StatelessWidget {
                   child: Column(
                     spacing: 12,
                     children: [
-                      const Gap(10),
-                      logoImage(),
+                      const CustomProfileLogoImage(),
                       Text(
                         "merchant.profile.press_to_change_photo".tr(),
                         style: AppFontStyle.regular14black4B(context),

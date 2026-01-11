@@ -10,6 +10,7 @@ import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/theme/app_images.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
+import '../../../../../core/widgets/custom_profile_logo_image.dart';
 import '../widgets/merchant_profile_name_field.dart';
 import '../widgets/merchant_profile_phone_field.dart';
 import '../widgets/merchant_profile_store_kind_field.dart';
@@ -34,7 +35,7 @@ class MerchantEditProfileView extends StatelessWidget {
                     spacing: 12,
                     children: [
                       const Gap(10),
-                      logoImage(),
+                      const CustomProfileLogoImage(),
                       Text(
                         "merchant.profile.press_to_change_photo".tr(),
                         style: AppFontStyle.regular14black4B(context),

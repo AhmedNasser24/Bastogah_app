@@ -6,17 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../../../core/theme/app_icons.dart';
-import '../../../../../core/theme/app_images.dart';
+import '../theme/app_icons.dart';
+import '../theme/app_images.dart';
 
-class UserProfileLogoImage extends StatefulWidget {
-  const UserProfileLogoImage({super.key});
+class CustomProfileLogoImage extends StatefulWidget {
+  const CustomProfileLogoImage({super.key});
 
   @override
-  State<UserProfileLogoImage> createState() => _UserProfileLogoImageState();
+  State<CustomProfileLogoImage> createState() => _CustomProfileLogoImageState();
 }
 
-class _UserProfileLogoImageState extends State<UserProfileLogoImage> {
+class _CustomProfileLogoImageState extends State<CustomProfileLogoImage> {
   File? fileImage;
   @override
   Widget build(BuildContext context) {

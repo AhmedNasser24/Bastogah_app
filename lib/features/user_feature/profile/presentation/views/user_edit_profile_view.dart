@@ -10,7 +10,7 @@ import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
 import '../widgets/user_profile_city_field.dart';
-import '../widgets/user_profile_logo_image.dart';
+import '../../../../../core/widgets/custom_profile_logo_image.dart';
 import '../widgets/user_profile_region_field.dart';
 import '../widgets/user_profile_name_field.dart';
 import '../widgets/user_profile_phone_field.dart';
@@ -52,7 +52,7 @@ class _UserEditProfileViewState extends State<UserEditProfileView> {
                       spacing: 12,
                       children: [
                         const Gap(10),
-                        const UserProfileLogoImage(),
+                        const CustomProfileLogoImage(),
                         Text(
                           "merchant.profile.press_to_change_photo".tr(),
                           style: AppFontStyle.regular14black4B(context),
