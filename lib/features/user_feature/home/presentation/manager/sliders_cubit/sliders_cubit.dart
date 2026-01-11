@@ -30,6 +30,9 @@ class SlidersCubit extends Cubit<SlidersState> {
           getSliders();
         }
       });
+      CustomToastification.showFailureToast(
+        message: "check_your_internet_connection_and_try_again".tr(),
+      );
       return;
     }
     emit(SlidersLoading());
@@ -44,5 +47,11 @@ class SlidersCubit extends Cubit<SlidersState> {
         emit(SlidersLoadedSuccess(sliders: sliders));
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    return super.close();
   }
 }

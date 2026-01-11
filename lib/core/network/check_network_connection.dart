@@ -12,9 +12,6 @@ Future<bool> isThereNetworkConnection() async {
       connectivityResult.contains(ConnectivityResult.other)) {
     return true;
   } else {
-    CustomFlutterToast.showErrorToast(
-      "check_your_internet_connection_and_try_again".tr(),
-    );
     return false;
   }
 }

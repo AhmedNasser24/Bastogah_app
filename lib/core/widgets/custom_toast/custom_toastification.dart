@@ -1,5 +1,4 @@
 import 'package:bastogah_app/core/theme/app_colors.dart';
-import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
@@ -59,9 +58,10 @@ class CustomToastification {
         message,
         style: const TextStyle(
           color: AppColors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.normal,
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
         ),
+        textAlign: TextAlign.center,
       ),
       borderRadius: BorderRadius.circular(24),
       alignment: kIsWeb ? AlignmentDirectional.topEnd : Alignment.topCenter,
@@ -71,7 +71,7 @@ class CustomToastification {
       dragToClose: true,
       borderSide: BorderSide.none,
       showIcon: false,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
     );
   }

@@ -41,9 +41,9 @@ class _CustomSliderState extends State<CustomSlider> {
   Widget build(BuildContext context) {
     return BlocConsumer<SlidersCubit, SlidersState>(
       listener: (context, state) {
-        if (state is SlidersFailure) {
-          CustomFlutterToast.showErrorToast(state.errMessage);
-        }
+        // if (state is SlidersFailure) {
+        //   CustomFlutterToast.showErrorToast(state.errMessage);
+        // }
       },
       builder: (context, state) {
         if (state is SlidersLoading ||

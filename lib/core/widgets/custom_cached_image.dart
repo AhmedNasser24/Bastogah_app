@@ -40,7 +40,7 @@ class CustomCachedImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.grey),
         ),
-        child: Image.asset(AppImages.imagesNoImage),
+        child: Image.asset(AppImages.imagesNoImage, fit: BoxFit.cover),
       ),
       progressIndicatorBuilder: (context, url, progress) => SizedBox(
         width: 30,
