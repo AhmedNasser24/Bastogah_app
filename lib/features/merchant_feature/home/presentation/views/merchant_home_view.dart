@@ -11,6 +11,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/widgets/custom_refresh_indicator.dart';
+import '../../../../user_feature/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import '../widgets/home_widgets/current_dues.dart';
 import '../widgets/home_widgets/merchant_filters_home.dart';
 import '../widgets/home_widgets/merchant_order_items.dart';
@@ -25,9 +26,12 @@ class MerchantHomeView extends StatefulWidget {
 class _MerchantHomeViewState extends State<MerchantHomeView> {
   late MerchantGetOrdersCubit merchantGetOrdersCubit;
   ScrollController controller = ScrollController();
+  late ProfileCubit profileCubit;
   @override
   void initState() {
     super.initState();
+    profileCubit = getIt<ProfileCubit>()
+      ..getProfile(); // to check if it is active or not and this handle in cubit
     merchantGetOrdersCubit = getIt.get<MerchantGetOrdersCubit>();
     merchantGetOrdersCubit.fetchOrders(status: 0);
     controller.addListener(() {

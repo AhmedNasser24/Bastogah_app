@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:bastogah_app/features/user_feature/home/presentation/widgets/custom_slider.dart';
+import 'package:bastogah_app/features/user_feature/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:bastogah_app/features/user_feature/user_layout/presentation/widgets/user_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +26,7 @@ class UserHomeView extends StatefulWidget {
 class _UserHomeViewState extends State<UserHomeView> {
   late SlidersCubit slidersCubit;
   late MerchantCategoriesCubit merchantCategoriesCubit;
+  late ProfileCubit profileCubit;
   @override
   void initState() {
     super.initState();
@@ -32,6 +34,8 @@ class _UserHomeViewState extends State<UserHomeView> {
     slidersCubit = getIt<SlidersCubit>()..getSliders();
     merchantCategoriesCubit = getIt<MerchantCategoriesCubit>()
       ..getMerchantCategories();
+    profileCubit = getIt<ProfileCubit>()
+      ..getProfile(); // to check if it is active or not and this handle in cubit
   }
 
   @override

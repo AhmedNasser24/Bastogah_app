@@ -4,7 +4,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../merchant_feature/home/presentation/widgets/home_widgets/current_dues.dart';
+import '../../../../user_feature/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import '../widgets/home_widgets/driver_filters_home.dart';
 import '../widgets/home_widgets/driver_order_items_list.dart';
 
@@ -18,19 +20,13 @@ class DriverHomeView extends StatefulWidget {
 class _DriverHomeViewState extends State<DriverHomeView> {
   // late MerchantGetOrdersCubit merchantGetOrdersCubit;
   ScrollController controller = ScrollController();
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   merchantGetOrdersCubit = getIt.get<MerchantGetOrdersCubit>();
-  //   merchantGetOrdersCubit.fetchOrders(status: 0);
-  //   controller.addListener(() {
-  //     if (controller.position.pixels >=
-  //             controller.position.maxScrollExtent - 200 &&
-  //         merchantGetOrdersCubit.moreItem) {
-  //       merchantGetOrdersCubit.fetchMoreOrders();
-  //     }
-  //   });
-  // }
+  late ProfileCubit profileCubit;
+  @override
+  void initState() {
+    super.initState();
+    profileCubit = getIt<ProfileCubit>()
+      ..getProfile(); // to check if it is active or not and this handle in cubit
+  }
 
   @override
   void dispose() {
