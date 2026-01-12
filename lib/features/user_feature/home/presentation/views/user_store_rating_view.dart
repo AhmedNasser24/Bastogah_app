@@ -1,6 +1,7 @@
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
+import 'package:bastogah_app/core/widgets/custom_cached_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,14 +9,14 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
-import '../../../../../core/theme/app_images.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../data/model/user_merchant_model.dart';
 import '../widgets/customer_review_item.dart';
 import '../widgets/user_products_app_bar.dart';
 
 class UserStoreRatingView extends StatelessWidget {
-  const UserStoreRatingView({super.key});
-
+  const UserStoreRatingView({super.key, required this.merchant});
+  final UserMerchantModel merchant;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +24,13 @@ class UserStoreRatingView extends StatelessWidget {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            const UserProductsAppBar(image: ""),
+            UserProductsAppBar(image: merchant.image ?? ""),
 
-            const SliverToBoxAdapter(child: ResturantInfoSection()),
+            SliverToBoxAdapter(child: ResturantInfoSection(merchant: merchant)),
             const SliverGap(16),
-            const SliverToBoxAdapter(child: ResturantRatingSection()),
+            SliverToBoxAdapter(
+              child: ResturantRatingSection(merchant: merchant),
+            ),
             const SliverGap(16),
             SliverToBoxAdapter(
               child: Padding(
@@ -73,7 +76,8 @@ class UserStoreRatingView extends StatelessWidget {
 }
 
 class ResturantRatingSection extends StatelessWidget {
-  const ResturantRatingSection({super.key});
+  const ResturantRatingSection({super.key, required this.merchant});
+  final UserMerchantModel merchant;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +113,7 @@ class ResturantRatingSection extends StatelessWidget {
                           child: Row(
                             children: [
                               Text(
-                                "4.8",
+                                "${merchant.ratingAvg ?? 0}",
                                 style: AppFontStyle.bold48White(context),
                               ),
                               Text(
@@ -138,7 +142,7 @@ class ResturantRatingSection extends StatelessWidget {
                         ),
                         const Gap(10),
                         Text(
-                          "بناءً على 450+ تقييم",
+                          "بناءً على ${merchant.ratingCount ?? 0} تقييم",
                           style: AppFontStyle.medium18White(context),
                         ),
                       ],
@@ -160,7 +164,8 @@ class ResturantRatingSection extends StatelessWidget {
 }
 
 class ResturantInfoSection extends StatelessWidget {
-  const ResturantInfoSection({super.key});
+  const ResturantInfoSection({super.key, required this.merchant});
+  final UserMerchantModel merchant;
 
   @override
   Widget build(BuildContext context) {
@@ -181,7 +186,7 @@ class ResturantInfoSection extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  resturantLogo(),
+                  resturantLogo(merchant.image ?? ""),
                   const Gap(8),
                   Expanded(
                     child: Column(
@@ -192,18 +197,18 @@ class ResturantInfoSection extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Text(
-                                "مطعم بيتزا هت",
+                                merchant.displayName ?? "--",
                                 style: AppFontStyle.bold18Black1A(context),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
                             const Gap(8),
-                            resturantRating(context),
+                            resturantRating(context, merchant.ratingAvg ?? 0),
                           ],
                         ),
                         Text(
-                          "شاورما - طعام سريع",
+                          merchant.about ?? "--",
                           style: AppFontStyle.medium14black4B(context),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -220,19 +225,19 @@ class ResturantInfoSection extends StatelessWidget {
     );
   }
 
-  Container resturantLogo() {
+  Container resturantLogo(String image) {
     return Container(
       width: 65,
       height: 65,
       decoration: const BoxDecoration(shape: BoxShape.circle),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(32.5),
-        child: Image.asset(AppImages.imagesResturantLogo, fit: BoxFit.cover),
+        child: CustomCachedImage(imagePath: image),
       ),
     );
   }
 
-  Widget resturantRating(BuildContext context) {
+  Widget resturantRating(BuildContext context, num rating) {
     return Row(
       children: [
         Container(
@@ -253,7 +258,7 @@ class ResturantInfoSection extends StatelessWidget {
             children: [
               SvgPicture.asset(AppIcons.iconsStar12White),
               const Gap(4),
-              Text("4.8", style: AppFontStyle.bold14White(context)),
+              Text("$rating", style: AppFontStyle.bold14White(context)),
             ],
           ),
         ),

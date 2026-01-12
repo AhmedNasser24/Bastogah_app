@@ -1,12 +1,10 @@
 import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
-import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/manager/sliders_cubit/sliders_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../../core/widgets/custom_cached_image.dart';

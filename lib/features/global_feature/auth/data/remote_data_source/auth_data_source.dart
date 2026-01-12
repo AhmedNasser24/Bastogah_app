@@ -3,5 +3,4 @@ abstract class AuthDataSource {
     required String username,
     required String password,
   });
-  Future<Map<String, dynamic>> fetchProfileData();
 }

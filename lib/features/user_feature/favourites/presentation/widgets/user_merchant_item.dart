@@ -1,10 +1,10 @@
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
@@ -13,8 +13,8 @@ import '../../../home/data/model/user_merchant_model.dart';
 import 'favourite_item_image.dart';
 import '../../../../../core/widgets/favourite_icon_button.dart';
 
-class UserStoreItem extends StatelessWidget {
-  const UserStoreItem({super.key, this.merchant});
+class UserMerchantItem extends StatelessWidget {
+  const UserMerchantItem({super.key, this.merchant});
   final UserMerchantModel? merchant;
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,9 @@ class UserStoreItem extends StatelessWidget {
                       const Gap(8),
                       CustomButton(
                         width: 120,
-                        onTap: () {},
+                        onTap: () {
+                          context.push(RouteName.userProducts, extra: merchant);
+                        },
                         title: "user.order_now".tr(),
                         textStyle: AppFontStyle.semibold14Primary(context),
                         color: AppColors.secondary,

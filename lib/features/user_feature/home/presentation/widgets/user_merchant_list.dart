@@ -7,7 +7,7 @@ import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/widgets/custom_refresh_indicator.dart';
 import '../../../../../core/widgets/custom_skeletonizer.dart';
-import '../../../favourites/presentation/widgets/user_store_item.dart';
+import '../../../favourites/presentation/widgets/user_merchant_item.dart';
 import '../../data/model/user_merchant_model.dart';
 import '../../data/params/user_merchant_param.dart';
 import '../manager/user_merchants_cubit/user_merchants_cubit.dart';
@@ -81,7 +81,7 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
               ),
               itemCount: 6,
               itemBuilder: (context, index) {
-                return const CustomSkeletonizer(child: UserStoreItem());
+                return const CustomSkeletonizer(child: UserMerchantItem());
               },
             );
           }
@@ -107,10 +107,10 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
                       extra: merchants[index],
                     );
                   },
-                  child: UserStoreItem(merchant: merchants[index]),
+                  child: UserMerchantItem(merchant: merchants[index]),
                 );
               } else {
-                return const CustomSkeletonizer(child: UserStoreItem());
+                return const CustomSkeletonizer(child: UserMerchantItem());
               }
             },
           );

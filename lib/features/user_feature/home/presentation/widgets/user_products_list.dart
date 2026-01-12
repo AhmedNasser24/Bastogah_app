@@ -2,7 +2,9 @@ import 'package:bastogah_app/core/widgets/custom_skeletonizer.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/manager/user_products_cubit/user_products_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/widgets/custom_toast/custom_toastification.dart';
 import '../../data/model/user_product_model.dart';
 import 'user_products_item.dart';
@@ -61,7 +63,15 @@ class UserProductsList extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: index < products.length
-                  ? UserProductItem(product: products[index])
+                  ? GestureDetector(
+                      onTap: () {
+                        context.push(
+                          RouteName.userProductDetails,
+                          extra: products[index],
+                        );
+                      },
+                      child: UserProductItem(product: products[index]),
+                    )
                   : const CustomSkeletonizer(child: UserProductItem()),
             );
           },

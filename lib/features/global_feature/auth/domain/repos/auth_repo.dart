@@ -8,5 +8,4 @@ abstract class AuthRepo {
     required String username,
     required String password,
   });
-  Future<Either<Failure, void>> fetchProfileDataAndSaveItLocally();
 }

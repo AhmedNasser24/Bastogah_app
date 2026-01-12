@@ -6,6 +6,9 @@ import 'package:bastogah_app/features/merchant_feature/home/data/repo/home_repo_
 import 'package:bastogah_app/features/merchant_feature/home/domain/repo/home_repo.dart';
 import 'package:bastogah_app/features/user_feature/home/data/data_source/user_home_data_source.dart';
 import 'package:bastogah_app/features/user_feature/home/data/data_source/user_home_data_source_impl.dart';
+import 'package:bastogah_app/features/user_feature/profile/data/repo/profile_repo_impl.dart';
+import 'package:bastogah_app/features/user_feature/profile/domain/repo/profile_repo.dart';
+import 'package:bastogah_app/features/user_feature/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -27,6 +30,8 @@ import '../../features/user_feature/home/presentation/manager/merchant_categorie
 import '../../features/user_feature/home/presentation/manager/sliders_cubit/sliders_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/user_merchants_cubit/user_merchants_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/user_products_cubit/user_products_cubit.dart';
+import '../../features/user_feature/profile/data/data_source/profile_data_source.dart';
+import '../../features/user_feature/profile/data/data_source/profile_data_source_impl.dart';
 import '../api/api_consumer.dart';
 import '../api/app_interceptor.dart';
 import '../api/dio_consumer.dart';
@@ -82,8 +87,11 @@ void getItSetup() {
       cityRegionDataSource: getIt.get<CityRegionDataSource>(),
     ),
   );
-  getIt.registerFactory<CityRegionCubit>(
-    () => CityRegionCubit(cityRegionRepo: getIt.get<CityRegionRepo>()),
+  getIt.registerLazySingleton<UserHomeDataSource>(
+    () => UserHomeDataSourceImpl(apiConsumer: getIt.get<ApiConsumer>()),
+  );
+  getIt.registerLazySingleton<ProfileDataSource>(
+    () => ProfileDataSourceImpl(apiConsumer: getIt.get<ApiConsumer>()),
   );
 
   // repo
@@ -98,6 +106,12 @@ void getItSetup() {
       merchantHomeRemoteDataSource: getIt.get<MerchantHomeRemoteDataSource>(),
     ),
   );
+  getIt.registerLazySingleton<UserHomeRepo>(
+    () => UserHomeRepoImpl(userHomeDataSource: getIt.get<UserHomeDataSource>()),
+  );
+  getIt.registerLazySingleton<ProfileRepo>(
+    () => ProfileRepoImpl(profileDataSource: getIt.get<ProfileDataSource>()),
+  );
 
   // cubit
   getIt.registerFactory<LoginCubit>(
@@ -106,12 +120,7 @@ void getItSetup() {
   getIt.registerFactory<MerchantGetOrdersCubit>(
     () => MerchantGetOrdersCubit(homeRepo: getIt.get<MerchantHomeRepo>()),
   );
-  getIt.registerLazySingleton<UserHomeDataSource>(
-    () => UserHomeDataSourceImpl(apiConsumer: getIt.get<ApiConsumer>()),
-  );
-  getIt.registerLazySingleton<UserHomeRepo>(
-    () => UserHomeRepoImpl(userHomeDataSource: getIt.get<UserHomeDataSource>()),
-  );
+
   getIt.registerFactory<SlidersCubit>(
     () => SlidersCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
   );
@@ -123,5 +132,11 @@ void getItSetup() {
   );
   getIt.registerFactory<UserProductsCubit>(
     () => UserProductsCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
+  );
+  getIt.registerFactory<CityRegionCubit>(
+    () => CityRegionCubit(cityRegionRepo: getIt.get<CityRegionRepo>()),
+  );
+  getIt.registerFactory<ProfileCubit>(
+    () => ProfileCubit(profileRepo: getIt.get<ProfileRepo>()),
   );
 }

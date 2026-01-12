@@ -92,7 +92,8 @@ class ResturantInfoSection extends StatelessWidget {
         Flexible(
           child: Center(
             child: GestureDetector(
-              onTap: () => context.push(RouteName.userStoreRating),
+              onTap: () =>
+                  context.push(RouteName.userStoreRating, extra: merchant),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16.0),
                 padding: const EdgeInsets.all(12.0),

@@ -4,7 +4,7 @@ class ProfileModel {
   String? image;
   String? username;
   List<String>? roles;
-  bool? active;
+  final bool active;
   String? phone;
   List<dynamic>? coverImages;
   int? commissionPercent;
@@ -43,7 +43,7 @@ class ProfileModel {
     this.image,
     this.username,
     this.roles,
-    this.active,
+    required this.active,
     this.phone,
     this.coverImages,
     this.commissionPercent,

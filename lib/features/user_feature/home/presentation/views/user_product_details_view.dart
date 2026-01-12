@@ -1,4 +1,5 @@
 import 'package:bastogah_app/core/widgets/custom_text_form_field.dart';
+import 'package:bastogah_app/features/user_feature/home/data/model/user_product_model.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/widgets/user_product_details_sliver_app_bar.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
@@ -11,34 +12,38 @@ import '../../../../../core/theme/app_icons.dart';
 import '../../../../merchant_feature/products/presentation/widgets/custom_check_box.dart';
 
 class UserProductDetailsView extends StatelessWidget {
-  const UserProductDetailsView({super.key});
-
+  const UserProductDetailsView({super.key, required this.product});
+  final UserProductModel product;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
               child: CustomScrollView(
                 slivers: [
-                  UserProductDetailsSliverAppBar(),
-                  SliverGap(24),
-                  SliverToBoxAdapter(child: TopRateTextWidget()),
-                  SliverGap(24),
-                  SliverToBoxAdapter(child: ProductDetailsSection()),
-                  SliverGap(24),
-                  SliverToBoxAdapter(child: MoreOptionsSection()),
-                  SliverGap(24),
-                  SliverToBoxAdapter(child: RemovedGradientSection()),
-                  SliverGap(24),
-                  SliverToBoxAdapter(child: SpecialNoteSection()),
-                  SliverGap(20),
+                  UserProductDetailsSliverAppBar(
+                    image: product.images?.first ?? "",
+                  ),
+                  const SliverGap(24),
+                  const SliverToBoxAdapter(child: TopRateTextWidget()),
+                  const SliverGap(24),
+                  SliverToBoxAdapter(
+                    child: ProductDetailsSection(product: product),
+                  ),
+                  const SliverGap(24),
+                  const SliverToBoxAdapter(child: MoreOptionsSection()),
+                  const SliverGap(24),
+                  const SliverToBoxAdapter(child: RemovedGradientSection()),
+                  const SliverGap(24),
+                  const SliverToBoxAdapter(child: SpecialNoteSection()),
+                  const SliverGap(20),
                 ],
               ),
             ),
-            ProductQuantitySection(),
-            Gap(20),
+            const ProductQuantitySection(),
+            const Gap(20),
           ],
         ),
       ),
@@ -174,8 +179,8 @@ class TopRateTextWidget extends StatelessWidget {
 }
 
 class ProductDetailsSection extends StatelessWidget {
-  const ProductDetailsSection({super.key});
-
+  const ProductDetailsSection({super.key, required this.product});
+  final UserProductModel product;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -184,13 +189,15 @@ class ProductDetailsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 8,
         children: [
-          Text("بيتزا لحم", style: AppFontStyle.semibold18black1A(context)),
           Text(
-            "عجينة البيتزا, صلصة البيتزا, شاورما لحم, جبنة الموزريلا, فلفل, زيتون",
-            style: AppFontStyle.medium16Grey(context),
+            product.name ?? "--",
+            style: AppFontStyle.semibold18black1A(context),
           ),
+          Text(product.desc ?? "--", style: AppFontStyle.medium16Grey(context)),
           Text(
-            "merchant.currency".tr(args: ["5000"]),
+            "merchant.currency".tr(
+              args: [product.finalPrice?.toString() ?? "--"],
+            ),
             textDirection: TextDirection.rtl,
             style: AppFontStyle.semibold18black1A(context),
           ),

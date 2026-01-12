@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../favourites/presentation/widgets/user_store_item.dart';
+import '../../../favourites/presentation/widgets/user_merchant_item.dart';
 
 class SliverListOfUserStoreItems extends StatelessWidget {
   const SliverListOfUserStoreItems({super.key});
@@ -16,7 +16,7 @@ class SliverListOfUserStoreItems extends StatelessWidget {
       ),
       itemCount: 10,
       itemBuilder: (context, index) {
-        return const UserStoreItem();
+        return const UserMerchantItem();
       },
     );
   }
