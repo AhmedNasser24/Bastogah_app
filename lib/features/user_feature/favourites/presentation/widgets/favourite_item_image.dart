@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/theme/app_images.dart';
+import '../../../../../core/widgets/custom_cached_image.dart';
 
 class FavouriteItemImage extends StatelessWidget {
-  const FavouriteItemImage({super.key});
+  const FavouriteItemImage({super.key, this.image});
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,9 @@ class FavouriteItemImage extends StatelessWidget {
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),
         ),
-        child: Image.asset(AppImages.imagesPizzaHut, fit: BoxFit.cover),
+        child: image != null
+            ? CustomCachedImage(imagePath: image!)
+            : Image.asset(AppImages.imagesPizzaHut, fit: BoxFit.cover),
       ),
     );
   }

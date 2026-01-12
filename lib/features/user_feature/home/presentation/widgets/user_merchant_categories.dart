@@ -6,17 +6,19 @@ import 'package:bastogah_app/features/user_feature/home/presentation/manager/mer
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routing/route_name.dart';
 import '../../data/model/merchant_category_model.dart';
 
-class HomeMerchantCategory extends StatefulWidget {
-  const HomeMerchantCategory({super.key});
+class UserMerchantCategories extends StatefulWidget {
+  const UserMerchantCategories({super.key});
 
   @override
-  State<HomeMerchantCategory> createState() => _HomeMerchantCategoryState();
+  State<UserMerchantCategories> createState() => _UserMerchantCategoriesState();
 }
 
-class _HomeMerchantCategoryState extends State<HomeMerchantCategory> {
+class _UserMerchantCategoriesState extends State<UserMerchantCategories> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -30,9 +32,17 @@ class _HomeMerchantCategoryState extends State<HomeMerchantCategory> {
                 return Row(
                   children: state.merchantCategories
                       .map(
-                        (merchantCategory) => merchantCategoryItem(
-                          context,
-                          merchantCategory: merchantCategory,
+                        (merchantCategory) => GestureDetector(
+                          onTap: () {
+                            context.push(
+                              RouteName.userMerchants,
+                              extra: merchantCategory,
+                            );
+                          },
+                          child: merchantCategoryItem(
+                            context,
+                            merchantCategory: merchantCategory,
+                          ),
                         ),
                       )
                       .toList(),

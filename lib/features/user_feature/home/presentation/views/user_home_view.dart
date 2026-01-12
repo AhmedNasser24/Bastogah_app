@@ -10,7 +10,7 @@ import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/widgets/custom_search_field.dart';
 import '../manager/merchant_categories_cubit/merchant_categories_cubit.dart';
 import '../manager/sliders_cubit/sliders_cubit.dart';
-import '../widgets/home_merchant_category.dart';
+import '../widgets/user_merchant_categories.dart';
 import '../widgets/sliver_list_of_user_product_items.dart';
 import '../widgets/sliver_list_of_user_store_items.dart';
 import '../widgets/user_home_filter.dart';
@@ -50,7 +50,7 @@ class _UserHomeViewState extends State<UserHomeView> {
             child: CustomScrollView(
               slivers: [
                 SliverGap(16),
-                SliverToBoxAdapter(child: HomeMerchantCategory()),
+                SliverToBoxAdapter(child: UserMerchantCategories()),
                 SliverGap(16),
                 SliverToBoxAdapter(child: CustomSlider()),
                 SliverGap(16),

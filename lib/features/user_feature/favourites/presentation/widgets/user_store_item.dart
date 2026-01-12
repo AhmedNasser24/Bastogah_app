@@ -9,12 +9,13 @@ import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../home/data/model/user_merchant_model.dart';
 import 'favourite_item_image.dart';
 import '../../../../../core/widgets/favourite_icon_button.dart';
 
 class UserStoreItem extends StatelessWidget {
-  const UserStoreItem({super.key});
-
+  const UserStoreItem({super.key, this.merchant});
+  final UserMerchantModel? merchant;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -33,10 +34,10 @@ class UserStoreItem extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 180,
                     width: double.infinity,
-                    child: FavouriteItemImage(),
+                    child: FavouriteItemImage(image: merchant?.image),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -48,7 +49,7 @@ class UserStoreItem extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            "بيتزا هت",
+                            merchant?.displayName ?? "بيتزا هت",
                             style: AppFontStyle.medium16black1A(context),
                             overflow: TextOverflow.ellipsis,
                           ),

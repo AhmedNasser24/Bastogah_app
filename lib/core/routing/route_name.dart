@@ -13,7 +13,7 @@ class RouteName {
 
   // User routes
   static const String userHome = '/user/home';
-  static const String userStores = '/user/home/stores';
+  static const String userMerchants = '/user/home/merchants';
   static const String userProducts = '/user/home/products';
   static const String userStoreRating = '/user/home/store-rating';
   static const String writeYourReview = '/user/home/write-your-review';

@@ -6,7 +6,8 @@ import '../theme/app_icons.dart';
 import 'custom_text_form_field.dart';
 
 class CustomSearchField extends StatefulWidget {
-  const CustomSearchField({super.key});
+  const CustomSearchField({super.key, this.onChanged});
+  final void Function(String)? onChanged;
   @override
   State<CustomSearchField> createState() => _CustomSearchFieldState();
 }
@@ -30,6 +31,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
               padding: const EdgeInsets.all(8.0),
               child: SvgPicture.asset(AppIcons.iconsSearchIcon),
             ),
+            onChanged: widget.onChanged,
           ),
         ),
         InkWell(

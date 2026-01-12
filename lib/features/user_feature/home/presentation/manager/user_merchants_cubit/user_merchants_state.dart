@@ -22,3 +22,5 @@ class UserMerchantsFailure extends UserMerchantsState {
   final String errorMessage;
   UserMerchantsFailure({required this.errorMessage});
 }
+
+class NoInternetConnection extends UserMerchantsState {}

@@ -1,20 +1,17 @@
 class UserMerchantParam {
   String searchText;
-  final String category;
-  String subCategory;
-  final int skip;
+  final String categoryId;
+  int skip;
 
   UserMerchantParam({
     this.searchText = "",
-    required this.category,
-    this.subCategory = "",
-    required this.skip,
+    required this.categoryId,
+    this.skip = 0,
   });
   Map<String, dynamic> toQueryParameters() {
     return {
-      "searchText": searchText,
-      "category": category,
-      "subCategory": subCategory,
+      if (searchText.isNotEmpty) "searchText": searchText,
+      "category": categoryId,
       "skip": skip,
     };
   }
