@@ -77,9 +77,12 @@ class _UserMerchantCategoriesState extends State<UserMerchantCategories> {
             width: 75,
             // padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-            child: merchantCategory?.image != null
-                ? CustomCachedImage(imagePath: merchantCategory!.image!)
-                : Image.asset(AppImages.imagesClothes, fit: BoxFit.cover),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: merchantCategory?.image != null
+                  ? CustomCachedImage(imagePath: merchantCategory!.image!)
+                  : Image.asset(AppImages.imagesClothes, fit: BoxFit.cover),
+            ),
           ),
           const Gap(8),
           SizedBox(

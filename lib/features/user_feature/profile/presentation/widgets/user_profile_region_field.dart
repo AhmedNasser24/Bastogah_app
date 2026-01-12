@@ -15,8 +15,8 @@ import '../../../../../core/models/region_model.dart';
 import '../../../../global_feature/get_city_region/presentation/manager/city_region_cubit/city_region_cubit.dart';
 
 class UserProfileRegionField extends StatefulWidget {
-  const UserProfileRegionField({super.key});
-
+  const UserProfileRegionField({super.key, required this.regionName});
+  final String regionName;
   @override
   State<UserProfileRegionField> createState() => _UserProfileRegionFieldState();
 }
@@ -24,8 +24,14 @@ class UserProfileRegionField extends StatefulWidget {
 class _UserProfileRegionFieldState extends State<UserProfileRegionField> {
   bool showDialog = false;
   final GlobalKey _buttonKey = GlobalKey();
-  TextEditingController controller = TextEditingController(text: "السويس");
+  late TextEditingController controller;
   List<RegionModel> regions = [];
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController(text: widget.regionName);
+  }
 
   @override
   Widget build(BuildContext context) {

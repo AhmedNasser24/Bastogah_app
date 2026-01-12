@@ -7,12 +7,26 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/local_storage_data/local_storage_data.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/logout_button.dart';
+import '../../data/model/profile_model.dart';
 import '../widgets/user_profile_info_section.dart' show UserProfileInfoSection;
 
-class UserProfileView extends StatelessWidget {
+class UserProfileView extends StatefulWidget {
   const UserProfileView({super.key});
+
+  @override
+  State<UserProfileView> createState() => _UserProfileViewState();
+}
+
+class _UserProfileViewState extends State<UserProfileView> {
+  late ProfileModel profileModel;
+  @override
+  void initState() {
+    super.initState();
+    profileModel = LocalStorageData.getProfile();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +36,7 @@ class UserProfileView extends StatelessWidget {
       child: Column(
         children: [
           const Gap(20),
-          const UserProfileInfoSection(),
+          UserProfileInfoSection(profileModel: profileModel),
           const Gap(20),
 
           profileTile(
@@ -30,7 +44,7 @@ class UserProfileView extends StatelessWidget {
             imagePath: AppIcons.iconsPersonProfileIcon,
             title: "merchant.profile.profile_info".tr(),
             onTap: () {
-              context.push(RouteName.userEditProfile);
+              context.push(RouteName.userEditProfile, extra: profileModel);
             },
           ),
           profileTile(

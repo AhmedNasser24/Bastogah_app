@@ -9,6 +9,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
+import '../../data/model/profile_model.dart';
 import '../widgets/user_profile_city_field.dart';
 import '../../../../../core/widgets/custom_profile_logo_image.dart';
 import '../widgets/user_profile_region_field.dart';
@@ -16,8 +17,8 @@ import '../widgets/user_profile_name_field.dart';
 import '../widgets/user_profile_phone_field.dart';
 
 class UserEditProfileView extends StatefulWidget {
-  const UserEditProfileView({super.key});
-
+  const UserEditProfileView({super.key, required this.profileModel});
+  final ProfileModel profileModel;
   @override
   State<UserEditProfileView> createState() => _UserEditProfileViewState();
 }
@@ -52,16 +53,26 @@ class _UserEditProfileViewState extends State<UserEditProfileView> {
                       spacing: 12,
                       children: [
                         const Gap(10),
-                        const CustomProfileLogoImage(),
+                        CustomProfileLogoImage(
+                          image: widget.profileModel.image,
+                        ),
                         Text(
                           "merchant.profile.press_to_change_photo".tr(),
                           style: AppFontStyle.regular14black4B(context),
                         ),
                         const Gap(0),
-                        const UserProfileNameField(),
-                        const UserProfilePhoneField(),
-                        const UserProfileRegionField(),
-                        const UserProfileCityField(),
+                        UserProfileNameField(
+                          name: widget.profileModel.displayName ?? "--",
+                        ),
+                        UserProfilePhoneField(
+                          phone: widget.profileModel.phone ?? "--",
+                        ),
+                        UserProfileRegionField(
+                          regionName: widget.profileModel.region?.name ?? "",
+                        ),
+                        UserProfileCityField(
+                          cityName: widget.profileModel.city?.name ?? "",
+                        ),
                         const Gap(10),
                         const SaveEditProfileButton(),
                         const CancelEditProfileButton(),

@@ -4,8 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../../core/api/api_keys.dart';
-import '../../../../../core/constant/constants.dart';
 import '../../../../../core/errors/failure.dart';
+import '../../../../../core/local_storage_data/local_storage_data.dart';
 import '../../../../../core/local_storage_services/shared_preference_singleton.dart';
 import '../../domain/repos/auth_repo.dart';
 import '../remote_data_source/auth_data_source.dart';
@@ -69,6 +69,6 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   Future<void> _saveProfileDataLocally(Map<String, dynamic> body) async {
-    SharedPreferenceSingleton.setString(kProfileDataKey, body.toString());
+    LocalStorageData.setProfile(body);
   }
 }

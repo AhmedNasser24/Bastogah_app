@@ -17,6 +17,7 @@ import '../../../features/user_feature/home/data/model/user_merchant_model.dart'
 import '../../../features/user_feature/home/presentation/views/user_products_view.dart';
 import '../../../features/user_feature/home/presentation/views/user_store_rating_view.dart';
 import '../../../features/user_feature/offers/presentation/views/user_offers_details_view.dart';
+import '../../../features/user_feature/profile/data/model/profile_model.dart';
 import '../../../features/user_feature/profile/presentation/views/user_add_new_address_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_coupons_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_edit_profile_view.dart';
@@ -140,7 +141,7 @@ List<RouteBase> userRoutes = [
     pageBuilder: (context, state) => buildPageWithSlideTransition(
       context: context,
       state: state,
-      child: const UserEditProfileView(),
+      child: UserEditProfileView(profileModel: state.extra as ProfileModel),
     ),
   ),
   GoRoute(

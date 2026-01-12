@@ -14,6 +14,7 @@ class CustomCachedImage extends StatelessWidget {
     this.fit,
     this.emptyColorFilter,
     this.color,
+    this.errorWidget,
   });
 
   final double? width, height;
@@ -21,7 +22,7 @@ class CustomCachedImage extends StatelessWidget {
   final ColorFilter? emptyColorFilter;
   final BoxFit? fit;
   final Color? color;
-
+  final Widget? errorWidget;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -35,13 +36,18 @@ class CustomCachedImage extends StatelessWidget {
       errorListener: (value) {
         log('Error loading image: $value');
       },
-      errorWidget: (context, url, error) => Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey),
-        ),
-        child: Image.asset(AppImages.imagesNoImage, fit: BoxFit.cover),
-      ),
+      errorWidget: (context, url, error) =>
+          errorWidget ??
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Colors.grey),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(AppImages.imagesNoImage, fit: BoxFit.cover),
+            ),
+          ),
       progressIndicatorBuilder: (context, url, progress) => SizedBox(
         width: 30,
         height: 30,

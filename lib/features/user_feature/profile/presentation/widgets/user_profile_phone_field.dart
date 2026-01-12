@@ -7,16 +7,20 @@ import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class UserProfilePhoneField extends StatefulWidget {
-  const UserProfilePhoneField({super.key});
-
+  const UserProfilePhoneField({super.key, required this.phone});
+  final String phone;
   @override
   State<UserProfilePhoneField> createState() => _UserProfilePhoneFieldState();
 }
 
 class _UserProfilePhoneFieldState extends State<UserProfilePhoneField> {
-  final TextEditingController controller = TextEditingController(
-    text: "+962 7 1234 5678",
-  );
+  late TextEditingController controller;
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController(text: widget.phone);
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(

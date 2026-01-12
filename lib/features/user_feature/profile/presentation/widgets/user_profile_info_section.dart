@@ -1,14 +1,18 @@
+import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
+import 'package:bastogah_app/core/widgets/custom_cached_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_icons.dart';
+import '../../data/model/profile_model.dart';
 
 class UserProfileInfoSection extends StatelessWidget {
-  const UserProfileInfoSection({super.key});
-
+  const UserProfileInfoSection({super.key, required this.profileModel});
+  final ProfileModel profileModel;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,9 +21,20 @@ class UserProfileInfoSection extends StatelessWidget {
           width: 90,
           height: 90,
           decoration: const BoxDecoration(shape: BoxShape.circle),
-          child: Image.asset(
-            AppImages.imagesUserProfileImage,
-            fit: BoxFit.cover,
+          child: CustomCachedImage(
+            imagePath: profileModel.image ?? "",
+            errorWidget: Container(
+              width: 90,
+              height: 90,
+              decoration: const BoxDecoration(
+                color: AppColors.lightGrey,
+                shape: BoxShape.circle,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: const Icon(Icons.person_outline_outlined, size: 50),
+              ),
+            ),
           ),
         ),
         const Gap(8),
@@ -30,7 +45,7 @@ class UserProfileInfoSection extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  "محمد احمد",
+                  profileModel.displayName ?? "--",
                   style: AppFontStyle.bold24Black1A(context),
                 ),
               ),
@@ -45,7 +60,7 @@ class UserProfileInfoSection extends StatelessWidget {
                     ),
                     const Gap(4),
                     Text(
-                      "+964 770 123 4567",
+                      profileModel.phone ?? "--",
                       style: AppFontStyle.regular14black4B(context),
                       textDirection: TextDirection.ltr,
                     ),

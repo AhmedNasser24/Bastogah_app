@@ -7,16 +7,21 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class UserProfileNameField extends StatefulWidget {
-  const UserProfileNameField({super.key});
-
+  const UserProfileNameField({super.key, required this.name});
+  final String name;
   @override
   State<UserProfileNameField> createState() => _UserProfileNameFieldState();
 }
 
 class _UserProfileNameFieldState extends State<UserProfileNameField> {
-  final TextEditingController controller = TextEditingController(
-    text: "محمد احمد علي",
-  );
+  late TextEditingController controller;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = TextEditingController(text: widget.name);
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(

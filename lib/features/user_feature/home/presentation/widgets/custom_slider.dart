@@ -95,7 +95,7 @@ class _CustomSliderState extends State<CustomSlider> {
                   .map(
                     (item) => GestureDetector(
                       onTap: () {
-                        context.push(RouteName.userMerchants);
+                        // context.push(RouteName.userMerchants);
                       },
                       child: Container(
                         margin: const EdgeInsets.all(5.0),

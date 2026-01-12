@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:bastogah_app/core/image_services/images_service.dart';
+import 'package:bastogah_app/core/theme/app_colors.dart';
+import 'package:bastogah_app/core/widgets/custom_cached_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,8 +12,8 @@ import '../theme/app_icons.dart';
 import '../theme/app_images.dart';
 
 class CustomProfileLogoImage extends StatefulWidget {
-  const CustomProfileLogoImage({super.key});
-
+  const CustomProfileLogoImage({super.key, this.image});
+  final String? image;
   @override
   State<CustomProfileLogoImage> createState() => _CustomProfileLogoImageState();
 }
@@ -31,12 +33,17 @@ class _CustomProfileLogoImageState extends State<CustomProfileLogoImage> {
             duration: const Duration(milliseconds: 300),
             height: 100,
             width: 100,
-            decoration: const BoxDecoration(shape: BoxShape.circle),
+            decoration: const BoxDecoration(
+              color: AppColors.lightGrey,
+              shape: BoxShape.circle,
+            ),
             child: ClipOval(
               child: fileImage == null
-                  ? Image.asset(
-                      AppImages.imagesUserProfileImage,
-                      fit: BoxFit.cover,
+                  ? CustomCachedImage(
+                      imagePath: widget.image ?? "",
+                      errorWidget: const Center(
+                        child: Icon(Icons.person_outline_rounded, size: 50),
+                      ),
                     )
                   : Image.file(fileImage!, fit: BoxFit.cover),
             ),
