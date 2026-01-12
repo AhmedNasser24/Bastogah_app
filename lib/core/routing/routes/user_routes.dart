@@ -13,6 +13,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../features/user_feature/cart/presentation/views/cart_view.dart';
 import '../../../features/user_feature/favourites/presentation/views/user_favourite_view.dart';
+import '../../../features/user_feature/home/data/model/user_merchant_model.dart';
 import '../../../features/user_feature/home/presentation/views/user_products_view.dart';
 import '../../../features/user_feature/home/presentation/views/user_store_rating_view.dart';
 import '../../../features/user_feature/offers/presentation/views/user_offers_details_view.dart';
@@ -105,7 +106,9 @@ List<RouteBase> userRoutes = [
     pageBuilder: (context, state) => buildPageWithSlideTransition(
       context: context,
       state: state,
-      child: const UserProductsView(),
+      child: UserProductsView(
+        userMerchantModel: state.extra as UserMerchantModel,
+      ),
     ),
   ),
   GoRoute(

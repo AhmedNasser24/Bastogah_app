@@ -20,85 +20,75 @@ class UserStoreItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        GestureDetector(
-          onTap: () {
-            context.push(RouteName.userProducts);
-          },
-          child: Card(
-            elevation: 1,
-            color: AppColors.white,
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-              ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 180,
-                    width: double.infinity,
-                    child: FavouriteItemImage(image: merchant?.image),
+        Card(
+          elevation: 1,
+          color: AppColors.white,
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(24)),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 180,
+                  width: double.infinity,
+                  child: FavouriteItemImage(image: merchant?.image),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 8.0,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                      vertical: 8.0,
-                    ),
-                    child: Row(
-                      spacing: 4,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            merchant?.displayName ?? "بيتزا هت",
-                            style: AppFontStyle.medium16black1A(context),
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                  child: Row(
+                    spacing: 4,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          merchant?.displayName ?? "بيتزا هت",
+                          style: AppFontStyle.medium16black1A(context),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        const Gap(8),
-                        SvgPicture.asset(AppIcons.iconsStar),
-                        Text(
-                          "4.5",
-                          style: AppFontStyle.regular14black1A(context),
-                        ),
-                        Text(
-                          "(256)",
-                          style: AppFontStyle.regular12grey(context),
-                        ),
-                      ],
-                    ),
+                      ),
+                      const Gap(8),
+                      SvgPicture.asset(AppIcons.iconsStar),
+                      Text(
+                        "4.5",
+                        style: AppFontStyle.regular14black1A(context),
+                      ),
+                      Text("(256)", style: AppFontStyle.regular12grey(context)),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                      vertical: 8.0,
-                    ),
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(
-                          AppIcons.iconsUserFavouriteFreeDeliveryIcon,
-                        ),
-                        const Gap(4),
-                        Expanded(
-                          child: Text(
-                            "توصيل مجاني",
-                            style: AppFontStyle.medium14green(context),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        const Gap(8),
-                        CustomButton(
-                          width: 120,
-                          onTap: () {},
-                          title: "user.order_now".tr(),
-                          textStyle: AppFontStyle.semibold14Primary(context),
-                          color: AppColors.secondary,
-                        ),
-                      ],
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 8.0,
                   ),
-                ],
-              ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppIcons.iconsUserFavouriteFreeDeliveryIcon,
+                      ),
+                      const Gap(4),
+                      Expanded(
+                        child: Text(
+                          "توصيل مجاني",
+                          style: AppFontStyle.medium14green(context),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const Gap(8),
+                      CustomButton(
+                        width: 120,
+                        onTap: () {},
+                        title: "user.order_now".tr(),
+                        textStyle: AppFontStyle.semibold14Primary(context),
+                        color: AppColors.secondary,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ),

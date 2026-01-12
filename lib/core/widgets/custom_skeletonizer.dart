@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CustomSkeletonizer extends StatelessWidget {

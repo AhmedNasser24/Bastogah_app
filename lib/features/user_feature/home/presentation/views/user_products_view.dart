@@ -1,48 +1,79 @@
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
+import 'package:bastogah_app/features/user_feature/home/data/model/user_merchant_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
+import '../../data/params/user_product_param.dart';
+import '../manager/user_products_cubit/user_products_cubit.dart';
 import '../widgets/user_products_app_bar.dart';
 import '../widgets/user_products_filter.dart';
-import '../widgets/user_products_item.dart';
+import '../widgets/user_products_list.dart';
 
-class UserProductsView extends StatelessWidget {
-  const UserProductsView({super.key});
+class UserProductsView extends StatefulWidget {
+  const UserProductsView({super.key, required this.userMerchantModel});
+  final UserMerchantModel userMerchantModel;
+  @override
+  State<UserProductsView> createState() => _UserProductsViewState();
+}
+
+class _UserProductsViewState extends State<UserProductsView> {
+  ScrollController controller = ScrollController();
+  late UserProductParam userProductParam;
+  late UserProductsCubit userProductsCubit;
+  @override
+  void initState() {
+    userProductsCubit = getIt<UserProductsCubit>();
+    userProductParam = UserProductParam(
+      merchantId: widget.userMerchantModel.id!,
+    );
+    userProductsCubit.fetchProducts(userProductParam: userProductParam);
+    controller.addListener(() {
+      if (controller.position.pixels >=
+              controller.position.maxScrollExtent - 200 &&
+          userProductsCubit.moreItem &&
+          !userProductsCubit.isLoadingMore) {
+        userProductsCubit.fetchMoreProducts(userProductParam: userProductParam);
+      }
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            const UserProductsAppBar(),
-            const SliverToBoxAdapter(child: ResturantInfoSection()),
-            const SliverGap(16),
-            const SliverToBoxAdapter(child: UserProductFilter()),
-            const SliverGap(16),
-
-            SliverGrid.builder(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 700,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                mainAxisExtent: 90,
+    return BlocProvider(
+      create: (context) => userProductsCubit,
+      child: Scaffold(
+        body: SafeArea(
+          child: CustomScrollView(
+            controller: controller,
+            slivers: [
+              UserProductsAppBar(image: widget.userMerchantModel.image ?? ""),
+              SliverToBoxAdapter(
+                child: ResturantInfoSection(merchant: widget.userMerchantModel),
               ),
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: UserProductItem(),
-                );
-              },
-            ),
-          ],
+              const SliverGap(16),
+              const SliverToBoxAdapter(child: UserProductFilter()),
+              const SliverGap(16),
+
+              const SliverToBoxAdapter(child: UserProductsList()),
+              const SliverGap(20),
+            ],
+          ),
         ),
       ),
     );
@@ -50,8 +81,8 @@ class UserProductsView extends StatelessWidget {
 }
 
 class ResturantInfoSection extends StatelessWidget {
-  const ResturantInfoSection({super.key});
-
+  const ResturantInfoSection({super.key, required this.merchant});
+  final UserMerchantModel merchant;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -85,7 +116,7 @@ class ResturantInfoSection extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  "مطعم بيتزا هت",
+                                  merchant.displayName ?? "لا يوجد اسم",
                                   style: AppFontStyle.bold18Black1A(context),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
@@ -96,7 +127,7 @@ class ResturantInfoSection extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            "شاورما - طعام سريع",
+                            merchant.about ?? "لا يوجد معلومات",
                             style: AppFontStyle.medium14black4B(context),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -128,6 +159,7 @@ class ResturantInfoSection extends StatelessWidget {
   }
 
   Widget resturantRating(BuildContext context) {
+    num rating = merchant.ratingAvg ?? 0;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: ShapeDecoration(
@@ -143,7 +175,7 @@ class ResturantInfoSection extends StatelessWidget {
         children: [
           SvgPicture.asset(AppIcons.iconsStar12White),
           const Gap(4),
-          Text("4.8", style: AppFontStyle.bold14White(context)),
+          Text("$rating", style: AppFontStyle.bold14White(context)),
         ],
       ),
     );

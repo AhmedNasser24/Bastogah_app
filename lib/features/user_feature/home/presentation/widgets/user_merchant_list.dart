@@ -1,8 +1,10 @@
 import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/dependency_injection/get_it_setup.dart';
+import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/widgets/custom_refresh_indicator.dart';
 import '../../../../../core/widgets/custom_skeletonizer.dart';
 import '../../../favourites/presentation/widgets/user_store_item.dart';
@@ -98,7 +100,15 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
             itemCount: merchants.length + (moreItem ? 2 : 0),
             itemBuilder: (context, index) {
               if (index < merchants.length) {
-                return UserStoreItem(merchant: merchants[index]);
+                return GestureDetector(
+                  onTap: () {
+                    context.push(
+                      RouteName.userProducts,
+                      extra: merchants[index],
+                    );
+                  },
+                  child: UserStoreItem(merchant: merchants[index]),
+                );
               } else {
                 return const CustomSkeletonizer(child: UserStoreItem());
               }

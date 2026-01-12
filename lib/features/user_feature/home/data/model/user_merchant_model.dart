@@ -17,7 +17,7 @@ class UserMerchantModel {
   final int? balance;
   final int? transactionsBalance;
   final int? ratingCount;
-  final int? ratingAvg;
+  final num? ratingAvg;
   final int? merchantShippingPrice;
   final bool? popular;
   final MerchantLocation? merchantLocation;
@@ -104,7 +104,7 @@ class UserMerchantModel {
         balance: json['balance'] as int?,
         transactionsBalance: json['transactionsBalance'] as int?,
         ratingCount: json['ratingCount'] as int?,
-        ratingAvg: json['ratingAvg'] as int?,
+        ratingAvg: json['ratingAvg'] as num?,
         merchantShippingPrice: json['merchantShippingPrice'] as int?,
         popular: json['popular'] as bool?,
         merchantLocation: MerchantLocation.fromJson(

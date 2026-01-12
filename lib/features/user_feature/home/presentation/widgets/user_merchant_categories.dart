@@ -76,15 +76,10 @@ class _UserMerchantCategoriesState extends State<UserMerchantCategories> {
             height: 75,
             width: 75,
             // padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: const Color(0xFFA3B273),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: merchantCategory?.image != null
-                  ? CustomCachedImage(imagePath: merchantCategory!.image!)
-                  : Image.asset(AppImages.imagesClothes, fit: BoxFit.cover),
-            ),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+            child: merchantCategory?.image != null
+                ? CustomCachedImage(imagePath: merchantCategory!.image!)
+                : Image.asset(AppImages.imagesClothes, fit: BoxFit.cover),
           ),
           const Gap(8),
           SizedBox(
