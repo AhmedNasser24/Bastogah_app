@@ -17,6 +17,7 @@ class FavouriteIconButton extends StatefulWidget {
     this.onTap,
     this.merchant,
     this.isInFavouriteView = false,
+    this.isFavourite = false,
   });
   final double radius;
   final Widget activeIcon, inactiveIcon;
@@ -24,6 +25,7 @@ class FavouriteIconButton extends StatefulWidget {
   final VoidCallback? onTap;
   final UserMerchantModel? merchant;
   final bool isInFavouriteView;
+  final bool isFavourite;
   @override
   State<FavouriteIconButton> createState() => _FavouriteIconButtonState();
 }
@@ -33,7 +35,7 @@ class _FavouriteIconButtonState extends State<FavouriteIconButton> {
   @override
   void initState() {
     super.initState();
-    isFavourite = widget.isInFavouriteView;
+    isFavourite = widget.isInFavouriteView || widget.isFavourite;
   }
 
   @override

@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/dependency_injection/get_it_setup.dart';
+import '../../../../../core/local_storage_data/local_storage_data.dart';
 import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/widgets/custom_refresh_indicator.dart';
 import '../../../../../core/widgets/custom_skeletonizer.dart';
@@ -24,8 +27,10 @@ class UserMerchantsList extends StatefulWidget {
 class _UserMerchantsListState extends State<UserMerchantsList> {
   late UserMerchantsCubit userMerchantsCubit;
   ScrollController controller = ScrollController();
+  late List<UserMerchantModel> favouriteMerchants;
   @override
   void initState() {
+    favouriteMerchants = LocalStorageData.getFavourites();
     userMerchantsCubit = getIt<UserMerchantsCubit>();
     userMerchantsCubit.fetchMerchants(
       userMerchantParam: widget.userMerchantParam,
@@ -107,7 +112,10 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
                       extra: merchants[index],
                     );
                   },
-                  child: UserMerchantItem(merchant: merchants[index]),
+                  child: UserMerchantItem(
+                    merchant: merchants[index],
+                    favourites: favouriteMerchants,
+                  ),
                 );
               } else {
                 return const CustomSkeletonizer(child: UserMerchantItem());

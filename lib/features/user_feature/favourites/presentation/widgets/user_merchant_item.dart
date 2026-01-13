@@ -15,8 +15,9 @@ import 'favourite_item_image.dart';
 import '../../../../../core/widgets/favourite_icon_button.dart';
 
 class UserMerchantItem extends StatelessWidget {
-  const UserMerchantItem({super.key, this.merchant});
+  const UserMerchantItem({super.key, this.merchant, this.favourites});
   final UserMerchantModel? merchant;
+  final List<UserMerchantModel>? favourites;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -105,6 +106,7 @@ class UserMerchantItem extends StatelessWidget {
             merchant: merchant,
             isInFavouriteView:
                 GoRouterState.of(context).uri.path == RouteName.userFavorites,
+            isFavourite: isFavourite(favourites, merchant),
           ),
         ),
         Positioned(
@@ -138,5 +140,20 @@ class UserMerchantItem extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  bool isFavourite(
+    List<UserMerchantModel>? favourites,
+    UserMerchantModel? merchant,
+  ) {
+    if (favourites == null || merchant == null) {
+      return false;
+    }
+    for (UserMerchantModel favourite in favourites) {
+      if (favourite.id == merchant.id) {
+        return true;
+      }
+    }
+    return false;
   }
 }
