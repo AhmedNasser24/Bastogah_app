@@ -25,6 +25,7 @@ import '../../features/merchant_feature/home/data/data_source/remote_data_source
 import '../../features/merchant_feature/home/data/data_source/remote_data_source/merchant_home_remote_data_source_impl.dart'
     show MerchantHomeRemoteDataSourceImpl;
 import '../../features/merchant_feature/home/presentation/manager/merchant_get_orders_cubit/merchant_get_orders_cubit.dart';
+import '../../features/user_feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import '../../features/user_feature/home/data/repo/user_home_repo_impl.dart';
 import '../../features/user_feature/home/domain/repo/user_home_repo.dart';
 import '../../features/user_feature/home/presentation/manager/merchant_categories_cubit/merchant_categories_cubit.dart';
@@ -141,4 +142,5 @@ void getItSetup() {
     () => ProfileCubit(profileRepo: getIt.get<ProfileRepo>()),
   );
   getIt.registerFactory<FavouriteCubit>(() => FavouriteCubit());
+  getIt.registerFactory<CartCubit>(() => CartCubit());
 }

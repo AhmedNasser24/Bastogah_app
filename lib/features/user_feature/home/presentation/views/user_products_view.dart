@@ -62,7 +62,7 @@ class _UserProductsViewState extends State<UserProductsView> {
           child: CustomScrollView(
             controller: controller,
             slivers: [
-              UserProductsAppBar(image: widget.userMerchantModel.image ?? ""),
+              UserProductsAppBar(merchant: widget.userMerchantModel),
               SliverToBoxAdapter(
                 child: ResturantInfoSection(merchant: widget.userMerchantModel),
               ),

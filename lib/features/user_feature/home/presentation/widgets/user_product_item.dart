@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:bastogah_app/core/widgets/custom_cached_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +9,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
+import '../../../cart/data/model/cart_model.dart';
 import '../../../cart/presentation/widgets/detect_item_quantity.dart';
 import '../../data/model/user_product_model.dart';
 
@@ -70,6 +74,16 @@ class UserProductItem extends StatelessWidget {
                     isInCart
                         ? const DetectItemQuantity()
                         : GestureDetector(
+                            onTap: () {
+                              if (product != null) {
+                                CartModel cardModel = CartModel(
+                                  userProduct: product!,
+                                  quantity: 1,
+                                );
+                                LocalStorageData.addToCart(cardModel);
+                                log("add to cart");
+                              }
+                            },
                             child: Container(
                               padding: const EdgeInsets.all(4),
                               decoration: const BoxDecoration(

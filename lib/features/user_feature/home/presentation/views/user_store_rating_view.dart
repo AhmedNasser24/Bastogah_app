@@ -24,7 +24,7 @@ class UserStoreRatingView extends StatelessWidget {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            UserProductsAppBar(image: merchant.image ?? ""),
+            UserProductsAppBar(merchant: merchant),
 
             SliverToBoxAdapter(child: ResturantInfoSection(merchant: merchant)),
             const SliverGap(16),

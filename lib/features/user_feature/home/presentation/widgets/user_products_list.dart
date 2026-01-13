@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/widgets/custom_toast/custom_toastification.dart';
 import '../../data/model/user_product_model.dart';
-import 'user_products_item.dart';
+import 'user_product_item.dart';
 
 class UserProductsList extends StatelessWidget {
   const UserProductsList({super.key});

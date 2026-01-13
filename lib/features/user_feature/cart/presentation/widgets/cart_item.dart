@@ -1,16 +1,19 @@
 import 'package:bastogah_app/core/theme/app_font_style.dart';
-import 'package:bastogah_app/core/theme/app_images.dart';
+import 'package:bastogah_app/features/user_feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_icons.dart';
+import '../../../../../core/widgets/custom_cached_image.dart';
+import '../../data/model/cart_model.dart';
 import 'detect_item_quantity.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
-
+  const CartItem({super.key, this.cartModel});
+  final CartModel? cartModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +26,9 @@ class CartItem extends StatelessWidget {
             width: 80,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.asset(AppImages.imagesBurger, fit: BoxFit.cover),
+              child: CustomCachedImage(
+                imagePath: cartModel?.userProduct.images?[0] ?? "",
+              ),
             ),
           ),
           const Gap(12),
@@ -36,16 +41,28 @@ class CartItem extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        "برجر لحم بالجبنة",
+                        cartModel?.userProduct.name ?? "--",
                         style: AppFontStyle.bold14black1A(context),
                       ),
                     ),
                     const Gap(4),
-                    SvgPicture.asset(AppIcons.iconsDeleteCartIcon),
+                    GestureDetector(
+                      onTap: () {
+                        if (cartModel != null) {
+                          BlocProvider.of<CartCubit>(
+                            context,
+                          ).removeCartItem(cartModel!.userProduct.id!);
+                        }
+                      },
+                      child: SvgPicture.asset(AppIcons.iconsDeleteCartIcon),
+                    ),
                   ],
                 ),
                 const Gap(4),
-                Text("فود لاند", style: AppFontStyle.regular12grey(context)),
+                Text(
+                  cartModel?.userProduct.merchant?.about ?? "--",
+                  style: AppFontStyle.regular12grey(context),
+                ),
                 const Gap(4),
                 orderWith(context),
                 orderWithout(context),
@@ -54,7 +71,11 @@ class CartItem extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "user.amount".tr(args: ["15000"]),
+                      "user.amount".tr(
+                        args: [
+                          cartModel?.userProduct.finalPrice?.toString() ?? "--",
+                        ],
+                      ),
                       style: AppFontStyle.bold14Primary(context),
                     ),
                     const Spacer(),
