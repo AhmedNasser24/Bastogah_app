@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bastogah_app/core/constant/constants.dart';
 import 'package:bastogah_app/core/local_storage_services/shared_preference_singleton.dart';
+import 'package:bastogah_app/features/user_feature/cart/data/model/cart_model.dart';
 import 'package:bastogah_app/features/user_feature/home/data/model/user_merchant_model.dart';
 import 'package:bastogah_app/features/user_feature/profile/data/model/profile_model.dart';
 
@@ -16,7 +17,7 @@ class LocalStorageData {
     SharedPreferenceSingleton.setString(kProfileDataKey, jsonEncode(jsonData));
   }
 
-  static void addFavourite(UserMerchantModel merchant) {
+  static Future<void> addFavourite(UserMerchantModel merchant) async {
     final favourites = getFavourites();
 
     final exists = favourites.any((e) => e.id == merchant.id);
@@ -24,7 +25,7 @@ class LocalStorageData {
 
     favourites.add(merchant);
 
-    SharedPreferenceSingleton.setString(
+    await SharedPreferenceSingleton.setString(
       kFavouriteDataKey,
       jsonEncode(UserMerchantModel.toJsonList(favourites)),
     );
@@ -42,13 +43,52 @@ class LocalStorageData {
     }
   }
 
-  static void removeFavouriteItem(String id) {
+  static Future<void> removeFavouriteItem(String id) async {
     List<UserMerchantModel> favourites = getFavourites();
     favourites.removeWhere((element) => element.id == id);
-    SharedPreferenceSingleton.setString(
+    await SharedPreferenceSingleton.setString(
       kFavouriteDataKey,
       jsonEncode(UserMerchantModel.toJsonList(favourites)),
     );
     log("remove favourite");
+  }
+
+  static Future<void> addToCart(CartModel cartProduct) async {
+    final cart = getCart();
+    final index = cart.indexWhere(
+      (e) => e.userProduct.id == cartProduct.userProduct.id,
+    );
+    if (index != -1) {
+      cart[index] = cartProduct; // to update quantity
+      return;
+    } else {
+      cart.add(cartProduct);
+    }
+    await SharedPreferenceSingleton.setString(
+      kCartDataKey,
+      jsonEncode(CartModel.toJsonList(cart)),
+    );
+    log("set cart");
+  }
+
+  static List<CartModel> getCart() {
+    final data = SharedPreferenceSingleton.getString(kCartDataKey);
+    if (data.isEmpty) return [];
+
+    try {
+      return CartModel.fromJsonList(jsonDecode(data));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  static Future<void> removeCartItem(String id) async {
+    List<CartModel> cart = getCart();
+    cart.removeWhere((element) => element.userProduct.id == id);
+    await SharedPreferenceSingleton.setString(
+      kCartDataKey,
+      jsonEncode(CartModel.toJsonList(cart)),
+    );
+    log("remove cart");
   }
 }

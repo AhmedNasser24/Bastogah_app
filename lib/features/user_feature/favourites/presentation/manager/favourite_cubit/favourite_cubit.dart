@@ -21,20 +21,20 @@ class FavouriteCubit extends Cubit<FavouriteState> {
     }
   }
 
-  void removeFavourite(UserMerchantModel merchant) {
+  void removeFavourite(UserMerchantModel merchant) async {
     emit(FavouriteLoading());
     try {
-      LocalStorageData.removeFavouriteItem(merchant.id!);
+      await LocalStorageData.removeFavouriteItem(merchant.id!);
       emit(FavouriteLoaded(favourites: LocalStorageData.getFavourites()));
     } catch (e) {
       emit(FavouriteFailure(message: e.toString()));
     }
   }
 
-  // void addFavourite(UserMerchantModel merchant) {
+  // void addFavourite(UserMerchantModel merchant) async {
   //   emit(FavouriteLoading());
   //   try {
-  //     LocalStorageData.addFavourite(merchant);
+  //     await LocalStorageData.addFavourite(merchant);
   //     emit(FavouriteLoaded(favourites: LocalStorageData.getFavourites()));
   //   } catch (e) {
   //     emit(FavouriteFailure(message: e.toString()));

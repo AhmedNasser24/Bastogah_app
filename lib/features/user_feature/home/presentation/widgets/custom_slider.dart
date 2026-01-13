@@ -93,6 +93,16 @@ class _CustomSliderState extends State<CustomSlider> {
                   .map(
                     (item) => GestureDetector(
                       onTap: () {
+                        if (item.merchant?.id != null) {
+                          // context.push(
+                          //   RouteName.userProductDetails,
+                          //   extra: UserMerchantModel(
+                          //     id: item.merchant?.id,
+                          //     displayName: item.merchant?.displayName,
+                          //     image: item.merchant?.image,
+                          //   ),
+                          // );
+                        }
                         // context.push(RouteName.userMerchants);
                       },
                       child: Container(
@@ -103,7 +113,7 @@ class _CustomSliderState extends State<CustomSlider> {
                             Radius.circular(10.0),
                           ),
                           // child: Image.asset(item, fit: BoxFit.cover),
-                          child: CustomCachedImage(imagePath: item.image),
+                          child: CustomCachedImage(imagePath: item.image ?? ""),
                         ),
                       ),
                     ),

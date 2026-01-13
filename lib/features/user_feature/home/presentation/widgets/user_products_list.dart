@@ -56,7 +56,7 @@ class UserProductsList extends StatelessWidget {
             maxCrossAxisExtent: 700,
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
-            mainAxisExtent: 90,
+            mainAxisExtent: 92,
           ),
           itemCount: products.length + (moreItem ? 2 : 0),
           itemBuilder: (context, index) {

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_icons.dart';
+import 'detect_item_quantity.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key});
@@ -55,7 +55,7 @@ class CartItem extends StatelessWidget {
                   children: [
                     Text(
                       "user.amount".tr(args: ["15000"]),
-                      style: AppFontStyle.bold16Primary(context),
+                      style: AppFontStyle.bold14Primary(context),
                     ),
                     const Spacer(),
                     const DetectItemQuantity(),
@@ -146,50 +146,6 @@ class CartItem extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class DetectItemQuantity extends StatefulWidget {
-  const DetectItemQuantity({super.key});
-
-  @override
-  State<DetectItemQuantity> createState() => _DetectItemQuantityState();
-}
-
-class _DetectItemQuantityState extends State<DetectItemQuantity> {
-  int quantity = 1;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 8,
-      children: [
-        IconButton(
-          onPressed: () {
-            setState(() {
-              if (quantity > 1) {
-                quantity--;
-              }
-            });
-          },
-
-          icon: const Icon(Icons.remove, size: 20, color: AppColors.black1A),
-        ),
-
-        Text(
-          "$quantity", // This should be the current quantity
-          style: AppFontStyle.bold14black1A(context),
-        ),
-
-        IconButton(
-          onPressed: () {
-            setState(() {
-              quantity++;
-            });
-          },
-          icon: const Icon(Icons.add, size: 20, color: AppColors.black1A),
-        ),
-      ],
     );
   }
 }

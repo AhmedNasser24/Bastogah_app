@@ -6,7 +6,6 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_icons.dart';
-import '../../../../../core/widgets/favourite_icon_button.dart';
 
 class UserHomeProductItem extends StatelessWidget {
   const UserHomeProductItem({super.key});

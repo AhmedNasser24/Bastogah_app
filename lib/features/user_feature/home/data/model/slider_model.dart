@@ -1,305 +1,429 @@
 class SliderModel {
-  String id;
-  String image;
-  String videoLink;
-  String name;
-  MerchantCategory? merchantCategory;
-  bool deleted;
-  bool isDiscount;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  Merchant? merchant;
-  Product? product;
+  final String? id;
+  final String? image;
+  final String? videoLink;
+  final String? name;
+  final MerchantCategory? merchantCategory;
+  final bool? deleted;
+  final bool? isDiscount;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final int? v;
+  final Merchant? merchant;
+  final Product? product;
 
   SliderModel({
-    required this.id,
-    required this.image,
-    required this.videoLink,
-    required this.name,
+    this.id,
+    this.image,
+    this.videoLink,
+    this.name,
     this.merchantCategory,
-    required this.deleted,
-    required this.isDiscount,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.v,
+    this.deleted,
+    this.isDiscount,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
     this.merchant,
     this.product,
   });
 
   factory SliderModel.fromJson(Map<String, dynamic> json) => SliderModel(
-    id: json['_id'] as String,
-    image: json['image'] as String,
-    videoLink: json['videoLink'] as String,
-    name: json['name'] as String,
-    merchantCategory: json['merchantCategory'] != null
-        ? MerchantCategory.fromJson(
-            json['merchantCategory'] as Map<String, dynamic>,
-          )
-        : null,
-    deleted: json['deleted'] as bool,
-    isDiscount: json['isDiscount'] as bool,
-    createdAt: DateTime.parse(json['createdAt'] as String),
-    updatedAt: DateTime.parse(json['updatedAt'] as String),
-    v: json['__v'] as int,
-    merchant: json['merchant'] != null
-        ? Merchant.fromJson(json['merchant'] as Map<String, dynamic>)
-        : null,
-    product: json['product'] != null
-        ? Product.fromJson(json['product'] as Map<String, dynamic>)
-        : null,
+    id: json["_id"],
+    image: json["image"],
+    videoLink: json["videoLink"],
+    name: json["name"],
+    merchantCategory: json["merchantCategory"] == null
+        ? null
+        : MerchantCategory.fromJson(json["merchantCategory"]),
+    deleted: json["deleted"],
+    isDiscount: json["isDiscount"],
+    createdAt: json["createdAt"] == null
+        ? null
+        : DateTime.parse(json["createdAt"]),
+    updatedAt: json["updatedAt"] == null
+        ? null
+        : DateTime.parse(json["updatedAt"]),
+    v: json["__v"],
+    merchant: json["merchant"] == null
+        ? null
+        : Merchant.fromJson(json["merchant"]),
+    product: json["product"] == null ? null : Product.fromJson(json["product"]),
   );
+
+  Map<String, dynamic> toJson() => {
+    "_id": id,
+    "image": image,
+    "videoLink": videoLink,
+    "name": name,
+    "merchantCategory": merchantCategory?.toJson(),
+    "deleted": deleted,
+    "isDiscount": isDiscount,
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "__v": v,
+    "merchant": merchant?.toJson(),
+    "product": product?.toJson(),
+  };
   static List<SliderModel> fromJsonList(List<dynamic> jsonList) {
-    return jsonList
-        .map((json) => SliderModel.fromJson(json as Map<String, dynamic>))
-        .toList();
+    return jsonList.map((json) => SliderModel.fromJson(json)).toList();
   }
 }
 
 class Merchant {
-  dynamic lastPaidSalaryType;
-  String id;
-  String displayName;
-  String image;
-  String username;
-  List<String> roles;
-  bool active;
-  String phone;
-  List<String> coverImages;
-  int commissionPercent;
-  dynamic commissionAmount;
-  String category;
-  String subCategory;
-  String about;
-  int totalOrders;
-  int balance;
-  int transactionsBalance;
-  int ratingCount;
-  int ratingAvg;
-  int merchantShippingPrice;
-  bool popular;
-  MerchantLocation merchantLocation;
-  DateTime lastCheckOut;
-  String openTime;
-  String closeTime;
-  int sort;
-  int maxDiscount;
-  int driverShippingPrice;
-  bool online;
-  DateTime lastSeen;
-  int driverSalaryType;
-  dynamic previousType;
-  int driverOrderPercent;
-  dynamic lastPaidSalaryDate;
-  dynamic region;
-  dynamic city;
-  dynamic discount;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
+  final dynamic lastPaidSalaryType;
+  final String? id;
+  final String? displayName;
+  final String? image;
+  final String? username;
+  final List<String>? roles;
+  final bool? active;
+  final String? phone;
+  final List<String>? coverImages;
+  final int? commissionPercent;
+  final dynamic commissionAmount;
+  final String? category;
+  final String? subCategory;
+  final String? about;
+  final int? totalOrders;
+  final int? balance;
+  final int? transactionsBalance;
+  final int? ratingCount;
+  final int? ratingAvg;
+  final int? merchantShippingPrice;
+  final bool? popular;
+  final MerchantLocation? merchantLocation;
+  final DateTime? lastCheckOut;
+  final String? openTime;
+  final String? closeTime;
+  final int? sort;
+  final int? maxDiscount;
+  final int? driverShippingPrice;
+  final bool? online;
+  final DateTime? lastSeen;
+  final int? driverSalaryType;
+  final dynamic previousType;
+  final int? driverOrderPercent;
+  final dynamic lastPaidSalaryDate;
+  final dynamic region;
+  final dynamic city;
+  final dynamic discount;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final int? v;
 
   Merchant({
-    required this.lastPaidSalaryType,
-    required this.id,
-    required this.displayName,
-    required this.image,
-    required this.username,
-    required this.roles,
-    required this.active,
-    required this.phone,
-    required this.coverImages,
-    required this.commissionPercent,
-    required this.commissionAmount,
-    required this.category,
-    required this.subCategory,
-    required this.about,
-    required this.totalOrders,
-    required this.balance,
-    required this.transactionsBalance,
-    required this.ratingCount,
-    required this.ratingAvg,
-    required this.merchantShippingPrice,
-    required this.popular,
-    required this.merchantLocation,
-    required this.lastCheckOut,
-    required this.openTime,
-    required this.closeTime,
-    required this.sort,
-    required this.maxDiscount,
-    required this.driverShippingPrice,
-    required this.online,
-    required this.lastSeen,
-    required this.driverSalaryType,
-    required this.previousType,
-    required this.driverOrderPercent,
-    required this.lastPaidSalaryDate,
-    required this.region,
-    required this.city,
-    required this.discount,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.v,
+    this.lastPaidSalaryType,
+    this.id,
+    this.displayName,
+    this.image,
+    this.username,
+    this.roles,
+    this.active,
+    this.phone,
+    this.coverImages,
+    this.commissionPercent,
+    this.commissionAmount,
+    this.category,
+    this.subCategory,
+    this.about,
+    this.totalOrders,
+    this.balance,
+    this.transactionsBalance,
+    this.ratingCount,
+    this.ratingAvg,
+    this.merchantShippingPrice,
+    this.popular,
+    this.merchantLocation,
+    this.lastCheckOut,
+    this.openTime,
+    this.closeTime,
+    this.sort,
+    this.maxDiscount,
+    this.driverShippingPrice,
+    this.online,
+    this.lastSeen,
+    this.driverSalaryType,
+    this.previousType,
+    this.driverOrderPercent,
+    this.lastPaidSalaryDate,
+    this.region,
+    this.city,
+    this.discount,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
   });
+
   factory Merchant.fromJson(Map<String, dynamic> json) => Merchant(
-    lastPaidSalaryType: json['lastPaidSalaryType'],
-    id: json['_id'] as String,
-    displayName: json['displayName'] as String,
-    image: json['image'] as String,
-    username: json['username'] as String,
-    roles: (json['roles'] as List<dynamic>).map((e) => e as String).toList(),
-    active: json['active'] as bool,
-    phone: json['phone'] as String,
-    coverImages: (json['coverImages'] as List<dynamic>)
-        .map((e) => e as String)
-        .toList(),
-    commissionPercent: json['commissionPercent'] as int,
-    commissionAmount: json['commissionAmount'],
-    category: json['category'] as String,
-    subCategory: json['subCategory'] as String,
-    about: json['about'] as String,
-    totalOrders: json['totalOrders'] as int,
-    balance: json['balance'] as int,
-    transactionsBalance: json['transactionsBalance'] as int,
-    ratingCount: json['ratingCount'] as int,
-    ratingAvg: json['ratingAvg'] as int,
-    merchantShippingPrice: json['merchantShippingPrice'] as int,
-    popular: json['popular'] as bool,
-    merchantLocation: MerchantLocation.fromJson(
-      json['merchantLocation'] as Map<String, dynamic>,
-    ),
-    lastCheckOut: DateTime.parse(json['lastCheckOut'] as String),
-    openTime: json['openTime'] as String,
-    closeTime: json['closeTime'] as String,
-    sort: json['sort'] as int,
-    maxDiscount: json['maxDiscount'] as int,
-    driverShippingPrice: json['driverShippingPrice'] as int,
-    online: json['online'] as bool,
-    lastSeen: DateTime.parse(json['lastSeen'] as String),
-    driverSalaryType: json['driverSalaryType'] as int,
-    previousType: json['previousType'],
-    driverOrderPercent: json['driverOrderPercent'] as int,
-    lastPaidSalaryDate: json['lastPaidSalaryDate'],
-    region: json['region'],
-    city: json['city'],
-    discount: json['discount'],
-    createdAt: DateTime.parse(json['createdAt'] as String),
-    updatedAt: DateTime.parse(json['updatedAt'] as String),
-    v: json['__v'] as int,
+    lastPaidSalaryType: json["lastPaidSalaryType"],
+    id: json["_id"],
+    displayName: json["displayName"],
+    image: json["image"],
+    username: json["username"],
+    roles: json["roles"] == null
+        ? []
+        : List<String>.from(json["roles"]!.map((x) => x)),
+    active: json["active"],
+    phone: json["phone"],
+    coverImages: json["coverImages"] == null
+        ? []
+        : List<String>.from(json["coverImages"]!.map((x) => x)),
+    commissionPercent: json["commissionPercent"],
+    commissionAmount: json["commissionAmount"],
+    category: json["category"],
+    subCategory: json["subCategory"],
+    about: json["about"],
+    totalOrders: json["totalOrders"],
+    balance: json["balance"],
+    transactionsBalance: json["transactionsBalance"],
+    ratingCount: json["ratingCount"],
+    ratingAvg: json["ratingAvg"],
+    merchantShippingPrice: json["merchantShippingPrice"],
+    popular: json["popular"],
+    merchantLocation: json["merchantLocation"] == null
+        ? null
+        : MerchantLocation.fromJson(json["merchantLocation"]),
+    lastCheckOut: json["lastCheckOut"] == null
+        ? null
+        : DateTime.parse(json["lastCheckOut"]),
+    openTime: json["openTime"],
+    closeTime: json["closeTime"],
+    sort: json["sort"],
+    maxDiscount: json["maxDiscount"],
+    driverShippingPrice: json["driverShippingPrice"],
+    online: json["online"],
+    lastSeen: json["lastSeen"] == null
+        ? null
+        : DateTime.parse(json["lastSeen"]),
+    driverSalaryType: json["driverSalaryType"],
+    previousType: json["previousType"],
+    driverOrderPercent: json["driverOrderPercent"],
+    lastPaidSalaryDate: json["lastPaidSalaryDate"],
+    region: json["region"],
+    city: json["city"],
+    discount: json["discount"],
+    createdAt: json["createdAt"] == null
+        ? null
+        : DateTime.parse(json["createdAt"]),
+    updatedAt: json["updatedAt"] == null
+        ? null
+        : DateTime.parse(json["updatedAt"]),
+    v: json["__v"],
   );
+
+  Map<String, dynamic> toJson() => {
+    "lastPaidSalaryType": lastPaidSalaryType,
+    "_id": id,
+    "displayName": displayName,
+    "image": image,
+    "username": username,
+    "roles": roles == null ? [] : List<dynamic>.from(roles!.map((x) => x)),
+    "active": active,
+    "phone": phone,
+    "coverImages": coverImages == null
+        ? []
+        : List<dynamic>.from(coverImages!.map((x) => x)),
+    "commissionPercent": commissionPercent,
+    "commissionAmount": commissionAmount,
+    "category": category,
+    "subCategory": subCategory,
+    "about": about,
+    "totalOrders": totalOrders,
+    "balance": balance,
+    "transactionsBalance": transactionsBalance,
+    "ratingCount": ratingCount,
+    "ratingAvg": ratingAvg,
+    "merchantShippingPrice": merchantShippingPrice,
+    "popular": popular,
+    "merchantLocation": merchantLocation?.toJson(),
+    "lastCheckOut": lastCheckOut?.toIso8601String(),
+    "openTime": openTime,
+    "closeTime": closeTime,
+    "sort": sort,
+    "maxDiscount": maxDiscount,
+    "driverShippingPrice": driverShippingPrice,
+    "online": online,
+    "lastSeen": lastSeen?.toIso8601String(),
+    "driverSalaryType": driverSalaryType,
+    "previousType": previousType,
+    "driverOrderPercent": driverOrderPercent,
+    "lastPaidSalaryDate": lastPaidSalaryDate,
+    "region": region,
+    "city": city,
+    "discount": discount,
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "__v": v,
+  };
 }
 
 class MerchantLocation {
-  String type;
-  List<double> coordinates;
+  final String? type;
+  final List<double>? coordinates;
 
-  MerchantLocation({required this.type, required this.coordinates});
+  MerchantLocation({this.type, this.coordinates});
+
   factory MerchantLocation.fromJson(Map<String, dynamic> json) =>
       MerchantLocation(
-        type: json['type'] as String,
-        coordinates: (json['coordinates'] as List<dynamic>)
-            .map((e) => (e as num).toDouble())
-            .toList(),
+        type: json["type"],
+        coordinates: json["coordinates"] == null
+            ? []
+            : List<double>.from(json["coordinates"]!.map((x) => x?.toDouble())),
       );
+
+  Map<String, dynamic> toJson() => {
+    "type": type,
+    "coordinates": coordinates == null
+        ? []
+        : List<dynamic>.from(coordinates!.map((x) => x)),
+  };
 }
 
 class MerchantCategory {
-  String id;
-  String image;
-  String coverImage;
-  String name;
-  bool deleted;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
+  final String? id;
+  final String? image;
+  final String? coverImage;
+  final String? name;
+  final bool? deleted;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final int? v;
 
   MerchantCategory({
-    required this.id,
-    required this.image,
-    required this.coverImage,
-    required this.name,
-    required this.deleted,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.v,
+    this.id,
+    this.image,
+    this.coverImage,
+    this.name,
+    this.deleted,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
   });
 
   factory MerchantCategory.fromJson(Map<String, dynamic> json) =>
       MerchantCategory(
-        id: json['_id'] as String,
-        image: json['image'] as String,
-        coverImage: json['coverImage'] as String,
-        name: json['name'] as String,
-        deleted: json['deleted'] as bool,
-        createdAt: DateTime.parse(json['createdAt'] as String),
-        updatedAt: DateTime.parse(json['updatedAt'] as String),
-        v: json['__v'] as int,
+        id: json["_id"],
+        image: json["image"],
+        coverImage: json["coverImage"],
+        name: json["name"],
+        deleted: json["deleted"],
+        createdAt: json["createdAt"] == null
+            ? null
+            : DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null
+            ? null
+            : DateTime.parse(json["updatedAt"]),
+        v: json["__v"],
       );
+
+  Map<String, dynamic> toJson() => {
+    "_id": id,
+    "image": image,
+    "coverImage": coverImage,
+    "name": name,
+    "deleted": deleted,
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "__v": v,
+  };
 }
 
 class Product {
-  String id;
-  List<String> images;
-  String name;
-  String desc;
-  bool productNew;
-  bool popular;
-  int price;
-  int discountAmount;
-  int adminDiscountAmount;
-  int merchantDiscountAmount;
-  int offerDiscount;
-  int finalPrice;
-  Merchant merchant;
-  String category;
-  bool active;
-  bool deleted;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int v;
-  dynamic discount;
+  final String? id;
+  final List<String>? images;
+  final String? name;
+  final String? desc;
+  final bool? productNew;
+  final bool? popular;
+  final int? price;
+  final int? discountAmount;
+  final int? adminDiscountAmount;
+  final int? merchantDiscountAmount;
+  final int? offerDiscount;
+  final int? finalPrice;
+  final Merchant? merchant;
+  final String? category;
+  final bool? active;
+  final bool? deleted;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final int? v;
+  final dynamic discount;
 
   Product({
-    required this.id,
-    required this.images,
-    required this.name,
-    required this.desc,
-    required this.productNew,
-    required this.popular,
-    required this.price,
-    required this.discountAmount,
-    required this.adminDiscountAmount,
-    required this.merchantDiscountAmount,
-    required this.offerDiscount,
-    required this.finalPrice,
-    required this.merchant,
-    required this.category,
-    required this.active,
-    required this.deleted,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.v,
-    required this.discount,
+    this.id,
+    this.images,
+    this.name,
+    this.desc,
+    this.productNew,
+    this.popular,
+    this.price,
+    this.discountAmount,
+    this.adminDiscountAmount,
+    this.merchantDiscountAmount,
+    this.offerDiscount,
+    this.finalPrice,
+    this.merchant,
+    this.category,
+    this.active,
+    this.deleted,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+    this.discount,
   });
+
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    id: json['_id'] as String,
-    images: (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-    name: json['name'] as String,
-    desc: json['desc'] as String,
-    productNew: json['new'] as bool,
-    popular: json['popular'] as bool,
-    price: json['price'] as int,
-    discountAmount: json['discountAmount'] as int,
-    adminDiscountAmount: json['adminDiscountAmount'] as int,
-    merchantDiscountAmount: json['merchantDiscountAmount'] as int,
-    offerDiscount: json['offerDiscount'] as int,
-    finalPrice: json['finalPrice'] as int,
-    merchant: Merchant.fromJson(json['merchant'] as Map<String, dynamic>),
-    category: json['category'] as String,
-    active: json['active'] as bool,
-    deleted: json['deleted'] as bool,
-    createdAt: DateTime.parse(json['createdAt'] as String),
-    updatedAt: DateTime.parse(json['updatedAt'] as String),
-    v: json['__v'] as int,
-    discount: json['discount'],
+    id: json["_id"],
+    images: json["images"] == null
+        ? []
+        : List<String>.from(json["images"]!.map((x) => x)),
+    name: json["name"],
+    desc: json["desc"],
+    productNew: json["new"],
+    popular: json["popular"],
+    price: json["price"],
+    discountAmount: json["discountAmount"],
+    adminDiscountAmount: json["adminDiscountAmount"],
+    merchantDiscountAmount: json["merchantDiscountAmount"],
+    offerDiscount: json["offerDiscount"],
+    finalPrice: json["finalPrice"],
+    merchant: json["merchant"] == null
+        ? null
+        : Merchant.fromJson(json["merchant"]),
+    category: json["category"],
+    active: json["active"],
+    deleted: json["deleted"],
+    createdAt: json["createdAt"] == null
+        ? null
+        : DateTime.parse(json["createdAt"]),
+    updatedAt: json["updatedAt"] == null
+        ? null
+        : DateTime.parse(json["updatedAt"]),
+    v: json["__v"],
+    discount: json["discount"],
   );
+
+  Map<String, dynamic> toJson() => {
+    "_id": id,
+    "images": images == null ? [] : List<dynamic>.from(images!.map((x) => x)),
+    "name": name,
+    "desc": desc,
+    "new": productNew,
+    "popular": popular,
+    "price": price,
+    "discountAmount": discountAmount,
+    "adminDiscountAmount": adminDiscountAmount,
+    "merchantDiscountAmount": merchantDiscountAmount,
+    "offerDiscount": offerDiscount,
+    "finalPrice": finalPrice,
+    "merchant": merchant?.toJson(),
+    "category": category,
+    "active": active,
+    "deleted": deleted,
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "__v": v,
+    "discount": discount,
+  };
 }

@@ -3,17 +3,20 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
+import '../../../cart/presentation/widgets/detect_item_quantity.dart';
 import '../../data/model/user_product_model.dart';
 
 class UserProductItem extends StatelessWidget {
   const UserProductItem({super.key, this.product});
   final UserProductModel? product;
+  final bool isInCart = false;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70,
+      height: 72,
       width: double.infinity,
       child: Row(
         children: [
@@ -46,11 +49,40 @@ class UserProductItem extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                Text(
-                  "merchant.currency".tr(
-                    args: ["${product?.price ?? "لا يوجد سعر"}"],
-                  ),
-                  style: AppFontStyle.bold14Primary(context),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            "merchant.currency".tr(
+                              args: ["${product?.price ?? "لا يوجد سعر"}"],
+                            ),
+                            style: AppFontStyle.bold14Primary(context),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Gap(8),
+                    isInCart
+                        ? const DetectItemQuantity()
+                        : GestureDetector(
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.secondary,
+                              ),
+                              child: const Icon(
+                                Icons.add,
+                                color: AppColors.primary,
+                              ),
+                            ),
+                          ),
+                  ],
                 ),
               ],
             ),

@@ -10,11 +10,15 @@ class CartIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         context.push(RouteName.cart);
       },
-      child: SvgPicture.asset(AppIcons.iconsUserCart),
+      child: Container(
+        padding: const EdgeInsets.all(4.0),
+        decoration: const BoxDecoration(shape: BoxShape.circle),
+        child: Center(child: SvgPicture.asset(AppIcons.iconsUserCart)),
+      ),
     );
   }
 }

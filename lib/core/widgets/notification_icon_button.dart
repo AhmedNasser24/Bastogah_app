@@ -18,8 +18,9 @@ class NotificationIconButton extends StatelessWidget {
       onTap: () {
         context.push(RouteName.notification);
       },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: const EdgeInsets.all(4.0),
+        decoration: const BoxDecoration(shape: BoxShape.circle),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
