@@ -37,19 +37,19 @@ class UserHomeProductItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  left: 4,
-                  top: 4,
-                  child: FavouriteIconButton(
-                    activeIcon: SvgPicture.asset(
-                      AppIcons.iconsFavourite24White,
-                    ),
-                    inactiveIcon: SvgPicture.asset(
-                      AppIcons.iconsNotFavourite24White,
-                    ),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
+                // Positioned(
+                //   left: 4,
+                //   top: 4,
+                //   child: FavouriteIconButton(
+                //     activeIcon: SvgPicture.asset(
+                //       AppIcons.iconsFavourite24White,
+                //     ),
+                //     inactiveIcon: SvgPicture.asset(
+                //       AppIcons.iconsNotFavourite24White,
+                //     ),
+                //     backgroundColor: Colors.transparent,
+                //   ),
+                // ),
               ],
             ),
             const Gap(8),

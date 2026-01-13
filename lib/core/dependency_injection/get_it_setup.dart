@@ -4,6 +4,7 @@ import 'package:bastogah_app/features/global_feature/auth/domain/use_cases/login
 import 'package:bastogah_app/features/global_feature/get_city_region/presentation/manager/city_region_cubit/city_region_cubit.dart';
 import 'package:bastogah_app/features/merchant_feature/home/data/repo/home_repo_impl.dart';
 import 'package:bastogah_app/features/merchant_feature/home/domain/repo/home_repo.dart';
+import 'package:bastogah_app/features/user_feature/favourites/presentation/manager/favourite_cubit/favourite_cubit.dart';
 import 'package:bastogah_app/features/user_feature/home/data/data_source/user_home_data_source.dart';
 import 'package:bastogah_app/features/user_feature/home/data/data_source/user_home_data_source_impl.dart';
 import 'package:bastogah_app/features/user_feature/profile/data/repo/profile_repo_impl.dart';
@@ -139,4 +140,5 @@ void getItSetup() {
   getIt.registerFactory<ProfileCubit>(
     () => ProfileCubit(profileRepo: getIt.get<ProfileRepo>()),
   );
+  getIt.registerFactory<FavouriteCubit>(() => FavouriteCubit());
 }

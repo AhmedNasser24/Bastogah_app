@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -101,6 +102,9 @@ class UserMerchantItem extends StatelessWidget {
             activeIcon: SvgPicture.asset(AppIcons.iconsFavourite24White),
             inactiveIcon: SvgPicture.asset(AppIcons.iconsNotFavourite24White),
             backgroundColor: Colors.transparent,
+            merchant: merchant,
+            isInFavouriteView:
+                GoRouterState.of(context).uri.path == RouteName.userFavorites,
           ),
         ),
         Positioned(

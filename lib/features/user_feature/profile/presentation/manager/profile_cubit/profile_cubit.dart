@@ -43,6 +43,9 @@ class ProfileCubit extends Cubit<ProfileState> {
       profile,
     ) {
       if (!profile.active) {
+        CustomToastification.showNotificationToast(
+          message: "your_account_is_not_active_please_contact_admin".tr(),
+        );
         appRouter.go(RouteName.login);
         SharedPreferenceSingleton.clear();
       }

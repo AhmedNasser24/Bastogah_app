@@ -135,6 +135,52 @@ class UserMerchantModel {
         .map((json) => UserMerchantModel.fromJson(json as Map<String, dynamic>))
         .toList();
   }
+
+  static List<Map<String, dynamic>> toJsonList(List<UserMerchantModel> list) {
+    return list.map((e) => e.toJson()).toList();
+  }
+
+  Map<String, dynamic> toJson() => {
+    '_id': id,
+    'displayName': displayName,
+    'image': image,
+    'username': username,
+    'roles': roles,
+    'active': active,
+    'phone': phone,
+    'coverImages': coverImages,
+    'commissionPercent': commissionPercent,
+    'commissionAmount': commissionAmount,
+    'category': category?.toJson(),
+    'subCategory': subCategory?.toJson(),
+    'about': about,
+    'totalOrders': totalOrders,
+    'balance': balance,
+    'transactionsBalance': transactionsBalance,
+    'ratingCount': ratingCount,
+    'ratingAvg': ratingAvg,
+    'merchantShippingPrice': merchantShippingPrice,
+    'popular': popular,
+    'merchantLocation': merchantLocation?.toJson(),
+    'lastCheckOut': lastCheckOut,
+    'openTime': openTime,
+    'closeTime': closeTime,
+    'sort': sort,
+    'maxDiscount': maxDiscount,
+    'driverShippingPrice': driverShippingPrice,
+    'online': online,
+    'lastSeen': lastSeen,
+    'driverSalaryType': driverSalaryType,
+    'previousType': previousType,
+    'driverOrderPercent': driverOrderPercent,
+    'lastPaidSalaryDate': lastPaidSalaryDate,
+    'region': region,
+    'city': city,
+    'discount': discount,
+    'createdAt': createdAt,
+    'updatedAt': updatedAt,
+    '__v': v,
+  };
 }
 
 class Category {
@@ -144,6 +190,7 @@ class Category {
   Category({this.id, this.name});
   factory Category.fromJson(Map<String, dynamic> json) =>
       Category(id: json['id'] as String?, name: json['name'] as String?);
+  Map<String, dynamic> toJson() => {'id': id, 'name': name};
 }
 
 class MerchantLocation {
@@ -157,4 +204,5 @@ class MerchantLocation {
         type: json['type'] as String?,
         coordinates: json['coordinates'] as List<dynamic>?,
       );
+  Map<String, dynamic> toJson() => {'type': type, 'coordinates': coordinates};
 }
