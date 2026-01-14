@@ -1,10 +1,11 @@
+import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
+import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/widgets/custom_skeletonizer.dart';
 import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:go_router/go_router.dart';
 import '../../../../../core/dependency_injection/get_it_setup.dart';
-import '../../../../../core/local_storage_data/local_storage_data.dart';
 import '../../../home/data/model/user_merchant_model.dart';
 import '../manager/favourite_cubit/favourite_cubit.dart';
 import '../widgets/user_favourite_app_bar.dart';
@@ -66,18 +67,33 @@ class _UserFavouriteViewState extends State<UserFavouriteView> {
                       },
                     );
                   case FavouriteLoaded():
-                    return GridView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                            mainAxisSpacing: 12,
-                            crossAxisSpacing: 12,
-                            maxCrossAxisExtent: 600,
-                            mainAxisExtent: 300,
-                          ),
-                      itemCount: favourites.length,
-                      itemBuilder: (context, index) {
-                        return UserMerchantItem(merchant: favourites[index]);
+                    return ValueListenableBuilder<List<UserMerchantModel>>(
+                      valueListenable: LocalStorageData.favouriteListNotifier,
+                      builder: (context, favourites, child) {
+                        return GridView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                                mainAxisSpacing: 12,
+                                crossAxisSpacing: 12,
+                                maxCrossAxisExtent: 600,
+                                mainAxisExtent: 300,
+                              ),
+                          itemCount: favourites.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                context.push(
+                                  RouteName.userProducts,
+                                  extra: favourites[index],
+                                );
+                              },
+                              child: UserMerchantItem(
+                                merchant: favourites[index],
+                              ),
+                            );
+                          },
+                        );
                       },
                     );
                   default:

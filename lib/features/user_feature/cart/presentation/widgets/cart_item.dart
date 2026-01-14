@@ -79,7 +79,7 @@ class CartItem extends StatelessWidget {
                       style: AppFontStyle.bold14Primary(context),
                     ),
                     const Spacer(),
-                    const DetectItemQuantity(),
+                    DetectItemQuantity(cartModel: cartModel),
                   ],
                 ),
               ],

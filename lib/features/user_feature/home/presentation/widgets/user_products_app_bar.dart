@@ -3,6 +3,7 @@ import 'package:bastogah_app/core/widgets/custom_cached_image.dart';
 import 'package:bastogah_app/core/widgets/favourite_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_icons.dart';
@@ -39,7 +40,15 @@ class UserProductsAppBar extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(right: 16, top: 12, child: BackArrowButton()),
+          Positioned(
+            right: 16,
+            top: 12,
+            child: BackArrowButton(
+              onTap: () {
+                context.pop(true);
+              },
+            ),
+          ),
           Positioned(
             left: 16,
             top: 12,

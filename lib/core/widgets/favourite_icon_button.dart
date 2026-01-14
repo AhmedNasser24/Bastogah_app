@@ -39,6 +39,14 @@ class _FavouriteIconButtonState extends State<FavouriteIconButton> {
   }
 
   @override
+  void didUpdateWidget(covariant FavouriteIconButton oldWidget) {
+    if (widget.isFavourite != oldWidget.isFavourite) {
+      isFavourite = widget.isFavourite;
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     log("isInFavouriteView : ${widget.isInFavouriteView}");
     log("isFavourite : $isFavourite");

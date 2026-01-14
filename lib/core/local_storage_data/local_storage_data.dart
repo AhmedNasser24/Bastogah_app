@@ -2,10 +2,13 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bastogah_app/core/constant/constants.dart';
+import 'package:flutter/foundation.dart';
 import 'package:bastogah_app/core/local_storage_services/shared_preference_singleton.dart';
+import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:bastogah_app/features/user_feature/cart/data/model/cart_model.dart';
 import 'package:bastogah_app/features/user_feature/home/data/model/user_merchant_model.dart';
 import 'package:bastogah_app/features/user_feature/profile/data/model/profile_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class LocalStorageData {
   static ProfileModel getProfile() {
@@ -16,6 +19,9 @@ class LocalStorageData {
   static void setProfile(Map<String, dynamic> jsonData) {
     SharedPreferenceSingleton.setString(kProfileDataKey, jsonEncode(jsonData));
   }
+
+  static ValueNotifier<List<UserMerchantModel>> favouriteListNotifier =
+      ValueNotifier(getFavourites());
 
   static Future<void> addFavourite(UserMerchantModel merchant) async {
     final favourites = getFavourites();
@@ -29,6 +35,7 @@ class LocalStorageData {
       kFavouriteDataKey,
       jsonEncode(UserMerchantModel.toJsonList(favourites)),
     );
+    favouriteListNotifier.value = favourites;
     log("set favourite");
   }
 
@@ -50,25 +57,40 @@ class LocalStorageData {
       kFavouriteDataKey,
       jsonEncode(UserMerchantModel.toJsonList(favourites)),
     );
+    favouriteListNotifier.value = favourites;
     log("remove favourite");
   }
 
   static Future<void> addToCart(CartModel cartProduct) async {
     final cart = getCart();
-    final index = cart.indexWhere(
-      (e) => e.userProduct.id == cartProduct.userProduct.id,
-    );
-    if (index != -1) {
-      cart[index] = cartProduct; // to update quantity
+    final bool exist = isProductInCart(cartProduct.userProduct.id!);
+    if (exist) {
+      CustomToastification.showNotificationToast(
+        message: "Product already exists in cart".tr(),
+      );
       return;
-    } else {
-      cart.add(cartProduct);
     }
+    cart.add(cartProduct);
     await SharedPreferenceSingleton.setString(
       kCartDataKey,
       jsonEncode(CartModel.toJsonList(cart)),
     );
     log("set cart");
+  }
+
+  static Future<void> updateCartItemQuantity(CartModel cartProduct) async {
+    final cart = getCart();
+
+    final index = cart.indexWhere(
+      (e) => e.userProduct.id == cartProduct.userProduct.id,
+    );
+    if (index != -1) {
+      cart[index] = cartProduct; // to update quantity
+    }
+    await SharedPreferenceSingleton.setString(
+      kCartDataKey,
+      jsonEncode(CartModel.toJsonList(cart)),
+    );
   }
 
   static List<CartModel> getCart() {
@@ -90,5 +112,10 @@ class LocalStorageData {
       jsonEncode(CartModel.toJsonList(cart)),
     );
     log("remove cart");
+  }
+
+  static bool isProductInCart(String id) {
+    final cart = getCart();
+    return cart.any((e) => e.userProduct.id == id);
   }
 }

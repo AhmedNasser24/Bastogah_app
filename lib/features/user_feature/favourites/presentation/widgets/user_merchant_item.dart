@@ -1,4 +1,3 @@
-import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

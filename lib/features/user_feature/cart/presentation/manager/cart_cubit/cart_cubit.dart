@@ -22,9 +22,17 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void removeCartItem(String id) async {
-    emit(CartLoading());
     try {
       await LocalStorageData.removeCartItem(id);
+      emit(CartLoaded(cart: LocalStorageData.getCart()));
+    } catch (e) {
+      emit(CartFailure(message: e.toString()));
+    }
+  }
+
+  void updateCartItemQuantity(CartModel cartModel) async {
+    try {
+      await LocalStorageData.updateCartItemQuantity(cartModel);
       emit(CartLoaded(cart: LocalStorageData.getCart()));
     } catch (e) {
       emit(CartFailure(message: e.toString()));

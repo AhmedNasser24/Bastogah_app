@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
+import '../../data/model/cart_model.dart';
+import '../manager/cart_cubit/cart_cubit.dart';
 
 class DetectItemQuantity extends StatefulWidget {
-  const DetectItemQuantity({super.key});
-
+  const DetectItemQuantity({super.key, this.cartModel});
+  final CartModel? cartModel;
   @override
   State<DetectItemQuantity> createState() => _DetectItemQuantityState();
 }
 
 class _DetectItemQuantityState extends State<DetectItemQuantity> {
-  int quantity = 1;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,26 +21,28 @@ class _DetectItemQuantityState extends State<DetectItemQuantity> {
       children: [
         IconButton(
           onPressed: () {
-            setState(() {
-              if (quantity > 1) {
-                quantity--;
-              }
-            });
+            if (widget.cartModel!.quantity > 1) {
+              widget.cartModel!.quantity--;
+              BlocProvider.of<CartCubit>(
+                context,
+              ).updateCartItemQuantity(widget.cartModel!);
+            }
           },
 
           icon: const Icon(Icons.remove, size: 18, color: AppColors.black1A),
         ),
 
         Text(
-          "$quantity", // This should be the current quantity
+          "${widget.cartModel?.quantity ?? 0}", // This should be the current quantity
           style: AppFontStyle.semibold14black1A(context),
         ),
 
         IconButton(
           onPressed: () {
-            setState(() {
-              quantity++;
-            });
+            widget.cartModel!.quantity++;
+            BlocProvider.of<CartCubit>(
+              context,
+            ).updateCartItemQuantity(widget.cartModel!);
           },
           icon: const Icon(Icons.add, size: 18, color: AppColors.black1A),
         ),

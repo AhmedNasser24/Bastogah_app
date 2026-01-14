@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,10 +27,8 @@ class UserMerchantsList extends StatefulWidget {
 class _UserMerchantsListState extends State<UserMerchantsList> {
   late UserMerchantsCubit userMerchantsCubit;
   ScrollController controller = ScrollController();
-  late List<UserMerchantModel> favouriteMerchants;
   @override
   void initState() {
-    favouriteMerchants = LocalStorageData.getFavourites();
     userMerchantsCubit = getIt<UserMerchantsCubit>();
     userMerchantsCubit.fetchMerchants(
       userMerchantParam: widget.userMerchantParam,
@@ -91,33 +91,38 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
           List<UserMerchantModel> merchants =
               BlocProvider.of<UserMerchantsCubit>(context).merchants;
           bool moreItem = BlocProvider.of<UserMerchantsCubit>(context).moreItem;
-          return GridView.builder(
-            controller: controller,
-            physics: const BouncingScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-              maxCrossAxisExtent: 600,
-              mainAxisExtent: 300,
-            ),
-            itemCount: merchants.length + (moreItem ? 2 : 0),
-            itemBuilder: (context, index) {
-              if (index < merchants.length) {
-                return GestureDetector(
-                  onTap: () {
-                    context.push(
-                      RouteName.userProducts,
-                      extra: merchants[index],
+          return ValueListenableBuilder<List<UserMerchantModel>>(
+            valueListenable: LocalStorageData.favouriteListNotifier,
+            builder: (context, favourites, child) {
+              return GridView.builder(
+                controller: controller,
+                physics: const BouncingScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                  maxCrossAxisExtent: 600,
+                  mainAxisExtent: 300,
+                ),
+                itemCount: merchants.length + (moreItem ? 2 : 0),
+                itemBuilder: (context, index) {
+                  if (index < merchants.length) {
+                    return GestureDetector(
+                      onTap: () {
+                        context.pushNamed(
+                          RouteName.userProducts,
+                          extra: merchants[index],
+                        );
+                      },
+                      child: UserMerchantItem(
+                        merchant: merchants[index],
+                        favourites: favourites,
+                      ),
                     );
-                  },
-                  child: UserMerchantItem(
-                    merchant: merchants[index],
-                    favourites: favouriteMerchants,
-                  ),
-                );
-              } else {
-                return const CustomSkeletonizer(child: UserMerchantItem());
-              }
+                  } else {
+                    return const CustomSkeletonizer(child: UserMerchantItem());
+                  }
+                },
+              );
             },
           );
         },

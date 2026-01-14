@@ -105,6 +105,7 @@ List<RouteBase> userRoutes = [
   ),
   GoRoute(
     path: RouteName.userProducts,
+    name: RouteName.userProducts,
     pageBuilder: (context, state) => buildPageWithSlideTransition(
       context: context,
       state: state,

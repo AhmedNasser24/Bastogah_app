@@ -1,5 +1,6 @@
 import 'package:bastogah_app/features/user_feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:bastogah_app/features/user_feature/cart/presentation/widgets/address_section_for_cart.dart';
+import 'package:bastogah_app/features/user_feature/cart/presentation/widgets/cart_item.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -10,7 +10,6 @@ CustomTransitionPage<void> buildPageWithSlideTransition({
   return CustomTransitionPage<void>(
     key: state.pageKey,
     child: child,
-
     transitionDuration: const Duration(milliseconds: 600),
     reverseTransitionDuration: const Duration(milliseconds: 600),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
