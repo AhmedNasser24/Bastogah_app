@@ -1,8 +1,7 @@
+import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
-import 'package:bastogah_app/features/user_feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
@@ -49,9 +48,9 @@ class CartItem extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         if (cartModel != null) {
-                          BlocProvider.of<CartCubit>(
-                            context,
-                          ).removeCartItem(cartModel!.userProduct.id!);
+                          LocalStorageData.removeCartItem(
+                            cartModel!.userProduct.id!,
+                          );
                         }
                       },
                       child: SvgPicture.asset(AppIcons.iconsDeleteCartIcon),

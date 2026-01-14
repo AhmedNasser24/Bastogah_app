@@ -24,6 +24,7 @@
   "product_already_exists_in_cart": "المنتج موجود بالفعل في السلة",
   "product_update_in_cart": "تم تحديث المنتج في السلة",
   "your_account_is_not_active_please_contact_admin": "تم تعطيل حسابك من قبل الإدارة",
+  "cart_empty": "السلة فارغة",
   "validation": {
     "required_field": "هذا الحقل مطلوب",
     "invalid_number": "رقم غير صالح",

@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,9 +24,7 @@ class _CartDetectItemQuantityState extends State<CartDetectItemQuantity> {
           onPressed: () {
             if (widget.cartModel!.quantity > 1) {
               widget.cartModel!.quantity--;
-              BlocProvider.of<CartCubit>(
-                context,
-              ).updateCartItemQuantity(widget.cartModel!);
+              LocalStorageData.updateCartItemQuantity(widget.cartModel!);
             }
           },
 
@@ -40,9 +39,7 @@ class _CartDetectItemQuantityState extends State<CartDetectItemQuantity> {
         IconButton(
           onPressed: () {
             widget.cartModel!.quantity++;
-            BlocProvider.of<CartCubit>(
-              context,
-            ).updateCartItemQuantity(widget.cartModel!);
+            LocalStorageData.updateCartItemQuantity(widget.cartModel!);
           },
           icon: const Icon(Icons.add, size: 18, color: AppColors.black1A),
         ),

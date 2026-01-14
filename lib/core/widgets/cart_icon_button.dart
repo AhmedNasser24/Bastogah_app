@@ -26,37 +26,37 @@ class CartIconButton extends StatelessWidget {
           ValueListenableBuilder(
             valueListenable: LocalStorageData.cartsNotifier,
             builder: (context, carts, child) {
-              return Positioned(
-                right: -6,
-                top: -6,
-                child: Container(
-                  height: 20,
-                  width: 20,
-                  padding: const EdgeInsets.all(3.0),
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.red,
-                  ),
-                  child: Center(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        carts
-                            .fold(
-                              0,
-                              (previousValue, cart) =>
-                                  previousValue + cart.quantity,
-                            )
-                            .toString(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
+              int count = 0;
+              for (var cart in carts) {
+                count += cart.quantity;
+              }
+              return count > 0
+                  ? Positioned(
+                      right: -6,
+                      top: -6,
+                      child: Container(
+                        height: 20,
+                        width: 20,
+                        padding: const EdgeInsets.all(3.0),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.red,
+                        ),
+                        child: Center(
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              count.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ),
-              );
+                    )
+                  : const SizedBox.shrink();
             },
           ),
         ],

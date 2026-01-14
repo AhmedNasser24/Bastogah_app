@@ -64,7 +64,9 @@ class LocalStorageData {
   static ValueNotifier<List<CartModel>> cartsNotifier = ValueNotifier(
     getCart(),
   );
-
+  static ValueNotifier<bool> isCartEmptyNotifier = ValueNotifier(
+    getCart().isEmpty,
+  );
   static Future<void> addToCart(CartModel cartProduct) async {
     final cart = getCart();
     final int index = findItemInCard(cart, cartProduct.userProduct.id!);
@@ -78,6 +80,7 @@ class LocalStorageData {
       jsonEncode(CartModel.toJsonList(cart)),
     );
     cartsNotifier.value = getCart();
+    isCartEmptyNotifier.value = getCart().isEmpty;
   }
 
   static Future<void> updateCartItemQuantity(CartModel cartProduct) async {
@@ -92,6 +95,7 @@ class LocalStorageData {
       jsonEncode(CartModel.toJsonList(cart)),
     );
     cartsNotifier.value = getCart();
+    isCartEmptyNotifier.value = getCart().isEmpty;
   }
 
   static List<CartModel> getCart() {
@@ -113,6 +117,7 @@ class LocalStorageData {
       jsonEncode(CartModel.toJsonList(cart)),
     );
     cartsNotifier.value = getCart();
+    isCartEmptyNotifier.value = getCart().isEmpty;
   }
 
   static bool isProductInCart(String id) {
