@@ -1,10 +1,6 @@
 import 'package:bastogah_app/core/widgets/custom_cached_image.dart';
-import 'package:bastogah_app/core/widgets/favourite_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../core/theme/app_colors.dart';
-import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/back_arrow_button.dart';
 
 class UserProductDetailsSliverAppBar extends StatelessWidget {
@@ -18,6 +14,7 @@ class UserProductDetailsSliverAppBar extends StatelessWidget {
       expandedHeight: 170,
       pinned: true,
       toolbarHeight: 60,
+
       flexibleSpace: Stack(
         alignment: Alignment.bottomCenter,
         children: [

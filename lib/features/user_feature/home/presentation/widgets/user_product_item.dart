@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:bastogah_app/core/widgets/custom_cached_image.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,7 +9,6 @@ import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
 import '../../../../../core/widgets/custom_toast/custom_toastification.dart';
 import '../../../cart/data/model/cart_model.dart';
-import '../../../cart/presentation/widgets/cart_detect_item_quantity.dart';
 import '../../data/model/user_product_model.dart';
 import 'product_detect_item_quantity.dart';
 

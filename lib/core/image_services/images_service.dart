@@ -1,19 +1,8 @@
-import 'dart:developer';
 import 'dart:io';
-import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
-import 'package:bastogah_app/core/theme/app_colors.dart';
 import 'package:dio/dio.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
-import '../api/end_point.dart';
-import '../widgets/custom_toast/custom_toastification.dart';
 
 class ImagesService {
   static final Dio _dio = Dio()
@@ -85,13 +74,7 @@ class ImagesService {
 
     if (pickedFile == null) return null;
 
-    final croppedFile = await cropImage(context, pickedFile);
-
-    if (croppedFile == null) {
-      return File(pickedFile.path);
-    } else {
-      return File(croppedFile.path);
-    }
+    return File(pickedFile.path);
 
     // int imageSize = await pickedFile.length();
 
@@ -113,63 +96,63 @@ class ImagesService {
     // return File(pickedFile.path);
   }
 
-  static Future<XFile?> cropImage(BuildContext context, XFile imageFile) async {
-    CroppedFile? croppedFile = await ImageCropper().cropImage(
-      sourcePath: imageFile.path,
-      uiSettings: [
-        AndroidUiSettings(
-          toolbarTitle: 'Image Cropper',
-          toolbarColor: AppColors.primary,
-          toolbarWidgetColor: Colors.white,
-          hideBottomControls: true,
-          // initAspectRatio: CropAspectRatioPreset.square,
-          cropStyle: CropStyle.circle,
-          showCropGrid: false,
-          cropFrameStrokeWidth: 0,
+  // static Future<XFile?> cropImage(BuildContext context, XFile imageFile) async {
+  //   CroppedFile? croppedFile = await ImageCropper().cropImage(
+  //     sourcePath: imageFile.path,
+  //     uiSettings: [
+  //       AndroidUiSettings(
+  //         toolbarTitle: 'Image Cropper',
+  //         toolbarColor: AppColors.primary,
+  //         toolbarWidgetColor: Colors.white,
+  //         hideBottomControls: true,
+  //         // initAspectRatio: CropAspectRatioPreset.square,
+  //         cropStyle: CropStyle.circle,
+  //         showCropGrid: false,
+  //         cropFrameStrokeWidth: 0,
 
-          // cropFrameStrokeWidth: 0,
-          // aspectRatioPresets: [
-          //   CropAspectRatioPreset.original,
-          //   CropAspectRatioPreset.square,
-          //   CropAspectRatioPresetCustom(),
-          // ],
-        ),
-        IOSUiSettings(
-          title: 'Image Cropper',
-          minimumAspectRatio: 1,
-          // aspectRatioPresets: [
-          //   CropAspectRatioPreset.original,
-          //   CropAspectRatioPreset.square,
-          //   CropAspectRatioPresetCustom(), // IMPORTANT: iOS supports only one custom aspect ratio in preset list
-          // ],
-        ),
-        WebUiSettings(
-          context: context,
-          presentStyle: WebPresentStyle.dialog,
-          viewwMode: WebViewMode.mode_0,
-          customDialogBuilder: (cropper, initCropper, crop, rotate, scale) =>
-              Container(
-                height: context.screenHeight / 3,
-                width: context.screenWidth / 3,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: cropper,
-              ),
-          center: true,
-          initialAspectRatio: 1,
-          scalable: true,
-        ),
-      ],
-    );
+  //         // cropFrameStrokeWidth: 0,
+  //         // aspectRatioPresets: [
+  //         //   CropAspectRatioPreset.original,
+  //         //   CropAspectRatioPreset.square,
+  //         //   CropAspectRatioPresetCustom(),
+  //         // ],
+  //       ),
+  //       IOSUiSettings(
+  //         title: 'Image Cropper',
+  //         minimumAspectRatio: 1,
+  //         // aspectRatioPresets: [
+  //         //   CropAspectRatioPreset.original,
+  //         //   CropAspectRatioPreset.square,
+  //         //   CropAspectRatioPresetCustom(), // IMPORTANT: iOS supports only one custom aspect ratio in preset list
+  //         // ],
+  //       ),
+  //       WebUiSettings(
+  //         context: context,
+  //         presentStyle: WebPresentStyle.dialog,
+  //         viewwMode: WebViewMode.mode_0,
+  //         customDialogBuilder: (cropper, initCropper, crop, rotate, scale) =>
+  //             Container(
+  //               height: context.screenHeight / 3,
+  //               width: context.screenWidth / 3,
+  //               decoration: BoxDecoration(
+  //                 color: Colors.white,
+  //                 borderRadius: BorderRadius.circular(12),
+  //               ),
+  //               child: cropper,
+  //             ),
+  //         center: true,
+  //         initialAspectRatio: 1,
+  //         scalable: true,
+  //       ),
+  //     ],
+  //   );
 
-    if (croppedFile != null) {
-      return XFile(croppedFile.path);
-    } else {
-      return null;
-    }
-  }
+  //   if (croppedFile != null) {
+  //     return XFile(croppedFile.path);
+  //   } else {
+  //     return null;
+  //   }
+  // }
   // static Future<XFile> compressImage(XFile image, int maxSizeInBytes) async {
   //   // Skip compression if running on Web
   //   if (Platform.isWindows) {
