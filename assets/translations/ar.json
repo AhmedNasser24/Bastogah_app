@@ -20,6 +20,8 @@
   "image_size_message": "حجم الصورة أكبر من الحد المسموح به",
   "camera": "كاميرا",
   "gallery": "الاستوديو",
+  "product_added_to_cart": "تم إضافة المنتج إلى السلة",
+  "product_already_exists_in_cart": "المنتج موجود بالفعل في السلة",
   "your_account_is_not_active_please_contact_admin": "تم تعطيل حسابك من قبل الإدارة",
   "validation": {
     "required_field": "هذا الحقل مطلوب",

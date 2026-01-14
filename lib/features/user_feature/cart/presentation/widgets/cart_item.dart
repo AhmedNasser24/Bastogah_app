@@ -9,7 +9,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../../../../core/widgets/custom_cached_image.dart';
 import '../../data/model/cart_model.dart';
-import 'detect_item_quantity.dart';
+import 'cart_detect_item_quantity.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, this.cartModel});
@@ -79,7 +79,7 @@ class CartItem extends StatelessWidget {
                       style: AppFontStyle.bold14Primary(context),
                     ),
                     const Spacer(),
-                    DetectItemQuantity(cartModel: cartModel),
+                    CartDetectItemQuantity(cartModel: cartModel),
                   ],
                 ),
               ],

@@ -61,29 +61,32 @@ class LocalStorageData {
     log("remove favourite");
   }
 
+  static ValueNotifier<List<CartModel>> cartsNotifier = ValueNotifier(
+    getCart(),
+  );
+
   static Future<void> addToCart(CartModel cartProduct) async {
     final cart = getCart();
-    final bool exist = isProductInCart(cartProduct.userProduct.id!);
-    if (exist) {
-      CustomToastification.showNotificationToast(
-        message: "Product already exists in cart".tr(),
-      );
-      return;
+    final int index = findItemInCard(cart, cartProduct.userProduct.id!);
+    if (index != -1) {
+      cart[index] = cartProduct; // to update quantity
+    } else {
+      cart.add(cartProduct);
     }
-    cart.add(cartProduct);
     await SharedPreferenceSingleton.setString(
       kCartDataKey,
       jsonEncode(CartModel.toJsonList(cart)),
     );
-    log("set cart");
+    cartsNotifier.value = getCart();
+    CustomToastification.showNotificationToast(
+      message: "product_added_to_cart".tr(),
+    );
   }
 
   static Future<void> updateCartItemQuantity(CartModel cartProduct) async {
     final cart = getCart();
 
-    final index = cart.indexWhere(
-      (e) => e.userProduct.id == cartProduct.userProduct.id,
-    );
+    final index = findItemInCard(cart, cartProduct.userProduct.id!);
     if (index != -1) {
       cart[index] = cartProduct; // to update quantity
     }
@@ -91,6 +94,7 @@ class LocalStorageData {
       kCartDataKey,
       jsonEncode(CartModel.toJsonList(cart)),
     );
+    cartsNotifier.value = getCart();
   }
 
   static List<CartModel> getCart() {
@@ -111,11 +115,23 @@ class LocalStorageData {
       kCartDataKey,
       jsonEncode(CartModel.toJsonList(cart)),
     );
-    log("remove cart");
+    cartsNotifier.value = getCart();
   }
 
   static bool isProductInCart(String id) {
     final cart = getCart();
     return cart.any((e) => e.userProduct.id == id);
+  }
+
+  static int getCartItemQuantity() {
+    final cart = getCart();
+    return cart.fold(
+      0,
+      (previousValue, element) => previousValue + element.quantity,
+    );
+  }
+
+  static int findItemInCard(List<CartModel> cart, String id) {
+    return cart.indexWhere((e) => e.userProduct.id == id);
   }
 }

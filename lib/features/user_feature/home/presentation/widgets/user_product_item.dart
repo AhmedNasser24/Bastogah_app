@@ -10,13 +10,15 @@ import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
 import '../../../cart/data/model/cart_model.dart';
-import '../../../cart/presentation/widgets/detect_item_quantity.dart';
+import '../../../cart/presentation/widgets/cart_detect_item_quantity.dart';
 import '../../data/model/user_product_model.dart';
+import 'product_detect_item_quantity.dart';
 
 class UserProductItem extends StatelessWidget {
-  const UserProductItem({super.key, this.product});
+  const UserProductItem({super.key, this.product, this.carts});
   final UserProductModel? product;
-  final bool isInCart = false;
+  final List<CartModel>? carts;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -71,8 +73,13 @@ class UserProductItem extends StatelessWidget {
                       ),
                     ),
                     const Gap(8),
-                    isInCart
-                        ? const DetectItemQuantity()
+                    isInCart(product, carts)
+                        ? ProductDetectItemQuantity(
+                            cartModel: carts?.firstWhere(
+                              (element) =>
+                                  element.userProduct.id == product!.id,
+                            ),
+                          )
                         : GestureDetector(
                             onTap: () {
                               if (product != null) {
@@ -104,5 +111,10 @@ class UserProductItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool isInCart(UserProductModel? product, List<CartModel>? carts) {
+    if (product == null || carts == null) return false;
+    return carts.any((element) => element.userProduct.id == product.id);
   }
 }

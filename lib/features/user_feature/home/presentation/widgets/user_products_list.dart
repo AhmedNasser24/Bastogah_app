@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:bastogah_app/core/widgets/custom_skeletonizer.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/manager/user_products_cubit/user_products_cubit.dart';
 import 'package:flutter/material.dart';
@@ -49,30 +50,38 @@ class UserProductsList extends StatelessWidget {
           context,
         ).products;
         bool moreItem = BlocProvider.of<UserProductsCubit>(context).moreItem;
-        return GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 700,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            mainAxisExtent: 92,
-          ),
-          itemCount: products.length + (moreItem ? 2 : 0),
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: index < products.length
-                  ? GestureDetector(
-                      onTap: () {
-                        context.push(
-                          RouteName.userProductDetails,
-                          extra: products[index],
-                        );
-                      },
-                      child: UserProductItem(product: products[index]),
-                    )
-                  : const CustomSkeletonizer(child: UserProductItem()),
+        return ValueListenableBuilder(
+          valueListenable: LocalStorageData.cartsNotifier,
+          builder: (context, carts, child) {
+            return GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 700,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                mainAxisExtent: 92,
+              ),
+              itemCount: products.length + (moreItem ? 2 : 0),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: index < products.length
+                      ? GestureDetector(
+                          onTap: () {
+                            context.push(
+                              RouteName.userProductDetails,
+                              extra: products[index],
+                            );
+                          },
+                          child: UserProductItem(
+                            product: products[index],
+                            carts: carts,
+                          ),
+                        )
+                      : const CustomSkeletonizer(child: UserProductItem()),
+                );
+              },
             );
           },
         );

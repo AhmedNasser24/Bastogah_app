@@ -9,7 +9,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../theme/app_icons.dart';
-import '../theme/app_images.dart';
 
 class CustomProfileLogoImage extends StatefulWidget {
   const CustomProfileLogoImage({super.key, this.image});

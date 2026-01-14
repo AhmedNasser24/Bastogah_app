@@ -6,14 +6,14 @@ import '../../../../../core/theme/app_font_style.dart';
 import '../../data/model/cart_model.dart';
 import '../manager/cart_cubit/cart_cubit.dart';
 
-class DetectItemQuantity extends StatefulWidget {
-  const DetectItemQuantity({super.key, this.cartModel});
+class CartDetectItemQuantity extends StatefulWidget {
+  const CartDetectItemQuantity({super.key, this.cartModel});
   final CartModel? cartModel;
   @override
-  State<DetectItemQuantity> createState() => _DetectItemQuantityState();
+  State<CartDetectItemQuantity> createState() => _CartDetectItemQuantityState();
 }
 
-class _DetectItemQuantityState extends State<DetectItemQuantity> {
+class _CartDetectItemQuantityState extends State<CartDetectItemQuantity> {
   @override
   Widget build(BuildContext context) {
     return Row(

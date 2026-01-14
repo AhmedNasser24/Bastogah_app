@@ -28,17 +28,17 @@ class UserProductDetailsSliverAppBar extends StatelessWidget {
           ),
 
           const Positioned(right: 16, top: 12, child: BackArrowButton()),
-          Positioned(
-            left: 16,
-            top: 12,
-            child: FavouriteIconButton(
-              activeIcon: SvgPicture.asset(AppIcons.iconsActiveUserFavourite),
-              inactiveIcon: SvgPicture.asset(
-                AppIcons.iconsInactiveUserFavourite,
-              ),
-              backgroundColor: AppColors.secondary,
-            ),
-          ),
+          // Positioned(
+          //   left: 16,
+          //   top: 12,
+          //   child: FavouriteIconButton(
+          //     activeIcon: SvgPicture.asset(AppIcons.iconsActiveUserFavourite),
+          //     inactiveIcon: SvgPicture.asset(
+          //       AppIcons.iconsInactiveUserFavourite,
+          //     ),
+          //     backgroundColor: AppColors.secondary,
+          //   ),
+          // ),
         ],
       ),
     );
