@@ -9,6 +9,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
+import '../../../../../core/widgets/custom_toast/custom_toastification.dart';
 import '../../../cart/data/model/cart_model.dart';
 import '../../../cart/presentation/widgets/cart_detect_item_quantity.dart';
 import '../../data/model/user_product_model.dart';
@@ -88,7 +89,9 @@ class UserProductItem extends StatelessWidget {
                                   quantity: 1,
                                 );
                                 LocalStorageData.addToCart(cardModel);
-                                log("add to cart");
+                                CustomToastification.showSuccessToast(
+                                  message: "product_added_to_cart".tr(),
+                                );
                               }
                             },
                             child: Container(

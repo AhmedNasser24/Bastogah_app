@@ -64,6 +64,10 @@ class UserProductsList extends StatelessWidget {
               ),
               itemCount: products.length + (moreItem ? 2 : 0),
               itemBuilder: (context, index) {
+                int indexOfProductInCart = LocalStorageData.findItemInCard(
+                  carts,
+                  products[index].id!,
+                );
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: index < products.length
@@ -71,7 +75,12 @@ class UserProductsList extends StatelessWidget {
                           onTap: () {
                             context.push(
                               RouteName.userProductDetails,
-                              extra: products[index],
+                              extra: [
+                                products[index],
+                                indexOfProductInCart == -1
+                                    ? null
+                                    : carts[indexOfProductInCart],
+                              ],
                             );
                           },
                           child: UserProductItem(

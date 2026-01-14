@@ -78,9 +78,6 @@ class LocalStorageData {
       jsonEncode(CartModel.toJsonList(cart)),
     );
     cartsNotifier.value = getCart();
-    CustomToastification.showNotificationToast(
-      message: "product_added_to_cart".tr(),
-    );
   }
 
   static Future<void> updateCartItemQuantity(CartModel cartProduct) async {

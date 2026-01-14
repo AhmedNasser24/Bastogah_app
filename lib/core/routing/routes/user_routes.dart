@@ -12,6 +12,7 @@ import 'package:bastogah_app/features/user_feature/profile/presentation/views/us
 import 'package:bastogah_app/features/user_feature/profile/presentation/views/user_my_rating_view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../features/user_feature/cart/data/model/cart_model.dart';
 import '../../../features/user_feature/cart/presentation/views/cart_view.dart';
 import '../../../features/user_feature/favourites/presentation/views/user_favourite_view.dart';
 import '../../../features/user_feature/home/data/model/user_merchant_model.dart';
@@ -97,11 +98,16 @@ List<RouteBase> userRoutes = [
   ),
   GoRoute(
     path: RouteName.userProductDetails,
-    pageBuilder: (context, state) => buildPageWithSlideTransition(
-      context: context,
-      state: state,
-      child: UserProductDetailsView(product: state.extra as UserProductModel),
-    ),
+    pageBuilder: (context, state) {
+      final extra = state.extra as List;
+      final product = extra[0] as UserProductModel;
+      final cart = extra[1] as CartModel?;
+      return buildPageWithSlideTransition(
+        context: context,
+        state: state,
+        child: UserProductDetailsView(product: product, cart: cart),
+      );
+    },
   ),
   GoRoute(
     path: RouteName.userProducts,

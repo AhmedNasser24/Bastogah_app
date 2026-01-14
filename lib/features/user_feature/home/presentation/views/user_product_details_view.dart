@@ -1,4 +1,7 @@
+import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:bastogah_app/core/widgets/custom_text_form_field.dart';
+import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
+import 'package:bastogah_app/features/user_feature/cart/data/model/cart_model.dart';
 import 'package:bastogah_app/features/user_feature/home/data/model/user_product_model.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/widgets/user_product_details_sliver_app_bar.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
@@ -12,8 +15,9 @@ import '../../../../../core/theme/app_icons.dart';
 import '../../../../merchant_feature/products/presentation/widgets/custom_check_box.dart';
 
 class UserProductDetailsView extends StatelessWidget {
-  const UserProductDetailsView({super.key, required this.product});
+  const UserProductDetailsView({super.key, required this.product, this.cart});
   final UserProductModel product;
+  final CartModel? cart;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +41,12 @@ class UserProductDetailsView extends StatelessWidget {
                   const SliverGap(24),
                   const SliverToBoxAdapter(child: RemovedGradientSection()),
                   const SliverGap(24),
-                  const SliverToBoxAdapter(child: SpecialNoteSection()),
+                  SliverToBoxAdapter(child: SpecialNoteSection(cart: cart)),
                   const SliverGap(20),
                 ],
               ),
             ),
-            const ProductQuantitySection(),
+            ProductQuantitySection(product: product, cart: cart),
             const Gap(20),
           ],
         ),
@@ -52,14 +56,26 @@ class UserProductDetailsView extends StatelessWidget {
 }
 
 class ProductQuantitySection extends StatefulWidget {
-  const ProductQuantitySection({super.key});
+  const ProductQuantitySection({super.key, this.cart, required this.product});
+  final CartModel? cart;
+  final UserProductModel product;
 
   @override
   State<ProductQuantitySection> createState() => _ProductQuantitySectionState();
 }
 
 class _ProductQuantitySectionState extends State<ProductQuantitySection> {
-  int quantity = 1;
+  late int quantity;
+  @override
+  void initState() {
+    if (widget.cart != null) {
+      quantity = widget.cart!.quantity;
+    } else {
+      quantity = 1;
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -109,7 +125,20 @@ class _ProductQuantitySectionState extends State<ProductQuantitySection> {
   Widget addToCartButton(BuildContext context) {
     return InkWell(
       onTap: () {
-        // context.push(RouteName.userCartView);
+        if (widget.cart != null) {
+          widget.cart!.quantity = quantity;
+          LocalStorageData.addToCart(widget.cart!);
+          CustomToastification.showSuccessToast(
+            message: "product_update_in_cart".tr(),
+          );
+        } else {
+          LocalStorageData.addToCart(
+            CartModel(userProduct: widget.product, quantity: quantity),
+          );
+          CustomToastification.showSuccessToast(
+            message: "product_added_to_cart".tr(),
+          );
+        }
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
@@ -134,7 +163,9 @@ class _ProductQuantitySectionState extends State<ProductQuantitySection> {
             ),
             const Spacer(),
             Text(
-              "merchant.currency".tr(args: ["5500"]),
+              "merchant.currency".tr(
+                args: ["${widget.product.price! * quantity}"],
+              ),
               style: AppFontStyle.semibold16White(context),
             ),
           ],
@@ -284,7 +315,8 @@ class RemovedGradientSection extends StatelessWidget {
 }
 
 class SpecialNoteSection extends StatelessWidget {
-  const SpecialNoteSection({super.key});
+  const SpecialNoteSection({super.key, this.cart});
+  final CartModel? cart;
 
   @override
   Widget build(BuildContext context) {
@@ -305,6 +337,10 @@ class SpecialNoteSection extends StatelessWidget {
           CustomTextFormField(
             hintText: "user.special_note_hint".tr(),
             maxLines: 4,
+            controller: TextEditingController(text: cart?.specialNote),
+            onChanged: (value) {
+              cart?.specialNote = value;
+            },
           ),
         ],
       ),

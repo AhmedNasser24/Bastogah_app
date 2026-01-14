@@ -65,13 +65,14 @@ class CustomToastification {
       ),
       borderRadius: BorderRadius.circular(24),
       alignment: kIsWeb ? AlignmentDirectional.topEnd : Alignment.topCenter,
+
       autoCloseDuration: const Duration(seconds: 4),
       showProgressBar: false,
       closeOnClick: false,
       dragToClose: true,
       borderSide: BorderSide.none,
       showIcon: false,
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       closeButton: const ToastCloseButton(showType: CloseButtonShowType.none),
     );
   }

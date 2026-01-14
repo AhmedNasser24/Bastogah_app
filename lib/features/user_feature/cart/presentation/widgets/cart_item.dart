@@ -66,7 +66,9 @@ class CartItem extends StatelessWidget {
                 const Gap(4),
                 orderWith(context),
                 orderWithout(context),
-                orderNote(context),
+                if (cartModel?.specialNote.isNotEmpty ?? false) ...[
+                  orderNote(context, cartModel!.specialNote),
+                ],
                 const Gap(8),
                 Row(
                   children: [
@@ -152,7 +154,7 @@ class CartItem extends StatelessWidget {
     );
   }
 
-  Widget orderNote(BuildContext context) {
+  Widget orderNote(BuildContext context, String note) {
     return Padding(
       padding: const EdgeInsets.only(top: 6.0),
       child: Row(
@@ -160,10 +162,7 @@ class CartItem extends StatelessWidget {
         children: [
           Text("user.note".tr(), style: AppFontStyle.regular10black4B(context)),
           Expanded(
-            child: Text(
-              "لا تضع بصل أو خيار مخلل في البرجر من فضلك ",
-              style: AppFontStyle.regular10black4B(context),
-            ),
+            child: Text(note, style: AppFontStyle.regular10black4B(context)),
           ),
         ],
       ),
