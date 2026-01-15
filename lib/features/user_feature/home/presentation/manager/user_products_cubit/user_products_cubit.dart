@@ -1,12 +1,14 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../core/enums/request_state_enum.dart';
 import '../../../../../../core/network/check_network_connection.dart';
-import '../../../../../../core/widgets/custom_toast/custom_toastification.dart';
 import '../../../data/model/user_product_model.dart';
 import '../../../data/params/user_product_param.dart';
 import '../../../domain/repo/user_home_repo.dart';
@@ -14,7 +16,7 @@ part 'user_products_state.dart';
 
 class UserProductsCubit extends Cubit<UserProductsState> {
   UserProductsCubit({required this.userHomeRepo})
-    : super(UserProductsInitial());
+    : super(const UserProductsState());
   final UserHomeRepo userHomeRepo;
 
   int _skip = 0;
@@ -24,58 +26,105 @@ class UserProductsCubit extends Cubit<UserProductsState> {
   bool isLoadingMore = false;
   bool isFirstOperation = true;
   StreamSubscription<List<ConnectivityResult>>? _subscription;
-  void fetchProducts({required UserProductParam userProductParam}) async {
+
+  @override
+  void emit(UserProductsState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    log(
+      "---------------------------------------------------------subscription cancelled",
+    );
+    return super.close();
+  }
+
+  void init({required UserProductParam userProductParam}) async {
     if (!await isThereNetworkConnection()) {
-      _subscription = Connectivity().onConnectivityChanged.listen((result) {
-        if (result.contains(ConnectivityResult.mobile) ||
-            result.contains(ConnectivityResult.wifi) ||
-            result.contains(ConnectivityResult.ethernet)) {
-          CustomToastification.showSuccessToast(
-            message: "internet_connection_restored".tr(),
-          );
-          fetchProducts(userProductParam: userProductParam);
-        }
-      });
       CustomToastification.showFailureToast(
         message: "check_your_internet_connection_and_try_again".tr(),
       );
-      return;
-    }
 
+      _subscription = Connectivity().onConnectivityChanged.listen((result) {
+        log(
+          "---------------------------------------------------------subscription opened",
+        );
+        if (!result.contains(ConnectivityResult.none)) {
+          CustomToastification.showSuccessToast(
+            message: "internet_connection_restored".tr(),
+          );
+          log(
+            "-----------------------------------------------------load all data",
+          );
+          loadAllData(userProductParam: userProductParam);
+        }
+      });
+    } else {
+      loadAllData(userProductParam: userProductParam);
+    }
+  }
+
+  void loadAllData({required UserProductParam userProductParam}) {
+    _subscription?.cancel();
+    log(
+      "---------------------------------------------------------subscription cancelled",
+    );
+    loadProducts(userProductParam: userProductParam);
+  }
+
+  void loadProducts({required UserProductParam userProductParam}) async {
     _skip = 0;
     moreItem = true;
     products.clear();
 
-    emit(UserProductsLoading());
+    emit(state.copyWith(userProductsRequestState: RequestStateEnum.loading));
     userProductParam.skip = _skip;
     var result = await userHomeRepo.getProducts(
       userProductParam: userProductParam,
     );
     result.fold(
-      (failure) => emit(UserProductsFailure(errorMessage: failure.errMessage)),
+      (failure) => emit(
+        state.copyWith(
+          userProductsRequestState: RequestStateEnum.failure,
+          errMessage: failure.errMessage,
+        ),
+      ),
       (products) {
         moreItem = products.length == maxItem;
         this.products = products;
         if (moreItem) {
           _skip += 20;
         }
-        _subscription?.cancel();
         isFirstOperation = false;
         emit(
-          UserProductsSuccessFull(products: this.products, moreItem: moreItem),
+          state.copyWith(
+            userProductsRequestState: RequestStateEnum.success,
+            products: this.products,
+            moreItem: moreItem,
+            isFirstOperation: isFirstOperation,
+          ),
         );
       },
     );
   }
 
-  void fetchMoreProducts({required UserProductParam userProductParam}) async {
+  void loadMoreProducts({required UserProductParam userProductParam}) async {
     if (!moreItem) return;
     isLoadingMore = true;
     var result = await userHomeRepo.getProducts(
       userProductParam: userProductParam,
     );
     result.fold(
-      (failure) => emit(UserProductsFailure(errorMessage: failure.errMessage)),
+      (failure) => emit(
+        state.copyWith(
+          userProductsRequestState: RequestStateEnum.failure,
+          errMessage: failure.errMessage,
+        ),
+      ),
       (products) {
         moreItem = products.length == maxItem;
         this.products.addAll(products);
@@ -83,7 +132,12 @@ class UserProductsCubit extends Cubit<UserProductsState> {
           _skip += 20;
         }
         emit(
-          UserProductsSuccessFull(products: this.products, moreItem: moreItem),
+          state.copyWith(
+            userProductsRequestState: RequestStateEnum.success,
+            products: this.products,
+            moreItem: moreItem,
+            isLoadingMore: isLoadingMore,
+          ),
         );
       },
     );
@@ -95,14 +149,9 @@ class UserProductsCubit extends Cubit<UserProductsState> {
       CustomToastification.showFailureToast(
         message: "check_your_internet_connection_and_try_again".tr(),
       );
+      return;
     }
     isFirstOperation = true;
-    fetchProducts(userProductParam: userProductParam);
-  }
-
-  @override
-  Future<void> close() {
-    _subscription?.cancel();
-    return super.close();
+    loadProducts(userProductParam: userProductParam);
   }
 }

@@ -34,13 +34,13 @@ class _UserProductsViewState extends State<UserProductsView> {
     userProductParam = UserProductParam(
       merchantId: widget.userMerchantModel.id!,
     );
-    userProductsCubit.fetchProducts(userProductParam: userProductParam);
+    userProductsCubit.init(userProductParam: userProductParam);
     controller.addListener(() {
       if (controller.position.pixels >=
               controller.position.maxScrollExtent - 200 &&
           userProductsCubit.moreItem &&
           !userProductsCubit.isLoadingMore) {
-        userProductsCubit.fetchMoreProducts(userProductParam: userProductParam);
+        userProductsCubit.loadMoreProducts(userProductParam: userProductParam);
       }
     });
 

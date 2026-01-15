@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/enums/request_state_enum.dart';
 import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:bastogah_app/core/widgets/custom_skeletonizer.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/manager/user_products_cubit/user_products_cubit.dart';
@@ -17,17 +18,22 @@ class UserProductsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<UserProductsCubit, UserProductsState>(
       listener: (context, state) {
-        if (state is UserProductsFailure) {
-          CustomToastification.showFailureToast(message: state.errorMessage);
+        if (state.userProductsRequestState == RequestStateEnum.failure) {
+          CustomToastification.showFailureToast(message: state.errMessage);
         }
+      },
+      buildWhen: (previous, current) {
+        return previous.userProductsRequestState !=
+            current.userProductsRequestState;
       },
       builder: (context, state) {
         bool isFirstOperation = BlocProvider.of<UserProductsCubit>(
           context,
         ).isFirstOperation;
-        if (state is UserProductsLoading ||
-            state is UserProductsInitial ||
-            (state is UserProductsFailure && isFirstOperation)) {
+        if (state.userProductsRequestState == RequestStateEnum.loading ||
+            state.userProductsRequestState == RequestStateEnum.initial ||
+            (state.userProductsRequestState == RequestStateEnum.failure &&
+                isFirstOperation)) {
           return GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
