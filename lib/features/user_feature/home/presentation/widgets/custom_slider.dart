@@ -1,6 +1,7 @@
+import 'package:bastogah_app/core/enums/request_state_enum.dart';
 import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
-import 'package:bastogah_app/features/user_feature/home/presentation/manager/sliders_cubit/sliders_cubit.dart';
+import 'package:bastogah_app/features/user_feature/home/presentation/manager/home_cubit/user_home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,16 +35,19 @@ class _CustomSliderState extends State<CustomSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SlidersCubit, SlidersState>(
+    return BlocConsumer<UserHomeCubit, UserHomeState>(
       listener: (context, state) {
         // if (state is SlidersFailure) {
         //   CustomFlutterToast.showErrorToast(state.errMessage);
         // }
       },
+      buildWhen: (previous, current) {
+        return current.sliderRequestState != previous.sliderRequestState;
+      },
       builder: (context, state) {
-        if (state is SlidersLoading ||
-            state is SlidersInitial ||
-            state is SlidersFailure) {
+        if (state.sliderRequestState == RequestStateEnum.loading ||
+            state.sliderRequestState == RequestStateEnum.initial ||
+            state.sliderRequestState == RequestStateEnum.failure) {
           return Column(
             children: [
               CarouselSlider(
@@ -83,61 +87,64 @@ class _CustomSliderState extends State<CustomSlider> {
               ),
             ],
           );
-        }
-
-        return Column(
-          children: [
-            CarouselSlider(
-              carouselController: _carouselController,
-              items: BlocProvider.of<SlidersCubit>(context).sliders
-                  .map(
-                    (item) => GestureDetector(
-                      onTap: () {
-                        if (item.merchant?.id != null) {
-                          // context.push(
-                          //   RouteName.userProductDetails,
-                          //   extra: UserMerchantModel(
-                          //     id: item.merchant?.id,
-                          //     displayName: item.merchant?.displayName,
-                          //     image: item.merchant?.image,
-                          //   ),
-                          // );
-                        }
-                        // context.push(RouteName.userMerchants);
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.all(5.0),
-                        width: double.infinity,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10.0),
+        } else if (state.sliderRequestState == RequestStateEnum.success) {
+          return Column(
+            children: [
+              CarouselSlider(
+                carouselController: _carouselController,
+                items: state.sliderList
+                    .map(
+                      (item) => GestureDetector(
+                        onTap: () {
+                          if (item.merchant?.id != null) {
+                            // context.push(
+                            //   RouteName.userProductDetails,
+                            //   extra: UserMerchantModel(
+                            //     id: item.merchant?.id,
+                            //     displayName: item.merchant?.displayName,
+                            //     image: item.merchant?.image,
+                            //   ),
+                            // );
+                          }
+                          // context.push(RouteName.userMerchants);
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.all(5.0),
+                          width: double.infinity,
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10.0),
+                            ),
+                            // child: Image.asset(item, fit: BoxFit.cover),
+                            child: CustomCachedImage(
+                              imagePath: item.image ?? "",
+                            ),
                           ),
-                          // child: Image.asset(item, fit: BoxFit.cover),
-                          child: CustomCachedImage(imagePath: item.image ?? ""),
                         ),
                       ),
-                    ),
-                  )
-                  .toList(),
-              options: carouselOptions(context),
-            ),
-            const Gap(16),
-            AnimatedSmoothIndicator(
-              activeIndex: _currentIndex,
-              count: BlocProvider.of<SlidersCubit>(context).sliders.length,
-              effect: const ExpandingDotsEffect(
-                dotWidth: 10,
-                dotHeight: 10,
-              ), // You can customize this further
-              onDotClicked: (index) {
-                _carouselController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 800),
-                );
-              },
-            ),
-          ],
-        );
+                    )
+                    .toList(),
+                options: carouselOptions(context),
+              ),
+              const Gap(16),
+              AnimatedSmoothIndicator(
+                activeIndex: _currentIndex,
+                count: state.sliderList.length,
+                effect: const ExpandingDotsEffect(
+                  dotWidth: 10,
+                  dotHeight: 10,
+                ), // You can customize this further
+                onDotClicked: (index) {
+                  _carouselController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 800),
+                  );
+                },
+              ),
+            ],
+          );
+        }
+        return const SizedBox.shrink();
       },
     );
   }

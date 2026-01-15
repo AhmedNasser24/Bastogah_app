@@ -29,7 +29,7 @@ import '../../features/user_feature/cart/presentation/manager/cart_cubit/cart_cu
 import '../../features/user_feature/home/data/repo/user_home_repo_impl.dart';
 import '../../features/user_feature/home/domain/repo/user_home_repo.dart';
 import '../../features/user_feature/home/presentation/manager/merchant_categories_cubit/merchant_categories_cubit.dart';
-import '../../features/user_feature/home/presentation/manager/sliders_cubit/sliders_cubit.dart';
+import '../../features/user_feature/home/presentation/manager/home_cubit/user_home_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/user_merchants_cubit/user_merchants_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/user_products_cubit/user_products_cubit.dart';
 import '../../features/user_feature/profile/data/data_source/profile_data_source.dart';
@@ -60,15 +60,15 @@ void getItSetup() {
       dio: getIt.get<Dio>()
         ..interceptors.addAll([
           AppInterceptors(dio: getIt.get<Dio>()),
-          PrettyDioLogger(
-            requestHeader: true,
-            requestBody: true,
-            responseBody: true,
-            responseHeader: false,
-            error: true,
-            compact: true,
-            maxWidth: 90,
-          ),
+          // PrettyDioLogger(
+          //   requestHeader: true,
+          //   requestBody: true,
+          //   responseBody: true,
+          //   responseHeader: false,
+          //   error: true,
+          //   compact: true,
+          //   maxWidth: 90,
+          // ),
         ]),
     ),
   );
@@ -123,8 +123,8 @@ void getItSetup() {
     () => MerchantGetOrdersCubit(homeRepo: getIt.get<MerchantHomeRepo>()),
   );
 
-  getIt.registerFactory<SlidersCubit>(
-    () => SlidersCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
+  getIt.registerFactory<UserHomeCubit>(
+    () => UserHomeCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
   );
   getIt.registerFactory<MerchantCategoriesCubit>(
     () => MerchantCategoriesCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
