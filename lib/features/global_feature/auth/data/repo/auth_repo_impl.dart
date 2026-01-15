@@ -13,7 +13,7 @@ class AuthRepoImpl implements AuthRepo {
   final AuthDataSource authDataSource;
   AuthRepoImpl({required this.authDataSource});
   @override
-  Future<Either<Failure, RolesEnum>> login({
+  Future<Either<Failure, RoleEnum>> login({
     required String username,
     required String password,
   }) async {

@@ -13,7 +13,7 @@ class LoginCubit extends Cubit<LoginState> {
   void login(String username, String password) async {
     emit(LoginLoading());
 
-    Either<Failure, RolesEnum> result = await loginUseCase(
+    Either<Failure, RoleEnum> result = await loginUseCase(
       username: username,
       password: password,
     );

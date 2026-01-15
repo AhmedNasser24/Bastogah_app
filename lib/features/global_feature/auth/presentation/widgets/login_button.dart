@@ -27,11 +27,11 @@ class LoginButton extends StatelessWidget {
         } else if (state is LoginSuccess) {
           CustomFlutterToast.showSuccessToast('auth.login_successful'.tr());
           switch (state.role) {
-            case RolesEnum.merchant:
+            case RoleEnum.merchant:
               context.go(RouteName.merchantHome);
-            case RolesEnum.driver:
+            case RoleEnum.driver:
               context.go(RouteName.driverHome);
-            case RolesEnum.client:
+            case RoleEnum.client:
               context.go(RouteName.userHome);
           }
         }

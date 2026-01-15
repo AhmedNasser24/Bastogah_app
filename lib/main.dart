@@ -11,6 +11,7 @@ import 'package:toastification/toastification.dart';
 import 'core/dependency_injection/get_it_setup.dart';
 import 'core/local_storage_services/shared_preference_singleton.dart'
     show SharedPreferenceSingleton;
+import 'core/network/connection_service.dart';
 import 'core/simple_bloc_observer.dart';
 import 'core/theme/app_theme.dart';
 
@@ -21,6 +22,7 @@ void main() async {
   await Future.wait([
     EasyLocalization.ensureInitialized(),
     SharedPreferenceSingleton.init(),
+    ConnectionService().initialize(),
   ]);
   Bloc.observer = MyBlocObserver();
   runApp(

@@ -1,24 +1,24 @@
 import '../routing/route_name.dart';
 
-enum RolesEnum {
+enum RoleEnum {
   merchant('merchant', RouteName.login),
   client('client', RouteName.userRegister),
   driver('driver', RouteName.login);
 
   final String title;
   final String routeName;
-  const RolesEnum(this.title, this.routeName);
+  const RoleEnum(this.title, this.routeName);
 
-  static RolesEnum fromValue(String value) {
+  static RoleEnum fromValue(String value) {
     switch (value) {
       case 'merchant':
-        return RolesEnum.merchant;
+        return RoleEnum.merchant;
       case 'client':
-        return RolesEnum.client;
+        return RoleEnum.client;
       case 'driver':
-        return RolesEnum.driver;
+        return RoleEnum.driver;
       default:
-        return RolesEnum.client;
+        return RoleEnum.client;
     }
   }
 }

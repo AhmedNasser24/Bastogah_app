@@ -7,7 +7,7 @@ import '../../../../../core/errors/failure.dart';
 class LoginUseCase {
   final AuthRepo authRepo;
   LoginUseCase({required this.authRepo});
-  Future<Either<Failure, RolesEnum>> call({
+  Future<Either<Failure, RoleEnum>> call({
     required String username,
     required String password,
   }) async {

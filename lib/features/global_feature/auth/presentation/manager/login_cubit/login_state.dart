@@ -7,7 +7,7 @@ class LoginInitial extends LoginState {}
 class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
-  final RolesEnum role;
+  final RoleEnum role;
   LoginSuccess({required this.role});
 }
 

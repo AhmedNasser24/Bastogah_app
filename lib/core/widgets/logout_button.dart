@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/core/theme/app_icons.dart';
 import 'package:bastogah_app/core/widgets/custom_button.dart';
@@ -54,6 +56,7 @@ class LogoutButton extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
+                log("logout");
                 context.go(RouteName.login);
               },
               child: Text(
