@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -6,6 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../core/enums/request_state_enum.dart';
 import '../../../../../../core/network/check_network_connection.dart';
 import '../../../data/model/user_merchant_model.dart';
 import '../../../data/params/user_merchant_param.dart';
@@ -15,7 +17,7 @@ part 'user_merchants_state.dart';
 
 class UserMerchantsCubit extends Cubit<UserMerchantsState> {
   UserMerchantsCubit({required this.userHomeRepo})
-    : super(UserMerchantsInitial());
+    : super(const UserMerchantsState());
   final UserHomeRepo userHomeRepo;
 
   int _skip = 0;
@@ -25,63 +27,106 @@ class UserMerchantsCubit extends Cubit<UserMerchantsState> {
   bool isLoadingMore = false;
   bool isFirstOperation = true;
   StreamSubscription<List<ConnectivityResult>>? _subscription;
-  void fetchMerchants({required UserMerchantParam userMerchantParam}) async {
+
+  @override
+  void emit(UserMerchantsState state) {
+    log("isClosed : $isClosed");
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    log(
+      "---------------------------------------------------------subscription cancelled",
+    );
+    return super.close();
+  }
+
+  void init({required UserMerchantParam userMerchantParam}) async {
     if (!await isThereNetworkConnection()) {
-      _subscription = Connectivity().onConnectivityChanged.listen((result) {
-        if (result.contains(ConnectivityResult.mobile) ||
-            result.contains(ConnectivityResult.wifi) ||
-            result.contains(ConnectivityResult.ethernet)) {
-          CustomToastification.showSuccessToast(
-            message: "internet_connection_restored".tr(),
-          );
-          fetchMerchants(userMerchantParam: userMerchantParam);
-        }
-      });
       CustomToastification.showFailureToast(
         message: "check_your_internet_connection_and_try_again".tr(),
       );
-      return;
-    }
 
+      _subscription = Connectivity().onConnectivityChanged.listen((result) {
+        log(
+          "---------------------------------------------------------subscription opened",
+        );
+        if (!result.contains(ConnectivityResult.none)) {
+          CustomToastification.showSuccessToast(
+            message: "internet_connection_restored".tr(),
+          );
+          log(
+            "-----------------------------------------------------load all data",
+          );
+          loadAllData(userMerchantParam: userMerchantParam);
+        }
+      });
+    } else {
+      loadAllData(userMerchantParam: userMerchantParam);
+    }
+  }
+
+  void loadAllData({required UserMerchantParam userMerchantParam}) {
+    _subscription?.cancel();
+    log(
+      "---------------------------------------------------------subscription cancelled",
+    );
+    loadMerchants(userMerchantParam: userMerchantParam);
+  }
+
+  void loadMerchants({required UserMerchantParam userMerchantParam}) async {
     _skip = 0;
     moreItem = true;
     merchants.clear();
 
-    emit(UserMerchantsLoading());
+    emit(state.copyWith(userMerchantsRequestState: RequestStateEnum.loading));
     userMerchantParam.skip = _skip;
     var result = await userHomeRepo.getMerchants(
       userMerchantParam: userMerchantParam,
     );
     result.fold(
-      (failure) => emit(UserMerchantsFailure(errorMessage: failure.errMessage)),
+      (failure) => emit(
+        state.copyWith(
+          userMerchantsRequestState: RequestStateEnum.failure,
+          errMessage: failure.errMessage,
+        ),
+      ),
       (merchants) {
         moreItem = merchants.length == maxItem;
         this.merchants = merchants;
         if (moreItem) {
           _skip += 20;
         }
-        _subscription?.cancel();
         isFirstOperation = false;
         emit(
-          UserMerchantsSuccessFull(
+          state.copyWith(
+            userMerchantsRequestState: RequestStateEnum.success,
             merchants: this.merchants,
             moreItem: moreItem,
+            isFirstOperation: isFirstOperation,
           ),
         );
       },
     );
   }
 
-  void fetchMoreMerchants({
-    required UserMerchantParam userMerchantParam,
-  }) async {
+  void loadMoreMerchants({required UserMerchantParam userMerchantParam}) async {
     if (!moreItem) return;
     isLoadingMore = true;
     var result = await userHomeRepo.getMerchants(
       userMerchantParam: userMerchantParam,
     );
     result.fold(
-      (failure) => emit(UserMerchantsFailure(errorMessage: failure.errMessage)),
+      (failure) => emit(
+        state.copyWith(
+          userMerchantsRequestState: RequestStateEnum.failure,
+          errMessage: failure.errMessage,
+        ),
+      ),
       (merchants) {
         moreItem = merchants.length == maxItem;
         this.merchants.addAll(merchants);
@@ -89,9 +134,11 @@ class UserMerchantsCubit extends Cubit<UserMerchantsState> {
           _skip += 20;
         }
         emit(
-          UserMerchantsSuccessFull(
+          state.copyWith(
+            userMerchantsRequestState: RequestStateEnum.success,
             merchants: this.merchants,
             moreItem: moreItem,
+            isLoadingMore: isLoadingMore,
           ),
         );
       },
@@ -104,14 +151,9 @@ class UserMerchantsCubit extends Cubit<UserMerchantsState> {
       CustomToastification.showFailureToast(
         message: "check_your_internet_connection_and_try_again".tr(),
       );
+      return;
     }
     isFirstOperation = true;
-    fetchMerchants(userMerchantParam: userMerchantParam);
-  }
-
-  @override
-  Future<void> close() {
-    _subscription?.cancel();
-    return super.close();
+    loadMerchants(userMerchantParam: userMerchantParam);
   }
 }

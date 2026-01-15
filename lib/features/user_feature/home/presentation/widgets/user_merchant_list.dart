@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/enums/request_state_enum.dart';
 import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +29,7 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
   @override
   void initState() {
     userMerchantsCubit = getIt<UserMerchantsCubit>();
-    userMerchantsCubit.fetchMerchants(
+    userMerchantsCubit.loadMerchants(
       userMerchantParam: widget.userMerchantParam,
     );
     controller.addListener(() {
@@ -36,7 +37,7 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
               controller.position.maxScrollExtent - 200 &&
           userMerchantsCubit.moreItem &&
           !userMerchantsCubit.isLoadingMore) {
-        userMerchantsCubit.fetchMoreMerchants(
+        userMerchantsCubit.loadMoreMerchants(
           userMerchantParam: widget.userMerchantParam,
         );
       }
@@ -61,17 +62,22 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
       },
       child: BlocConsumer<UserMerchantsCubit, UserMerchantsState>(
         listener: (context, state) {
-          if (state is UserMerchantsFailure) {
-            CustomToastification.showFailureToast(message: state.errorMessage);
+          if (state.userMerchantsRequestState == RequestStateEnum.failure) {
+            // CustomToastification.showFailureToast(message: state.errMessage);
           }
+        },
+        buildWhen: (previous, current) {
+          return previous.userMerchantsRequestState !=
+              current.userMerchantsRequestState;
         },
         builder: (context, state) {
           bool isFirstOperation = BlocProvider.of<UserMerchantsCubit>(
             context,
           ).isFirstOperation;
-          if (state is UserMerchantsLoading ||
-              state is UserMerchantsInitial ||
-              (state is UserMerchantsFailure && isFirstOperation)) {
+          if (state.userMerchantsRequestState == RequestStateEnum.loading ||
+              state.userMerchantsRequestState == RequestStateEnum.initial ||
+              (state.userMerchantsRequestState == RequestStateEnum.failure &&
+                  isFirstOperation)) {
             return GridView.builder(
               physics: const BouncingScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

@@ -33,13 +33,13 @@ class _UserMerchantsViewState extends State<UserMerchantsView> {
       categoryId: widget.merchantCategoryModel.id!,
     );
     userMerchantsCubit = getIt<UserMerchantsCubit>();
-    userMerchantsCubit.fetchMerchants(userMerchantParam: userMerchantParam);
+    userMerchantsCubit.init(userMerchantParam: userMerchantParam);
     controller.addListener(() {
       if (controller.position.pixels >=
               controller.position.maxScrollExtent - 200 &&
           userMerchantsCubit.moreItem &&
           !userMerchantsCubit.isLoadingMore) {
-        userMerchantsCubit.fetchMoreMerchants(
+        userMerchantsCubit.loadMoreMerchants(
           userMerchantParam: userMerchantParam,
         );
       }
@@ -59,7 +59,7 @@ class _UserMerchantsViewState extends State<UserMerchantsView> {
     if (_debounce?.isActive ?? false) _debounce!.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
       userMerchantParam.searchText = query;
-      userMerchantsCubit.fetchMerchants(userMerchantParam: userMerchantParam);
+      userMerchantsCubit.loadMerchants(userMerchantParam: userMerchantParam);
     });
   }
 

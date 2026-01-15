@@ -29,6 +29,15 @@ class UserHomeCubit extends Cubit<UserHomeState> {
     }
   }
 
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    log(
+      "---------------------------------------------------------subscription cancelled",
+    );
+    return super.close();
+  }
+
   void init() async {
     if (!await isThereNetworkConnection()) {
       CustomToastification.showFailureToast(
@@ -64,22 +73,6 @@ class UserHomeCubit extends Cubit<UserHomeState> {
   }
 
   Future<void> loadSliders() async {
-    // if (!await isThereNetworkConnection()) {
-    //   _subscription = Connectivity().onConnectivityChanged.listen((result) {
-    //     if (result.contains(ConnectivityResult.mobile) ||
-    //         result.contains(ConnectivityResult.wifi) ||
-    //         result.contains(ConnectivityResult.ethernet)) {
-    //       CustomToastification.showSuccessToast(
-    //         message: "internet_connection_restored".tr(),
-    //       );
-    //       getSliders();
-    //     }
-    //   });
-    //   CustomToastification.showFailureToast(
-    //     message: "check_your_internet_connection_and_try_again".tr(),
-    //   );
-    //   return;
-    // }
     emit(state.copyWith(sliderRequestState: RequestStateEnum.loading));
     final result = await userHomeRepo.getSliders();
     result.fold(
@@ -104,19 +97,6 @@ class UserHomeCubit extends Cubit<UserHomeState> {
   }
 
   Future<void> loadMerchantCategories() async {
-    // if (!await isThereNetworkConnection()) {
-    //   _subscription = Connectivity().onConnectivityChanged.listen((result) {
-    //     if (result.contains(ConnectivityResult.mobile) ||
-    //         result.contains(ConnectivityResult.wifi) ||
-    //         result.contains(ConnectivityResult.ethernet)) {
-    //       // CustomToastification.showSuccessToast(             make this message in one end point in each page , and it made in slider_cubit
-    //       //   message: "internet_connection_restored".tr(),
-    //       // );
-    //       getMerchantCategories();
-    //     }
-    //   });
-    //   return;
-    // }
     emit(
       state.copyWith(merchantCategoriesRequestState: RequestStateEnum.loading),
     );
@@ -139,14 +119,5 @@ class UserHomeCubit extends Cubit<UserHomeState> {
         );
       },
     );
-  }
-
-  @override
-  Future<void> close() {
-    _subscription?.cancel();
-    log(
-      "---------------------------------------------------------subscription cancelled",
-    );
-    return super.close();
   }
 }
