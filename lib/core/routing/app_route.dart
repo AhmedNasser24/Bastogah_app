@@ -24,6 +24,27 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: RouteName.userHome,
+  // refreshListenable: ConnectionService(),
+  // redirect: (context, state) {
+  //   final isConnected = ConnectionService().isConnected;
+  //   final isNoInternetPage = state.matchedLocation == RouteName.noInternet;
+
+  //   if (!isConnected && !isNoInternetPage) {
+  //     return RouteName.noInternet;
+  //   }
+
+  //   if (isConnected && isNoInternetPage) {
+  //     final role = getRoleEnum();
+  //     if (role == RoleEnum.driver) {
+  //       return RouteName.driverAppLayout;
+  //     } else if (role == RoleEnum.merchant) {
+  //       return RouteName.merchantLayout;
+  //     } else {
+  //       return RouteName.customerAppLayout;
+  //     }
+  //   }
+  //   return null;
+  // },
   routes: [
     GoRoute(
       path: RouteName.splash,

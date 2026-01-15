@@ -28,7 +28,6 @@ import '../../features/merchant_feature/home/presentation/manager/merchant_get_o
 import '../../features/user_feature/cart/presentation/manager/cart_cubit/cart_cubit.dart';
 import '../../features/user_feature/home/data/repo/user_home_repo_impl.dart';
 import '../../features/user_feature/home/domain/repo/user_home_repo.dart';
-import '../../features/user_feature/home/presentation/manager/merchant_categories_cubit/merchant_categories_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/home_cubit/user_home_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/user_merchants_cubit/user_merchants_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/user_products_cubit/user_products_cubit.dart';
@@ -126,9 +125,7 @@ void getItSetup() {
   getIt.registerFactory<UserHomeCubit>(
     () => UserHomeCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
   );
-  getIt.registerFactory<MerchantCategoriesCubit>(
-    () => MerchantCategoriesCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
-  );
+
   getIt.registerFactory<UserMerchantsCubit>(
     () => UserMerchantsCubit(userHomeRepo: getIt.get<UserHomeRepo>()),
   );

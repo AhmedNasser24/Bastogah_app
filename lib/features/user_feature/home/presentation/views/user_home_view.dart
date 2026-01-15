@@ -9,7 +9,6 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/widgets/custom_search_field.dart';
-import '../manager/merchant_categories_cubit/merchant_categories_cubit.dart';
 import '../manager/home_cubit/user_home_cubit.dart';
 import '../widgets/user_merchant_categories.dart';
 import '../widgets/sliver_list_of_user_product_items.dart';
@@ -25,17 +24,15 @@ class UserHomeView extends StatefulWidget {
 
 class _UserHomeViewState extends State<UserHomeView> {
   late UserHomeCubit userHomeCubit;
-  late MerchantCategoriesCubit merchantCategoriesCubit;
   late ProfileCubit profileCubit;
   @override
   void initState() {
     super.initState();
 
     userHomeCubit = getIt<UserHomeCubit>()..init();
-    // merchantCategoriesCubit = getIt<MerchantCategoriesCubit>()
-    //   ..getMerchantCategories();
-    profileCubit = getIt<ProfileCubit>()
-      ..getProfile(); // to check if it is active or not and this handle in cubit
+
+    // profileCubit = getIt<ProfileCubit>()
+    //   ..getProfile(); // to check if it is active or not and this handle in cubit
   }
 
   @override

@@ -54,6 +54,7 @@ class CustomToastification {
       type: type,
       style: ToastificationStyle.fillColored,
       primaryColor: primaryColor,
+
       title: Text(
         message,
         style: const TextStyle(
@@ -66,7 +67,7 @@ class CustomToastification {
       borderRadius: BorderRadius.circular(24),
       alignment: kIsWeb ? AlignmentDirectional.topEnd : Alignment.topCenter,
 
-      autoCloseDuration: const Duration(seconds: 4),
+      autoCloseDuration: const Duration(seconds: 3),
       showProgressBar: false,
       closeOnClick: false,
       dragToClose: true,

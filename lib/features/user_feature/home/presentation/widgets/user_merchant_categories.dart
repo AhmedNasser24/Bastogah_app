@@ -2,12 +2,13 @@ import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
 import 'package:bastogah_app/core/widgets/custom_cached_image.dart';
 import 'package:bastogah_app/core/widgets/custom_skeletonizer.dart';
-import 'package:bastogah_app/features/user_feature/home/presentation/manager/merchant_categories_cubit/merchant_categories_cubit.dart';
+import 'package:bastogah_app/features/user_feature/home/presentation/manager/home_cubit/user_home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/enums/request_state_enum.dart';
 import '../../../../../core/routing/route_name.dart';
 import '../../data/model/merchant_category_model.dart';
 
@@ -26,11 +27,12 @@ class _UserMerchantCategoriesState extends State<UserMerchantCategories> {
         height: 100,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: BlocBuilder<MerchantCategoriesCubit, MerchantCategoriesState>(
+          child: BlocBuilder<UserHomeCubit, UserHomeState>(
             builder: (context, state) {
-              if (state is MerchantCategoriesSuccess) {
+              if (state.merchantCategoriesRequestState ==
+                  RequestStateEnum.success) {
                 return Row(
-                  children: state.merchantCategories
+                  children: state.merchantCategoryList
                       .map(
                         (merchantCategory) => GestureDetector(
                           onTap: () {

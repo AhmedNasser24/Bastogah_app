@@ -2,11 +2,15 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bastogah_app/features/user_feature/home/data/model/merchant_category_model.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 // import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/enums/request_state_enum.dart';
+import '../../../../../../core/network/check_network_connection.dart';
+import '../../../../../../core/widgets/custom_toast/custom_toastification.dart';
 import '../../../data/model/slider_model.dart';
 import '../../../domain/repo/user_home_repo.dart';
 
@@ -15,7 +19,7 @@ part 'user_home_state.dart';
 class UserHomeCubit extends Cubit<UserHomeState> {
   UserHomeCubit({required this.userHomeRepo}) : super(const UserHomeState());
   final UserHomeRepo userHomeRepo;
-  // StreamSubscription<List<ConnectivityResult>>? _subscription;
+  StreamSubscription<List<ConnectivityResult>>? _subscription;
 
   @override
   void emit(UserHomeState state) {
@@ -25,13 +29,38 @@ class UserHomeCubit extends Cubit<UserHomeState> {
     }
   }
 
-  void init() {
-    loadAllData();
+  void init() async {
+    if (!await isThereNetworkConnection()) {
+      CustomToastification.showFailureToast(
+        message: "check_your_internet_connection_and_try_again".tr(),
+      );
+
+      _subscription = Connectivity().onConnectivityChanged.listen((result) {
+        log(
+          "---------------------------------------------------------subscription opened",
+        );
+        if (!result.contains(ConnectivityResult.none)) {
+          CustomToastification.showSuccessToast(
+            message: "internet_connection_restored".tr(),
+          );
+          log(
+            "-----------------------------------------------------load all data",
+          );
+          loadAllData();
+        }
+      });
+    } else {
+      loadAllData();
+    }
   }
 
   void loadAllData() {
+    _subscription?.cancel();
+    log(
+      "---------------------------------------------------------subscription cancelled",
+    );
     loadSliders();
-    // loadMerchantCategories(),
+    loadMerchantCategories();
   }
 
   Future<void> loadSliders() async {
@@ -52,11 +81,9 @@ class UserHomeCubit extends Cubit<UserHomeState> {
     //   return;
     // }
     emit(state.copyWith(sliderRequestState: RequestStateEnum.loading));
-    log("loading");
     final result = await userHomeRepo.getSliders();
     result.fold(
       (failure) {
-        log("failure");
         emit(
           state.copyWith(
             sliderRequestState: RequestStateEnum.failure,
@@ -66,7 +93,6 @@ class UserHomeCubit extends Cubit<UserHomeState> {
       },
       (sliders) {
         // _subscription?.cancel();
-        log("success");
         emit(
           state.copyWith(
             sliderRequestState: RequestStateEnum.success,
@@ -75,5 +101,52 @@ class UserHomeCubit extends Cubit<UserHomeState> {
         );
       },
     );
+  }
+
+  Future<void> loadMerchantCategories() async {
+    // if (!await isThereNetworkConnection()) {
+    //   _subscription = Connectivity().onConnectivityChanged.listen((result) {
+    //     if (result.contains(ConnectivityResult.mobile) ||
+    //         result.contains(ConnectivityResult.wifi) ||
+    //         result.contains(ConnectivityResult.ethernet)) {
+    //       // CustomToastification.showSuccessToast(             make this message in one end point in each page , and it made in slider_cubit
+    //       //   message: "internet_connection_restored".tr(),
+    //       // );
+    //       getMerchantCategories();
+    //     }
+    //   });
+    //   return;
+    // }
+    emit(
+      state.copyWith(merchantCategoriesRequestState: RequestStateEnum.loading),
+    );
+    final result = await userHomeRepo.getMerchantCategories();
+    result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            merchantCategoriesRequestState: RequestStateEnum.failure,
+            errMessage: failure.errMessage,
+          ),
+        );
+      },
+      (merchantCategories) {
+        emit(
+          state.copyWith(
+            merchantCategoriesRequestState: RequestStateEnum.success,
+            merchantCategoryList: merchantCategories,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    log(
+      "---------------------------------------------------------subscription cancelled",
+    );
+    return super.close();
   }
 }
