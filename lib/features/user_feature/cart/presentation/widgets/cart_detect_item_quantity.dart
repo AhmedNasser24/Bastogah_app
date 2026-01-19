@@ -1,11 +1,9 @@
 import 'package:bastogah_app/core/local_storage_data/local_storage_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../data/model/cart_model.dart';
-import '../manager/cart_cubit/cart_cubit.dart';
 
 class CartDetectItemQuantity extends StatefulWidget {
   const CartDetectItemQuantity({super.key, this.cartModel});

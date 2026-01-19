@@ -1,5 +1,4 @@
 import 'package:bastogah_app/core/enums/request_state_enum.dart';
-import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

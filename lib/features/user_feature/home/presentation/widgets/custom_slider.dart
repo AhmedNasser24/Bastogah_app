@@ -10,6 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../../core/widgets/custom_cached_image.dart';
 import '../../../../../core/widgets/custom_skeletonizer.dart';
+import 'youtube_slider_item.dart';
 
 class CustomSlider extends StatefulWidget {
   const CustomSlider({super.key});
@@ -26,6 +27,7 @@ class _CustomSliderState extends State<CustomSlider> {
   ];
 
   int _currentIndex = 0;
+  bool _isVideoPlaying = false;
   final CarouselSliderController _carouselController =
       CarouselSliderController();
   @override
@@ -92,38 +94,53 @@ class _CustomSliderState extends State<CustomSlider> {
             children: [
               CarouselSlider(
                 carouselController: _carouselController,
-                items: state.sliderList
-                    .map(
-                      (item) => GestureDetector(
-                        onTap: () {
-                          if (item.merchant?.id != null) {
-                            // context.push(
-                            //   RouteName.userProductDetails,
-                            //   extra: UserMerchantModel(
-                            //     id: item.merchant?.id,
-                            //     displayName: item.merchant?.displayName,
-                            //     image: item.merchant?.image,
-                            //   ),
-                            // );
+                items: state.sliderList.map((item) {
+                  if (item.videoLink != null && item.videoLink!.isNotEmpty) {
+                    return Container(
+                      margin: const EdgeInsets.all(5.0),
+                      width: double.infinity,
+                      child: YoutubeSliderItem(
+                        videoUrl: item.videoLink!,
+                        onVideoPlayStateChanged: (isPlaying) {
+                          if (_isVideoPlaying != isPlaying) {
+                            setState(() {
+                              _isVideoPlaying = isPlaying;
+                            });
                           }
-                          // context.push(RouteName.userMerchants);
                         },
-                        child: Container(
-                          margin: const EdgeInsets.all(5.0),
-                          width: double.infinity,
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(10.0),
-                            ),
-                            // child: Image.asset(item, fit: BoxFit.cover),
-                            child: CustomCachedImage(
-                              imagePath: item.image ?? "",
-                            ),
-                          ),
-                        ),
+                        onVideoFinished: () {
+                          _carouselController.nextPage();
+                        },
                       ),
-                    )
-                    .toList(),
+                    );
+                  }
+                  return GestureDetector(
+                    onTap: () {
+                      if (item.merchant?.id != null) {
+                        // context.push(
+                        //   RouteName.userProductDetails,
+                        //   extra: UserMerchantModel(
+                        //     id: item.merchant?.id,
+                        //     displayName: item.merchant?.displayName,
+                        //     image: item.merchant?.image,
+                        //   ),
+                        // );
+                      }
+                      // context.push(RouteName.userMerchants);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(5.0),
+                      width: double.infinity,
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10.0),
+                        ),
+                        // child: Image.asset(item, fit: BoxFit.cover),
+                        child: CustomCachedImage(imagePath: item.image ?? ""),
+                      ),
+                    ),
+                  );
+                }).toList(),
                 options: carouselOptions(context),
               ),
               const Gap(16),
@@ -135,6 +152,10 @@ class _CustomSliderState extends State<CustomSlider> {
                   dotHeight: 10,
                 ), // You can customize this further
                 onDotClicked: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                    _isVideoPlaying = false;
+                  });
                   _carouselController.animateToPage(
                     index,
                     duration: const Duration(milliseconds: 800),
@@ -155,7 +176,7 @@ class _CustomSliderState extends State<CustomSlider> {
           ? 190
           : 160.0, // Removed to use aspect ratio
 
-      autoPlay: true,
+      autoPlay: !_isVideoPlaying,
       enlargeCenterPage: true,
       aspectRatio: 16 / 9,
       autoPlayCurve: Curves.fastOutSlowIn,
@@ -165,6 +186,9 @@ class _CustomSliderState extends State<CustomSlider> {
       onPageChanged: (index, reason) {
         setState(() {
           _currentIndex = index;
+          // if (reason == CarouselPageChangedReason.manual) {
+          //   _isVideoPlaying = false;
+          // }
         });
       },
     );

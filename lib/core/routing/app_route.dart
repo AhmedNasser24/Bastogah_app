@@ -10,6 +10,7 @@ import '../../features/global_feature/auth/presentation/views/user_register_view
 import '../../features/global_feature/common/presentation/views/help_support_view.dart';
 import '../../features/global_feature/common/presentation/views/notification_view.dart';
 import '../../features/global_feature/common/presentation/views/privacy_view.dart';
+import '../../video_test.dart';
 import 'router_animation.dart';
 import 'routes/merchant_routes.dart';
 
@@ -46,6 +47,14 @@ GoRouter appRouter = GoRouter(
   //   return null;
   // },
   routes: [
+    GoRoute(
+      path: "/video",
+      pageBuilder: (context, state) => buildPageWithSlideTransition(
+        context: context,
+        state: state,
+        child: const VideoApp(),
+      ),
+    ),
     GoRoute(
       path: RouteName.splash,
       pageBuilder: (context, state) => buildPageWithSlideTransition(
