@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:bastogah_app/core/widgets/custom_refresh_indicator.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/widgets/custom_slider.dart';
 import 'package:bastogah_app/features/user_feature/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:bastogah_app/features/user_feature/user_layout/presentation/widgets/user_app_bar.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/dependency_injection/get_it_setup.dart';
+import '../../../../../core/global/global_index.dart';
 import '../../../../../core/widgets/custom_search_field.dart';
 import '../manager/home_cubit/user_home_cubit.dart';
 import '../widgets/user_merchant_categories.dart';
@@ -28,8 +30,8 @@ class _UserHomeViewState extends State<UserHomeView> {
   @override
   void initState() {
     super.initState();
-
     userHomeCubit = getIt<UserHomeCubit>()..init();
+    isViewVisited[0] = true;
 
     // profileCubit = getIt<ProfileCubit>()
     //   ..getProfile(); // to check if it is active or not and this handle in cubit
@@ -39,24 +41,29 @@ class _UserHomeViewState extends State<UserHomeView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => userHomeCubit,
-      child: const Column(
+      child: Column(
         children: [
-          UserAppBar(address: "بغداد,العراق"),
-          CustomSearchField(),
-          Gap(12),
+          const UserAppBar(address: "بغداد,العراق"),
+          const CustomSearchField(),
+          const Gap(12),
           Expanded(
-            child: CustomScrollView(
-              slivers: [
-                SliverGap(16),
-                SliverToBoxAdapter(child: UserMerchantCategories()),
-                SliverGap(16),
-                SliverToBoxAdapter(child: CustomSlider()),
-                SliverGap(16),
-                SliverToBoxAdapter(child: UserHomeFilter()),
-                SliverGap(16),
-                SliverListOfUserStoreItems(),
-                // SliverListOfUserProductItems(),
-              ],
+            child: CustomRefreshIndicator(
+              onRefresh: () async {
+                userHomeCubit.refresh();
+              },
+              child: const CustomScrollView(
+                slivers: [
+                  SliverGap(16),
+                  SliverToBoxAdapter(child: UserMerchantCategories()),
+                  SliverGap(16),
+                  SliverToBoxAdapter(child: CustomSlider()),
+                  SliverGap(16),
+                  SliverToBoxAdapter(child: UserHomeFilter()),
+                  SliverGap(16),
+                  SliverListOfUserStoreItems(),
+                  // SliverListOfUserProductItems(),
+                ],
+              ),
             ),
           ),
         ],

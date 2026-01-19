@@ -27,64 +27,86 @@ import '../../../features/user_feature/profile/presentation/views/user_saved_add
 import '../../../features/user_feature/user_layout/presentation/views/user_layout.dart';
 
 List<RouteBase> userRoutes = [
-  ShellRoute(
-    pageBuilder: (context, state, child) {
+  StatefulShellRoute.indexedStack(
+    pageBuilder: (context, state, navigationShell) {
       return buildPageWithSlideTransition(
         context: context,
         state: state,
-        child: UserLayout(child: child),
+        child: UserLayout(child: navigationShell),
       );
     },
-    routes: [
-      GoRoute(
-        path: RouteName.userHome,
-        pageBuilder: (context, state) => buildPageWithSlideTransition(
-          context: context,
-          state: state,
-          child: const UserHomeView(),
-        ),
-      ),
-      GoRoute(
-        path: RouteName.userMerchants,
-        pageBuilder: (context, state) => buildPageWithSlideTransition(
-          context: context,
-          state: state,
-          child: UserMerchantsView(
-            merchantCategoryModel: state.extra as MerchantCategoryModel,
+    branches: [
+      StatefulShellBranch(
+        routes: [
+          GoRoute(
+            path: RouteName.userHome,
+            pageBuilder: (context, state) => buildPageWithSlideTransition(
+              context: context,
+              state: state,
+              child: const UserHomeView(),
+            ),
+            routes: [
+              GoRoute(
+                path: RouteName.userMerchants,
+                pageBuilder: (context, state) => buildPageWithSlideTransition(
+                  context: context,
+                  state: state,
+                  child: UserMerchantsView(
+                    merchantCategoryModel: state.extra as MerchantCategoryModel,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
+        ],
       ),
-      GoRoute(
-        path: RouteName.userOrders,
-        pageBuilder: (context, state) => buildPageWithSlideTransition(
-          context: context,
-          state: state,
-          child: const UserOrdersView(),
-        ),
+      StatefulShellBranch(
+        routes: [
+          GoRoute(
+            path: RouteName.userOrders,
+            pageBuilder: (context, state) => buildPageWithSlideTransition(
+              context: context,
+              state: state,
+              child: const UserOrdersView(),
+            ),
+          ),
+        ],
       ),
-      GoRoute(
-        path: RouteName.userOffers,
-        pageBuilder: (context, state) => buildPageWithSlideTransition(
-          context: context,
-          state: state,
-          child: const UserOffersView(),
-        ),
+      StatefulShellBranch(
+        routes: [
+          GoRoute(
+            path: RouteName.userOffers,
+            pageBuilder: (context, state) => buildPageWithSlideTransition(
+              context: context,
+              state: state,
+              child: const UserOffersView(),
+            ),
+          ),
+        ],
       ),
-      GoRoute(
-        path: RouteName.userFavorites,
-        pageBuilder: (context, state) => buildPageWithSlideTransition(
-          context: context,
-          state: state,
-          child: const UserFavouriteView(),
-        ),
+      StatefulShellBranch(
+        routes: [
+          GoRoute(
+            path: RouteName.userFavorites,
+            pageBuilder: (context, state) => buildPageWithSlideTransition(
+              context: context,
+              state: state,
+              child: const UserFavouriteView(),
+            ),
+          ),
+        ],
       ),
-      GoRoute(
-        path: RouteName.userProfile,
-        pageBuilder: (context, state) => buildPageWithSlideTransition(
-          context: context,
-          state: state,
-          child: const UserProfileView(),
-        ),
+      StatefulShellBranch(
+        routes: [
+          GoRoute(
+            path: RouteName.userProfile,
+            pageBuilder: (context, state) => buildPageWithSlideTransition(
+              context: context,
+              state: state,
+              child: const UserProfileView(),
+            ),
+          ),
+        ],
       ),
     ],
   ),

@@ -8,19 +8,17 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/theme/app_font_style.dart';
 
-class CustomMerchantBottomNavBar extends StatefulWidget {
-  const CustomMerchantBottomNavBar({super.key});
+class MerchantBottomNavBar extends StatefulWidget {
+  const MerchantBottomNavBar({super.key});
 
   @override
-  State<CustomMerchantBottomNavBar> createState() =>
-      _CustomMerchantBottomNavBarState();
+  State<MerchantBottomNavBar> createState() => _MerchantBottomNavBarState();
 }
 
-class _CustomMerchantBottomNavBarState
-    extends State<CustomMerchantBottomNavBar> {
+class _MerchantBottomNavBarState extends State<MerchantBottomNavBar> {
   bool isSelected(int index) {
-    String currentPath = GoRouterState.of(context).uri.path;
-    return currentPath == merchantBottomBarItems[index].routeName;
+    String currentPath = GoRouterState.of(context).uri.toString();
+    return currentPath.startsWith(merchantBottomBarItems[index].routeName);
   }
 
   @override

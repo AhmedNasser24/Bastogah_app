@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/routing/route_name.dart';
 import '../../../../../core/theme/app_font_style.dart';
 
 class UserBottomNavBar extends StatefulWidget {
@@ -18,13 +17,8 @@ class UserBottomNavBar extends StatefulWidget {
 
 class _UserBottomNavBarState extends State<UserBottomNavBar> {
   bool isSelected(int index) {
-    String currentPath = GoRouterState.of(context).uri.path;
-    if (index == 0) {
-      return currentPath == userBottomBarItems[index].routeName ||
-          currentPath ==
-              RouteName.userMerchants; // user merchant is inside home
-    }
-    return currentPath == userBottomBarItems[index].routeName;
+    String currentPath = GoRouterState.of(context).uri.toString();
+    return currentPath.startsWith(userBottomBarItems[index].routeName);
   }
 
   @override

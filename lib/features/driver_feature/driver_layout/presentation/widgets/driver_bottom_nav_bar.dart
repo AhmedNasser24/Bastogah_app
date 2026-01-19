@@ -17,8 +17,8 @@ class DriverBottomNavBar extends StatefulWidget {
 
 class _DriverBottomNavBarState extends State<DriverBottomNavBar> {
   bool isSelected(int index) {
-    String currentPath = GoRouterState.of(context).uri.path;
-    return currentPath == driverBottomBarItems[index].routeName;
+    String currentPath = GoRouterState.of(context).uri.toString();
+    return currentPath.startsWith(driverBottomBarItems[index].routeName);
   }
 
   @override

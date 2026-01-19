@@ -26,10 +26,7 @@ class CartIconButton extends StatelessWidget {
           ValueListenableBuilder(
             valueListenable: LocalStorageData.cartsNotifier,
             builder: (context, carts, child) {
-              int count = 0;
-              for (var cart in carts) {
-                count += cart.quantity;
-              }
+              int count = carts.length;
               return count > 0
                   ? Positioned(
                       right: -6,

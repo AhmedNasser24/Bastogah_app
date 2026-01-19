@@ -120,4 +120,14 @@ class UserHomeCubit extends Cubit<UserHomeState> {
       },
     );
   }
+
+  void refresh() async {
+    if (!await isThereNetworkConnection()) {
+      CustomToastification.showFailureToast(
+        message: "check_your_internet_connection_and_try_again".tr(),
+      );
+    } else {
+      init();
+    }
+  }
 }

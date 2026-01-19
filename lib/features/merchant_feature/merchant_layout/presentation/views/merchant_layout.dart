@@ -13,7 +13,7 @@ class MerchantLayout extends StatelessWidget {
           child: child,
         ),
       ),
-      bottomNavigationBar: const CustomMerchantBottomNavBar(),
+      bottomNavigationBar: const MerchantBottomNavBar(),
     );
   }
 }

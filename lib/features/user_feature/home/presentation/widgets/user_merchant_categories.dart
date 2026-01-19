@@ -37,7 +37,7 @@ class _UserMerchantCategoriesState extends State<UserMerchantCategories> {
                         (merchantCategory) => GestureDetector(
                           onTap: () {
                             context.push(
-                              RouteName.userMerchants,
+                              "${RouteName.userHome}/${RouteName.userMerchants}",
                               extra: merchantCategory,
                             );
                           },
