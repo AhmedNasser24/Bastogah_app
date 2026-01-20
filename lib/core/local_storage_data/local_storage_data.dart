@@ -4,11 +4,9 @@ import 'dart:developer';
 import 'package:bastogah_app/core/constant/constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:bastogah_app/core/local_storage_services/shared_preference_singleton.dart';
-import 'package:bastogah_app/core/widgets/custom_toast/custom_toastification.dart';
 import 'package:bastogah_app/features/user_feature/cart/data/model/cart_model.dart';
 import 'package:bastogah_app/features/user_feature/home/data/model/user_merchant_model.dart';
 import 'package:bastogah_app/features/user_feature/profile/data/model/profile_model.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class LocalStorageData {
   static ProfileModel getProfile() {

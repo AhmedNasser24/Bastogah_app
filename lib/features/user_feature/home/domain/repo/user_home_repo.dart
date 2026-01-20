@@ -5,8 +5,8 @@ import '../../../../../core/errors/failure.dart';
 import '../../data/model/merchant_category_model.dart';
 import '../../data/model/user_merchant_model.dart';
 import '../../data/model/user_product_model.dart';
-import '../../data/params/user_merchant_param.dart';
-import '../../data/params/user_product_param.dart';
+import '../../../../../core/params/user_merchant_param.dart';
+import '../../../../../core/params/user_product_param.dart';
 
 abstract class UserHomeRepo {
   Future<Either<Failure, List<SliderModel>>> getSliders();

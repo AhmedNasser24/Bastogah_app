@@ -16,7 +16,7 @@ class MerchantHomeRemoteDataSourceImpl extends MerchantHomeRemoteDataSource {
     required int status,
   }) async {
     var body = await apiConsumer.get(
-      EndPoint.merchantGetOrders,
+      EndPoint.orders,
       queryParameters: {
         ApiKeys.merchant: SharedPreferenceSingleton.getString(ApiKeys.userId),
         ApiKeys.skip: skip,

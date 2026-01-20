@@ -11,7 +11,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/widgets/notification_icon_button.dart';
-import '../../data/params/user_merchant_param.dart';
+import '../../../../../core/params/user_merchant_param.dart';
 import '../manager/user_merchants_cubit/user_merchants_cubit.dart';
 import '../widgets/user_merchant_list.dart';
 

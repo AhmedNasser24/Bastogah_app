@@ -10,7 +10,7 @@ import '../../../../../core/widgets/custom_refresh_indicator.dart';
 import '../../../../../core/widgets/custom_skeletonizer.dart';
 import '../../../favourites/presentation/widgets/user_merchant_item.dart';
 import '../../data/model/user_merchant_model.dart';
-import '../../data/params/user_merchant_param.dart';
+import '../../../../../core/params/user_merchant_param.dart';
 import '../manager/user_merchants_cubit/user_merchants_cubit.dart';
 
 class UserMerchantsList extends StatefulWidget {

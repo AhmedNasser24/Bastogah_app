@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/enums/request_state_enum.dart';
 import '../../../../../../core/network/check_network_connection.dart';
 import '../../../data/model/user_merchant_model.dart';
-import '../../../data/params/user_merchant_param.dart';
+import '../../../../../../core/params/user_merchant_param.dart';
 import '../../../domain/repo/user_home_repo.dart';
 
 part 'user_merchants_state.dart';

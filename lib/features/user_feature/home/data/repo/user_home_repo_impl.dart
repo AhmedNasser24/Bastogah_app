@@ -10,8 +10,8 @@ import 'package:dio/dio.dart';
 import '../../domain/repo/user_home_repo.dart';
 import '../model/user_merchant_model.dart';
 import '../model/user_product_model.dart';
-import '../params/user_merchant_param.dart';
-import '../params/user_product_param.dart';
+import '../../../../../core/params/user_merchant_param.dart';
+import '../../../../../core/params/user_product_param.dart';
 
 class UserHomeRepoImpl implements UserHomeRepo {
   final UserHomeDataSource userHomeDataSource;

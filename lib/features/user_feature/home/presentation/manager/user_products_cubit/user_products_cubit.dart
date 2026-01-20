@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/enums/request_state_enum.dart';
 import '../../../../../../core/network/check_network_connection.dart';
 import '../../../data/model/user_product_model.dart';
-import '../../../data/params/user_product_param.dart';
+import '../../../../../../core/params/user_product_param.dart';
 import '../../../domain/repo/user_home_repo.dart';
 part 'user_products_state.dart';
 

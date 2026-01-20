@@ -7,6 +7,7 @@ import 'package:bastogah_app/features/merchant_feature/home/domain/repo/home_rep
 import 'package:bastogah_app/features/user_feature/favourites/presentation/manager/favourite_cubit/favourite_cubit.dart';
 import 'package:bastogah_app/features/user_feature/home/data/data_source/user_home_data_source.dart';
 import 'package:bastogah_app/features/user_feature/home/data/data_source/user_home_data_source_impl.dart';
+import 'package:bastogah_app/features/user_feature/my_order/data/data_source/remote_data_source/my_order_remote_data_source_impl.dart';
 import 'package:bastogah_app/features/user_feature/profile/data/repo/profile_repo_impl.dart';
 import 'package:bastogah_app/features/user_feature/profile/domain/repo/profile_repo.dart';
 import 'package:bastogah_app/features/user_feature/profile/presentation/manager/profile_cubit/profile_cubit.dart';
@@ -31,6 +32,11 @@ import '../../features/user_feature/home/domain/repo/user_home_repo.dart';
 import '../../features/user_feature/home/presentation/manager/home_cubit/user_home_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/user_merchants_cubit/user_merchants_cubit.dart';
 import '../../features/user_feature/home/presentation/manager/user_products_cubit/user_products_cubit.dart';
+import '../../features/user_feature/my_order/data/data_source/remote_data_source/my_order_remote_data_source.dart';
+import '../../features/user_feature/my_order/data/repo/user_order_repo_impl.dart';
+import '../../features/user_feature/my_order/domain/repo/user_order_repo.dart';
+import '../../features/user_feature/my_order/domain/use_cases/get_user_orders_use_case.dart';
+import '../../features/user_feature/my_order/presentation/manager/user_order_cubit/user_order_cubit.dart';
 import '../../features/user_feature/profile/data/data_source/profile_data_source.dart';
 import '../../features/user_feature/profile/data/data_source/profile_data_source_impl.dart';
 import '../api/api_consumer.dart';
@@ -59,15 +65,15 @@ void getItSetup() {
       dio: getIt.get<Dio>()
         ..interceptors.addAll([
           AppInterceptors(dio: getIt.get<Dio>()),
-          // PrettyDioLogger(
-          //   requestHeader: true,
-          //   requestBody: true,
-          //   responseBody: true,
-          //   responseHeader: false,
-          //   error: true,
-          //   compact: true,
-          //   maxWidth: 90,
-          // ),
+          PrettyDioLogger(
+            requestHeader: true,
+            requestBody: true,
+            responseBody: true,
+            responseHeader: false,
+            error: true,
+            compact: true,
+            maxWidth: 90,
+          ),
         ]),
     ),
   );
@@ -94,6 +100,14 @@ void getItSetup() {
   getIt.registerLazySingleton<ProfileDataSource>(
     () => ProfileDataSourceImpl(apiConsumer: getIt.get<ApiConsumer>()),
   );
+  getIt.registerLazySingleton<MyOrderRemoteDataSource>(
+    () => MyOrderRemoteDataSourceImpl(getIt.get<ApiConsumer>()),
+  );
+  getIt.registerLazySingleton<UserOrderRepo>(
+    () => UserOrderRepoImpl(
+      remoteDataSource: getIt.get<MyOrderRemoteDataSource>(),
+    ),
+  );
 
   // repo
   getIt.registerLazySingleton<AuthRepo>(
@@ -113,7 +127,9 @@ void getItSetup() {
   getIt.registerLazySingleton<ProfileRepo>(
     () => ProfileRepoImpl(profileDataSource: getIt.get<ProfileDataSource>()),
   );
-
+  getIt.registerLazySingleton<GetUserOrdersUseCase>(
+    () => GetUserOrdersUseCase(userOrderRepo: getIt.get<UserOrderRepo>()),
+  );
   // cubit
   getIt.registerFactory<LoginCubit>(
     () => LoginCubit(loginUseCase: getIt.get<LoginUseCase>()),
@@ -140,4 +156,8 @@ void getItSetup() {
   );
   getIt.registerFactory<FavouriteCubit>(() => FavouriteCubit());
   getIt.registerFactory<CartCubit>(() => CartCubit());
+  getIt.registerFactory<UserOrderCubit>(
+    () =>
+        UserOrderCubit(getUserOrdersUseCase: getIt.get<GetUserOrdersUseCase>()),
+  );
 }

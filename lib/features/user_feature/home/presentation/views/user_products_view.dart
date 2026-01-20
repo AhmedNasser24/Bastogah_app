@@ -11,7 +11,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/dependency_injection/get_it_setup.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
-import '../../data/params/user_product_param.dart';
+import '../../../../../core/params/user_product_param.dart';
 import '../manager/user_products_cubit/user_products_cubit.dart';
 import '../widgets/user_products_app_bar.dart';
 import '../widgets/user_products_filter.dart';

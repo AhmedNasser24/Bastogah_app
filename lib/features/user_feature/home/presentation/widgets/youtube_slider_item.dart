@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YoutubeSliderItem extends StatefulWidget {
   final String videoUrl;
+  final bool isActive;
+  final bool isSliderVisible;
   final ValueChanged<bool> onVideoPlayStateChanged;
   final VoidCallback? onVideoFinished;
 
   const YoutubeSliderItem({
     super.key,
     required this.videoUrl,
+    required this.isActive,
+    required this.isSliderVisible,
     required this.onVideoPlayStateChanged,
     this.onVideoFinished,
   });
@@ -26,38 +29,56 @@ class _YoutubeSliderItemState extends State<YoutubeSliderItem> {
   void initState() {
     super.initState();
     final videoId = YoutubePlayer.convertUrlToId(widget.videoUrl);
+
     _controller = YoutubePlayerController(
       initialVideoId: videoId ?? '',
 
       flags: const YoutubePlayerFlags(
-        autoPlay: true,
-        mute: true, // Start muted for auto-play best practices
+        autoPlay: false,
+        mute: true,
         disableDragSeek: true,
-        loop: false,
-        isLive: false,
-        forceHD: false,
-        enableCaption: false,
-        hideThumbnail: true,
         hideControls: true,
+        hideThumbnail: false,
+        enableCaption: false,
+        forceHD: false,
         showLiveFullscreenButton: false,
+        isLive: false,
+        loop: false,
+        controlsVisibleAtStart: false,
       ),
     )..addListener(_listener);
   }
 
   void _listener() {
-    if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
-      if (_controller.value.isPlaying) {
-        widget.onVideoPlayStateChanged(true);
-      } else {
-        widget.onVideoPlayStateChanged(false);
-      }
-    }
+    if (!_isPlayerReady || !mounted) return;
+    // if (!mounted) return;
+
+    widget.onVideoPlayStateChanged(_controller.value.isPlaying);
   }
 
   @override
-  void deactivate() {
-    _controller.pause();
-    super.deactivate();
+  void didUpdateWidget(covariant YoutubeSliderItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.isActive != widget.isActive ||
+        oldWidget.isSliderVisible != widget.isSliderVisible) {
+      // if (_isPlayerReady) {
+      if (widget.isActive &&
+          widget.isSliderVisible &&
+          !_controller.value.isPlaying) {
+        _controller.play();
+        return;
+      }
+      // }
+      if (widget.isActive &&
+          !widget.isSliderVisible &&
+          _controller.value.isPlaying) {
+        _controller.pause();
+      } else if (!widget.isActive && _controller.value.isPlaying) {
+        _controller.seekTo(Duration.zero);
+        _controller.pause();
+      }
+    }
   }
 
   @override
@@ -68,39 +89,19 @@ class _YoutubeSliderItemState extends State<YoutubeSliderItem> {
 
   @override
   Widget build(BuildContext context) {
-    return VisibilityDetector(
-      key: Key(widget.videoUrl),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: IgnorePointer(
+        ignoring: true,
+        child: YoutubePlayer(
+          controller: _controller,
+          showVideoProgressIndicator: false,
+          onReady: () => _isPlayerReady = true,
 
-      onVisibilityChanged: (visibilityInfo) {
-        if (!_isPlayerReady) return;
-
-        var visiblePercentage = visibilityInfo.visibleFraction;
-        if (visiblePercentage > 0.8) {
-          if (!_controller.value.isPlaying) {
-            _controller.play();
-          }
-        } else {
-          if (_controller.value.isPlaying) {
-            _controller.pause();
-          }
-        }
-      },
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10.0),
-        child: IgnorePointer(
-          ignoring: true,
-
-          child: YoutubePlayer(
-            controller: _controller,
-            showVideoProgressIndicator: false,
-            onReady: () {
-              _isPlayerReady = true;
-            },
-            onEnded: (data) {
-              widget.onVideoPlayStateChanged(false);
-              widget.onVideoFinished?.call();
-            },
-          ),
+          onEnded: (_) {
+            widget.onVideoPlayStateChanged(false);
+            widget.onVideoFinished?.call();
+          },
         ),
       ),
     );

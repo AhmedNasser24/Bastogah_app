@@ -21,5 +21,5 @@ class EndPoint {
   static const String products = "/products";
 
   // Merchant End Points
-  static const String merchantGetOrders = "/orders";
+  static const String orders = "/orders";
 }

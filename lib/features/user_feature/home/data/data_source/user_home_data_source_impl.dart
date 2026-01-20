@@ -7,8 +7,8 @@ import 'package:bastogah_app/features/user_feature/home/data/model/slider_model.
 
 import '../model/user_merchant_model.dart';
 import '../model/user_product_model.dart';
-import '../params/user_merchant_param.dart';
-import '../params/user_product_param.dart';
+import '../../../../../core/params/user_merchant_param.dart';
+import '../../../../../core/params/user_product_param.dart';
 import 'user_home_data_source.dart';
 
 class UserHomeDataSourceImpl implements UserHomeDataSource {
