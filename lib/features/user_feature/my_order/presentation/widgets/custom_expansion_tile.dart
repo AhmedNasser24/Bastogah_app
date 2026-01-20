@@ -7,10 +7,11 @@ import 'package:gap/gap.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_style.dart';
 import '../../../../../core/theme/app_images.dart';
+import '../../data/models/user_order_model.dart';
 
 class CustomExpansionTile extends StatefulWidget {
-  const CustomExpansionTile({super.key});
-
+  const CustomExpansionTile({super.key, this.order});
+  final UserOrderModel? order;
   @override
   State<CustomExpansionTile> createState() => _CustomExpansionTileState();
 }
@@ -59,12 +60,12 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "بيتزا لحم",
+                      widget.order?.merchantName ?? "--",
                       style: AppFontStyle.semibold14black4B(context),
                     ),
                     const Gap(4),
                     Text(
-                      "user.order_id".tr(args: ['3220264935']),
+                      "user.order_id".tr(args: [widget.order?.billNo ?? '--']),
                       style: AppFontStyle.regular14grey(context),
                     ),
                   ],
@@ -82,7 +83,9 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
                 child: Row(
                   children: [
                     Text(
-                      "user.no_of_orders".tr(args: ['5000']),
+                      "user.no_of_orders".tr(
+                        args: [widget.order?.items?.length.toString() ?? '0'],
+                      ),
                       style: AppFontStyle.regular14grey(context),
                     ),
                     const Gap(8),
@@ -98,18 +101,19 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
             ],
           ),
 
-          children: [orderItems(context)],
+          children: [orderItems(context, order: widget.order)],
         ),
       ),
     );
   }
 
-  Widget orderItems(BuildContext context) {
+  Widget orderItems(BuildContext context, {UserOrderModel? order}) {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 3,
+      itemCount: order?.items?.length ?? 0,
       itemBuilder: (context, index) {
+        final item = order?.items?[index];
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 12.0),
           child: Row(
@@ -123,10 +127,13 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
                 child: Image.asset(AppImages.imagesPizzaImage),
               ),
               const Gap(8),
-              Text("بيتزا لحم", style: AppFontStyle.semibold14black4B(context)),
+              Text(
+                item?.productName ?? "--",
+                style: AppFontStyle.semibold14black4B(context),
+              ),
               const Spacer(),
               Text(
-                "user.amount".tr(args: ['15000']),
+                "user.amount".tr(args: [item?.totalPrice?.toString() ?? '0']),
                 style: AppFontStyle.regular12grey(context),
               ),
             ],

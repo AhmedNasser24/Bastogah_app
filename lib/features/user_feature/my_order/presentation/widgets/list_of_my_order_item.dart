@@ -1,4 +1,3 @@
-import 'package:bastogah_app/core/dependency_injection/get_it_setup.dart';
 import 'package:bastogah_app/core/widgets/custom_skeletonizer.dart';
 import 'package:bastogah_app/features/user_feature/my_order/presentation/manager/user_order_cubit/user_order_cubit.dart';
 import 'package:bastogah_app/features/user_feature/my_order/presentation/widgets/my_order_item.dart';
@@ -67,7 +66,7 @@ class _ListOfMyOrderItemState extends State<ListOfMyOrderItem> {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12.0),
                 child: index < state.orderList.length
-                    ? const MyOrderItem()
+                    ? MyOrderItem(order: state.orderList[index])
                     : const CustomSkeletonizer(child: MyOrderItem()),
               );
             },

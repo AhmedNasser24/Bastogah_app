@@ -7,11 +7,11 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_icons.dart';
-import 'my_order_buy_again_button.dart';
+import '../../data/models/user_order_model.dart';
 
 class MyOrderItem extends StatelessWidget {
-  const MyOrderItem({super.key});
-
+  const MyOrderItem({super.key, this.order});
+  final UserOrderModel? order;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -23,14 +23,23 @@ class MyOrderItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SvgPicture.asset(AppIcons.iconsCalenderIcon),
                 const Gap(8),
-                Text(
-                  "15 أكتوبر, 02:37م",
-                  style: AppFontStyle.regular14grey(context),
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "15 أكتوبر, 02:37م",
+                        style: AppFontStyle.regular14grey(context),
+                      ),
+                    ),
+                  ),
                 ),
-                const Spacer(),
+                const Gap(4),
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
@@ -44,19 +53,22 @@ class MyOrderItem extends StatelessWidget {
                 ),
               ],
             ),
-            const CustomExpansionTile(),
+            CustomExpansionTile(order: order),
             const Gap(20),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Flexible(child: MyOrderBuyAgainButton()),
-                  const Gap(4),
+                  // const Flexible(child: MyOrderBuyAgainButton()),
+                  // const Gap(4),
+                  const Spacer(),
                   FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      "user.total_amount".tr(args: ['4500000']),
+                      "user.total_amount".tr(
+                        args: [order?.itemsPrice?.toString() ?? '--'],
+                      ),
                       style: AppFontStyle.semibold14black4B(context),
                     ),
                   ),
