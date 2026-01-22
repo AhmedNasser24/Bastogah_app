@@ -42,8 +42,8 @@ class UserOrderModel {
   final int? commissionAmount;
   final List<String>? originalProducts;
   final bool? driverSalaryPaid;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
+  final String? createdAt;
+  final String? updatedAt;
   final int? v;
 
   UserOrderModel({
@@ -149,12 +149,8 @@ class UserOrderModel {
         ? []
         : List<String>.from(json["originalProducts"]!.map((x) => x)),
     driverSalaryPaid: json["driverSalaryPaid"],
-    createdAt: json["createdAt"] == null
-        ? null
-        : DateTime.parse(json["createdAt"]),
-    updatedAt: json["updatedAt"] == null
-        ? null
-        : DateTime.parse(json["updatedAt"]),
+    createdAt: json["createdAt"],
+    updatedAt: json["updatedAt"],
     v: json["__v"],
   );
 
@@ -206,8 +202,8 @@ class UserOrderModel {
         ? []
         : List<dynamic>.from(originalProducts!.map((x) => x)),
     "driverSalaryPaid": driverSalaryPaid,
-    "createdAt": createdAt?.toIso8601String(),
-    "updatedAt": updatedAt?.toIso8601String(),
+    "createdAt": createdAt,
+    "updatedAt": updatedAt,
     "__v": v,
   };
 }

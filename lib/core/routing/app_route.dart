@@ -24,7 +24,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 
 GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: RouteName.userHome,
+  initialLocation: RouteName.login,
   // refreshListenable: ConnectionService(),
   // redirect: (context, state) {
   //   final isConnected = ConnectionService().isConnected;
@@ -47,14 +47,6 @@ GoRouter appRouter = GoRouter(
   //   return null;
   // },
   routes: [
-    GoRoute(
-      path: "/video",
-      pageBuilder: (context, state) => buildPageWithSlideTransition(
-        context: context,
-        state: state,
-        child: const VideoApp(),
-      ),
-    ),
     GoRoute(
       path: RouteName.splash,
       pageBuilder: (context, state) => buildPageWithSlideTransition(

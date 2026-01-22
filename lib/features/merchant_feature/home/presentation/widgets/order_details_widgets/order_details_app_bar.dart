@@ -2,8 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../../core/enums/merchant_filter_enums.dart';
-import '../../../../../../core/theme/app_colors.dart';
+import '../../../../../../core/helper/get_order_statues.dart';
 import '../../../../../../core/theme/app_font_style.dart';
 import '../../../../../../core/widgets/back_arrow_button.dart';
 
@@ -39,39 +38,12 @@ class OrderDetailsAppBar extends StatelessWidget {
   }
 
   Widget orderStatuesWidget(BuildContext context) {
-    MerchantFilterEnum selectedFilter = MerchantFilterEnum.values[status];
-    switch (selectedFilter) {
-      case MerchantFilterEnum.pending:
-        return orderStatueBackground(
-          context,
-          color: AppColors.yellow,
-          text: "merchant.filter.pending".tr(),
-        );
-      case MerchantFilterEnum.waitingDriver:
-        return orderStatueBackground(
-          context,
-          color: AppColors.purple,
-          text: "merchant.filter.waiting_for_driver".tr(),
-        );
-      case MerchantFilterEnum.inprogress:
-        return orderStatueBackground(
-          context,
-          color: AppColors.primary,
-          text: "merchant.filter.in_progress".tr(),
-        );
-      case MerchantFilterEnum.completed:
-        return orderStatueBackground(
-          context,
-          color: AppColors.green,
-          text: "merchant.filter.completed".tr(),
-        );
-      case MerchantFilterEnum.cancelled:
-        return orderStatueBackground(
-          context,
-          color: AppColors.red,
-          text: "merchant.filter.cancelled".tr(),
-        );
-    }
+    String statusText;
+    Color statusColor;
+    var orderStatues = getOrderStatues(status);
+    statusText = orderStatues.$1;
+    statusColor = orderStatues.$2;
+    return orderStatueBackground(context, color: statusColor, text: statusText);
   }
 
   Container orderStatueBackground(

@@ -1,3 +1,4 @@
+import 'package:bastogah_app/core/helper/get_order_statues.dart';
 import 'package:bastogah_app/core/theme/app_font_style.dart';
 import 'package:bastogah_app/features/user_feature/my_order/presentation/widgets/custom_expansion_tile.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/helper/format_arabic_date.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_icons.dart';
 import '../../data/models/user_order_model.dart';
@@ -33,7 +35,9 @@ class MyOrderItem extends StatelessWidget {
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        "15 أكتوبر, 02:37م",
+                        order?.createdAt == null
+                            ? "--"
+                            : formatArabicDate(order!.createdAt!),
                         style: AppFontStyle.regular14grey(context),
                       ),
                     ),
@@ -43,12 +47,12 @@ class MyOrderItem extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: AppColors.lightGreen,
+                    color: getOrderStatues(order?.status).$2,
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: Text(
-                    "user.received".tr(),
-                    style: AppFontStyle.semibold12green(context),
+                    getOrderStatues(order?.status).$1,
+                    style: AppFontStyle.semibold12White(context),
                   ),
                 ),
               ],
