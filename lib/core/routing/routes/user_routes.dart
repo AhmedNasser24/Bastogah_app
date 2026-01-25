@@ -32,7 +32,7 @@ List<RouteBase> userRoutes = [
       return buildPageWithSlideTransition(
         context: context,
         state: state,
-        child: UserLayout(child: navigationShell),
+        child: UserLayout(navigationShell: navigationShell),
       );
     },
     branches: [

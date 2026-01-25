@@ -9,8 +9,9 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/theme/app_font_style.dart';
 
 class UserBottomNavBar extends StatefulWidget {
-  const UserBottomNavBar({super.key});
+  const UserBottomNavBar({super.key, required this.navigationShell});
 
+  final StatefulNavigationShell navigationShell;
   @override
   State<UserBottomNavBar> createState() => _UserBottomNavBarState();
 }
@@ -27,18 +28,23 @@ class _UserBottomNavBarState extends State<UserBottomNavBar> {
       height: 65,
       child: Row(
         children: [
-          for (int i = 0; i < userBottomBarItems.length; i++)
+          for (int index = 0; index < userBottomBarItems.length; index++)
             Expanded(
               child: InkWell(
                 onTap: () {
-                  context.go(userBottomBarItems[i].routeName);
+                  // context.go(userBottomBarItems[i].routeName);
+                  widget.navigationShell.goBranch(
+                    index,
+                    initialLocation:
+                        false, // not return to root page of this tap but return to the last page you are on in this tap before navigation
+                  );
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   decoration: BoxDecoration(
-                    color: isSelected(i)
+                    color: isSelected(index)
                         ? AppColors.secondary
                         : AppColors.white,
                     borderRadius: BorderRadius.circular(14),
@@ -48,14 +54,14 @@ class _UserBottomNavBarState extends State<UserBottomNavBar> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         SvgPicture.asset(
-                          isSelected(i)
-                              ? userBottomBarItems[i].activeIcon
-                              : userBottomBarItems[i].inactiveIcon,
+                          isSelected(index)
+                              ? userBottomBarItems[index].activeIcon
+                              : userBottomBarItems[index].inactiveIcon,
                         ),
 
                         const Gap(4),
                         Text(
-                          userBottomBarItems[i].title.tr(),
+                          userBottomBarItems[index].title.tr(),
                           style: AppFontStyle.medium10primary(context),
                         ),
                       ],
