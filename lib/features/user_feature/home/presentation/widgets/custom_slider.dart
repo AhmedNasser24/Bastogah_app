@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bastogah_app/core/enums/request_state_enum.dart';
 import 'package:bastogah_app/core/extenstion/media_query_extension.dart';
 import 'package:bastogah_app/core/theme/app_images.dart';
@@ -12,6 +14,7 @@ import 'package:visibility_detector/visibility_detector.dart';
 
 import '../../../../../core/widgets/custom_cached_image.dart';
 import '../../../../../core/widgets/custom_skeletonizer.dart';
+import 'video_slider_item.dart';
 import 'youtube_slider_item.dart';
 
 class CustomSlider extends StatefulWidget {
@@ -102,6 +105,7 @@ class _CustomSliderState extends State<CustomSlider> {
               if (_isSliderVisible != visible) {
                 setState(() {
                   _isSliderVisible = visible;
+                  log("_isSliderVisible: $_isSliderVisible");
                 });
               }
             },
@@ -109,43 +113,52 @@ class _CustomSliderState extends State<CustomSlider> {
               children: [
                 CarouselSlider(
                   carouselController: _carouselController,
-                  items: _sliderList.asMap().entries.map((entry) {
-                    final index = entry.key;
-                    final item = entry.value;
+                  items: [
+                    VideoSliderItem(
+                      isActive: _currentIndex == 0,
+                      isVisible: _isSliderVisible,
+                    ),
+                    ..._sliderList.asMap().entries.map((entry) {
+                      final index = entry.key;
+                      final item = entry.value;
 
-                    if (item.videoLink != null && item.videoLink!.isNotEmpty) {
-                      return YoutubeSliderItem(
-                        videoUrl: item.videoLink!,
-                        isActive: index == _currentIndex,
-                        isSliderVisible: _isSliderVisible,
-                        onVideoPlayStateChanged: (playing) {
-                          if (_isVideoPlaying != playing) {
-                            setState(() => _isVideoPlaying = playing);
+                      if (item.videoLink != null &&
+                          item.videoLink!.isNotEmpty) {
+                        return YoutubeSliderItem(
+                          videoUrl: item.videoLink!,
+                          isActive: index == _currentIndex,
+                          isSliderVisible: _isSliderVisible,
+                          onVideoPlayStateChanged: (playing) {
+                            if (_isVideoPlaying != playing) {
+                              setState(() => _isVideoPlaying = playing);
+                            }
+                          },
+                          onVideoFinished: () {
+                            _carouselController.nextPage();
+                          },
+                        );
+                      }
+                      return GestureDetector(
+                        onTap: () {
+                          if (item.merchant?.id != null) {
+                            // Navigation logic here
                           }
                         },
-                        onVideoFinished: () {
-                          _carouselController.nextPage();
-                        },
-                      );
-                    }
-                    return GestureDetector(
-                      onTap: () {
-                        if (item.merchant?.id != null) {
-                          // Navigation logic here
-                        }
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.all(5.0),
-                        width: double.infinity,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10.0),
+                        child: Container(
+                          margin: const EdgeInsets.all(5.0),
+                          width: double.infinity,
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10.0),
+                            ),
+                            child: CustomCachedImage(
+                              imagePath: item.image ?? "",
+                            ),
                           ),
-                          child: CustomCachedImage(imagePath: item.image ?? ""),
                         ),
-                      ),
-                    );
-                  }).toList(),
+                      );
+                    }),
+                  ],
                   options: _carouselOptions(context),
                 ),
                 const Gap(16),
@@ -182,7 +195,7 @@ class _CustomSliderState extends State<CustomSlider> {
 
     return CarouselOptions(
       height: context.screenWidth > 600 ? 190 : 160.0,
-      autoPlay: shouldAutoPlay,
+      autoPlay: false, // shouldAutoPlay,
       enlargeCenterPage: true,
       aspectRatio: 16 / 9,
       autoPlayCurve: Curves.fastOutSlowIn,
@@ -192,6 +205,7 @@ class _CustomSliderState extends State<CustomSlider> {
       onPageChanged: (index, reason) {
         setState(() {
           _currentIndex = index;
+          log("_currentIndex: $_currentIndex");
           // Reset video playing state when page changes
           // The YoutubeSliderItem will set it back to true when it starts playing
           _isVideoPlaying = false;

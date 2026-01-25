@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,8 +46,6 @@ class _FavouriteIconButtonState extends State<FavouriteIconButton> {
 
   @override
   Widget build(BuildContext context) {
-    log("isInFavouriteView : ${widget.isInFavouriteView}");
-    log("isFavourite : $isFavourite");
     return GestureDetector(
       onTap: () {
         widget.onTap?.call();
