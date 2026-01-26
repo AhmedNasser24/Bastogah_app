@@ -16,8 +16,13 @@ import '../manager/user_merchants_cubit/user_merchants_cubit.dart';
 import '../widgets/user_merchant_list.dart';
 
 class UserMerchantsView extends StatefulWidget {
-  const UserMerchantsView({super.key, required this.merchantCategoryModel});
-  final MerchantCategoryModel merchantCategoryModel;
+  const UserMerchantsView({
+    super.key,
+    // required this.merchantCategoryModel ,
+    required this.merchantCategoryId,
+  });
+  // final MerchantCategoryModel merchantCategoryModel;
+  final String merchantCategoryId;
   @override
   State<UserMerchantsView> createState() => _UserMerchantsViewState();
 }
@@ -30,7 +35,7 @@ class _UserMerchantsViewState extends State<UserMerchantsView> {
   @override
   void initState() {
     userMerchantParam = UserMerchantParam(
-      categoryId: widget.merchantCategoryModel.id!,
+      categoryId: widget.merchantCategoryId,
     );
     userMerchantsCubit = getIt<UserMerchantsCubit>();
     userMerchantsCubit.init(userMerchantParam: userMerchantParam);
@@ -71,7 +76,9 @@ class _UserMerchantsViewState extends State<UserMerchantsView> {
         children: [
           appBar(
             context,
-            title: widget.merchantCategoryModel.name ?? "لا يوجد اسم",
+            title:
+                // widget.merchantCategoryModel.name ??
+                "لا يوجد اسم",
           ),
           CustomSearchField(onChanged: _onSearchChanged),
 

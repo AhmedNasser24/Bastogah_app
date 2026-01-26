@@ -18,8 +18,13 @@ import '../widgets/user_products_filter.dart';
 import '../widgets/user_products_list.dart';
 
 class UserProductsView extends StatefulWidget {
-  const UserProductsView({super.key, required this.userMerchantModel});
-  final UserMerchantModel userMerchantModel;
+  const UserProductsView({
+    super.key,
+    // required this.userMerchantModel,
+    required this.merchantId,
+  });
+  // final UserMerchantModel userMerchantModel;
+  final String merchantId;
   @override
   State<UserProductsView> createState() => _UserProductsViewState();
 }
@@ -31,9 +36,7 @@ class _UserProductsViewState extends State<UserProductsView> {
   @override
   void initState() {
     userProductsCubit = getIt<UserProductsCubit>();
-    userProductParam = UserProductParam(
-      merchantId: widget.userMerchantModel.id!,
-    );
+    userProductParam = UserProductParam(merchantId: widget.merchantId);
     userProductsCubit.init(userProductParam: userProductParam);
     controller.addListener(() {
       if (controller.position.pixels >=
@@ -61,17 +64,17 @@ class _UserProductsViewState extends State<UserProductsView> {
         body: SafeArea(
           child: CustomScrollView(
             controller: controller,
-            slivers: [
-              UserProductsAppBar(merchant: widget.userMerchantModel),
-              SliverToBoxAdapter(
-                child: ResturantInfoSection(merchant: widget.userMerchantModel),
-              ),
-              const SliverGap(16),
-              const SliverToBoxAdapter(child: UserProductFilter()),
-              const SliverGap(16),
+            slivers: const [
+              // UserProductsAppBar(merchant: widget.userMerchantModel),
+              // SliverToBoxAdapter(
+              //   child: ResturantInfoSection(merchant: widget.userMerchantModel),
+              // ),
+              SliverGap(16),
+              SliverToBoxAdapter(child: UserProductFilter()),
+              SliverGap(16),
 
-              const SliverToBoxAdapter(child: UserProductsList()),
-              const SliverGap(20),
+              SliverToBoxAdapter(child: UserProductsList()),
+              SliverGap(20),
             ],
           ),
         ),

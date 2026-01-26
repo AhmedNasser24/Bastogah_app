@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bastogah_app/core/enums/request_state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -111,9 +113,14 @@ class _UserMerchantsListState extends State<UserMerchantsList> {
                   if (index < merchants.length) {
                     return GestureDetector(
                       onTap: () {
-                        context.pushNamed(
+                        // log(merchants[index].toJson().toString());
+                        context.goNamed(
                           RouteName.userProducts,
-                          extra: merchants[index],
+                          pathParameters: {
+                            "merchantId": merchants[index].id!,
+                            "categoryId": "dkjfklfjdf",
+                            // merchants[index].category!.id!,
+                          },
                         );
                       },
                       child: UserMerchantItem(

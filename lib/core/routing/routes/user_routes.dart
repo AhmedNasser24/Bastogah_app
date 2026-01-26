@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/routing/router_animation.dart';
 import 'package:bastogah_app/features/user_feature/home/data/model/merchant_category_model.dart';
@@ -47,14 +49,49 @@ List<RouteBase> userRoutes = [
             ),
             routes: [
               GoRoute(
-                path: RouteName.userMerchants,
+                name: RouteName.userMerchants,
+                path: ":categoryId",
                 pageBuilder: (context, state) => buildPageWithSlideTransition(
                   context: context,
                   state: state,
                   child: UserMerchantsView(
-                    merchantCategoryModel: state.extra as MerchantCategoryModel,
+                    merchantCategoryId: state.pathParameters["categoryId"]!,
                   ),
                 ),
+                routes: [
+                  GoRoute(
+                    name: RouteName.userProducts,
+                    path: ":merchantId",
+                    pageBuilder: (context, state) {
+                      return buildPageWithSlideTransition(
+                        context: context,
+                        state: state,
+                        child: UserProductsView(
+                          merchantId: state.pathParameters["merchantId"]!,
+                        ),
+                      );
+                    },
+                    routes: [
+                      GoRoute(
+                        name: RouteName.userProductDetails,
+                        path: RouteName.userProductDetails,
+                        pageBuilder: (context, state) {
+                          final extra = state.extra as List;
+                          final product = extra[0] as UserProductModel;
+                          final cart = extra[1] as CartModel?;
+                          return buildPageWithSlideTransition(
+                            context: context,
+                            state: state,
+                            child: UserProductDetailsView(
+                              product: product,
+                              cart: cart,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
@@ -118,30 +155,7 @@ List<RouteBase> userRoutes = [
       child: const CartView(),
     ),
   ),
-  GoRoute(
-    path: RouteName.userProductDetails,
-    pageBuilder: (context, state) {
-      final extra = state.extra as List;
-      final product = extra[0] as UserProductModel;
-      final cart = extra[1] as CartModel?;
-      return buildPageWithSlideTransition(
-        context: context,
-        state: state,
-        child: UserProductDetailsView(product: product, cart: cart),
-      );
-    },
-  ),
-  GoRoute(
-    path: RouteName.userProducts,
-    name: RouteName.userProducts,
-    pageBuilder: (context, state) => buildPageWithSlideTransition(
-      context: context,
-      state: state,
-      child: UserProductsView(
-        userMerchantModel: state.extra as UserMerchantModel,
-      ),
-    ),
-  ),
+
   GoRoute(
     path: RouteName.writeYourReview,
     pageBuilder: (context, state) => buildPageWithSlideTransition(

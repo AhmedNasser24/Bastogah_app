@@ -7,14 +7,14 @@ class RouteName {
   static const String forgotPassword = '/forgot-password';
   static const String helpSupport = '/help-support';
   static const String notification = '/merchant/notification';
-  static const String userProductDetails =
-      '/user/home/products/product-details';
+
   static const String cart = '/user/home/cart';
 
   // User routes
   static const String userHome = '/user/home';
   static const String userMerchants = 'merchants';
-  static const String userProducts = '/user/home/products';
+  static const String userProducts = 'products';
+  static const String userProductDetails = 'product-details';
   static const String userStoreRating = '/user/home/store-rating';
   static const String writeYourReview = '/user/home/write-your-review';
   static const String userOrders = '/user/orders';

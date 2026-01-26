@@ -32,7 +32,8 @@ class _UserBottomNavBarState extends State<UserBottomNavBar> {
             Expanded(
               child: InkWell(
                 onTap: () {
-                  // context.go(userBottomBarItems[i].routeName);
+                  // use this if you want to return to root page of this tap
+                  // widget.navigationShell.currentIndex == index;
                   widget.navigationShell.goBranch(
                     index,
                     initialLocation:

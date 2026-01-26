@@ -79,7 +79,7 @@ class UserProductsList extends StatelessWidget {
                   child: index < products.length
                       ? GestureDetector(
                           onTap: () {
-                            context.push(
+                            context.goNamed(
                               RouteName.userProductDetails,
                               extra: [
                                 products[index],
