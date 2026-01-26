@@ -7,7 +7,7 @@ class RouteName {
   static const String forgotPassword = '/forgot-password';
   static const String helpSupport = '/help-support';
   static const String notification = '/merchant/notification';
-
+  static const String noNetwork = '/no-network';
   static const String cart = '/user/home/cart';
 
   // User routes

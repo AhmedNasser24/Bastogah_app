@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:bastogah_app/core/routing/route_name.dart';
 import 'package:bastogah_app/core/routing/router_animation.dart';
-import 'package:bastogah_app/features/user_feature/home/data/model/merchant_category_model.dart';
 import 'package:bastogah_app/features/user_feature/home/data/model/user_product_model.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/views/user_home_view.dart';
 import 'package:bastogah_app/features/user_feature/home/presentation/views/user_product_details_view.dart';
@@ -13,7 +10,6 @@ import 'package:bastogah_app/features/user_feature/offers/presentation/views/use
 import 'package:bastogah_app/features/user_feature/profile/presentation/views/user_profile_view.dart';
 import 'package:bastogah_app/features/user_feature/profile/presentation/views/user_my_rating_view.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../features/user_feature/cart/data/model/cart_model.dart';
 import '../../../features/user_feature/cart/presentation/views/cart_view.dart';
 import '../../../features/user_feature/favourites/presentation/views/user_favourite_view.dart';
@@ -27,9 +23,11 @@ import '../../../features/user_feature/profile/presentation/views/user_coupons_v
 import '../../../features/user_feature/profile/presentation/views/user_edit_profile_view.dart';
 import '../../../features/user_feature/profile/presentation/views/user_saved_address_view.dart';
 import '../../../features/user_feature/user_layout/presentation/views/user_layout.dart';
+import '../app_route.dart';
 
 List<RouteBase> userRoutes = [
   StatefulShellRoute.indexedStack(
+    parentNavigatorKey: rootNavigatorKey,
     pageBuilder: (context, state, navigationShell) {
       return buildPageWithSlideTransition(
         context: context,
@@ -49,6 +47,7 @@ List<RouteBase> userRoutes = [
             ),
             routes: [
               GoRoute(
+                // parentNavigatorKey: rootNavigatorKey,
                 name: RouteName.userMerchants,
                 path: ":categoryId",
                 pageBuilder: (context, state) => buildPageWithSlideTransition(
@@ -60,6 +59,7 @@ List<RouteBase> userRoutes = [
                 ),
                 routes: [
                   GoRoute(
+                    parentNavigatorKey: rootNavigatorKey,
                     name: RouteName.userProducts,
                     path: ":merchantId",
                     pageBuilder: (context, state) {
@@ -73,6 +73,7 @@ List<RouteBase> userRoutes = [
                     },
                     routes: [
                       GoRoute(
+                        parentNavigatorKey: rootNavigatorKey,
                         name: RouteName.userProductDetails,
                         path: RouteName.userProductDetails,
                         pageBuilder: (context, state) {
