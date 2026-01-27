@@ -24,7 +24,8 @@ final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>(
 final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'shell',
 );
-
+String currentPath = "";
+String lastPath = "";
 GoRouter appRouter = GoRouter(
   navigatorKey: rootNavigatorKey,
   initialLocation: RouteName.login,
@@ -48,20 +49,32 @@ GoRouter appRouter = GoRouter(
     //   return RouteName.noInternet;
     // }
     final isNoInternetPage = state.matchedLocation == RouteName.noNetwork;
-
-    if (!isConnected && !isNoInternetPage) {
+    if (currentPath != RouteName.noNetwork) {
+      lastPath = currentPath;
+    }
+    currentPath = state.uri.toString();
+    log(
+      "------------------------------lastPath : $lastPath ------------------",
+    );
+    log(
+      "------------------------------currentPath : $currentPath ------------------",
+    );
+    if (!isConnected &&
+        !isNoInternetPage &&
+        state.matchedLocation != RouteName.login) {
       return RouteName.noNetwork;
     }
-    // if (isConnected && isNoInternetPage) {
-    //   final role = getRoleEnum();
-    //   if (role == RoleEnum.driver) {
-    //     return RouteName.driverAppLayout;
-    //   } else if (role == RoleEnum.merchant) {
-    //     return RouteName.merchantLayout;
-    //   } else {
-    //     return RouteName.customerAppLayout;
-    //   }
-    // }
+    if (isConnected && isNoInternetPage) {
+      // final role = getRoleEnum();
+      // if (role == RoleEnum.driver) {
+      //   return RouteName.driverAppLayout;
+      // } else if (role == RoleEnum.merchant) {
+      //   return RouteName.merchantLayout;
+      // } else {
+      //   return RouteName.customerAppLayout;
+      // }
+      return lastPath;
+    }
     return null;
   },
   routes: [

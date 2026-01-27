@@ -37,7 +37,8 @@ class _UserBottomNavBarState extends State<UserBottomNavBar> {
                   widget.navigationShell.goBranch(
                     index,
                     initialLocation:
-                        false, // not return to root page of this tap but return to the last page you are on in this tap before navigation
+                        widget.navigationShell.currentIndex ==
+                        index, // not return to root page of this tap if false ,
                   );
                 },
                 child: AnimatedContainer(

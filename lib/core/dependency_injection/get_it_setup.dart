@@ -65,15 +65,15 @@ void getItSetup() {
       dio: getIt.get<Dio>()
         ..interceptors.addAll([
           AppInterceptors(dio: getIt.get<Dio>()),
-          PrettyDioLogger(
-            requestHeader: true,
-            requestBody: true,
-            responseBody: true,
-            responseHeader: false,
-            error: true,
-            compact: true,
-            maxWidth: 90,
-          ),
+          // PrettyDioLogger(
+          //   requestHeader: true,
+          //   requestBody: true,
+          //   responseBody: true,
+          //   responseHeader: false,
+          //   error: true,
+          //   compact: true,
+          //   maxWidth: 90,
+          // ),
         ]),
     ),
   );

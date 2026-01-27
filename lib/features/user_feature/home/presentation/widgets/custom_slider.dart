@@ -35,18 +35,23 @@ class _CustomSliderState extends State<CustomSlider> {
   bool _isVideoPlaying = false;
   bool _isSliderVisible = false;
   List<SliderModel> _sliderList = [];
-  final CarouselSliderController _carouselController =
-      CarouselSliderController();
+  late CarouselSliderController _carouselController;
 
   @override
   void initState() {
     super.initState();
+    _carouselController = CarouselSliderController();
   }
 
   bool _isCurrentSlideVideo() {
     if (_currentIndex < 0 || _currentIndex >= _sliderList.length) return false;
     final item = _sliderList[_currentIndex];
     return item.videoLink != null && item.videoLink!.isNotEmpty;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -104,6 +109,7 @@ class _CustomSliderState extends State<CustomSlider> {
               final visible = info.visibleFraction > 0.3;
               if (_isSliderVisible != visible) {
                 setState(() {
+                  if(is)
                   _isSliderVisible = visible;
                   log("_isSliderVisible: $_isSliderVisible");
                 });
