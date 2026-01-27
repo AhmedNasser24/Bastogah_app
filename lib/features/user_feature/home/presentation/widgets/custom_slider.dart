@@ -51,6 +51,7 @@ class _CustomSliderState extends State<CustomSlider> {
 
   @override
   void dispose() {
+    VisibilityDetectorController.instance.forget(const Key('home_slider'));
     super.dispose();
   }
 
@@ -109,7 +110,11 @@ class _CustomSliderState extends State<CustomSlider> {
               final visible = info.visibleFraction > 0.3;
               if (_isSliderVisible != visible) {
                 setState(() {
-                  if(is)
+                  // mandatory bec to prevent setState() after disposing when disconnecting internet
+                  if (!mounted) {
+                    return;
+                  }
+
                   _isSliderVisible = visible;
                   log("_isSliderVisible: $_isSliderVisible");
                 });
@@ -135,6 +140,10 @@ class _CustomSliderState extends State<CustomSlider> {
                           isActive: index == _currentIndex,
                           isSliderVisible: _isSliderVisible,
                           onVideoPlayStateChanged: (playing) {
+                            // mandatory bec to prevent setState() after disposing when disconnecting internet
+                            if (!mounted) {
+                              return;
+                            }
                             if (_isVideoPlaying != playing) {
                               setState(() => _isVideoPlaying = playing);
                             }
@@ -209,6 +218,10 @@ class _CustomSliderState extends State<CustomSlider> {
       autoPlayAnimationDuration: const Duration(milliseconds: 800),
       viewportFraction: 0.8,
       onPageChanged: (index, reason) {
+        // mandatory bec to prevent setState() after disposing when disconnecting internet
+        if (!mounted) {
+          return;
+        }
         setState(() {
           _currentIndex = index;
           log("_currentIndex: $_currentIndex");
